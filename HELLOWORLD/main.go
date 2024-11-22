@@ -107,11 +107,11 @@ func main() {
 			if typ == 0 {
 				var gegner = enemy.NewOrk()
 				enemy_name = gegner.GetOrkName()
-				enemyStats = gegner.GetStatsOrk(enemy_level)
+				enemyStats = gegner.GetStatsEnemy(enemy_level)
 			} else if typ == 1 {
 				var gegner = enemy.NewWolf()
 				enemy_name = gegner.GetWolfName()
-				enemyStats = gegner.GetStatsWolf(enemy_level)
+				enemyStats = gegner.GetStatsEnemy(enemy_level)
 			}
 
 			fmt.Println("Du fightest einen", enemy_name+"!!!")

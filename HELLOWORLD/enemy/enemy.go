@@ -19,7 +19,7 @@ type Wolf struct {
 
 //Set und Get Funktionen für Attribute von Wesen
 //Ork GetStats
-func (w *Ork) GetStatsOrk(level int) [4]int {
+func (w *Wesen) GetStatsEnemy(level int) [4]int {
 
 	w.level = level
 	var Level int = w.level
@@ -38,6 +38,7 @@ func (w *Ork) GetStatsOrk(level int) [4]int {
 	return stats
 }
 
+/*
 //Wolf GetStats
 func (w *Wolf) GetStatsWolf(level int) [4]int {
 
@@ -57,6 +58,7 @@ func (w *Wolf) GetStatsWolf(level int) [4]int {
 
 	return stats
 }
+*/
 
 //Get Name of enemy
 func (w *Ork) GetOrkName() string {
