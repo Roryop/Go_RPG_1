@@ -1,32 +1,33 @@
 package main
 
 import (
-	player "HELLOWORLD/adventurer"
-	enemy "HELLOWORLD/characters"
 	"fmt"
 	"math/rand"
+	"start/enemy"
+	"start/player"
 )
 
-func helloWelt() (string, string) {
+/*
+	func helloWelt() (string, string) {
 
-	var x, y string
-	x, y = "Hello", "World"
-	return x, y
+		var x, y string
+		x, y = "Hello", "World"
+		return x, y
 
-}
+	}
+*/
 
 func main() {
 
-	var x, y string
-	x, y = helloWelt()
+	/*
+		var x, y string
+		x, y = helloWelt()
 
-	fmt.Println(x, y)
+		fmt.Println(x, y)
+	*/
 
 	//kreiere Spieler
-	var player1 = player.NewPlayer() //Create player + make him level 1
-	player1.Level_Management()
-
-	player1.InitSpStats() //Init SpStats
+	var player1 = player.InitPlayer()
 
 	var pStats [6]int = player1.GetStats() //Create Stats-array + give lvl1 stats
 
@@ -36,8 +37,6 @@ func main() {
 	fmt.Println("Def:", pStats[4])
 
 	player1.UpdateSpStats() //Updates SpStats
-
-	player1.InitEXP() //Init the leveling System
 
 	pStats = player1.GetStats()
 
@@ -119,7 +118,7 @@ func main() {
 			fmt.Println("Er hat", enemyStats[1], "HP!")
 
 			//Fight machen
-			for enemyStats[1] > 0 || pStats[2] > 0{
+			for enemyStats[1] > 0 || pStats[2] > 0 {
 				//Anfrage wegen Angriff
 				fmt.Println("Möchtest du angreifen?")
 				fmt.Println("1: Ja")
@@ -140,7 +139,7 @@ func main() {
 					fmt.Println("Du hast noch", pStats[2], "HP")
 				case 2:
 					fmt.Println("Du hast nicht angegriffen")
-				case 3:
+				default:
 					goto end
 				}
 			}
@@ -149,10 +148,10 @@ func main() {
 				player1.EXP_Function(EnemyEXP)
 				player1.Level_Management()
 				pStats = player1.GetStats() //Updates Stats so stat SpStats can be added
-				pStats[2] = pStats[2] - hp	//Spieler will not be healed after fight
+				pStats[2] = pStats[2] - hp  //Spieler will not be healed after fight
 				player1.UpdateSpStats()
 				pStats = player1.GetStats() //Updates Stats so that correct values can be given out
-				pStats[2] = pStats[2] - hp	//Need to be in double
+				pStats[2] = pStats[2] - hp  //Need to be in double
 				fmt.Println("Deine Stats sind jetzt:")
 				fmt.Println("HP:", pStats[2])
 				fmt.Println("Att:", pStats[3])
@@ -162,7 +161,7 @@ func main() {
 				goto noHP
 			}
 		noHP:
-			if pStats[2] <= 0{
+			if pStats[2] <= 0 {
 				break
 			}
 		}
