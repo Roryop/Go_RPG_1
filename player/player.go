@@ -42,7 +42,7 @@ func (w *Player) Level_Management() {
 		w.exp_limit = 5
 		w.InitEXP()
 	}
-
+	w.InitSpStats()
 }
 
 // initializing Special Stats
@@ -67,14 +67,13 @@ func (w *Player) UpdateSpStats() {
 		switch allocation {
 		case 1:
 			w.hpPoints = w.hpPoints + 1
-			w.bonusPoints = w.bonusPoints - 1
 		case 2:
 			w.attPoints = w.attPoints + 1
-			w.bonusPoints = w.bonusPoints - 1
 		case 3:
 			w.defPoints = w.defPoints + 1
-			w.bonusPoints = w.bonusPoints - 1
+
 		}
+		w.bonusPoints = w.bonusPoints - 1
 	}
 }
 

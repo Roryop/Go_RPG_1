@@ -65,7 +65,7 @@ func main() {
 
 		var enemy_level int
 
-		for i := 0; i < 10 || pStats[2] <= 0; i++ {
+		for i := 0; i < 10 && pStats[2] > 0; i++ {
 
 			//Entscheidet Gegner-level jedes mal neu
 			switch game_level {
@@ -107,11 +107,13 @@ func main() {
 			var typ int = rand.Intn(2)
 			var enemyStats [4]int
 			var enemy_name string
-			if typ == 0 {
+
+			switch typ {
+			case 0:
 				var gegner = enemy.NewOrk()
 				enemy_name = gegner.GetOrkName()
 				enemyStats = gegner.GetStatsEnemy(enemy_level)
-			} else if typ == 1 {
+			case 1:
 				var gegner = enemy.NewWolf()
 				enemy_name = gegner.GetWolfName()
 				enemyStats = gegner.GetStatsEnemy(enemy_level)
@@ -121,7 +123,7 @@ func main() {
 			fmt.Println("Er hat", enemyStats[1], "HP!")
 
 			//Fight machen
-			for enemyStats[1] > 0 || pStats[2] > 0 {
+			for enemyStats[1] > 0 && pStats[2] > 0 {
 
 				if pStats[2] <= 0 {
 					break
@@ -138,15 +140,25 @@ func main() {
 				//Angreifen
 				switch choice {
 				case 1:
+
 					//Player attacks Enemy
 					enemyStats[1] = enemyStats[1] - ((pStats[3] * 100) / (100 + enemyStats[3]))
 					fmt.Println("Der", enemy_name, "hat noch", enemyStats[1], "HP")
 					//Enemy attacks Player
+					if enemyStats[1] > 0 {
+						pStats[2] = pStats[2] - ((enemyStats[2] * 100) / (100 + pStats[4]))
+						hp = pStats[2]
+					}
+					fmt.Println("Du hast noch", pStats[2], "HP")
+
+				case 2:
+
+					fmt.Println("Du hast nicht angegriffen")
+					//Enemy attacks Player
 					pStats[2] = pStats[2] - ((enemyStats[2] * 100) / (100 + pStats[4]))
 					hp = pStats[2]
 					fmt.Println("Du hast noch", pStats[2], "HP")
-				case 2:
-					fmt.Println("Du hast nicht angegriffen")
+
 				default:
 					goto end
 				}
@@ -155,18 +167,12 @@ func main() {
 				var EnemyEXP int = player1.GetEnemyExpValue(((enemyStats[1] + enemyStats[2] + enemyStats[3]) + enemyStats[0]) / 5)
 				player1.EXP_Function(EnemyEXP)
 				player1.Level_Management()
-				pStats = player1.GetStats() //Updates Stats so stat SpStats can be added
-				pStats[2] = pStats[2] - hp  //Spieler will not be healed after fight
-				player1.UpdateSpStats()
-				pStats = player1.GetStats() //Updates Stats so that correct values can be given out
-				pStats[2] = pStats[2] - hp  //Need to be in double
+				pStats = player1.GetStats()
+				pStats[2] = hp //Spieler will not be healed after fight
 				fmt.Println("Deine Stats sind jetzt:")
 				fmt.Println("HP:", pStats[2])
 				fmt.Println("Att:", pStats[3])
 				fmt.Println("Def:", pStats[4])
-			}
-			if pStats[2] <= 0 {
-				break
 			}
 		}
 	end:

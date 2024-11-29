@@ -27,9 +27,16 @@ func (w *Wesen) GetStatsEnemy(level int) [4]int {
 	var stats [4]int
 	stats[0] = Level
 
-	w.hp = 13 + (7 * w.level)
-	w.att = 4 + (3 * w.level)
-	w.def = 4 + w.level
+	switch w.name {
+	case "Ork":
+		w.hp = 13 + (7 * w.level)
+		w.att = 4 + (3 * w.level)
+		w.def = 4 + w.level
+	case "Wolf":
+		w.hp = 11 + (3 * w.level)
+		w.att = 6 + (4 * w.level)
+		w.def = 3 + (w.level / 2)
+	}
 
 	stats[1] = w.hp
 	stats[2] = w.att
