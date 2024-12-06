@@ -56,7 +56,7 @@ func (g *Gear) SetAttributesGear(gearName string) {
 ///////////////////////////////  Create New Gear  //////////////////////////////////
 
 func NewGear(gearClass string, gearName string) *Gear {
-	var gear = new(Gear)
+	var gear *Gear = new(Gear)
 
 	switch gearClass {
 	case "Weapon":

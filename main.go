@@ -25,6 +25,9 @@ func main() {
 	var b = gear.NewGear("Accessoire", "Lesser Ring of Strength")
 	fmt.Println(b)
 
+	var inventory = gear.NewInventory()
+	fmt.Println(inventory)
+
 	/*
 		var x, y string
 		x, y = helloWelt()
