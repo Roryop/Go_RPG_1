@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"math/rand"
 	"start/enemy"
+	"start/gear"
 	"start/player"
 	"start/story"
 )
@@ -21,6 +22,8 @@ import (
 func main() {
 
 	story.Prologue()
+	var b = gear.NewGear("Accessoire", "Lesser Ring of Strength")
+	fmt.Println(b)
 
 	/*
 		var x, y string

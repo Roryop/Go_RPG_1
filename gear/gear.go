@@ -2,25 +2,12 @@ package gear
 
 ///////////////////////////////  Struct Gear Types  //////////////////////////////////
 type Gear struct {
-	recovery int
-
 	damage     int
 	defense    int
+	recovery   int
 	durability int
 	gearType   string
 	name       string
-}
-
-type Weapon struct {
-	Gear
-}
-
-type Armor struct {
-	Gear
-}
-
-type Accessoire struct {
-	Gear
 }
 
 ///////////////////////////////  Set Attributes  //////////////////////////////////
@@ -31,61 +18,60 @@ func (g *Gear) SetAttributesGear(gearName string) {
 		g.defense = 0
 	case "Armor":
 		g.damage = 0
+	case "Accessoire":
+		g.durability = -1 //Equipment is destroyed at 0 durability, so Accessoires have -1
 	default:
 		break
 	}
 
 	switch gearName {
+
+	/////////////////////// Weapons ////////////////////////
 	case "Lesser Dagger":
 		g.damage = 1
 		g.durability = 10
 
+	/////////////////////// Armor //////////////////////////
 	case "Leather Breastplate":
 		g.defense = 2
 		g.durability = 9
-	}
-}
 
-///////////////////////////////  Set Accessoire Attributes  //////////////////////////////////
-
-func (a *Accessoire) SetAttributesAccessoire(accessoireName string) {
-
-	a.name = accessoireName
-	switch a.name {
-
+	/////////////////////// Accessoires ///////////////////
 	case "Lesser Ring of Strength":
 
-		a.damage = 1
+		g.damage = 1
 
 	case "Lesser Ring of Resilience":
 
-		a.defense = 1
+		g.defense = 1
 
 	case "Lesser Ring of Recovery":
 
-		a.recovery = 1
+		g.recovery = 1
 
 	}
 
-	a.durability = -1 //Equipment is destroyed at 0 durability, so Accessoires have -1
 }
 
 ///////////////////////////////  Create New Gear  //////////////////////////////////
 
-func NewWeapon() *Weapon {
-	var weapon = new(Weapon)
-	weapon.gearType = "Weapon"
-	return weapon
-}
+func NewGear(gearClass string, gearName string) *Gear {
+	var gear = new(Gear)
 
-func NewArmor() *Armor {
-	var armor = new(Armor)
-	armor.gearType = "Armor"
-	return armor
-}
+	switch gearClass {
+	case "Weapon":
+	case "Armor":
+	case "Accessoire":
+		gear.gearType = gearClass
+	}
 
-func NewAccessoire() *Accessoire {
-	var accessoire = new(Accessoire)
-	accessoire.gearType = "Accessoire"
-	return accessoire
+	gear.name = gearName
+
+	//////////////////////// Set Gear Attributes ////////////////////
+
+	gear.SetAttributesGear(gear.name)
+
+	//////////////////////// Return die Waffe /////////////////////
+
+	return gear
 }
