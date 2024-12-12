@@ -28,6 +28,12 @@ func main() {
 	var inventory = gear.NewInventory()
 	fmt.Println(inventory)
 
+	var inventorySlot = gear.NewInventorySlot()
+	inventorySlot.InputInventorySlot(*b, 1)
+	inventory[0] = inventorySlot
+	fmt.Println(*inventory[0])
+	gear.GiveInventoryInformation(inventory)
+
 	/*
 		var x, y string
 		x, y = helloWelt()
