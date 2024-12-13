@@ -41,8 +41,9 @@ func (w *Player) Level_Management() {
 		w.level = 1
 		w.exp_limit = 5
 		w.InitEXP()
+		w.InitSpStats()
 	}
-	w.InitSpStats()
+	w.UpdateSpStats()
 }
 
 // initializing Special Stats
@@ -99,8 +100,11 @@ func (w *Player) GetStats() [6]int {
 	return stats
 }
 
-func (w *Player) SeeStats() {
-	fmt.Println("hi")
+func (w *Player) SeeStats(pStats [6]int) {
+	fmt.Println("Deine Stats sind jetzt:")
+	fmt.Println("HP:", pStats[2])
+	fmt.Println("Att:", pStats[3])
+	fmt.Println("Def:", pStats[4])
 }
 
 // initiating EXP_Stat
@@ -126,10 +130,25 @@ func (w *Player) EXP_Function(value int) int {
 	return w.experience
 }
 
+func BeginPlayer() (*Player, [6]int) {
+	var player1 = InitPlayer()
+
+	var pStats [6]int = player1.GetStats() //Create Stats-array + give lvl1 stats
+
+	player1.SeeStats(pStats) //Give out Stats on normal lvl 1 so player can better choose where to invest
+
+	player1.UpdateSpStats() //Updates SpStats
+
+	pStats = player1.GetStats()
+
+	player1.SeeStats(pStats) //Give out Stats after distributing bonusPoint
+
+	return player1, pStats
+}
 func InitPlayer() *Player {
 	var player = NewPlayer()
-	player.Level_Management()
 	player.InitSpStats()
+	player.Level_Management()
 
 	return player
 }

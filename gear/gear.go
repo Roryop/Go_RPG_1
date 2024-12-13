@@ -63,6 +63,9 @@ func NewGear(gearClass string, gearName string) *Gear {
 	case "Armor":
 	case "Accessoire":
 		gear.gearType = gearClass
+	default:
+		gear.gearType = "empty"
+		gearName = "Not Filled"
 	}
 
 	gear.name = gearName

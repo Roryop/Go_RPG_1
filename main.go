@@ -24,15 +24,17 @@ func main() {
 	story.Prologue()
 	var b = gear.NewGear("Accessoire", "Lesser Ring of Strength")
 	fmt.Println(b)
-
+	/////////////Testing Weapon///////////
 	var inventory = gear.NewInventory()
 	fmt.Println(inventory)
 
 	var inventorySlot = gear.NewInventorySlot()
-	inventorySlot.InputInventorySlot(*b, 1)
+	inventorySlot.InputInventorySlot(b, 1)
 	inventory[0] = inventorySlot
-	fmt.Println(*inventory[0])
+	fmt.Println(inventory[1])
 	gear.GiveInventoryInformation(inventory)
+
+	////////////////////////End Weapon Test///////////////////////
 
 	/*
 		var x, y string
@@ -42,27 +44,23 @@ func main() {
 	*/
 
 	//kreiere Spieler
-	var player1 = player.InitPlayer()
+
+	var player1, pStats = player.BeginPlayer()
+	fmt.Println("Player: ", player1, "  Stats:  ", pStats)
+	/*var player1 = player.InitPlayer()
 
 	var pStats [6]int = player1.GetStats() //Create Stats-array + give lvl1 stats
 
-	fmt.Println("Deine Stats sind jetzt:") //Give out Stats on normal lvl 1 so player can better choose where to invest
-	fmt.Println("HP:", pStats[2])
-	fmt.Println("Att:", pStats[3])
-	fmt.Println("Def:", pStats[4])
+	player1.SeeStats(pStats) //Give out Stats on normal lvl 1 so player can better choose where to invest
 
 	player1.UpdateSpStats() //Updates SpStats
 
 	pStats = player1.GetStats()
 
-	fmt.Println("Deine Stats sind jetzt:") //Give out Stats after distributing bonusPoint
-	fmt.Println("HP:", pStats[2])
-	fmt.Println("Att:", pStats[3])
-	fmt.Println("Def:", pStats[4])
-
+	player1.SeeStats(pStats) //Give out Stats after distributing bonusPoint
 	//Für HP-Rechnung vom Player:
-
-	var hp int
+	*/
+	var hp int = pStats[2]
 
 	//das Game_Level auswählen
 	var game_level int
@@ -70,6 +68,8 @@ func main() {
 	for choice != 3 {
 
 		pStats = player1.GetStats()
+		fmt.Println("Deine Stats nach Levelbeginn sind: ", pStats)
+		hp = pStats[2]
 
 		fmt.Println("In welches Level möchtest du?")
 		fmt.Scanln(&game_level)
@@ -77,7 +77,7 @@ func main() {
 
 		var enemy_level int
 
-		for i := 0; i < 10 && pStats[2] > 0; i++ {
+		for i := 0; i < 10 && hp > 0; i++ {
 
 			//Entscheidet Gegner-level jedes mal neu
 			switch game_level {
@@ -133,9 +133,10 @@ func main() {
 
 			fmt.Println("Du fightest einen", enemy_name+"!!!")
 			fmt.Println("Er hat", enemyStats[1], "HP!")
+			fmt.Println("Du hast", hp, "HP!")
 
 			//Fight machen
-			for enemyStats[1] > 0 && pStats[2] > 0 {
+			for enemyStats[1] > 0 && hp > 0 {
 
 				if pStats[2] <= 0 {
 					break
@@ -158,18 +159,16 @@ func main() {
 					fmt.Println("Der", enemy_name, "hat noch", enemyStats[1], "HP")
 					//Enemy attacks Player
 					if enemyStats[1] > 0 {
-						pStats[2] = pStats[2] - ((enemyStats[2] * 100) / (100 + pStats[4]))
-						hp = pStats[2]
+						hp = hp - ((enemyStats[2] * 100) / (100 + pStats[4]))
 					}
-					fmt.Println("Du hast noch", pStats[2], "HP")
+					fmt.Println("Du hast noch", hp, "HP")
 
 				case 2:
 
 					fmt.Println("Du hast nicht angegriffen")
 					//Enemy attacks Player
-					pStats[2] = pStats[2] - ((enemyStats[2] * 100) / (100 + pStats[4]))
-					hp = pStats[2]
-					fmt.Println("Du hast noch", pStats[2], "HP")
+					hp = hp - ((enemyStats[2] * 100) / (100 + pStats[4]))
+					fmt.Println("Du hast noch", hp, "HP")
 
 				default:
 					goto end
@@ -180,9 +179,9 @@ func main() {
 				player1.EXP_Function(EnemyEXP)
 				player1.Level_Management()
 				pStats = player1.GetStats()
-				pStats[2] = hp //Spieler will not be healed after fight
+				//Spieler will not be healed after fight
 				fmt.Println("Deine Stats sind jetzt:")
-				fmt.Println("HP:", pStats[2])
+				fmt.Println("HP:", hp)
 				fmt.Println("Att:", pStats[3])
 				fmt.Println("Def:", pStats[4])
 			}
