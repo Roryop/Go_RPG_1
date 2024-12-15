@@ -2,19 +2,48 @@ package story
 
 import (
 	"fmt"
+	"strings"
 	"time"
 )
 
 func Prologue() {
 	EmptyLine()
-	fmt.Println("The story begins")
+	Print("The story begins")
 	EmptyLine()
 	LongWait()
-	fmt.Println("Are you ready, Adventurer?")
+	Print("Are you ready, Adventurer?")
+	Pause()
+	Print("What awaits you is a world filled with dangers at every corner.")
+	ShortWait()
+	Space(10)
+	LongWait()
+	Print("Try to endlessly grow Stronger, Strong enough to kill the Demons of this World!")
+	LongWait()
+	Pause()
+	Space(20)
+}
+
+func Print(text string) {
+
+	var splitText = strings.Split(text, "")
+
+	for i := 0; i < len(splitText); i++ {
+		fmt.Print(splitText[i])
+		TextWait()
+	}
+	fmt.Println()
+}
+
+func Pause() {
 	ShortWait()
 	EmptyLine()
 	ShortWait()
-	fmt.Println("What awaits you is a world filled with dangers at every corner.")
+}
+
+func Space(length int) {
+	for i := 0; i < length; i++ {
+		fmt.Println()
+	}
 }
 
 func EmptyLine() {
@@ -27,4 +56,8 @@ func LongWait() {
 
 func ShortWait() {
 	time.Sleep(1 * time.Second)
+}
+
+func TextWait() {
+	time.Sleep(100 * time.Millisecond)
 }
