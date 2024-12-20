@@ -45,8 +45,9 @@ func main() {
 
 	//kreiere Spieler
 
-	var player1, pStats = player.BeginPlayer()
-	fmt.Println("Player: ", player1, "  Stats:  ", pStats)
+	var player1 = player.BeginPlayer()
+	fmt.Println("Player: ", player1)
+	player1.SeeStats()
 	/*var player1 = player.InitPlayer()
 
 	var pStats [6]int = player1.GetStats() //Create Stats-array + give lvl1 stats
@@ -60,60 +61,23 @@ func main() {
 	player1.SeeStats(pStats) //Give out Stats after distributing bonusPoint
 	//Für HP-Rechnung vom Player:
 	*/
-	var hp int = pStats[2]
+	var hp int = player1.GetStat(2)
+	var att int = player1.GetStat(3)
+	var def int = player1.GetStat(4)
 
 	//das Game_Level auswählen
-	var game_level int
 	var choice int = 0
 	for choice != 3 {
 
-		pStats = player1.GetStats()
-		fmt.Println("Deine Stats nach Levelbeginn sind: ", pStats)
-		hp = pStats[2]
-
-		fmt.Println("In welches Level möchtest du?")
-		fmt.Scanln(&game_level)
-		fmt.Println("Du hast Level", game_level, "ausgewählt.")
+		player1.SetStats()
+		fmt.Println("Deine Stats nach Levelbeginn sind: ")
+		player1.SeeStats()
 
 		var enemy_level int
+		hp = player1.GetStat(2) //Healing Player before going into Level
 
 		for i := 0; i < 10 && hp > 0; i++ {
-
-			//Entscheidet Gegner-level jedes mal neu
-			switch game_level {
-			case 1:
-				//Gegnerlevel zwischen 1 und 3
-				enemy_level = rand.Intn(3) + 1
-			case 2:
-				//Gegnerlevel zwischen 3 und 5
-				enemy_level = rand.Intn(3) + 3
-			case 3:
-				//Gegnerlevel zwischen 6 und 10
-				enemy_level = rand.Intn(5) + 6
-			case 4:
-				//Gegnerlevel zwischen 11 und 20
-				enemy_level = rand.Intn(10) + 11
-			case 5:
-				//Gegnerlevel zwischen 15 und 25
-				enemy_level = rand.Intn(11) + 15
-			case 6:
-				//Gegnerlevel zwischen 30 und 35
-				enemy_level = rand.Intn(6) + 30
-			case 7:
-				//Gegnerlevel zwischen 34 und 36
-				enemy_level = rand.Intn(3) + 34
-			case 8:
-				//Gegnerlevel zwischen 36 und 40
-				enemy_level = rand.Intn(5) + 36
-			case 9:
-				//Gegnerlevel zwischen 40 und 45
-				enemy_level = rand.Intn(6) + 40
-			case 10:
-				//Gegnerlevel zwischen 45 und 50
-				enemy_level = rand.Intn(6) + 45
-			case 3001:
-				enemy_level = 3001
-			}
+			enemy_level = enemy.SetEnemyLevel()
 
 			//Entscheidet in jedem Durchlauf über Gegner-typ + kreiert stats
 			var typ int = rand.Intn(2)
@@ -138,10 +102,6 @@ func main() {
 			//Fight machen
 			for enemyStats[1] > 0 && hp > 0 {
 
-				if pStats[2] <= 0 {
-					break
-				}
-
 				//Anfrage wegen Angriff
 				fmt.Println("Möchtest du angreifen?")
 				fmt.Println("1: Ja")
@@ -155,11 +115,11 @@ func main() {
 				case 1:
 
 					//Player attacks Enemy
-					enemyStats[1] = enemyStats[1] - ((pStats[3] * 100) / (100 + enemyStats[3]))
+					enemyStats[1] = enemyStats[1] - ((att * 100) / (100 + enemyStats[3]))
 					fmt.Println("Der", enemy_name, "hat noch", enemyStats[1], "HP")
 					//Enemy attacks Player
 					if enemyStats[1] > 0 {
-						hp = hp - ((enemyStats[2] * 100) / (100 + pStats[4]))
+						hp = hp - ((enemyStats[2] * 100) / (100 + def))
 					}
 					fmt.Println("Du hast noch", hp, "HP")
 
@@ -167,7 +127,7 @@ func main() {
 
 					fmt.Println("Du hast nicht angegriffen")
 					//Enemy attacks Player
-					hp = hp - ((enemyStats[2] * 100) / (100 + pStats[4]))
+					hp = hp - ((enemyStats[2] * 100) / (100 + def))
 					fmt.Println("Du hast noch", hp, "HP")
 
 				default:
@@ -175,15 +135,14 @@ func main() {
 				}
 			}
 			if enemyStats[1] <= 0 {
-				var EnemyEXP int = player1.GetEnemyExpValue(((enemyStats[1] + enemyStats[2] + enemyStats[3]) + enemyStats[0]) / 5)
-				player1.EXP_Function(EnemyEXP)
+				player1.CalculateExp((enemyStats[1] + enemyStats[2] + enemyStats[3] + enemyStats[0]) / 4)
 				player1.Level_Management()
-				pStats = player1.GetStats()
+				player1.SetStats()
 				//Spieler will not be healed after fight
 				fmt.Println("Deine Stats sind jetzt:")
 				fmt.Println("HP:", hp)
-				fmt.Println("Att:", pStats[3])
-				fmt.Println("Def:", pStats[4])
+				fmt.Println("Att:", att)
+				fmt.Println("Def:", def)
 			}
 		}
 	end:

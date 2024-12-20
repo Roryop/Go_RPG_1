@@ -1,6 +1,11 @@
 package enemy
 
-//Erstes Wesen
+import (
+	"fmt"
+	"math/rand"
+)
+
+// Erstes Wesen
 type Wesen struct {
 	level int
 	hp    int
@@ -17,8 +22,8 @@ type Wolf struct {
 	Wesen
 }
 
-//Set und Get Funktionen für Attribute von Wesen
-//Ork GetStats
+// Set und Get Funktionen für Attribute von Wesen
+// Ork GetStats
 func (w *Wesen) GetStatsEnemy(level int) [4]int {
 
 	w.level = level
@@ -45,6 +50,51 @@ func (w *Wesen) GetStatsEnemy(level int) [4]int {
 	return stats
 }
 
+func SetEnemyLevel() int {
+	var game_level = 0
+	var enemy_level = 1
+	fmt.Println("In welches Level möchtest du?")
+	fmt.Scanln(&game_level)
+	fmt.Println("Du hast Level", game_level, "ausgewählt.")
+
+	//Entscheidet Gegner-level jedes mal neu
+	switch game_level {
+	case 1:
+		//Gegnerlevel zwischen 1 und 3
+		enemy_level = rand.Intn(3) + 1
+	case 2:
+		//Gegnerlevel zwischen 3 und 5
+		enemy_level = rand.Intn(3) + 3
+	case 3:
+		//Gegnerlevel zwischen 6 und 10
+		enemy_level = rand.Intn(5) + 6
+	case 4:
+		//Gegnerlevel zwischen 11 und 20
+		enemy_level = rand.Intn(10) + 11
+	case 5:
+		//Gegnerlevel zwischen 15 und 25
+		enemy_level = rand.Intn(11) + 15
+	case 6:
+		//Gegnerlevel zwischen 30 und 35
+		enemy_level = rand.Intn(6) + 30
+	case 7:
+		//Gegnerlevel zwischen 34 und 36
+		enemy_level = rand.Intn(3) + 34
+	case 8:
+		//Gegnerlevel zwischen 36 und 40
+		enemy_level = rand.Intn(5) + 36
+	case 9:
+		//Gegnerlevel zwischen 40 und 45
+		enemy_level = rand.Intn(6) + 40
+	case 10:
+		//Gegnerlevel zwischen 45 und 50
+		enemy_level = rand.Intn(6) + 45
+	case 3001:
+		enemy_level = 3001
+	}
+	return enemy_level
+}
+
 /*
 //Wolf GetStats
 func (w *Wolf) GetStatsWolf(level int) [4]int {
@@ -67,7 +117,7 @@ func (w *Wolf) GetStatsWolf(level int) [4]int {
 }
 */
 
-//Get Name of enemy
+// Get Name of enemy
 func (w *Ork) GetOrkName() string {
 	w.name = "Ork"
 	return w.name

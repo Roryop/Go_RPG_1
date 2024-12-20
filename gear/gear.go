@@ -12,7 +12,9 @@ type Gear struct {
 
 ///////////////////////////////  Set Attributes  //////////////////////////////////
 
-func (g *Gear) SetAttributesGear(gearName string) {
+func (g *Gear) SetAttributesGear() {
+	var gearName = g.name
+
 	switch g.gearType {
 	case "Weapon":
 		g.defense = 0
@@ -72,7 +74,7 @@ func NewGear(gearClass string, gearName string) *Gear {
 
 	//////////////////////// Set Gear Attributes ////////////////////
 
-	gear.SetAttributesGear(gear.name)
+	gear.SetAttributesGear()
 
 	//////////////////////// Return die Waffe /////////////////////
 

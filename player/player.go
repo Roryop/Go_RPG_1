@@ -18,6 +18,8 @@ type Player struct {
 	attPoints   int
 	defPoints   int
 	bonusPoints int
+
+	stats [6]int
 }
 
 func (w *Player) levelUp() int {
@@ -34,6 +36,7 @@ func (w *Player) Level_Management() {
 
 	if w.level >= 1 && w.experience >= w.exp_limit {
 		w.level = w.levelUp()
+		w.SetStats()
 	} else if w.level >= 1 && w.experience < w.exp_limit {
 		var b int = w.exp_limit - w.experience
 		fmt.Println("Du brauchst noch", b, "Exp")
@@ -78,7 +81,7 @@ func (w *Player) UpdateSpStats() {
 	}
 }
 
-func (w *Player) GetStats() [6]int {
+func (w *Player) SetStats() {
 
 	//Kreiert stats Array
 	var stats [6]int
@@ -97,14 +100,18 @@ func (w *Player) GetStats() [6]int {
 	stats[4] = w.def
 	stats[5] = w.bonusPoints
 	//gibt stats aus
-	return stats
+	w.stats = stats
 }
 
-func (w *Player) SeeStats(pStats [6]int) {
+func (w *Player) SeeStats() {
 	fmt.Println("Deine Stats sind jetzt:")
-	fmt.Println("HP:", pStats[2])
-	fmt.Println("Att:", pStats[3])
-	fmt.Println("Def:", pStats[4])
+	fmt.Println("HP:", w.stats[2])
+	fmt.Println("Att:", w.stats[3])
+	fmt.Println("Def:", w.stats[4])
+}
+
+func (w *Player) GetStat(i int) int {
+	return w.stats[i]
 }
 
 // initiating EXP_Stat
@@ -115,6 +122,12 @@ func (w *Player) InitEXP() {
 // getting Experience_Value ready for showcasing
 func (w *Player) GetEXP() int {
 	return w.experience
+}
+
+// calculating experience and adding it to player
+func (w *Player) CalculateExp(value int) {
+	var exp = w.GetEnemyExpValue(value)
+	w.EXP_Function(exp)
 }
 
 // creating funtion to get EXP_Value from enemies
@@ -130,20 +143,14 @@ func (w *Player) EXP_Function(value int) int {
 	return w.experience
 }
 
-func BeginPlayer() (*Player, [6]int) {
+func BeginPlayer() *Player {
 	var player1 = InitPlayer()
 
-	var pStats [6]int = player1.GetStats() //Create Stats-array + give lvl1 stats
+	player1.SetStats() //give lvl1 stats
 
-	player1.SeeStats(pStats) //Give out Stats on normal lvl 1 so player can better choose where to invest
+	player1.SeeStats() //Give out Stats
 
-	player1.UpdateSpStats() //Updates SpStats
-
-	pStats = player1.GetStats()
-
-	player1.SeeStats(pStats) //Give out Stats after distributing bonusPoint
-
-	return player1, pStats
+	return player1
 }
 func InitPlayer() *Player {
 	var player = NewPlayer()
