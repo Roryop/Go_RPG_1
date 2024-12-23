@@ -47,7 +47,7 @@ func main() {
 
 	var player1 = player.BeginPlayer()
 	fmt.Println("Player: ", player1)
-	player1.SeeStats()
+	player1.SeePlayerStats()
 	/*var player1 = player.InitPlayer()
 
 	var pStats [6]int = player1.GetStats() //Create Stats-array + give lvl1 stats
@@ -61,17 +61,21 @@ func main() {
 	player1.SeeStats(pStats) //Give out Stats after distributing bonusPoint
 	//Für HP-Rechnung vom Player:
 	*/
-	var hp int = player1.GetStat(2)
-	var att int = player1.GetStat(3)
-	var def int = player1.GetStat(4)
+
+	player1.SetStatsAccessoires(inventory)
+	var hp = player1.GetStat(2)
+	var att = player1.GetStat(3)
+	var def = player1.GetStat(4)
+	var rec = player1.GetStat(5)
+	fmt.Println("Recovery:", rec)
 
 	//das Game_Level auswählen
 	var choice int = 0
 	for choice != 3 {
 
 		player1.SetStats()
-		fmt.Println("Deine Stats nach Levelbeginn sind: ")
-		player1.SeeStats()
+		player1.SetStatsAccessoires(inventory)
+		player1.SeePlayerStats()
 
 		var enemy_level int
 		hp = player1.GetStat(2) //Healing Player before going into Level

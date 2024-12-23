@@ -2,6 +2,7 @@ package player
 
 import (
 	"fmt"
+	"start/gear"
 )
 
 type Player struct {
@@ -14,12 +15,13 @@ type Player struct {
 	hp          int
 	att         int
 	def         int
+	rec         int
 	hpPoints    int
 	attPoints   int
 	defPoints   int
 	bonusPoints int
 
-	stats [6]int
+	stats [7]int
 }
 
 func (w *Player) levelUp() int {
@@ -84,7 +86,7 @@ func (w *Player) UpdateSpStats() {
 func (w *Player) SetStats() {
 
 	//Kreiert stats Array
-	var stats [6]int
+	var stats [7]int
 
 	stats[0] = w.level
 	stats[1] = w.exp_limit
@@ -98,20 +100,27 @@ func (w *Player) SetStats() {
 	stats[2] = w.hp
 	stats[3] = w.att
 	stats[4] = w.def
-	stats[5] = w.bonusPoints
+	stats[5] = w.rec
+	stats[6] = w.bonusPoints
 	//gibt stats aus
 	w.stats = stats
 }
 
-func (w *Player) SeeStats() {
+func (w *Player) SeePlayerStats() {
 	fmt.Println("Deine Stats sind jetzt:")
 	fmt.Println("HP:", w.stats[2])
 	fmt.Println("Att:", w.stats[3])
 	fmt.Println("Def:", w.stats[4])
+	fmt.Println("Rec:", w.stats[5])
 }
 
 func (w *Player) GetStat(i int) int {
 	return w.stats[i]
+}
+
+func (w *Player) SetStatsAccessoires(inventory [10]*gear.InventorySlot) {
+	var att, def, rec int = gear.CreateStatsAccessoires(inventory)
+	w.stats[3], w.stats[4], w.stats[5] = w.stats[3]+att, w.stats[4]+def, w.stats[5]+rec
 }
 
 // initiating EXP_Stat
@@ -148,7 +157,7 @@ func BeginPlayer() *Player {
 
 	player1.SetStats() //give lvl1 stats
 
-	player1.SeeStats() //Give out Stats
+	player1.SeePlayerStats() //Give out Stats
 
 	return player1
 }
