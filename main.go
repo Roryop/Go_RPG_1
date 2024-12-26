@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"math/rand"
 	"start/enemy"
+	"start/game"
 	"start/gear"
 	"start/player"
 	"start/story"
@@ -48,25 +49,9 @@ func main() {
 	var player1 = player.BeginPlayer()
 	fmt.Println("Player: ", player1)
 	player1.SeePlayerStats()
-	/*var player1 = player.InitPlayer()
 
-	var pStats [6]int = player1.GetStats() //Create Stats-array + give lvl1 stats
+	var hp, att, def, rec = player1.CreateStats(inventory)
 
-	player1.SeeStats(pStats) //Give out Stats on normal lvl 1 so player can better choose where to invest
-
-	player1.UpdateSpStats() //Updates SpStats
-
-	pStats = player1.GetStats()
-
-	player1.SeeStats(pStats) //Give out Stats after distributing bonusPoint
-	//Für HP-Rechnung vom Player:
-	*/
-
-	player1.SetStatsAccessoires(inventory)
-	var hp = player1.GetStat(2)
-	var att = player1.GetStat(3)
-	var def = player1.GetStat(4)
-	var rec = player1.GetStat(5)
 	fmt.Println("Recovery:", rec)
 
 	//das Game_Level auswählen
@@ -79,9 +64,10 @@ func main() {
 
 		var enemy_level int
 		hp = player1.GetStat(2) //Healing Player before going into Level
+		var game_level = game.ChooseGameLevel()
 
 		for i := 0; i < 10 && hp > 0; i++ {
-			enemy_level = enemy.SetEnemyLevel()
+			enemy_level = enemy.SetEnemyLevel(game_level)
 
 			//Entscheidet in jedem Durchlauf über Gegner-typ + kreiert stats
 			var typ int = rand.Intn(2)
@@ -140,8 +126,7 @@ func main() {
 			}
 			if enemyStats[1] <= 0 {
 				player1.CalculateExp((enemyStats[1] + enemyStats[2] + enemyStats[3] + enemyStats[0]) / 4)
-				player1.Level_Management()
-				player1.SetStats()
+				hp, att, def, rec = player1.Level_Management(inventory, hp, att, def, rec) //player will be healed with LevelUp
 				//Spieler will not be healed after fight
 				fmt.Println("Deine Stats sind jetzt:")
 				fmt.Println("HP:", hp)
