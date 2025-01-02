@@ -34,13 +34,13 @@ func EmptyLine() {
 }
 
 func LongWait() {
-	time.Sleep(5 * time.Second)
+	time.Sleep(3 * time.Second)
 }
 
 func ShortWait() {
-	time.Sleep(1 * time.Second)
+	time.Sleep(3 * time.Second / 2)
 }
 
 func TextWait() {
-	time.Sleep(100 * time.Millisecond)
+	time.Sleep(75 * time.Millisecond)
 }

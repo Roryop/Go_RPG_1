@@ -2,6 +2,7 @@ package player
 
 import (
 	"fmt"
+	"start/gear"
 )
 
 type Player struct {
@@ -15,12 +16,13 @@ type Player struct {
 	hp          int
 	att         int
 	def         int
+	rec         int
 	hpPoints    int
 	attPoints   int
 	defPoints   int
 	bonusPoints int
 
-	stats [6]int
+	stats [7]int
 }
 
 func (w *Player) levelUp() int {
@@ -30,14 +32,18 @@ func (w *Player) levelUp() int {
 
 	fmt.Println("Dein Level ist jetzt", w.level, "!")
 
+	w.SetStats() //Updating Original Player Stats after levelUp
+
 	return w.level
 }
 
-func (w *Player) Level_Management() {
+func (w *Player) Level_Management(inventory [10]*gear.InventorySlot, hp, att, def, rec int) (int, int, int, int) {
 
 	if w.level >= 1 && w.experience >= w.exp_limit {
-		w.level = w.levelUp()
+		w.levelUp()
+		w.UpdateSpStats()
 		w.SetStats()
+		hp, att, def, rec = w.CreateStats(inventory)
 	} else if w.level >= 1 && w.experience < w.exp_limit {
 		var b int = w.exp_limit - w.experience
 		fmt.Println("Du brauchst noch", b, "Exp")
@@ -48,6 +54,7 @@ func (w *Player) Level_Management() {
 		w.InitSpStats()
 	}
 	w.UpdateSpStats()
+	return hp, att, def, rec
 }
 
 func (w *Player) UpdateSpStats() {
@@ -82,21 +89,10 @@ func (w *Player) InitSpStats() {
 	w.bonusPoints = 1
 }
 
-func (w *Player) SeeStats() {
-	fmt.Println("Deine Stats sind jetzt:")
-	fmt.Println("HP:", w.stats[2])
-	fmt.Println("Att:", w.stats[3])
-	fmt.Println("Def:", w.stats[4])
-}
-
-func (w *Player) GetStat(i int) int {
-	return w.stats[i]
-}
-
 func (w *Player) SetStats() {
 
 	//Kreiert stats Array
-	var stats [6]int
+	var stats [7]int
 
 	stats[0] = w.level
 	stats[1] = w.exp_limit
@@ -110,14 +106,37 @@ func (w *Player) SetStats() {
 	stats[2] = w.hp
 	stats[3] = w.att
 	stats[4] = w.def
-	stats[5] = w.bonusPoints
+	stats[5] = w.rec
+	stats[6] = w.bonusPoints
 	//gibt stats aus
 	w.stats = stats
 }
 
-// getting Experience_Value ready for showcasing
-func (w *Player) GetEXP() int {
-	return w.experience
+func (w *Player) CreateStats(inventory [10]*gear.InventorySlot) (int, int, int, int) {
+	w.SetStatsAccessoires(inventory)
+	var hp = w.GetStat(2)
+	var att = w.GetStat(3)
+	var def = w.GetStat(4)
+	var rec = w.GetStat(5)
+
+	return hp, att, def, rec
+}
+
+func (w *Player) SeePlayerStats() {
+	fmt.Println("Deine Stats sind jetzt:")
+	fmt.Println("HP:", w.stats[2])
+	fmt.Println("Att:", w.stats[3])
+	fmt.Println("Def:", w.stats[4])
+	fmt.Println("Rec:", w.stats[5])
+}
+
+func (w *Player) GetStat(i int) int {
+	return w.stats[i]
+}
+
+func (w *Player) SetStatsAccessoires(inventory [10]*gear.InventorySlot) {
+	var att, def, rec int = gear.CreateStatsAccessoires(inventory)
+	w.stats[3], w.stats[4], w.stats[5] = w.stats[3]+att, w.stats[4]+def, w.stats[5]+rec
 }
 
 // initiating EXP_Stat
@@ -149,7 +168,7 @@ func BeginPlayer() *Player {
 
 	player1.SetStats() //give lvl1 stats
 
-	player1.SeeStats() //Give out Stats
+	player1.SeePlayerStats() //Give out Stats
 
 	return player1
 }
@@ -157,7 +176,10 @@ func BeginPlayer() *Player {
 func InitPlayer() *Player {
 	var player = NewPlayer()
 	player.InitSpStats()
-	player.Level_Management()
+	/////////Creating Empty Inventory To Load Level_Management////////
+	var inventory = gear.NewInventory()
+	player.Level_Management(inventory, 0, 0, 0, 0)
+	//////////////////////////////////////////////////////////////////
 
 	return player
 }

@@ -1,7 +1,6 @@
 package enemy
 
 import (
-	"fmt"
 	"math/rand"
 )
 
@@ -42,12 +41,8 @@ func (w *Wesen) GetStatsEnemy(level int) [4]int {
 	return stats
 }
 
-func SetEnemyLevel() int {
-	var game_level = 0
-	var enemy_level = 1
-	fmt.Println("In welches Level möchtest du?")
-	fmt.Scanln(&game_level)
-	fmt.Println("Du hast Level", game_level, "ausgewählt.")
+func SetEnemyLevel(game_level int) int {
+	var enemy_level = 0
 
 	//Entscheidet Gegner-level jedes mal neu
 	switch game_level {
@@ -83,6 +78,8 @@ func SetEnemyLevel() int {
 		enemy_level = rand.Intn(6) + 45
 	case 3001:
 		enemy_level = 3001
+	default:
+		enemy_level = 0
 	}
 	return enemy_level
 }
