@@ -84,16 +84,9 @@ func main() {
 			var enemyStats [4]int
 			var enemy_name string
 
-			switch typ {
-			case 0:
-				var gegner = enemy.NewOrk()
-				enemy_name = gegner.GetOrkName()
-				enemyStats = gegner.GetStatsEnemy(enemy_level)
-			case 1:
-				var gegner = enemy.NewWolf()
-				enemy_name = gegner.GetWolfName()
-				enemyStats = gegner.GetStatsEnemy(enemy_level)
-			}
+			var gegner = enemy.NewEnemy()
+			gegner.SetEnemyType(typ)
+			enemyStats = gegner.GetStatsEnemy(enemy_level)
 
 			fmt.Println("Du fightest einen", enemy_name+"!!!")
 			fmt.Println("Er hat", enemyStats[1], "HP!")

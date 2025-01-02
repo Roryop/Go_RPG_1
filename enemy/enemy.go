@@ -14,14 +14,6 @@ type Wesen struct {
 	name  string
 }
 
-type Ork struct {
-	Wesen
-}
-
-type Wolf struct {
-	Wesen
-}
-
 // Set und Get Funktionen für Attribute von Wesen
 // Ork GetStats
 func (w *Wesen) GetStatsEnemy(level int) [4]int {
@@ -118,26 +110,18 @@ func (w *Wolf) GetStatsWolf(level int) [4]int {
 */
 
 // Get Name of enemy
-func (w *Ork) GetOrkName() string {
-	w.name = "Ork"
-	return w.name
+func (w *Wesen) SetEnemyType(typ int) {
+	switch typ {
+	case 1:
+		w.name = "Ork"
+	case 2:
+		w.name = "Wolf"
+	}
 }
 
-func (w *Wolf) GetWolfName() string {
-	w.name = "Wolf"
-	return w.name
-}
+///////////////////Enemy wird erstellt//////////////////////
 
-//Ork wird erstellt
-
-func NewOrk() *Ork {
-	var ork *Ork = new(Ork)
-	return ork
-}
-
-//Wolf wird erstellt
-
-func NewWolf() *Wolf {
-	var wolf *Wolf = new(Wolf)
+func NewEnemy() *Wesen {
+	var wolf *Wesen = new(Wesen)
 	return wolf
 }

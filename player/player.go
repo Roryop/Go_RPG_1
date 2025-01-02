@@ -11,6 +11,7 @@ type Player struct {
 	experience int
 	exp_limit  int
 
+	//creating stats
 	hp          int
 	att         int
 	def         int
@@ -49,14 +50,6 @@ func (w *Player) Level_Management() {
 	w.UpdateSpStats()
 }
 
-// initializing Special Stats
-func (w *Player) InitSpStats() {
-	w.hpPoints = 0
-	w.attPoints = 0
-	w.defPoints = 0
-	w.bonusPoints = 1
-}
-
 func (w *Player) UpdateSpStats() {
 	var allocation int
 
@@ -81,6 +74,25 @@ func (w *Player) UpdateSpStats() {
 	}
 }
 
+// initializing Special Stats
+func (w *Player) InitSpStats() {
+	w.hpPoints = 0
+	w.attPoints = 0
+	w.defPoints = 0
+	w.bonusPoints = 1
+}
+
+func (w *Player) SeeStats() {
+	fmt.Println("Deine Stats sind jetzt:")
+	fmt.Println("HP:", w.stats[2])
+	fmt.Println("Att:", w.stats[3])
+	fmt.Println("Def:", w.stats[4])
+}
+
+func (w *Player) GetStat(i int) int {
+	return w.stats[i]
+}
+
 func (w *Player) SetStats() {
 
 	//Kreiert stats Array
@@ -103,25 +115,14 @@ func (w *Player) SetStats() {
 	w.stats = stats
 }
 
-func (w *Player) SeeStats() {
-	fmt.Println("Deine Stats sind jetzt:")
-	fmt.Println("HP:", w.stats[2])
-	fmt.Println("Att:", w.stats[3])
-	fmt.Println("Def:", w.stats[4])
-}
-
-func (w *Player) GetStat(i int) int {
-	return w.stats[i]
+// getting Experience_Value ready for showcasing
+func (w *Player) GetEXP() int {
+	return w.experience
 }
 
 // initiating EXP_Stat
 func (w *Player) InitEXP() {
 	w.experience = 0
-}
-
-// getting Experience_Value ready for showcasing
-func (w *Player) GetEXP() int {
-	return w.experience
 }
 
 // calculating experience and adding it to player
@@ -152,6 +153,7 @@ func BeginPlayer() *Player {
 
 	return player1
 }
+
 func InitPlayer() *Player {
 	var player = NewPlayer()
 	player.InitSpStats()
