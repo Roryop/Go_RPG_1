@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	"math/rand"
 	"start/enemy"
 	"start/game"
 	"start/gear"
@@ -62,23 +61,14 @@ func main() {
 		player1.SetStatsAccessoires(inventory)
 		player1.SeePlayerStats()
 
-		var enemy_level int
 		hp = player1.GetStat(2) //Healing Player before going into Level
 		var game_level = game.ChooseGameLevel()
 
 		for i := 0; i < 10 && hp > 0; i++ {
-			enemy_level = enemy.SetEnemyLevel(game_level)
+			var enemyName, enemyStats = enemy.CreateEnemy(game_level)
 
-			//Entscheidet in jedem Durchlauf über Gegner-typ + kreiert stats
-			var typ int = rand.Intn(2)
-			var enemyStats [4]int
-			var enemy_name string
-
-			var gegner = enemy.NewEnemy()
-			gegner.SetEnemyType(typ)
-			enemyStats = gegner.GetStatsEnemy(enemy_level)
-
-			fmt.Println("Du fightest einen", enemy_name+"!!!")
+			fmt.Println("Du fightest einen", enemyName+"!!!")
+			fmt.Println("Er ist Level", enemyStats[0], "!!!")
 			fmt.Println("Er hat", enemyStats[1], "HP!")
 			fmt.Println("Du hast", hp, "HP!")
 
@@ -99,7 +89,7 @@ func main() {
 
 					//Player attacks Enemy
 					enemyStats[1] = enemyStats[1] - ((att * 100) / (100 + enemyStats[3]))
-					fmt.Println("Der", enemy_name, "hat noch", enemyStats[1], "HP")
+					fmt.Println("Der", enemyName, "hat noch", enemyStats[1], "HP")
 					//Enemy attacks Player
 					if enemyStats[1] > 0 {
 						hp = hp - ((enemyStats[2] * 100) / (100 + def))
