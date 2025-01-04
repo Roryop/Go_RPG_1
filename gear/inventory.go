@@ -50,7 +50,7 @@ func NewInventorySlot() *InventorySlot {
 func FillEmptyInventory(inventory [10]*InventorySlot) [10]*InventorySlot {
 	for i := 0; i < 10; i++ {
 		var emptyItemSlot = NewInventorySlot()
-		var emptyItem = NewGear("a", "b")
+		var emptyItem = NewGear("", "")
 		emptyItemSlot.InputInventorySlot(emptyItem, 0)
 
 		inventory[i] = emptyItemSlot

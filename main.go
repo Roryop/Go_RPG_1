@@ -53,7 +53,6 @@ func main() {
 
 	fmt.Println("Recovery:", rec)
 
-	//das Game_Level auswählen
 	var choice int = 0
 	for choice != 3 {
 
@@ -62,6 +61,7 @@ func main() {
 		player1.SeePlayerStats()
 
 		hp = player1.GetStat(2) //Healing Player before going into Level
+
 		var game_level = game.ChooseGameLevel()
 
 		for i := 0; i < 10 && hp > 0; i++ {
