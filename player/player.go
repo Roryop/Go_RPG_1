@@ -28,7 +28,7 @@ type Player struct {
 func (w *Player) levelUp() int {
 	w.level = w.level + 1
 	w.experience = 0
-	w.exp_limit = w.exp_limit * 2
+	w.exp_limit = (w.exp_limit * 3) / 2
 
 	fmt.Println("Dein Level ist jetzt", w.level, "!")
 
@@ -45,8 +45,12 @@ func (w *Player) Level_Management(inventory [10]*gear.InventorySlot, hp, att, de
 		w.SetStats()
 		hp, att, def, rec = w.CreateStats(inventory)
 	} else if w.level >= 1 && w.experience < w.exp_limit {
-		var b int = w.exp_limit - w.experience
-		fmt.Println("Du brauchst noch", b, "Exp")
+		var neededExp int = w.exp_limit - w.experience
+		hp = hp + rec
+		if hp > w.hp {
+			hp = w.hp
+		}
+		fmt.Println("Du brauchst noch", neededExp, "Exp")
 	} else {
 		w.level = 1
 		w.exp_limit = 5

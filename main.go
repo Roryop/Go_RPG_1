@@ -22,6 +22,7 @@ import (
 func main() {
 
 	story.Prologue()
+
 	var b = gear.NewGear("Accessoire", "Lesser Ring of Strength")
 	fmt.Println(b)
 	/////////////Testing Weapon///////////
