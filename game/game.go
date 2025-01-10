@@ -17,57 +17,71 @@ func ChooseGameLevel() int {
 func ItemDrop() *gear.Gear {
 	var rarityGrade int
 
-	var dropNumber int = rand.Intn(101)
+	var dropNumber int = rand.Intn(10000) + 1
 	switch {
-	case dropNumber <= 30:
+	case dropNumber <= 8000 && dropNumber > 3000:
 		rarityGrade = 1
-	case dropNumber <= 50 && dropNumber > 30:
+	case dropNumber <= 9400 && dropNumber > 8000:
 		rarityGrade = 2
-	case dropNumber <= 60 && dropNumber > 50:
+	case dropNumber <= 9900 && dropNumber > 9400:
 		rarityGrade = 3
-	case dropNumber <= 69 && dropNumber > 60:
+	case dropNumber <= 9990 && dropNumber > 9900:
 		rarityGrade = 4
-	case dropNumber <= 77 && dropNumber > 69:
+	case dropNumber <= 9999 && dropNumber > 9990:
 		rarityGrade = 5
-	case dropNumber <= 84 && dropNumber > 77:
+	case dropNumber == 10000:
 		rarityGrade = 6
-	case dropNumber <= 90 && dropNumber > 84:
-		rarityGrade = 7
-	case dropNumber <= 95 && dropNumber > 90:
-		rarityGrade = 8
-	case dropNumber <= 97 && dropNumber > 95:
-		rarityGrade = 9
-	case dropNumber == 100:
-		rarityGrade = 10
 	default:
 		rarityGrade = 0
 	}
 
 	var item *gear.Gear
 
+	var itemTypeArray [3]string = [3]string{"Weapon", "Armor", "Accessoire"}
+	var itemTypeNumber int = rand.Intn(3)
+	var itemType string = itemTypeArray[itemTypeNumber]
+
+	var weaponArrayCommon [2]string = [2]string{
+		"Dagger(Common)",
+		"Spear(Common)"}
+	var armorArrayCommon [1]string = [1]string{
+		"Leather Breastplate(Common)"}
+	var accessoireArrayCommon [3]string = [3]string{
+		"Ring of Strength(Common)",
+		"Ring of Resilience(Common)",
+		"Ring of Recovery(Common)"}
+
+	var itemName string
+	var itemArrayNumber int
+
 	switch rarityGrade {
 	case 0:
 		item = gear.NewGear("", "")
 	case 1:
-		item = gear.NewGear("Weapon", "Lesser Dagger")
+
+		switch itemType {
+		case "Weapon":
+			itemArrayNumber = rand.Intn(len(weaponArrayCommon))
+			itemName = weaponArrayCommon[itemArrayNumber]
+		case "Armor":
+			itemArrayNumber = rand.Intn(len(armorArrayCommon))
+			itemName = armorArrayCommon[itemArrayNumber]
+		case "Accessoire":
+			itemArrayNumber = rand.Intn(len(accessoireArrayCommon))
+			itemName = accessoireArrayCommon[itemArrayNumber]
+		}
+
+		item = gear.NewGear(itemType, itemName)
 	case 2:
-		item = gear.NewGear("", "")
+		item = gear.NewGear(itemType, "")
 	case 3:
-		item = gear.NewGear("", "")
+		item = gear.NewGear(itemType, "")
 	case 4:
-		item = gear.NewGear("", "")
+		item = gear.NewGear(itemType, "")
 	case 5:
-		item = gear.NewGear("", "")
+		item = gear.NewGear(itemType, "")
 	case 6:
-		item = gear.NewGear("", "")
-	case 7:
-		item = gear.NewGear("", "")
-	case 8:
-		item = gear.NewGear("", "")
-	case 9:
-		item = gear.NewGear("", "")
-	case 10:
-		item = gear.NewGear("", "")
+		item = gear.NewGear(itemType, "")
 	}
 
 	return item

@@ -29,25 +29,29 @@ func (g *Gear) SetAttributesGear() {
 	switch gearName {
 
 	/////////////////////// Weapons ////////////////////////
-	case "Lesser Dagger":
+	case "Dagger(Common)":
 		g.damage = 1
 		g.durability = 10
 
+	case "Spear(Common)":
+		g.damage = 2
+		g.durability = 10
+
 	/////////////////////// Armor //////////////////////////
-	case "Leather Breastplate":
+	case "Leather Breastplate(Common)":
 		g.defense = 2
 		g.durability = 9
 
 	/////////////////////// Accessoires ///////////////////
-	case "Lesser Ring of Strength":
+	case "Ring of Strength(Common)":
 
 		g.damage = 1
 
-	case "Lesser Ring of Resilience":
+	case "Ring of Resilience(Common)":
 
 		g.defense = 1
 
-	case "Lesser Ring of Recovery":
+	case "Ring of Recovery(Common)":
 
 		g.recovery = 1
 

@@ -21,6 +21,11 @@ import (
 
 func main() {
 
+	for i := 0; i < 20; i++ {
+		var a = game.ItemDrop()
+		fmt.Println(a)
+	}
+
 	story.Prologue()
 
 	var b = gear.NewGear("Accessoire", "Lesser Ring of Strength")

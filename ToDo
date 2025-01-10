@@ -18,12 +18,16 @@
   + [ ] Creating Map Overview
 
 # GameMechanics
-+ [ ] DropRate()
-  + [ ] Finishing DropRate()
-  + [ ] Implementing DropRate()
++ [ ] ItemDrop()
+  + [x] Finishing ItemDrop()
+  + [ ] Implementing ItemDrop()
 + [ ] AddToInventory()
   + [ ] Creating AddToInventory()
   + [ ] Implementing AddToInventory()
+
+# Game
++ [ ] Gear
+  + [ ] Adding Items to ItemDrop() and Gear
 
 # Animation
 + [ ] Fight
