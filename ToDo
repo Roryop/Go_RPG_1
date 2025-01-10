@@ -1,21 +1,36 @@
+# Story
++ [ ] Making Story
+  + [ ] Conceptualizing Storyline
+  + [ ] Discussing Storyline
+  + [ ] Creating Storyline
++ [ ] Refining Story
+  + [ ] Choosing World Regions
+  + [ ] Choosing New Enemy Types
+
+# Gameplay
++ [ ] Adding Playability
+  + [ ] Conceptualizing Gameplay (To Get A Feeling)
+  + [ ] Discussing Gameplay
+  + [ ] Implementing Gameplay
+
 # Map
-+ [ ] Creating Map Overview using BitMap
-+ [ ] Creating Function + File to Convert Bitmap to Map
++ [ ] Creating World Map
+  + [ ] Creating Map Overview
 
 # GameMechanics
-+ [ ] Finishing DropRate()
-+ [ ] Implementing DropRate()
-+ [ ] Creating AddToInventory()
-+ [ ] Implementing AddToInventory()
++ [ ] DropRate()
+  + [ ] Finishing DropRate()
+  + [ ] Implementing DropRate()
++ [ ] AddToInventory()
+  + [ ] Creating AddToInventory()
+  + [ ] Implementing AddToInventory()
 
-# Story
-+ [ ] Conceptualizing Storyline
-+ [ ] Discussing Storyline
-+ [ ] Creating Storyline
-+ [ ] Choosing World Regions
-+ [ ] Choosing New Enemy Types
-  
-# Gameplay
-+ [ ] Conceptualizing Gameplay (To Get A Feeling)
-+ [ ] Discussing Gameplay
-+ [ ] Implementing Gameplay
+# Animation
++ [ ] Fight
++ [ ] Text
+
+# UI
++ [ ] Menu
++ [ ] Story
++ [ ] OverallBeauty
+
