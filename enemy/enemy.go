@@ -15,6 +15,8 @@ type Wesen struct {
 
 ///////////////////////////Create Enemy////////////////////////////////
 
+// Gets Game_level
+// Returns Enemy Name and Enemy Stats
 func CreateEnemy(game_level int) (string, [4]int) {
 	var enemy_level = SetEnemyLevel(game_level)
 
@@ -30,7 +32,9 @@ func CreateEnemy(game_level int) (string, [4]int) {
 	return enemyName, enemyStats
 }
 
-// Set und Get Funktionen für Attribute von Wesen
+// Gets Enemy_level
+// Creates stats based on type + level
+// Returns Stats
 func (w *Wesen) GetStatsEnemy(level int) [4]int {
 
 	w.level = level
@@ -57,6 +61,9 @@ func (w *Wesen) GetStatsEnemy(level int) [4]int {
 	return stats
 }
 
+// Gets Game_level
+// Decides Enemy_level based on Game_level + rand.Intn()
+// Returns Enemy_level
 func SetEnemyLevel(game_level int) int {
 	var enemy_level = 0
 
@@ -100,7 +107,8 @@ func SetEnemyLevel(game_level int) int {
 	return enemy_level
 }
 
-// Get Name of enemy
+// Gets Enemy Typ
+// Sets Name of enemy based on given typ
 func (w *Wesen) SetEnemyType(typ int) {
 	switch typ {
 	case 1:
