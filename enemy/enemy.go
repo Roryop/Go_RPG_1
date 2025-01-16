@@ -33,7 +33,7 @@ func CreateEnemy(game_level int) (string, [4]int) {
 }
 
 // Gets Enemy_level
-// Creates stats based on type + level
+// Creates stats based on typ + level
 // Returns Stats
 func (w *Wesen) GetStatsEnemy(level int) [4]int {
 

@@ -6,6 +6,9 @@ import (
 	"start/gear"
 )
 
+// Gets Nothing
+// Player Chooses Game_level
+// Returns Game_level
 func ChooseGameLevel() int {
 	var game_level = 0
 	fmt.Println("In welches Level möchtest du?")
@@ -14,52 +17,62 @@ func ChooseGameLevel() int {
 	return game_level
 }
 
+// Gets Nothing
+// Creates Item based on rand.Intn() + ItemArrays
+// Returns Item
 func ItemDrop() *gear.Gear {
-	var rarityGrade int
+	var rarity string
 
 	var dropNumber int = rand.Intn(10000) + 1
 	switch {
 	case dropNumber <= 8000 && dropNumber > 3000:
-		rarityGrade = 1
+		rarity = "Common"
 	case dropNumber <= 9400 && dropNumber > 8000:
-		rarityGrade = 2
+		rarity = "Greater"
 	case dropNumber <= 9900 && dropNumber > 9400:
-		rarityGrade = 3
+		rarity = "Unique"
 	case dropNumber <= 9990 && dropNumber > 9900:
-		rarityGrade = 4
+		rarity = "Mythical"
 	case dropNumber <= 9999 && dropNumber > 9990:
-		rarityGrade = 5
+		rarity = "Transcendent"
 	case dropNumber == 10000:
-		rarityGrade = 6
+		rarity = "Godly"
 	default:
-		rarityGrade = 0
+		rarity = "Nothing"
 	}
 
+	// Creates Item
 	var item *gear.Gear
 
-	var itemTypeArray [3]string = [3]string{"Weapon", "Armor", "Accessoire"}
-	var itemTypeNumber int = rand.Intn(3)
-	var itemType string = itemTypeArray[itemTypeNumber]
+	// Creates Array for deciding itemTyp
+	var itemTypArray [3]string = [3]string{"Weapon", "Armor", "Accessoire"}
+	// Deciding on ItemTyp through rand.Intn()
+	var itemTypNumber int = rand.Intn(3)
+	var itemTyp string = itemTypArray[itemTypNumber]
 
+	// Creating ItemArrays of Typ Common
 	var weaponArrayCommon [2]string = [2]string{
 		"Dagger(Common)",
 		"Spear(Common)"}
+
 	var armorArrayCommon [1]string = [1]string{
 		"Leather Breastplate(Common)"}
+
 	var accessoireArrayCommon [3]string = [3]string{
 		"Ring of Strength(Common)",
 		"Ring of Resilience(Common)",
 		"Ring of Recovery(Common)"}
 
+	// Creating Variables to store Item Name of corresponding Item
 	var itemName string
 	var itemArrayNumber int
 
-	switch rarityGrade {
-	case 0:
-		item = gear.NewGear("", "")
-	case 1:
+	// Assigning ItemName according to rarity + rand.Intn()
+	switch rarity {
+	case "Nothing":
 
-		switch itemType {
+	case "Common":
+		switch itemTyp {
 		case "Weapon":
 			itemArrayNumber = rand.Intn(len(weaponArrayCommon))
 			itemName = weaponArrayCommon[itemArrayNumber]
@@ -71,18 +84,19 @@ func ItemDrop() *gear.Gear {
 			itemName = accessoireArrayCommon[itemArrayNumber]
 		}
 
-		item = gear.NewGear(itemType, itemName)
-	case 2:
-		item = gear.NewGear(itemType, "")
-	case 3:
-		item = gear.NewGear(itemType, "")
-	case 4:
-		item = gear.NewGear(itemType, "")
-	case 5:
-		item = gear.NewGear(itemType, "")
-	case 6:
-		item = gear.NewGear(itemType, "")
+	case "Greater":
+
+	case "Unique":
+
+	case "Mythical":
+
+	case "Transcendent":
+
+	case "Godly":
+
 	}
 
+	// Creating Item based on ItemTyp + ItemName
+	item = gear.NewGear(itemTyp, itemName)
 	return item
 }
