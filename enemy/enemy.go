@@ -16,19 +16,22 @@ type Wesen struct {
 ///////////////////////////Create Enemy////////////////////////////////
 
 // Gets Game_level
+// Creates Enemy depending on Game_level
 // Returns Enemy Name and Enemy Stats
 func CreateEnemy(game_level int) (string, [4]int) {
 	var enemy_level = SetEnemyLevel(game_level)
 
-	//Entscheidet in jedem Durchlauf über Gegner-typ + kreiert stats
+	// Decides on Enemy Typ + creates empty Variables for it
 	var typ int = rand.Intn(2)
 	var enemyStats [4]int
 	var enemyName string
 
+	// Creates Stats and Name of Enemy depending on Enemy Typ + Enemy level
 	var gegner = NewEnemy()
-	gegner.SetEnemyType(typ)
+	gegner.SetEnemyTyp(typ)
 	enemyStats = gegner.GetStatsEnemy(enemy_level)
 	enemyName = gegner.name
+
 	return enemyName, enemyStats
 }
 
@@ -38,10 +41,8 @@ func CreateEnemy(game_level int) (string, [4]int) {
 func (w *Wesen) GetStatsEnemy(level int) [4]int {
 
 	w.level = level
-	var Level int = w.level
 
 	var stats [4]int
-	stats[0] = Level
 
 	switch w.name {
 	case "Ork":
@@ -54,6 +55,7 @@ func (w *Wesen) GetStatsEnemy(level int) [4]int {
 		w.def = 3 + (w.level / 2)
 	}
 
+	stats[0] = w.level
 	stats[1] = w.hp
 	stats[2] = w.att
 	stats[3] = w.def
@@ -109,7 +111,7 @@ func SetEnemyLevel(game_level int) int {
 
 // Gets Enemy Typ
 // Sets Name of enemy based on given typ
-func (w *Wesen) SetEnemyType(typ int) {
+func (w *Wesen) SetEnemyTyp(typ int) {
 	switch typ {
 	case 1:
 		w.name = "Ork"
