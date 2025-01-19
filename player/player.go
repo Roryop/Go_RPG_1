@@ -139,7 +139,7 @@ func (w *Player) GetStat(i int) int {
 }
 
 func (w *Player) SetStatsAccessoires(inventory [10]*gear.InventorySlot) {
-	var att, def, rec int = gear.CreateStatsAccessoires(inventory)
+	var att, def, rec int = gear.CreateStatsItems(inventory)
 	w.stats[3], w.stats[4], w.stats[5] = w.stats[3]+att, w.stats[4]+def, w.stats[5]+rec
 }
 

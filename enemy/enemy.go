@@ -118,7 +118,7 @@ func (w *Wesen) SetEnemyType(typ int) {
 	}
 }
 
-///////////////////Enemy wird erstellt//////////////////////
+/////////////////// Creating New Enemy //////////////////////
 
 func NewEnemy() *Wesen {
 	var enemy *Wesen = new(Wesen)

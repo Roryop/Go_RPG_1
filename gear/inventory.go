@@ -7,9 +7,12 @@ type InventorySlot struct {
 	count int
 }
 
-/////////////////// Giving out Stats of Accessoires from Inventory ////////////
+/////////////////// Giving out Stats of Items from Inventory ////////////
 
-func CreateStatsAccessoires(inventory [10]*InventorySlot) (int, int, int) {
+// Gets Inventory
+// Calculates Stats of Items in Inventory
+// Returns said Stats (att, def, rec)
+func CreateStatsItems(inventory [10]*InventorySlot) (int, int, int) {
 	var att int = 0
 	var def int = 0
 	var rec int = 0
@@ -25,6 +28,9 @@ func CreateStatsAccessoires(inventory [10]*InventorySlot) (int, int, int) {
 
 ///////////////////// Giving out Inventory Information to user ///////////////
 
+// Gets Inventory
+// Gives out Content of all Inventory Slots
+// Returns Nothing
 func GiveInventoryInformation(inventory [10]*InventorySlot) {
 	fmt.Println("Inventory:")
 	for i := 0; i < 10; i++ {
@@ -35,6 +41,9 @@ func GiveInventoryInformation(inventory [10]*InventorySlot) {
 
 /////////////////// Input to Inventory Slot ///////////////
 
+// Gets Item of type *Gear + the amount of said Item in current Slot
+// Sets Item of current Slot to Item given to Function
+// Returns Nothing
 func (i *InventorySlot) InputInventorySlot(gear *Gear, amount int) {
 	i.item = gear
 	i.count = amount
@@ -42,23 +51,34 @@ func (i *InventorySlot) InputInventorySlot(gear *Gear, amount int) {
 
 /////////// Functions for Inventory and Slot Creation /////////
 
+// Gets Nothing
+// Creates InventorySlot
+// Returns InventorySlot
 func NewInventorySlot() *InventorySlot {
 	var slot *InventorySlot = new(InventorySlot)
 	return slot
 }
 
+// Takes Inventory
+// Fills Inventory with Empty Items
+// Returns Inventory
 func FillEmptyInventory(inventory [10]*InventorySlot) [10]*InventorySlot {
 	for i := 0; i < 10; i++ {
+		// Creating Empty Item
 		var emptyItemSlot = NewInventorySlot()
 		var emptyItem = NewGear("", "")
 		emptyItemSlot.InputInventorySlot(emptyItem, 0)
 
+		// Filling Current InventorySlot with Empty Item
 		inventory[i] = emptyItemSlot
 	}
 
 	return inventory
 }
 
+// Gets Nothing
+// Creates New Inventory + Fills it
+// Returns Inventory
 func NewInventory() [10]*InventorySlot {
 	var inventory [10]*InventorySlot
 

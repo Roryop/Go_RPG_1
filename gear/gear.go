@@ -6,16 +6,17 @@ type Gear struct {
 	defense    int
 	recovery   int
 	durability int
-	gearType   string
+	gearTyp    string
 	name       string
 }
 
 ///////////////////////////////  Set Attributes  //////////////////////////////////
 
+// Sets Attributes of Items based on name >> "Creating" said Items in "Database"
 func (g *Gear) SetAttributesGear() {
 	var gearName = g.name
 
-	switch g.gearType {
+	switch g.gearTyp {
 	case "Weapon":
 		g.defense = 0
 	case "Armor":
@@ -62,25 +63,28 @@ func (g *Gear) SetAttributesGear() {
 ///////////////////////////////  Create New Gear  //////////////////////////////////
 
 func NewGear(gearClass string, gearName string) *Gear {
+
+	///////////////////// Create Empty Item ///////////////////////
 	var gear *Gear = new(Gear)
 
+	//////////////////// Decide on Empty / Real Item ////////////////////////
+	// gearClass of "Weapon", "Armor", and Accessoire is accepted, anything else results in "Empty" "Not Filled"
 	switch gearClass {
 	case "Weapon":
 	case "Armor":
 	case "Accessoire":
-		gear.gearType = gearClass
+		gear.gearTyp = gearClass
+		gear.name = gearName
 	default:
-		gear.gearType = "empty"
-		gearName = "Not Filled"
+		gear.gearTyp = "Empty"
+		gear.name = "Not Filled"
 	}
-
-	gear.name = gearName
 
 	//////////////////////// Set Gear Attributes ////////////////////
 
 	gear.SetAttributesGear()
 
-	//////////////////////// Return die Waffe /////////////////////
+	//////////////////////// Return Item /////////////////////
 
 	return gear
 }
