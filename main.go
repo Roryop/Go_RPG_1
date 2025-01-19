@@ -49,7 +49,7 @@ func main() {
 		fmt.Println(x, y)
 	*/
 
-	//kreiere Spieler
+	//creating Player
 
 	var player1 = player.BeginPlayer()
 	fmt.Println("Player: ", player1)
