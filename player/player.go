@@ -25,6 +25,9 @@ type Player struct {
 	stats [7]int
 }
 
+// Gets Nothing
+// Adjusts Player level + EXP
+// Returns level
 func (w *Player) levelUp() int {
 	w.level = w.level + 1
 	w.experience = 0
@@ -37,6 +40,9 @@ func (w *Player) levelUp() int {
 	return w.level
 }
 
+// Gets inventory, hp, att, def, rec
+// Adjusts Stats according to current level
+// Returns Stats (hp, att, def, rec)
 func (w *Player) Level_Management(inventory [10]*gear.InventorySlot, hp, att, def, rec int) (int, int, int, int) {
 
 	if w.level >= 1 && w.experience >= w.exp_limit {
@@ -58,9 +64,13 @@ func (w *Player) Level_Management(inventory [10]*gear.InventorySlot, hp, att, de
 		w.InitSpStats()
 	}
 	w.UpdateSpStats()
+
 	return hp, att, def, rec
 }
 
+// Gets Nothing
+// Allocates SpStats
+// Returns Nothing
 func (w *Player) UpdateSpStats() {
 	var allocation int
 
@@ -85,7 +95,9 @@ func (w *Player) UpdateSpStats() {
 	}
 }
 
+// Gets Nothing
 // initializing Special Stats
+// Returns Nothing
 func (w *Player) InitSpStats() {
 	w.hpPoints = 0
 	w.attPoints = 0
@@ -93,6 +105,9 @@ func (w *Player) InitSpStats() {
 	w.bonusPoints = 1
 }
 
+// Gets Nothing
+// Setting Stats needed in Main with Stats[7] according to level + SpStats (primary)
+// Returns Nothing
 func (w *Player) SetStats() {
 
 	//Kreiert stats Array
@@ -116,6 +131,9 @@ func (w *Player) SetStats() {
 	w.stats = stats
 }
 
+// Gets inventory
+// Creates current Stats needed for Main (final)
+// Returns Stats (hp, att, def, rec)
 func (w *Player) CreateStats(inventory [10]*gear.InventorySlot) (int, int, int, int) {
 	w.SetStatsAccessoires(inventory)
 	var hp = w.GetStat(2)
@@ -126,6 +144,9 @@ func (w *Player) CreateStats(inventory [10]*gear.InventorySlot) (int, int, int, 
 	return hp, att, def, rec
 }
 
+// Gets Nothing
+// Gives out current Stats of Player (hp, att, def, rec)
+// Returns Nothing
 func (w *Player) SeePlayerStats() {
 	fmt.Println("Deine Stats sind jetzt:")
 	fmt.Println("HP:", w.stats[2])
@@ -134,21 +155,32 @@ func (w *Player) SeePlayerStats() {
 	fmt.Println("Rec:", w.stats[5])
 }
 
+// Gets Count of Stat in Array Stats[7]
+// Returns chosen current Stat
 func (w *Player) GetStat(i int) int {
 	return w.stats[i]
 }
 
+// Gets inventory
+// adjusts current Stats to include inventoryBonus
+// Returns Nothing
 func (w *Player) SetStatsAccessoires(inventory [10]*gear.InventorySlot) {
 	var att, def, rec int = gear.CreateStatsItems(inventory)
 	w.stats[3], w.stats[4], w.stats[5] = w.stats[3]+att, w.stats[4]+def, w.stats[5]+rec
 }
 
+// Gets Nothing
 // initiating EXP_Stat
+// Returns Nothing
 func (w *Player) InitEXP() {
 	w.experience = 0
 }
 
+///////////////////////////////// Needs Update ///////////////////////////////////////
+
+// Gets exp_value
 // calculating experience and adding it to player
+// Returns Nothing
 func (w *Player) CalculateExp(value int) {
 	var exp = w.GetEnemyExpValue(value)
 	w.EXP_Function(exp)
@@ -167,6 +199,13 @@ func (w *Player) EXP_Function(value int) int {
 	return w.experience
 }
 
+//////////////////////////////////////////////////////////////////////////
+
+//////////////////////////// Player Creation /////////////////////////
+
+// Gets Nothing
+// Updates Player ------------> Only Function used in Main during Player Creation
+// Returns Player
 func BeginPlayer() *Player {
 	var player1 = InitPlayer()
 
@@ -177,6 +216,9 @@ func BeginPlayer() *Player {
 	return player1
 }
 
+// Gets Nothing
+// Initializing Player
+// Returns Player
 func InitPlayer() *Player {
 	var player = NewPlayer()
 	player.InitSpStats()
@@ -188,6 +230,9 @@ func InitPlayer() *Player {
 	return player
 }
 
+// Gets Nothing
+// Creates Player
+// Returns Player
 func NewPlayer() *Player {
 	var player *Player = new(Player)
 	return player
