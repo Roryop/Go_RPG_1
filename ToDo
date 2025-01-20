@@ -26,6 +26,12 @@
   + [ ] Creating AddToInventory()
   + [ ] Implementing AddToInventory()
 
+# CodeRevision
++ [ ] Player.go
+  + [ ] Updating EXP-Functions
+    + [ ] Combining EXP-Functions
+    + [ ] Giving less Content to Main
+
 # Game
 + [ ] Gear
   + [ ] Adding Items to ItemDrop() and Gear
