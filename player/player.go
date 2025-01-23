@@ -49,17 +49,22 @@ func (w *Player) Level_Management(inventory [10]*gear.InventorySlot, hp, att, de
 		w.levelUp()
 		w.UpdateSpStats()
 		w.SetStats()
+
 		hp, att, def, rec = w.CreateStats(inventory)
+
 	} else if w.level >= 1 && w.experience < w.exp_limit {
 		var neededExp int = w.exp_limit - w.experience
+
 		hp = hp + rec
 		if hp > w.hp {
 			hp = w.hp
 		}
+
 		fmt.Println("Du brauchst noch", neededExp, "Exp")
 	} else {
 		w.level = 1
 		w.exp_limit = 5
+
 		w.InitEXP()
 		w.InitSpStats()
 	}
@@ -179,21 +184,10 @@ func (w *Player) InitEXP() {
 ///////////////////////////////// Needs Update ///////////////////////////////////////
 
 // Gets exp_value
-// calculating experience and adding it to player
+// calculating Exp and adding it to player
 // Returns Nothing
-func (w *Player) CalculateExp(value int) {
-	var exp = w.GetEnemyExpValue(value)
-	w.EXP_Function(exp)
-}
-
-// creating funtion to get EXP_Value from enemies
-func (w *Player) GetEnemyExpValue(value int) int {
-	var EXP_Value int = value
-	return EXP_Value
-}
-
-// creating EXP_Function needed for correct LevelUp
-func (w *Player) EXP_Function(value int) int {
+func (w *Player) Exp_Function(enemyStats [4]int) int {
+	var value = (enemyStats[1] + enemyStats[2] + enemyStats[3] + enemyStats[0]) / 4
 	w.experience = w.experience + value
 
 	return w.experience

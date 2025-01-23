@@ -114,8 +114,8 @@ func main() {
 			}
 			///////////////////////// Case Enemy Died ///////////////////////////
 			if enemyStats[1] <= 0 {
-				player1.CalculateExp((enemyStats[1] + enemyStats[2] + enemyStats[3] + enemyStats[0]) / 4) // Giving Exp to Player
-				hp, att, def, rec = player1.Level_Management(inventory, hp, att, def, rec)                // Player will be healed with levelUp + Updating Stats + Updating current Stats
+				player1.Exp_Function(enemyStats)                                           // Giving Exp to Player
+				hp, att, def, rec = player1.Level_Management(inventory, hp, att, def, rec) // Player will be healed with levelUp + Updating Stats + Updating current Stats
 				// Player will not be healed after fight
 				fmt.Println("Deine Stats sind jetzt:")
 				fmt.Println("HP:", hp)
