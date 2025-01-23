@@ -28,9 +28,9 @@
 
 # CodeRevision
 + [ ] Player.go
-  + [ ] Updating EXP-Functions
-    + [ ] Combining EXP-Functions
-    + [ ] Giving less Content to Main
+  + [x] Updating EXP-Functions
+    + [x] Combining EXP-Functions
+    + [x] Giving less Content to Main
 
 # Game
 + [ ] Gear
