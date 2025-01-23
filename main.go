@@ -21,6 +21,7 @@ import (
 
 func main() {
 
+	///////////////////////////////Test Environment//////////////////////////
 	for i := 0; i < 20; i++ {
 		var a = game.ItemDrop()
 		fmt.Println(a)
@@ -40,37 +41,35 @@ func main() {
 	fmt.Println(inventory[1])
 	gear.GiveInventoryInformation(inventory)
 
-	////////////////////////End Weapon Test///////////////////////
+	////////////////////////End Test Environment///////////////////////
 
-	/*
-		var x, y string
-		x, y = helloWelt()
+	//////////////////////////// Creating Player ////////////////////////////////
 
-		fmt.Println(x, y)
-	*/
+	var player1 = player.BeginPlayer() // Creating Player
+	fmt.Println("Player: ", player1)   // Giving Out Player
+	player1.SeePlayerStats()           // Giving out PlayerStats
 
-	//creating Player
+	var hp, att, def, rec = player1.CreateStats(inventory) // Creating current Player Stats
 
-	var player1 = player.BeginPlayer()
-	fmt.Println("Player: ", player1)
-	player1.SeePlayerStats()
+	fmt.Println("Recovery:", rec) // Test
 
-	var hp, att, def, rec = player1.CreateStats(inventory)
+	////////////////////////////////// Game /////////////////////////////////////
 
-	fmt.Println("Recovery:", rec)
+	var choice int = 0 // Creating Variable so Player can later end game themselves
+	for choice != 3 {  // Game keeps running until Player end it
 
-	var choice int = 0
-	for choice != 3 {
-
+		///////////////////// Setting Stats before each Run /////////////////////
 		player1.SetStats()
 		player1.SetStatsAccessoires(inventory)
 		player1.SeePlayerStats()
 
-		hp = player1.GetStat(2) //Healing Player before going into Level
+		hp = player1.GetStat(2) // Healing Player before going into Level
 
 		var game_level = game.ChooseGameLevel()
 
-		for i := 0; i < 10 && hp > 0; i++ {
+		for i := 0; i < 10 && hp > 0; i++ { // Entering Fights until Player 1. killed 10 monster; 2. is dead
+
+			////////////////////// Setting Up Enemy ////////////////////////
 			var enemyName, enemyStats = enemy.CreateEnemy(game_level)
 
 			fmt.Println("Du fightest einen", enemyName+"!!!")
@@ -78,7 +77,7 @@ func main() {
 			fmt.Println("Er hat", enemyStats[1], "HP!")
 			fmt.Println("Du hast", hp, "HP!")
 
-			//Fight machen
+			////////////////////////// Fighting //////////////////////////////
 			for enemyStats[1] > 0 && hp > 0 {
 
 				//Anfrage wegen Angriff
@@ -113,17 +112,18 @@ func main() {
 					goto end
 				}
 			}
+			///////////////////////// Case Enemy Died ///////////////////////////
 			if enemyStats[1] <= 0 {
-				player1.CalculateExp((enemyStats[1] + enemyStats[2] + enemyStats[3] + enemyStats[0]) / 4)
-				hp, att, def, rec = player1.Level_Management(inventory, hp, att, def, rec) //player will be healed with LevelUp
-				//Spieler will not be healed after fight
+				player1.CalculateExp((enemyStats[1] + enemyStats[2] + enemyStats[3] + enemyStats[0]) / 4) // Giving Exp to Player
+				hp, att, def, rec = player1.Level_Management(inventory, hp, att, def, rec)                // Player will be healed with levelUp + Updating Stats + Updating current Stats
+				// Player will not be healed after fight
 				fmt.Println("Deine Stats sind jetzt:")
 				fmt.Println("HP:", hp)
 				fmt.Println("Att:", att)
 				fmt.Println("Def:", def)
 			}
 		}
-	end:
+	end: // End Game
 		if choice == 3 {
 			break
 		}
