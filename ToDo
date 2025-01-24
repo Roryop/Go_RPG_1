@@ -1,47 +1,46 @@
 # Story
-+ [ ] Making Story
++ [ ] Making Story (15)
   + [ ] Conceptualizing Storyline
   + [ ] Discussing Storyline
   + [ ] Creating Storyline
-+ [ ] Refining Story
++ [ ] Refining Story (30)
   + [ ] Choosing World Regions
   + [ ] Choosing New Enemy Types
 
 # Gameplay
-+ [ ] Adding Playability
++ [ ] Adding Surface Playability (90)
   + [ ] Conceptualizing Gameplay (To Get A Feeling)
   + [ ] Discussing Gameplay
   + [ ] Implementing Gameplay
-+ [ ] Discussing Durability of Items
++ [ ] Discussing Durability of Items (100)
 
 # Map
-+ [ ] Creating World Map
++ [ ] Creating World Map (45)
   + [ ] Creating Map Overview
 
 # GameMechanics
-+ [ ] ItemDrop()
++ [ ] ItemDrop() (10)
   + [x] Finishing ItemDrop()
   + [ ] Implementing ItemDrop()
-+ [ ] AddToInventory()
++ [ ] AddToInventory() (20)
   + [ ] Creating AddToInventory()
   + [ ] Implementing AddToInventory()
 
 # CodeRevision
-+ [ ] Player.go
++ [ ] Player.go (Continuous)
   + [x] Updating EXP-Functions
     + [x] Combining EXP-Functions
     + [x] Giving less Content to Main
 
 # Game
-+ [ ] Gear
-  + [ ] Adding Items to ItemDrop() and Gear
++ [ ] Gear (40)
 
 # Animation
-+ [ ] Fight
-+ [ ] Text
++ [ ] Text (60)
++ [ ] Fight (90)
+
 
 # UI
-+ [ ] Menu
-+ [ ] Story
-+ [ ] OverallBeauty
++ [ ] Menu (55)
++ [ ] OverallBeauty (97)
 
