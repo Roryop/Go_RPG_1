@@ -32,6 +32,8 @@ func (g *Gear) SetAttributesGear() {
 	switch gearName {
 
 	/////////////////////// Weapons ////////////////////////
+
+	////////////// Common ///////////////
 	case "Dagger(Common)":
 		g.damage = 1
 		g.durability = 10
@@ -40,12 +42,30 @@ func (g *Gear) SetAttributesGear() {
 		g.damage = 2
 		g.durability = 10
 
+	////////////// Greater ///////////////
+	case "Dagger(Greater)":
+		g.damage = 9
+		g.durability = 10
+
+	case "Spear(Greater)":
+		g.damage = 13
+		g.durability = 10
+
 	/////////////////////// Armor //////////////////////////
+
+	////////////// Common ///////////////
 	case "Leather Breastplate(Common)":
 		g.defense = 2
-		g.durability = 9
+		g.durability = 10
+
+	////////////// Greater ///////////////
+	case "Iron Breastplate(Greater)":
+		g.defense = 13
+		g.durability = 10
 
 	/////////////////////// Accessoires ///////////////////
+
+	////////////// Common ///////////////
 	case "Ring of Strength(Common)":
 
 		g.damage = 1
@@ -58,25 +78,39 @@ func (g *Gear) SetAttributesGear() {
 
 		g.recovery = 1
 
+	////////////// Greater ///////////////
+
+	case "Ring of Strength(Greater)":
+
+		g.damage = 10
+
+	case "Ring of Resilience(Greater)":
+
+		g.defense = 10
+
+	case "Ring of Recovery(Greater)":
+
+		g.recovery = 10
+
 	}
 
 }
 
 ///////////////////////////////  Create New Gear  //////////////////////////////////
 
-func NewGear(gearClass string, gearName string) *Gear {
+func NewGear(itemTyp string, itemName string) *Gear {
 
 	///////////////////// Create Empty Item ///////////////////////
 	var gear *Gear = new(Gear)
 
 	//////////////////// Decide on Empty / Real Item ////////////////////////
 	// gearClass of "Weapon", "Armor", and Accessoire is accepted, anything else results in "Empty" "Not Filled"
-	switch gearClass {
+	switch itemTyp {
 	case "Weapon":
 	case "Armor":
 	case "Accessoire":
-		gear.gearTyp = gearClass
-		gear.name = gearName
+		gear.gearTyp = itemTyp
+		gear.name = itemName
 	default:
 		gear.gearTyp = "Empty"
 		gear.name = "Not Filled"
@@ -124,7 +158,7 @@ func ItemDrop() *Gear {
 	var itemTypNumber int = rand.Intn(3)
 	var itemTyp string = itemTypArray[itemTypNumber]
 
-	// Creating ItemArrays of Typ Common
+	//////////////////////// Item Arrays Rarity Common //////////////////////
 	var weaponArrayCommon [2]string = [2]string{
 		"Dagger(Common)",
 		"Spear(Common)"}
@@ -137,6 +171,19 @@ func ItemDrop() *Gear {
 		"Ring of Resilience(Common)",
 		"Ring of Recovery(Common)"}
 
+	//////////////////////// Item Arrays Rarity Greater //////////////////////
+	var weaponArrayGreater [2]string = [2]string{
+		"Dagger(Greater)",
+		"Spear(Greater)"}
+
+	var armorArrayGreater [1]string = [1]string{
+		"Iron Breastplate(Greater)"}
+
+	var accessoireArrayGreater [3]string = [3]string{
+		"Ring of Strength(Greater)",
+		"Ring of Resilience(Greater)",
+		"Ring of Recovery(Greater)"}
+
 	// Creating Variables to store Item Name of corresponding Item
 	var itemName string
 	var itemArrayNumber int
@@ -144,7 +191,7 @@ func ItemDrop() *Gear {
 	// Assigning ItemName according to rarity + rand.Intn()
 	switch rarity {
 	case "Nothing":
-
+		itemTyp, itemName = "", ""
 	case "Common":
 		switch itemTyp {
 		case "Weapon":
@@ -159,7 +206,17 @@ func ItemDrop() *Gear {
 		}
 
 	case "Greater":
-
+		switch itemTyp {
+		case "Weapon":
+			itemArrayNumber = rand.Intn(len(weaponArrayGreater))
+			itemName = weaponArrayGreater[itemArrayNumber]
+		case "Armor":
+			itemArrayNumber = rand.Intn(len(armorArrayGreater))
+			itemName = armorArrayGreater[itemArrayNumber]
+		case "Accessoire":
+			itemArrayNumber = rand.Intn(len(accessoireArrayGreater))
+			itemName = accessoireArrayGreater[itemArrayNumber]
+		}
 	case "Unique":
 
 	case "Mythical":
