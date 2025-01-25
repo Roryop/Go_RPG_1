@@ -22,24 +22,18 @@ import (
 func main() {
 
 	///////////////////////////////Test Environment//////////////////////////
+
+	var inventory = gear.NewInventory()
+	fmt.Println(inventory)
+
 	for i := 0; i < 20; i++ {
-		var a = game.ItemDrop()
-		fmt.Println(a)
+		inventory = gear.AddDropToInventory(inventory)
 	}
 
 	story.Prologue()
 
 	var b = gear.NewGear("Accessoire", "Lesser Ring of Strength")
 	fmt.Println(b)
-	/////////////Testing Weapon///////////
-	var inventory = gear.NewInventory()
-	fmt.Println(inventory)
-
-	var inventorySlot = gear.NewInventorySlot()
-	inventorySlot.InputInventorySlot(b, 1)
-	inventory[0] = inventorySlot
-	fmt.Println(inventory[1])
-	gear.GiveInventoryInformation(inventory)
 
 	////////////////////////End Test Environment///////////////////////
 
@@ -114,6 +108,11 @@ func main() {
 			}
 			///////////////////////// Case Enemy Died ///////////////////////////
 			if enemyStats[1] <= 0 {
+
+				//////////////// Enemy Item Drop /////////////
+				inventory = gear.AddDropToInventory(inventory)
+
+				///////////////// Player Management ////////////////
 				player1.Exp_Function(enemyStats)                                           // Giving Exp to Player
 				hp, att, def, rec = player1.Level_Management(inventory, hp, att, def, rec) // Player will be healed with levelUp + Updating Stats + Updating current Stats
 				// Player will not be healed after fight

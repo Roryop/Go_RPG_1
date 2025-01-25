@@ -1,6 +1,10 @@
 package gear
 
-import "fmt"
+import (
+	"fmt"
+	"start/text"
+	"strings"
+)
 
 type InventorySlot struct {
 	item  *Gear
@@ -24,6 +28,55 @@ func CreateStatsItems(inventory [10]*InventorySlot) (int, int, int) {
 	}
 
 	return att, def, rec
+}
+
+///////////////////// Adding Item To Inventory /////////////////////
+
+func AddDropToInventory(inventory [10]*InventorySlot) [10]*InventorySlot {
+	var a = ItemDrop()
+	fmt.Println("The Enemy dropped a ", a.name, "!")
+	if a.gearTyp != "Empty" {
+		inventory = AddToInventory(inventory, a)
+	}
+
+	return inventory
+}
+
+// Gets Inventory + Item
+// Puts Item into allocated InventorySlot
+// Returns Inventory
+func AddToInventory(inventory [10]*InventorySlot, item *Gear) [10]*InventorySlot {
+	var wishToStore string
+	text.Print("Do you want to store this Item in your Inventory? /yes /no")
+	fmt.Scanln(&wishToStore)
+	wishToStore = strings.ToLower(wishToStore)
+	if wishToStore == "yes" {
+		var slot int
+
+		for slot < 1 || slot > 10 {
+			text.Print("In which Slot do you want to store the Item?")
+			text.ShortWait()
+
+			GiveInventoryInformation(inventory)
+
+			fmt.Scanln(&slot)
+		}
+
+		var inventorySlot = NewInventorySlot()
+		inventorySlot.InputInventorySlot(item, 1)
+		inventory[slot-1] = inventorySlot
+
+		text.Print("Item has been stored.")
+		text.ShortWait()
+		text.Print("Checking Inventory:")
+		text.ShortWait()
+
+		GiveInventoryInformation(inventory)
+	} else {
+		text.Print("You have chosen not to store the Item.")
+		text.Print("You discard it.")
+	}
+	return inventory
 }
 
 ///////////////////// Giving out Inventory Information to user ///////////////
