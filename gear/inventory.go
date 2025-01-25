@@ -34,9 +34,12 @@ func CreateStatsItems(inventory [10]*InventorySlot) (int, int, int) {
 
 func AddDropToInventory(inventory [10]*InventorySlot) [10]*InventorySlot {
 	var a = ItemDrop()
-	fmt.Println("The Enemy dropped a ", a.name, "!")
+
 	if a.gearTyp != "Empty" {
+		fmt.Println("The Enemy dropped a ", a.name, "!")
 		inventory = AddToInventory(inventory, a)
+	} else {
+		text.Print("The Enemy sadly did not drop any Items :c")
 	}
 
 	return inventory
