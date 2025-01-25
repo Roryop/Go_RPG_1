@@ -19,12 +19,13 @@
   + [ ] Creating Map Overview
 
 # GameMechanics
-+ [ ] ItemDrop() (10)
++ [ ] ItemDrop() (70)
   + [x] Finishing ItemDrop()
-  + [ ] Implementing ItemDrop()
-+ [ ] AddToInventory() (20)
-  + [ ] Creating AddToInventory()
-  + [ ] Implementing AddToInventory()
+  + [x] Implementing ItemDrop()
+  + [ ] Balancing ItemDrop
++ [x] AddToInventory()
+  + [x] Creating AddToInventory()
+  + [x] Implementing AddToInventory()
 
 # CodeRevision
 + [ ] Player.go (Continuous)
