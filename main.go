@@ -20,28 +20,27 @@ import (
 */
 
 func main() {
+	/////////////////////// Creating Inventory ///////////////////////////////
+
+	var inventory = gear.NewInventory()
 
 	///////////////////////////////Test Environment//////////////////////////
 
-	var inventory = gear.NewInventory()
-	fmt.Println(inventory)
+	/*
+		fmt.Println(inventory)
 
-	for i := 0; i < 20; i++ {
-		inventory = gear.AddDropToInventory(inventory)
-	}
-
-	story.Prologue()
-
-	var b = gear.NewGear("Accessoire", "Lesser Ring of Strength")
-	fmt.Println(b)
+		for i := 0; i < 20; i++ {
+			inventory = gear.AddDropToInventory(inventory)
+		}
+	*/
 
 	////////////////////////End Test Environment///////////////////////
+
+	story.Prologue()
 
 	//////////////////////////// Creating Player ////////////////////////////////
 
 	var player1 = player.BeginPlayer() // Creating Player
-	fmt.Println("Player: ", player1)   // Giving Out Player
-	player1.SeePlayerStats()           // Giving out PlayerStats
 
 	var hp, att, def, rec = player1.CreateStats(inventory) // Creating current Player Stats
 
@@ -53,12 +52,10 @@ func main() {
 	for choice != 3 {  // Game keeps running until Player end it
 
 		///////////////////// Setting Stats before each Run /////////////////////
-		player1.SetStats()
-		player1.SetStatsAccessoires(inventory)
+		hp, att, def, rec = player1.CreateStats(inventory)
 		player1.SeePlayerStats()
 
-		hp = player1.GetStat(2) // Healing Player before going into Level
-
+		////////////////////// Choosing Game Level /////////////////////////
 		var game_level = game.ChooseGameLevel()
 
 		for i := 0; i < 10 && hp > 0; i++ { // Entering Fights until Player 1. killed 10 monster; 2. is dead
