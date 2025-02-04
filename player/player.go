@@ -140,7 +140,7 @@ func (w *Player) SetStats() {
 // Creates current Stats needed for Main (final)
 // Returns Stats (hp, att, def, rec)
 func (w *Player) CreateStats(inventory [10]*gear.InventorySlot) (int, int, int, int) {
-	w.SetStatsAccessoires(inventory)
+	w.SetStatsItems(inventory)
 	var hp = w.GetStat(2)
 	var att = w.GetStat(3)
 	var def = w.GetStat(4)
@@ -169,7 +169,7 @@ func (w *Player) GetStat(i int) int {
 // Gets inventory
 // adjusts current Stats to include inventoryBonus
 // Returns Nothing
-func (w *Player) SetStatsAccessoires(inventory [10]*gear.InventorySlot) {
+func (w *Player) SetStatsItems(inventory [10]*gear.InventorySlot) {
 	var att, def, rec int = gear.CreateStatsItems(inventory)
 	w.stats[3], w.stats[4], w.stats[5] = w.stats[3]+att, w.stats[4]+def, w.stats[5]+rec
 }
