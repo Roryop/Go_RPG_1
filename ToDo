@@ -24,12 +24,16 @@
 
 # CodeRevision
 + [ ] Player.go (Continuous)
-  + [x] Updating EXP-Functions
-    + [x] Combining EXP-Functions
-    + [x] Giving less Content to Main
++ [ ] Enemy.go (Continuous)
++ [ ] Game.go (Continuous)
++ [ ] Gear.go (Continuous)
++ [ ] Inventory.go (Continuous)
++ [ ] Story.go (Continuous)
++ [ ] Text.go (Continuous)
++ [ ] Main.go (Continuous)
 
 # Game
-+ [ ] Inventory Count (30)
++ [x] Inventory Count (30)
 + [ ] Gear (40)
 
 # Animation
