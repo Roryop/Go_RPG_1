@@ -44,8 +44,6 @@ func main() {
 
 	var hp, att, def, rec = player1.CreateStats(inventory) // Creating current Player Stats
 
-	fmt.Println("Recovery:", rec) // Test
-
 	////////////////////////////////// Game /////////////////////////////////////
 
 	var choice int = 0 // Creating Variable so Player can later end game themselves
@@ -117,6 +115,11 @@ func main() {
 				fmt.Println("HP:", hp)
 				fmt.Println("Att:", att)
 				fmt.Println("Def:", def)
+			}
+
+			//////////////// Clearing Inventory on Player Death ////////////////
+			if hp <= 0 {
+				inventory = gear.FillEmptyInventory(inventory)
 			}
 		}
 	end: // End Game
