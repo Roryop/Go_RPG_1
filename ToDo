@@ -20,12 +20,7 @@
 
 # GameMechanics
 + [ ] ItemDrop() (70)
-  + [x] Finishing ItemDrop()
-  + [x] Implementing ItemDrop()
   + [ ] Balancing ItemDrop
-+ [x] AddToInventory()
-  + [x] Creating AddToInventory()
-  + [x] Implementing AddToInventory()
 
 # CodeRevision
 + [ ] Player.go (Continuous)
@@ -34,6 +29,7 @@
     + [x] Giving less Content to Main
 
 # Game
++ [ ] Inventory Count (30)
 + [ ] Gear (40)
 
 # Animation
