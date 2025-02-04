@@ -22,9 +22,9 @@ func CreateStatsItems(inventory [10]*InventorySlot) (int, int, int) {
 	var rec int = 0
 
 	for i := 0; i < 10; i++ {
-		att = att + inventory[i].item.damage
-		def = def + inventory[i].item.defense
-		rec = rec + inventory[i].item.recovery
+		att = att + inventory[i].item.damage*inventory[i].count
+		def = def + inventory[i].item.defense*inventory[i].count
+		rec = rec + inventory[i].item.recovery*inventory[i].count
 	}
 
 	return att, def, rec
@@ -50,9 +50,11 @@ func AddDropToInventory(inventory [10]*InventorySlot) [10]*InventorySlot {
 // Returns Inventory
 func AddToInventory(inventory [10]*InventorySlot, item *Gear) [10]*InventorySlot {
 	var wishToStore string
+
 	text.Print("Do you want to store this Item in your Inventory? /yes /no")
 	fmt.Scanln(&wishToStore)
 	wishToStore = strings.ToLower(wishToStore)
+
 	if wishToStore == "yes" {
 		var slot int
 
@@ -67,7 +69,11 @@ func AddToInventory(inventory [10]*InventorySlot, item *Gear) [10]*InventorySlot
 
 		var inventorySlot = NewInventorySlot()
 		inventorySlot.InputInventorySlot(item, 1)
-		inventory[slot-1] = inventorySlot
+		if inventory[slot-1].item.name != inventorySlot.item.name {
+			inventory[slot-1] = inventorySlot
+		} else {
+			inventory[slot-1].count += 1
+		}
 
 		text.Print("Item has been stored.")
 		text.ShortWait()
