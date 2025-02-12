@@ -51,6 +51,20 @@ func (g *Gear) SetAttributesGear() {
 		g.damage = 13
 		g.durability = 10
 
+	////////////// Unique ///////////////
+	case "Rheimzadetz´ Dagger":
+		g.damage = 101
+		g.durability = 10
+
+	case "Radu´s Greatsword":
+		g.damage = 140
+		g.defense = 10
+		g.durability = 10
+
+	case "Grogerz´ Spear":
+		g.damage = 135
+		g.durability = 10
+
 	/////////////////////// Armor //////////////////////////
 
 	////////////// Common ///////////////
@@ -61,6 +75,19 @@ func (g *Gear) SetAttributesGear() {
 	////////////// Greater ///////////////
 	case "Iron Breastplate(Greater)":
 		g.defense = 13
+		g.durability = 10
+
+	////////////// Unique ///////////////
+	case "Rheimzadetz´ Breastplate":
+		g.defense = 102
+		g.durability = 10
+
+	case "Radu´s Breastplate":
+		g.defense = 165
+		g.durability = 10
+
+	case "Grogerz´ Breastplate":
+		g.defense = 133
 		g.durability = 10
 
 	/////////////////////// Accessoires ///////////////////
@@ -79,7 +106,6 @@ func (g *Gear) SetAttributesGear() {
 		g.recovery = 1
 
 	////////////// Greater ///////////////
-
 	case "Ring of Strength(Greater)":
 
 		g.damage = 10
@@ -92,6 +118,15 @@ func (g *Gear) SetAttributesGear() {
 
 		g.recovery = 10
 
+	////////////// Unique ///////////////
+	case "Rheimzadetz´ Ring of Strength":
+		g.damage = 104
+
+	case "Radu´s Ring of Recovery":
+		g.recovery = 137
+
+	case "Grogerz´ Ring of Resilience":
+		g.defense = 170
 	}
 
 }
@@ -184,6 +219,22 @@ func ItemDrop() *Gear {
 		"Ring of Resilience(Greater)",
 		"Ring of Recovery(Greater)"}
 
+	//////////////////////// Item Arrays Rarity Unique //////////////////////
+	var weaponArrayUnique [3]string = [3]string{
+		"Rheimzadetz´ Dagger",
+		"Radu´s Greatsword",
+		"Grogerz´ Spear"}
+
+	var armorArrayUnique [3]string = [3]string{
+		"Rheimzadetz´ Breastplate",
+		"Radu´s Breastplate",
+		"Grogerz´ Breastplate"}
+
+	var accessoireArrayUnique [3]string = [3]string{
+		"Rheimzadetz´ Ring of Strength",
+		"Radu´s Ring of Recovery",
+		"Grogerz´ Ring of Resilience"}
+
 	// Creating Variables to store Item Name of corresponding Item
 	var itemName string
 	var itemArrayNumber int
@@ -218,7 +269,17 @@ func ItemDrop() *Gear {
 			itemName = accessoireArrayGreater[itemArrayNumber]
 		}
 	case "Unique":
-
+		switch itemTyp {
+		case "Weapon":
+			itemArrayNumber = rand.Intn(len(weaponArrayUnique))
+			itemName = weaponArrayUnique[itemArrayNumber]
+		case "Armor":
+			itemArrayNumber = rand.Intn(len(armorArrayUnique))
+			itemName = armorArrayUnique[itemArrayNumber]
+		case "Accessoire":
+			itemArrayNumber = rand.Intn(len(accessoireArrayUnique))
+			itemName = accessoireArrayUnique[itemArrayNumber]
+		}
 	case "Mythical":
 
 	case "Transcendent":
