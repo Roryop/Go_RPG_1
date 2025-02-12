@@ -108,13 +108,27 @@ func main() {
 				inventory = gear.AddDropToInventory(inventory)
 
 				///////////////// Player Management ////////////////
-				player1.Exp_Function(enemyStats)                                           // Giving Exp to Player
+				player1.Exp_Function(enemyStats) // Giving Exp to Player
+				fmt.Println("Test-Hp1:", hp)
 				hp, att, def, rec = player1.Level_Management(inventory, hp, att, def, rec) // Player will be healed with levelUp + Updating Stats + Updating current Stats
-				// Player will not be healed after fight
+				fmt.Println("Test-Hp2:", hp)
 				fmt.Println("Deine Stats sind jetzt:")
 				fmt.Println("HP:", hp)
 				fmt.Println("Att:", att)
 				fmt.Println("Def:", def)
+				//////////////////////// BUG ////////////////////////////
+				// In Method Level_Management, Player is healed through level Up and through stat rec (recovery)
+				// That works perfectly, so dont touch method Level_Management !!!!!!!
+				// Problem: After adding an Item to the Inventory with AddDropToInventory (Line 108),
+				// the new Stats from Inventory are not added to current Player Stats, rendering Inventory useless
+				// We need to find a way in order to add the InventoryStats to current Player Stats without
+				// interfering with current Stats - making sure past dmg stays applied before healing
+				// Second Problem: I have no Idea whether to work with hp, att, def, rec or player1.Stats[]
+				// Your Task: Figure out whether we have to work with the former or the latter, and if you can,
+				// FIX THE PROBLEM
+
+				// PS: Dont forget to test the code after every change BEFORE committing
+				// PS After the PS: I have no Idea how this Bug even managed to slip in, must´ve been carelessness
 			}
 
 			//////////////// Clearing Inventory on Player Death ////////////////
