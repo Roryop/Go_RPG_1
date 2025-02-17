@@ -4,7 +4,7 @@
 
 # Story
 + [ ] Making Story (15)
-  + [ ] Conceptualizing Storyline
+  + [x] Conceptualizing Storyline
   + [ ] Discussing Storyline
   + [ ] Creating Storyline
 + [ ] Refining Story (30)
@@ -23,7 +23,10 @@
   + [ ] Creating Map Overview
 
 # GameMechanics
-+ [ ] ItemDrop() (70)
++ [ ] World
+  + [ ] From Int To String (20)
+  + [ ] Adding Content (40)
++ [ ] ItemDrop() (60)
   + [ ] Balancing ItemDrop
 
 # CodeRevision
