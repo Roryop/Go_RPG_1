@@ -1,7 +1,9 @@
 package enemy
 
 import (
+	"fmt"
 	"math/rand"
+	"start/text"
 )
 
 // Erstes Wesen
@@ -66,48 +68,71 @@ func (w *Wesen) GetStatsEnemy(level int) [4]int {
 // Gets Game_level
 // Decides Enemy_level based on Game_level + rand.Intn()
 // Returns Enemy_level
-func SetEnemyLevel(game_level int) int {
+func SetEnemyLevel(world int) int { // world statt game_level
 	var enemy_level = 0
 
+	//////////////////////////////////// Martins Tomfoolery beginnt hier //////////////////////////////////////
+
+	var Events int
+
 	//Entscheidet Gegner-level jedes mal neu
-	switch game_level {
+	switch world {
 	case 1:
 		//Gegnerlevel zwischen 1 und 3
 		enemy_level = rand.Intn(3) + 1
+		eventArray = [3]string{"Event1", "Event2", "Event3"} // Namen der Events bitte Eintragen
+		switch Events {
+		case 1:
+			text.Print("Dir begegnet ein wilder Andreas")
+			text.EmptyLine()
+			text.Print("Möchtest du ihn Zusammenhauen, Berauben und Vergewaltigen?") // Ich hab hier versucht einen Event zu schreiben hihi (>w<*)
+			fmt.Scanln()
+			// hier antwortmöglichkeit oder auch Auswahl mehrerer Aktionen
+		case 2:
+			fmt.Println("Eventbeschreibung2")
+		case 3:
+			fmt.Println("Eventbeschreibung3")
+		}
+
 	case 2:
 		//Gegnerlevel zwischen 3 und 5
 		enemy_level = rand.Intn(3) + 3
+		eventArray = [3]string{"Event1", "Event2", "Event3"}
 	case 3:
 		//Gegnerlevel zwischen 6 und 10
 		enemy_level = rand.Intn(5) + 6
+		eventArray = [3]string{"Event1", "Event2", "Event3"}
 	case 4:
-		//Gegnerlevel zwischen 11 und 20
-		enemy_level = rand.Intn(10) + 11
-	case 5:
-		//Gegnerlevel zwischen 15 und 25
-		enemy_level = rand.Intn(11) + 15
-	case 6:
-		//Gegnerlevel zwischen 30 und 35
-		enemy_level = rand.Intn(6) + 30
-	case 7:
-		//Gegnerlevel zwischen 34 und 36
-		enemy_level = rand.Intn(3) + 34
-	case 8:
-		//Gegnerlevel zwischen 36 und 40
-		enemy_level = rand.Intn(5) + 36
-	case 9:
-		//Gegnerlevel zwischen 40 und 45
-		enemy_level = rand.Intn(6) + 40
-	case 10:
-		//Gegnerlevel zwischen 45 und 50
-		enemy_level = rand.Intn(6) + 45
-	case 3001:
-		enemy_level = 3001
-	default:
-		enemy_level = 0
+		/*	//Gegnerlevel zwischen 11 und 20
+				enemy_level = rand.Intn(10) + 11
+			case 5:
+				//Gegnerlevel zwischen 15 und 25
+				enemy_level = rand.Intn(11) + 15
+			case 6:
+				//Gegnerlevel zwischen 30 und 35
+				enemy_level = rand.Intn(6) + 30
+			case 7:
+				//Gegnerlevel zwischen 34 und 36
+				enemy_level = rand.Intn(3) + 34
+			case 8:
+				//Gegnerlevel zwischen 36 und 40
+				enemy_level = rand.Intn(5) + 36
+			case 9:
+				//Gegnerlevel zwischen 40 und 45
+				enemy_level = rand.Intn(6) + 40
+			case 10:
+				//Gegnerlevel zwischen 45 und 50
+				enemy_level = rand.Intn(6) + 45
+			case 3001:
+				enemy_level = 3001
+			default:
+				enemy_level = 0
+		*/
 	}
 	return enemy_level
 }
+
+//////////////////////////////////// Martins Tomfoolery endet hier /////////////////////////////////////////
 
 // Gets Enemy Typ
 // Sets Name of enemy based on given typ

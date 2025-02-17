@@ -66,7 +66,7 @@ func main() {
 			fmt.Println("Er hat", enemyStats[1], "HP!")
 			fmt.Println("Du hast", hp, "HP!")
 
-			////////////////////////// Fighting //////////////////////////////
+			////////////////////////// Fighting ////////////////////////////
 			for enemyStats[1] > 0 && hp > 0 {
 
 				//Anfrage wegen Angriff
