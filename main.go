@@ -53,13 +53,13 @@ func main() {
 		hp, att, def, rec = player1.CreateStats(inventory)
 		player1.SeePlayerStats()
 
-		////////////////////// Choosing Game Level /////////////////////////
-		var game_level = game.ChooseGameLevel()
+		////////////////////// Choosing World /////////////////////////
+		var world = game.Chooseworld(1) // NEEDS PROPER WORLD_BARRIER
 
 		for i := 0; i < 10 && hp > 0; i++ { // Entering Fights until Player 1. killed 10 monster; 2. is dead
 
 			////////////////////// Setting Up Enemy ////////////////////////
-			var enemyName, enemyStats = enemy.CreateEnemy(game_level)
+			var enemyName, enemyStats = enemy.CreateEnemy(world)
 
 			fmt.Println("Du fightest einen", enemyName+"!!!")
 			fmt.Println("Er ist Level", enemyStats[0], "!!!")

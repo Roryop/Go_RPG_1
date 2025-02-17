@@ -1,9 +1,7 @@
 package enemy
 
 import (
-	"fmt"
 	"math/rand"
-	"start/text"
 )
 
 // Erstes Wesen
@@ -20,8 +18,8 @@ type Wesen struct {
 // Gets Game_level
 // Creates Enemy depending on Game_level
 // Returns Enemy Name and Enemy Stats
-func CreateEnemy(game_level int) (string, [4]int) {
-	var enemy_level = SetEnemyLevel(game_level)
+func CreateEnemy(world int) (string, [4]int) {
+	var _, enemy_level = SetWorldEnemy(world)
 
 	// Decides on Enemy Typ + creates empty Variables for it
 	var typ int = rand.Intn(2)
@@ -40,9 +38,9 @@ func CreateEnemy(game_level int) (string, [4]int) {
 // Gets Enemy_level
 // Creates stats based on typ + level
 // Returns Stats
-func (w *Wesen) GetStatsEnemy(level int) [4]int {
+func (w *Wesen) GetStatsEnemy(enemy_level int) [4]int {
 
-	w.level = level
+	w.level = enemy_level
 
 	var stats [4]int
 
@@ -65,44 +63,29 @@ func (w *Wesen) GetStatsEnemy(level int) [4]int {
 	return stats
 }
 
-// Gets Game_level
-// Decides Enemy_level based on Game_level + rand.Intn()
-// Returns Enemy_level
-func SetEnemyLevel(world int) int { // world statt game_level
+// Gets world
+// Decides Events and Enemy_level based on world + rand.Intn()
+// Returns eventArray and Enemy_level
+func SetWorldEnemy(world int) ([3]string, int) {
+	var eventArray [3]string
 	var enemy_level = 0
 
-	//////////////////////////////////// Martins Tomfoolery beginnt hier //////////////////////////////////////
-
-	var Events int
-
-	//Entscheidet Gegner-level jedes mal neu
 	switch world {
 	case 1:
-		//Gegnerlevel zwischen 1 und 3
-		enemy_level = rand.Intn(3) + 1
-		eventArray = [3]string{"Event1", "Event2", "Event3"} // Namen der Events bitte Eintragen
-		switch Events {
-		case 1:
-			text.Print("Dir begegnet ein wilder Andreas")
-			text.EmptyLine()
-			text.Print("Möchtest du ihn Zusammenhauen, Berauben und Vergewaltigen?") // Ich hab hier versucht einen Event zu schreiben hihi (>w<*)
-			fmt.Scanln()
-			// hier antwortmöglichkeit oder auch Auswahl mehrerer Aktionen
-		case 2:
-			fmt.Println("Eventbeschreibung2")
-		case 3:
-			fmt.Println("Eventbeschreibung3")
-		}
 
+		eventArray = [3]string{"Event1", "Event2", "Event3"} // Please Input Event Names
+		//enemy_level between 1 and 3
+		enemy_level = rand.Intn(3) + 1
 	case 2:
-		//Gegnerlevel zwischen 3 und 5
+
+		eventArray = [3]string{"Event1", "Event2", "Event3"}
+		//enemy_level between 3 and 5
 		enemy_level = rand.Intn(3) + 3
-		eventArray = [3]string{"Event1", "Event2", "Event3"}
 	case 3:
-		//Gegnerlevel zwischen 6 und 10
-		enemy_level = rand.Intn(5) + 6
 		eventArray = [3]string{"Event1", "Event2", "Event3"}
-	case 4:
+		//enemy_level between 6 and 10
+		enemy_level = rand.Intn(5) + 6
+	default:
 		/*	//Gegnerlevel zwischen 11 und 20
 				enemy_level = rand.Intn(10) + 11
 			case 5:
@@ -126,16 +109,17 @@ func SetEnemyLevel(world int) int { // world statt game_level
 			case 3001:
 				enemy_level = 3001
 			default:
-				enemy_level = 0
 		*/
+		eventArray = [3]string{"Event1", "Event2", "Event3"}
+		//enemy_level  0
+		enemy_level = 0
 	}
-	return enemy_level
+	return eventArray, enemy_level
 }
-
-//////////////////////////////////// Martins Tomfoolery endet hier /////////////////////////////////////////
 
 // Gets Enemy Typ
 // Sets Name of enemy based on given typ
+// Returns Nothing
 func (w *Wesen) SetEnemyTyp(typ int) {
 	switch typ {
 	case 1:
