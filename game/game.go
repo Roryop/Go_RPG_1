@@ -122,17 +122,33 @@ func ChoosePlace(placeArray [3]string) [3]string {
 		fmt.Println(placeArray)
 		fmt.Scanln(&place)
 
-		switch {
-		case place == "Place1": // Namen der Welten bitte Eintragen (hab erstmal 3 geschrieben)()
+		switch place {
+		case "Place1": // Namen der Welten bitte Eintragen (hab erstmal 3 geschrieben)()
 			eventArray = [3]string{"Event1", "Event2", "Event3"}
 			isInLoop = false
-		case place == "Place2": // Den welten fehlen vielleicht Attribute aber KA wie mann die schreibt und ob die überhaupt hier sein sollen
+		case "Place2": // Den welten fehlen vielleicht Attribute aber KA wie mann die schreibt und ob die überhaupt hier sein sollen
 			eventArray = [3]string{"Event1", "Event2", "Event3"}
 			isInLoop = false
-		case place == "Place3":
+		case "Place3":
 			eventArray = [3]string{"Event1", "Event2", "Event3"}
 			isInLoop = false
 		}
 	}
+	return eventArray
+}
+
+func ChooseEvent(eventArray [3]string) [3]string {
+	var event string
+	var eventNumber int
+ 
+	eventNumber = rand.Intn(3) + 1
+
+	switch eventNumber {
+	case 1:
+		event = 
+
+
+	}
+
 	return eventArray
 }
