@@ -1,14 +1,15 @@
 # Bugfix
-+ [ ] main.go (1)
-  + [ ] inventory stats not applying
++ [x] main.go (1)
+  + [x] inventory stats not applying
+  + [ ] non-existent enemy (Ferit)
 
 # Story
-+ [ ] Making Story (15)
++ [x] Making Story (15)
   + [x] Conceptualizing Storyline
-  + [ ] Discussing Storyline
-  + [ ] Creating Storyline
-+ [ ] Refining Story (30)
-  + [ ] Choosing World Regions
+  + [x] Discussing Storyline
+  + [x] Creating Storyline
++ [ ] Refining Story (35)
+  + [x] Choosing World Regions
   + [ ] Choosing New Enemy Types
 
 # Gameplay
@@ -19,14 +20,14 @@
 + [ ] Discussing Durability of Items (100)
 
 # Map
-+ [ ] Creating World Map (45)
++ [ ] Creating World Map (75)
   + [ ] Creating Map Overview
 
 # GameMechanics
 + [ ] World
-  + [ ] From Int To String (20)
-  + [ ] Adding Content (40)
-+ [ ] ItemDrop() (60)
+  + [ ] From Int To String (20) (Timothy)
+  + [ ] Adding Content (40) (Martin)
++ [ ] ItemDrop() (50)
   + [ ] Balancing ItemDrop
 
 # CodeRevision
