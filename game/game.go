@@ -11,7 +11,7 @@ import (
 func Chooseworld(world_barrier int) int {
 
 	var world int
-	var isInLoop bool
+	var isInLoop bool = true
 	for isInLoop {
 		fmt.Println("In welche Welt willst du?") // This example is for User deciding world
 		fmt.Scanln(&world)
