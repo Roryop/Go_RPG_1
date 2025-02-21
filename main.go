@@ -48,20 +48,24 @@ func main() {
 	var player1 = player.BeginPlayer() // Creating Player
 
 	var hp, att, def, rec = player1.CreateStats(inventory) // Creating current Player Stats
+	player1.SeePlayerStats()
 
 	////////////////////////////////// Game /////////////////////////////////////
 
 	var choice int = 0 // Creating Variable so Player can later end game themselves
 	for choice != 3 {  // Game keeps running until Player end it
 
-		///////////////////// Setting Stats before each Run /////////////////////
-		hp, att, def, rec = player1.CreateStats(inventory)
-		player1.SeePlayerStats()
-
 		////////////////////// Choosing World /////////////////////////
 		var world = game.Chooseworld(1) // NEEDS PROPER WORLD_BARRIER
 
 		for i := 0; i < 10 && hp > 0; i++ { // Entering Fights until Player 1. killed 10 monster; 2. is dead
+
+			///////////////////// Setting Stats before each Run without Healing /////////////////////
+
+			player1.UpdateCurrentPlayerStats(hp, att, def, rec)
+			player1.SetStatsItems(inventory)
+			hp, att, def, rec = player1.UpdateCurrentStats()
+			player1.SeePlayerStats()
 
 			////////////////////// Setting Up Enemy ////////////////////////
 			var enemyName, enemyStats = enemy.CreateEnemy(world, world_barrier)
