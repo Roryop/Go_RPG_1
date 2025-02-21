@@ -20,6 +20,11 @@ import (
 */
 
 func main() {
+
+	/////////////////////////// Setup World //////////////////////////////////
+
+	var world_barrier int
+
 	/////////////////////// Creating Inventory ///////////////////////////////
 
 	var inventory = gear.NewInventory()
@@ -63,7 +68,7 @@ func main() {
 			player1.SeePlayerStats()
 
 			////////////////////// Setting Up Enemy ////////////////////////
-			var enemyName, enemyStats = enemy.CreateEnemy(world)
+			var enemyName, enemyStats = enemy.CreateEnemy(world, world_barrier)
 
 			fmt.Println("Du fightest einen", enemyName+"!!!")
 			fmt.Println("Er ist Level", enemyStats[0], "!!!")
