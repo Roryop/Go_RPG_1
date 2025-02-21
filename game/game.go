@@ -8,20 +8,25 @@ import (
 // Gets world_barrier
 // Player Chooses World
 // Returns world
-func Chooseworld(world_barrier int) int {
+func Chooseworld(world_barrier int) string {
 
-	var world int
+	var world string
 	var isInLoop bool = true
 	for isInLoop {
-		fmt.Println("In welche Welt willst du?") // This example is for User deciding world
+		fmt.Println("In welche Welt willst du?")                              // This example is for User deciding world
+		fmt.Println("Cyberpunk; Middleage; Armageddon; Prehistory; Wildwest") ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////Gerade hier
 		fmt.Scanln(&world)
 
 		switch {
-		case world == 1 && world_barrier >= 1: // Namen der Welten bitte Eintragen (hab erstmal 3 geschrieben)
+		case world == "Cyberpunk" && world_barrier >= 1: // Namen der Welten bitte Eintragen (hab erstmal 3 geschrieben)
 			isInLoop = false
-		case world == 2 && world_barrier >= 2: // Den welten fehlen vielleicht Attribute aber KA wie mann die schreibt und ob die überhaupt hier sein sollen
+		case world == "Middleage" && world_barrier >= 2: // Den welten fehlen vielleicht Attribute aber KA wie mann die schreibt und ob die überhaupt hier sein sollen
 			isInLoop = false
-		case world == 3 && world_barrier >= 3:
+		case world == "Armageddon" && world_barrier >= 3:
+			isInLoop = false
+		case world == "Prehistory" && world_barrier >= 4:
+			isInLoop = false
+		case world == "Wildwest" && world_barrier >= 5:
 			isInLoop = false
 		}
 	}
@@ -32,24 +37,24 @@ func Chooseworld(world_barrier int) int {
 // Gets world and world_barrier
 // Decides Events and Enemy_level based on world + rand.Intn()
 // Returns eventArray and Enemy_level
-func SetWorldEnemy(world int, world_barrier int) ([3]string, int) {
+func SetWorldEnemy(world string, world_barrier int) ([3]string, int) {
 	var placeArray [3]string
 	var enemy_level = 0
 
 	switch world {
-	case 1:
+	case "Cyberpunk":
 
 		placeArray = [3]string{"Event1", "Event2", "Event3"} // Please Input Place Names
-	case 2:
+	case "Middleage":
 
 		placeArray = [3]string{"Event1", "Event2", "Event3"}
-	case 3:
+	case "Armageddon":
 
 		placeArray = [3]string{"Event1", "Event2", "Event3"}
-	case 4:
+	case "Prehistory":
 
 		placeArray = [3]string{"Event1", "Event2", "Event3"}
-	case 5:
+	case "Wildwest":
 
 		placeArray = [3]string{"Event1", "Event2", "Event3"}
 	default:
