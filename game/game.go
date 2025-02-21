@@ -39,19 +39,19 @@ func SetWorldEnemy(world int, world_barrier int) ([3]string, int) {
 	switch world {
 	case 1:
 
-		placeArray = [3]string{"Event1", "Event2", "Event3"} // Please Input Place Names
+		placeArray = [3]string{"Place1", "Place2", "Place3"} // Please Input Place Names
 	case 2:
 
-		placeArray = [3]string{"Event1", "Event2", "Event3"}
+		placeArray = [3]string{"Place1", "Place2", "Place3"}
 	case 3:
 
-		placeArray = [3]string{"Event1", "Event2", "Event3"}
+		placeArray = [3]string{"Place1", "Place2", "Place3"}
 	case 4:
 
-		placeArray = [3]string{"Event1", "Event2", "Event3"}
+		placeArray = [3]string{"Place1", "Place2", "Place3"}
 	case 5:
 
-		placeArray = [3]string{"Event1", "Event2", "Event3"}
+		placeArray = [3]string{"Place1", "Place2", "Place3"}
 	default:
 		/*	case 6:
 
@@ -78,7 +78,7 @@ func SetWorldEnemy(world int, world_barrier int) ([3]string, int) {
 				enemy_level = 3001
 			default:
 		*/
-		placeArray = [3]string{"Event1", "Event2", "Event3"}
+		placeArray = [3]string{"Place1", "Place2", "Place3"}
 		//enemy_level  0
 		enemy_level = 0
 	}
@@ -106,4 +106,33 @@ func SetWorldEnemy(world int, world_barrier int) ([3]string, int) {
 		enemy_level = rand.Intn(11) + 15
 	}
 	return placeArray, enemy_level
+}
+
+// Gets placeArray
+// creates
+// Chooses random Event
+// returns chosen Event
+func ChoosePlace(placeArray [3]string) [3]string {
+	var eventArray [3]string
+	var isInLoop bool = true
+	var place string
+
+	for isInLoop {
+		fmt.Println("Welchen Ort möchtest du besuchen?") // This example is for User deciding world
+		fmt.Println(placeArray)
+		fmt.Scanln(&place)
+
+		switch {
+		case place == "Place1": // Namen der Welten bitte Eintragen (hab erstmal 3 geschrieben)()
+			eventArray = [3]string{"Event1", "Event2", "Event3"}
+			isInLoop = false
+		case place == "Place2": // Den welten fehlen vielleicht Attribute aber KA wie mann die schreibt und ob die überhaupt hier sein sollen
+			eventArray = [3]string{"Event1", "Event2", "Event3"}
+			isInLoop = false
+		case place == "Place3":
+			eventArray = [3]string{"Event1", "Event2", "Event3"}
+			isInLoop = false
+		}
+	}
+	return eventArray
 }
