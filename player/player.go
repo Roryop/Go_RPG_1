@@ -54,6 +54,7 @@ func (w *Player) Level_Management(inventory [10]*gear.InventorySlot, hp, att, de
 
 	} else if w.level >= 1 && w.experience < w.exp_limit {
 		var neededExp int = w.exp_limit - w.experience
+		_, att, def, rec = w.CreateStats(inventory)
 
 		hp = hp + rec
 		if hp > w.hp {
