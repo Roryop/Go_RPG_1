@@ -113,9 +113,12 @@ func SetWorldEnemy(world string, world_barrier int) ([3]string, int) {
 	return placeArray, enemy_level
 }
 
+// Gets EventArray
+// Chooses random Event from eventArray based on length of eventArray
+// Returns Event
 func EventGenerator(eventArray [3]string) string {
 	var event string
-	var eventNumber int = rand.Intn(3)
+	var eventNumber int = rand.Intn(len(eventArray))
 
 	event = eventArray[eventNumber]
 
