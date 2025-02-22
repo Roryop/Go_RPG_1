@@ -60,6 +60,11 @@ func main() {
 
 		for i := 0; i < 10 && hp > 0; i++ { // Entering Fights until Player 1. killed 10 monster; 2. is dead
 
+			////////////// Setting World Barrier Upgrade Requirement ////////////
+			if i == 10 {
+				world_barrier += 1
+			}
+
 			////////////////////// Setting Up Enemy ////////////////////////
 			var enemyName, enemyStats = enemy.CreateEnemy(world, world_barrier)
 
