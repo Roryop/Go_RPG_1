@@ -44,19 +44,19 @@ func SetWorldEnemy(world string, world_barrier int) ([3]string, int) {
 	switch world {
 	case "Cyberpunk":
 
-		placeArray = [3]string{"Event1", "Event2", "Event3"} // Please Input Place Names
+		placeArray = [3]string{"Place1", "Place2", "Place3"} // Please Input Place Names
 	case "Middleage":
 
-		placeArray = [3]string{"Event1", "Event2", "Event3"}
+		placeArray = [3]string{"Place1", "Place2", "Place3"}
 	case "Armageddon":
 
-		placeArray = [3]string{"Event1", "Event2", "Event3"}
+		placeArray = [3]string{"Place1", "Place2", "Place3"}
 	case "Prehistory":
 
-		placeArray = [3]string{"Event1", "Event2", "Event3"}
+		placeArray = [3]string{"Place1", "Place2", "Place3"}
 	case "Wildwest":
 
-		placeArray = [3]string{"Event1", "Event2", "Event3"}
+		placeArray = [3]string{"Place1", "Place2", "Place3"}
 	default:
 		/*	case 6:
 
@@ -83,7 +83,7 @@ func SetWorldEnemy(world string, world_barrier int) ([3]string, int) {
 				enemy_level = 3001
 			default:
 		*/
-		placeArray = [3]string{"Event1", "Event2", "Event3"}
+		placeArray = [3]string{"Place1", "Place2", "Place3"}
 		//enemy_level  0
 		enemy_level = 0
 	}
@@ -111,4 +111,21 @@ func SetWorldEnemy(world string, world_barrier int) ([3]string, int) {
 		enemy_level = rand.Intn(11) + 15
 	}
 	return placeArray, enemy_level
+}
+
+func eventgen() string {
+	var event string
+	var eventNumber int = rand.Intn(3) + 1
+	switch eventNumber {
+	case 1:
+
+		event = "Event1"
+	case 2:
+
+		event = "Event2"
+	case 3:
+
+		event = "Event3"
+	}
+	return event
 }
