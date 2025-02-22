@@ -1,10 +1,10 @@
 # Bugfix
-+ [x] main.go (1)
++ [ ] main.go (1)
   + [x] inventory stats not applying
   + [ ] non-existent enemy (Ferit)
 
 # Story
-+ [x] Making Story (15)
++ [x] Making Story
   + [x] Conceptualizing Storyline
   + [x] Discussing Storyline
   + [x] Creating Storyline
@@ -25,8 +25,8 @@
 
 # GameMechanics
 + [ ] World
-  + [ ] From Int To String (20) (Timothy)
-  + [ ] Adding Content (40) (Martin)
+  + [x] From Int To String
+  + [ ] Adding Content (20) (Martin)
 + [ ] ItemDrop() (50)
   + [ ] Balancing ItemDrop
 
@@ -41,8 +41,8 @@
 + [ ] Main.go (Continuous)
 
 # Game
-+ [x] Inventory Count (30)
-+ [ ] Gear (40)
++ [x] Inventory Count
++ [ ] Gear (30)
 
 # Animation
 + [ ] Text (60)
