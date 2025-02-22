@@ -113,19 +113,19 @@ func SetWorldEnemy(world string, world_barrier int) ([3]string, int) {
 	return placeArray, enemy_level
 }
 
-func eventgen(eventn int) string {
+func eventgen(eventNumber int) string {
 	var event string
-	rand.Intn(3)
-	switch eventn {
+	eventNumber = rand.Intn(3) + 1
+	switch eventNumber {
 	case 1:
 
-		fmt.Println("Event1")
+		event = "Event1"
 	case 2:
 
-		fmt.Println("Event2")
+		event = "Event2"
 	case 3:
 
-		fmt.Println("Event3")
+		event = "Event3"
 	}
 	return event
 }
