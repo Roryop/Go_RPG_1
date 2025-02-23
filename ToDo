@@ -34,7 +34,8 @@
 + [ ] Letting User see Stats AND current Stats (bsp: HP 13/20) on command (25) (Martin)
 + [ ] Letting User see Inventory on command (48) (Martin if he wanna continue (continuation of point above))
 + [ ] ItemDrop() (50) (Ferit)
-  + [ ] Balancing ItemDrop
+  + [x] Balancing ItemDrop
+  + [ ] Possibly Shifting Probability based on World_Barrier
 
 # CodeRevision
 + [ ] Player.go (Continuous)
