@@ -219,18 +219,7 @@ func (w *Player) Exp_Function(enemyStats [4]int) int {
 //////////////////////////// Player Creation /////////////////////////
 
 // Gets Nothing
-// Updates Player ------------> Only Function used in Main during Player Creation
-// Returns Player
-func BeginPlayer() *Player {
-	var player1 = InitPlayer()
-
-	player1.SeePlayerStats() //Give out Stats
-
-	return player1
-}
-
-// Gets Nothing
-// Initializing Player
+// Initializing Player ------------> Only Function used in Main during Player Creation
 // Returns Player
 func InitPlayer() *Player {
 	var player = NewPlayer()

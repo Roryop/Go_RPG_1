@@ -45,7 +45,7 @@ func main() {
 
 	//////////////////////////// Creating Player ////////////////////////////////
 
-	var player1 = player.BeginPlayer() // Creating Player
+	var player1 = player.InitPlayer() // Creating Player
 
 	var hp, att, def, rec = player1.CreateStats(inventory) // Creating current Player Stats
 
