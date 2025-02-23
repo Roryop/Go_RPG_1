@@ -224,8 +224,6 @@ func (w *Player) Exp_Function(enemyStats [4]int) int {
 func BeginPlayer() *Player {
 	var player1 = InitPlayer()
 
-	player1.SetStats() //give lvl1 stats
-
 	player1.SeePlayerStats() //Give out Stats
 
 	return player1
