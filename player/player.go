@@ -80,7 +80,7 @@ func (w *Player) Level_Management(inventory [10]*gear.InventorySlot, hp, att, de
 func (w *Player) UpdateSpStats() {
 	var allocation int
 
-	if w.bonusPoints >= 1 {
+	for w.bonusPoints >= 1 {
 		fmt.Println("Du hast gerade", w.bonusPoints, "Bonuspunkt.")
 		fmt.Println("Bitte lege deine Bonus-Punkte fest:")
 		fmt.Println("1: HP")
