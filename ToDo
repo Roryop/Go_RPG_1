@@ -25,15 +25,15 @@
 
 # Game
 + [x] Inventory Count
-+ [ ] Gear (23)
++ [ ] Adding Gear to gear.go (23) (Timothy / Aleks)
 
 # GameMechanics
 + [ ] World
   + [x] From Int To String
-  + [ ] Adding Content (20) (Martin)
-+ [ ] Letting User see Stats AND current Stats (bsp: HP 13/20) on command (25)
-+ [ ] Letting User see Inventory on command (48)
-+ [ ] ItemDrop() (50)
+  + [ ] Adding Content (20) (Timothy / Aleks)
++ [ ] Letting User see Stats AND current Stats (bsp: HP 13/20) on command (25) (Martin)
++ [ ] Letting User see Inventory on command (48) (Martin if he wanna continue (continuation of point above))
++ [ ] ItemDrop() (50) (Ferit)
   + [ ] Balancing ItemDrop
 
 # CodeRevision
