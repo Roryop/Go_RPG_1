@@ -80,7 +80,8 @@ func main() {
 				fmt.Println("Möchtest du angreifen?")
 				fmt.Println("1: Ja")
 				fmt.Println("2: Nein")
-				fmt.Println("3: End Game")
+				fmt.Println("3: Eigene Stats sehen")
+				fmt.Println("4: End Game")
 				fmt.Scanln(&choice)
 				fmt.Println(choice)
 
@@ -104,7 +105,10 @@ func main() {
 					hp = hp - ((enemyStats[2] * 100) / (100 + def))
 					fmt.Println("Du hast noch", hp, "HP")
 
-				default:
+				case 3:
+
+					player1.SeePlayerStats(inventory)
+				case 4:
 					goto end
 				}
 			}
@@ -125,7 +129,7 @@ func main() {
 			}
 		}
 	end: // End Game
-		if choice == 3 {
+		if choice == 4 {
 			break
 		}
 	}
