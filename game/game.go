@@ -44,19 +44,19 @@ func SetWorldEnemy(world string, world_barrier int) ([3]string, int) {
 	switch world {
 	case "Cyberpunk":
 
-		placeArray = [3]string{"Place1", "Place2", "Place3"} // Please Input Place Names
+		placeArray = [3]string{"Slums", "Busimess", "Outer City"} // Please Input Place Names
 	case "Middleage":
 
-		placeArray = [3]string{"Place1", "Place2", "Place3"}
+		placeArray = [3]string{"Forest", "Castle", "Village"}
 	case "Armageddon":
 
-		placeArray = [3]string{"Place1", "Place2", "Place3"}
+		placeArray = [3]string{"Ground Zero", "Settlement", "Ghost Town"}
 	case "Prehistory":
 
-		placeArray = [3]string{"Place1", "Place2", "Place3"}
+		placeArray = [3]string{"Cave", "Jungle", "Mountain"}
 	case "Wildwest":
 
-		placeArray = [3]string{"Place1", "Place2", "Place3"}
+		placeArray = [3]string{"Pub", "Sherrif", "Goldmine"}
 	default:
 		/*	case 6:
 
