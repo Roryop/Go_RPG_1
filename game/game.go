@@ -34,6 +34,85 @@ func Chooseworld(world_barrier int) string {
 	return world
 }
 
+// Gets placeArray
+func ChoosePlace(placeArray [3]string, world string) [3]string {
+
+	var place string
+	var eventArray [3]string
+	var isInLoop bool = true
+	for isInLoop {
+		fmt.Println("Welchen Ort möchtest du besuchen?")
+		fmt.Println(placeArray)
+		fmt.Scanln(&place)
+
+		switch {
+		case place == "Place1" && world == "Cyberpunk":
+			eventArray = [3]string{}
+			isInLoop = false
+		case place == "Place1" && world == "Cyberpunk":
+			eventArray = [3]string{}
+			isInLoop = false
+		case place == "Place1" && world == "Cyberpunk":
+			eventArray = [3]string{}
+			isInLoop = false
+
+		case place == "Place2" && world == "Middleage":
+			eventArray = [3]string{}
+			isInLoop = false
+		case place == "Place2" && world == "Middleage":
+			eventArray = [3]string{}
+			isInLoop = false
+		case place == "Place2" && world == "Middleage":
+			eventArray = [3]string{}
+			isInLoop = false
+
+		case place == "Place3" && world == "Armageddon":
+			eventArray = [3]string{}
+			isInLoop = false
+		case place == "Place3" && world == "Armageddon":
+			eventArray = [3]string{}
+			isInLoop = false
+		case place == "Place3" && world == "Armageddon":
+			eventArray = [3]string{}
+			isInLoop = false
+
+		case place == "Place3" && world == "Prehistory":
+			eventArray = [3]string{}
+			isInLoop = false
+		case place == "Place3" && world == "Prehistory":
+			eventArray = [3]string{}
+			isInLoop = false
+		case place == "Place3" && world == "Prehistory":
+			eventArray = [3]string{}
+			isInLoop = false
+
+		case place == "Place3" && world == "Wildwest":
+			eventArray = [3]string{}
+			isInLoop = false
+		case place == "Place3" && world == "Wildwest":
+			eventArray = [3]string{}
+			isInLoop = false
+		case place == "Place3" && world == "Wildwest":
+			eventArray = [3]string{}
+			isInLoop = false
+		}
+	}
+	fmt.Println("Du hast", place, "ausgewählt")
+	return eventArray
+}
+
+// Gets EventArray
+// Chooses random Event from eventArray based on length of eventArray
+// Returns Event
+func EventGenerator(eventArray [3]string) string {
+	var event string
+	var eventNumber int = rand.Intn(len(eventArray))
+
+	event = eventArray[eventNumber]
+
+	return event
+}
+
 // Gets world and world_barrier
 // Decides Events and Enemy_level based on world + rand.Intn()
 // Returns eventArray and Enemy_level
@@ -111,16 +190,4 @@ func SetWorldEnemy(world string, world_barrier int) ([3]string, int) {
 		enemy_level = rand.Intn(11) + 15
 	}
 	return placeArray, enemy_level
-}
-
-// Gets EventArray
-// Chooses random Event from eventArray based on length of eventArray
-// Returns Event
-func EventGenerator(eventArray [3]string) string {
-	var event string
-	var eventNumber int = rand.Intn(len(eventArray))
-
-	event = eventArray[eventNumber]
-
-	return event
 }
