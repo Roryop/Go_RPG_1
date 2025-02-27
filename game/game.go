@@ -13,14 +13,14 @@ func Chooseworld(world_barrier int) string {
 	var world string
 	var isInLoop bool = true
 	for isInLoop {
-		fmt.Println("In welche Welt willst du?")                              // This example is for User deciding world
-		fmt.Println("Cyberpunk; Middleage; Armageddon; Prehistory; Wildwest") ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////Gerade hier
+		fmt.Println("In welche Welt willst du?")                                        // This example is for User deciding world
+		fmt.Println("Tutorial; Cyberpunk; Middleage; Armageddon; Prehistory; Wildwest") ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////Gerade hier
 		fmt.Scanln(&world)
 
 		switch {
-		case world == "Cyberpunk" && world_barrier >= 1: // Namen der Welten bitte Eintragen (hab erstmal 3 geschrieben)
+		case world == "Cyberpunk" && world_barrier >= 1:
 			isInLoop = false
-		case world == "Middleage" && world_barrier >= 2: // Den welten fehlen vielleicht Attribute aber KA wie mann die schreibt und ob die überhaupt hier sein sollen
+		case world == "Middleage" && world_barrier >= 2:
 			isInLoop = false
 		case world == "Armageddon" && world_barrier >= 3:
 			isInLoop = false
@@ -28,7 +28,10 @@ func Chooseworld(world_barrier int) string {
 			isInLoop = false
 		case world == "Wildwest" && world_barrier >= 5:
 			isInLoop = false
+		case world == "Tutorial":
+			isInLoop = false
 		}
+
 	}
 	fmt.Println("Du hast", world, "ausgewählt")
 	return world
