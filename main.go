@@ -100,7 +100,7 @@ func main() {
 					fmt.Println("Du hast noch", hp, "HP")
 
 				case 3:
-					player1.SeePlayerStats(inventory)
+					player1.SeePlayerStats(inventory, hp, att, def, rec)
 				case 4:
 					gear.GiveInventoryInformation(inventory)
 				case 5:

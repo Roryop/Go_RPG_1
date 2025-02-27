@@ -173,13 +173,13 @@ func (w *Player) UpdateCurrentStats() (int, int, int, int) {
 // Gets Nothing
 // Gives out current Stats of Player (hp, att, def, rec)
 // Returns Nothing
-func (w *Player) SeePlayerStats(inventory [10]*gear.InventorySlot) {
-	var hp, att, def, rec = w.CreateStats(inventory)
+func (w *Player) SeePlayerStats(inventory [10]*gear.InventorySlot, hp, att, def, rec int) {
+	var maxHp, maxAtt, maxDef, maxRec = w.CreateStats(inventory)
 	fmt.Println("Deine Stats sind jetzt:")
-	fmt.Println("HP:", w.stats[2], "/", hp)
-	fmt.Println("Att:", w.stats[3], "/", att)
-	fmt.Println("Def:", w.stats[4], "/", def)
-	fmt.Println("Rec:", w.stats[5], "/", rec)
+	fmt.Println("HP:", hp, "/", maxHp)
+	fmt.Println("Att:", att, "/", maxAtt)
+	fmt.Println("Def:", def, "/", maxDef)
+	fmt.Println("Rec:", rec, "/", maxRec)
 }
 
 // Gets Count of Stat in Array Stats[7]
