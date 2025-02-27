@@ -10,7 +10,7 @@
   + [x] Creating Storyline
 + [ ] Refining Story (35)
   + [x] Choosing World Regions
-  + [ ] Choosing New Enemy Types
+  + [ ] Choosing New Enemy Types (Martin)
 
 # Gameplay
 + [ ] Adding Surface Playability (90)
@@ -30,9 +30,9 @@
 # GameMechanics
 + [ ] World
   + [x] From Int To String
-  + [ ] ChoosePlace (5) (Martin)
+  + [x] ChoosePlace 
   + [ ] ExecuteEvent / Adding Content (20) (Timothy / Aleks)
-+ [x] Letting User see Stats AND current Stats (bsp: HP 13/20) on command (25) (Martin)
++ [x] Letting User see Stats AND current Stats (bsp: HP 13/20) on command
 + [ ] Letting User see Inventory on command (48) (Martin if he wanna continue (continuation of point above))
 + [ ] ItemDrop() (50) (Ferit)
   + [x] Balancing ItemDrop
