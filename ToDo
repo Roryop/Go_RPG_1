@@ -1,16 +1,9 @@
 # Bugfix
-+ [x] main.go
-  + [x] inventory stats not applying
-  + [x] non-existent enemy
 
 # Story
-+ [x] Making Story
-  + [x] Conceptualizing Storyline
-  + [x] Discussing Storyline
-  + [x] Creating Storyline
 + [ ] Refining Story (35)
   + [x] Choosing World Regions
-  + [ ] Choosing New Enemy Types (Martin)
+  + [ ] Choosing New Enemy Types
 
 # Gameplay
 + [ ] Adding Surface Playability (90)
@@ -24,7 +17,6 @@
   + [ ] Creating Map Overview
 
 # Game
-+ [x] Inventory Count
 + [ ] Adding Gear to gear.go (23) (Timothy / Aleks)
 
 # GameMechanics
@@ -32,8 +24,6 @@
   + [x] From Int To String
   + [x] ChoosePlace 
   + [ ] ExecuteEvent / Adding Content (20) (Timothy / Aleks)
-+ [x] Letting User see Stats AND current Stats (bsp: HP 13/20) on command
-+ [x] Letting User see Inventory on command 
 + [ ] ItemDrop() (50) (Ferit)
   + [x] Balancing ItemDrop
   + [ ] Possibly Shifting Probability based on World_Barrier
