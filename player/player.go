@@ -54,6 +54,7 @@ func (w *Player) Level_Management(inventory [10]*gear.InventorySlot, hp, att, de
 
 	} else if w.level >= 1 && w.experience < w.exp_limit {
 		var neededExp int = w.exp_limit - w.experience
+		_, att, def, rec = w.CreateStats(inventory)
 
 		hp = hp + rec
 		if hp > w.hp {
@@ -79,7 +80,7 @@ func (w *Player) Level_Management(inventory [10]*gear.InventorySlot, hp, att, de
 func (w *Player) UpdateSpStats() {
 	var allocation int
 
-	if w.bonusPoints >= 1 {
+	for w.bonusPoints >= 1 {
 		fmt.Println("Du hast gerade", w.bonusPoints, "Bonuspunkt.")
 		fmt.Println("Bitte lege deine Bonus-Punkte fest:")
 		fmt.Println("1: HP")
@@ -218,20 +219,7 @@ func (w *Player) Exp_Function(enemyStats [4]int) int {
 //////////////////////////// Player Creation /////////////////////////
 
 // Gets Nothing
-// Updates Player ------------> Only Function used in Main during Player Creation
-// Returns Player
-func BeginPlayer() *Player {
-	var player1 = InitPlayer()
-
-	player1.SetStats() //give lvl1 stats
-
-	player1.SeePlayerStats() //Give out Stats
-
-	return player1
-}
-
-// Gets Nothing
-// Initializing Player
+// Initializing Player ------------> Only Function used in Main during Player Creation
 // Returns Player
 func InitPlayer() *Player {
 	var player = NewPlayer()

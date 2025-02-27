@@ -19,11 +19,11 @@ type Wesen struct {
 // Gets Game_level
 // Creates Enemy depending on Game_level
 // Returns Enemy Name and Enemy Stats
-func CreateEnemy(world int, world_barrier int) (string, [4]int) {
+func CreateEnemy(world string, world_barrier int) (string, [4]int) {
 	var _, enemy_level = game.SetWorldEnemy(world, world_barrier)
 
 	// Decides on Enemy Typ + creates empty Variables for it
-	var typ int = rand.Intn(2)
+	var typ int = rand.Intn(2) + 1
 	var enemyStats [4]int
 	var enemyName string
 
@@ -73,6 +73,8 @@ func (w *Wesen) SetEnemyTyp(typ int) {
 		w.name = "Ork"
 	case 2:
 		w.name = "Wolf"
+	default:
+		w.name = "Ork"
 	}
 }
 
