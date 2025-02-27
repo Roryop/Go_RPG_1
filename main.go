@@ -23,7 +23,7 @@ func main() {
 
 	/////////////////////////// Setup World //////////////////////////////////
 
-	var world_barrier int
+	var world_barrier int = 1
 
 	/////////////////////// Creating Inventory ///////////////////////////////
 
@@ -52,18 +52,13 @@ func main() {
 	////////////////////////////////// Game /////////////////////////////////////
 
 	var choice int = 0 // Creating Variable so Player can later end game themselves
-	for choice != 3 {  // Game keeps running until Player end it
+	for choice != 5 {  // Game keeps running until Player end it
 		hp, att, def, rec = player1.CreateStats(inventory) // Creating current Player Stats
 
 		////////////////////// Choosing World /////////////////////////
-		var world = game.Chooseworld(1) // NEEDS PROPER WORLD_BARRIER
+		var world = game.Chooseworld(world_barrier) // NEEDS PROPER WORLD_BARRIER
 
 		for i := 0; i < 10 && hp > 0; i++ { // Entering Fights until Player 1. killed 10 monster; 2. is dead
-
-			////////////// Setting World Barrier Upgrade Requirement ////////////
-			if i == 10 {
-				world_barrier += 1
-			}
 
 			////////////////////// Setting Up Enemy ////////////////////////
 			var enemyName, enemyStats = enemy.CreateEnemy(world, world_barrier)
@@ -121,6 +116,11 @@ func main() {
 				///////////////// Player Management ////////////////
 				player1.Exp_Function(enemyStats)                                           // Giving Exp to Player
 				hp, att, def, rec = player1.Level_Management(inventory, hp, att, def, rec) // Player will be healed with levelUp + Updating Stats + Updating current Stats
+
+				////////////// Setting World Barrier Upgrade Requirement ////////////
+				if i >= 9 {
+					world_barrier += 1
+				}
 			}
 
 			//////////////// Clearing Inventory on Player Death ////////////////
@@ -129,7 +129,7 @@ func main() {
 			}
 		}
 	end: // End Game
-		if choice == 4 {
+		if choice == 5 {
 			break
 		}
 	}
