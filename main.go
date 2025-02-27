@@ -81,14 +81,14 @@ func main() {
 				fmt.Println("1: Ja")
 				fmt.Println("2: Nein")
 				fmt.Println("3: Eigene Stats sehen")
-				fmt.Println("4: End Game")
+				fmt.Println("4: Inventory sehen")
+				fmt.Println("5: End Game")
 				fmt.Scanln(&choice)
 				fmt.Println(choice)
 
 				//Angreifen
 				switch choice {
 				case 1:
-
 					//Player attacks Enemy
 					enemyStats[1] = enemyStats[1] - ((att * 100) / (100 + enemyStats[3]))
 					fmt.Println("Der", enemyName, "hat noch", enemyStats[1], "HP")
@@ -99,16 +99,16 @@ func main() {
 					fmt.Println("Du hast noch", hp, "HP")
 
 				case 2:
-
 					fmt.Println("Du hast nicht angegriffen")
 					//Enemy attacks Player
 					hp = hp - ((enemyStats[2] * 100) / (100 + def))
 					fmt.Println("Du hast noch", hp, "HP")
 
 				case 3:
-
 					player1.SeePlayerStats(inventory)
 				case 4:
+					gear.GiveInventoryInformation(inventory)
+				case 5:
 					goto end
 				}
 			}
