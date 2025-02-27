@@ -23,7 +23,7 @@ func CreateEnemy(world string, world_barrier int) (string, [4]int) {
 	var _, enemy_level = game.SetWorldEnemy(world, world_barrier)
 
 	// Decides on Enemy Typ + creates empty Variables for it
-	var typ int = rand.Intn(2) + 1
+	var typ int = rand.Intn(5) + 1
 	var enemyStats [4]int
 	var enemyName string
 
@@ -54,6 +54,18 @@ func (w *Wesen) GetStatsEnemy(enemy_level int) [4]int {
 		w.hp = 11 + (3 * w.level)
 		w.att = 6 + (4 * w.level)
 		w.def = 3 + (w.level / 2)
+	case "Elf":
+		w.hp = 8 + (2 * w.level)
+		w.att = 6 + (4 * w.level)
+		w.def = 3 + w.level
+	case "Räuber":
+		w.hp = 12 + (4 * w.level)
+		w.att = 7 + (4 * w.level)
+		w.def = 3 + w.level
+	case "E-Gigant":
+		w.hp = 8 + (1 * w.level)
+		w.att = 8 + (4 * w.level)
+		w.def = 5 + (5 * w.level)
 	}
 
 	stats[0] = w.level
@@ -73,6 +85,12 @@ func (w *Wesen) SetEnemyTyp(typ int) {
 		w.name = "Ork"
 	case 2:
 		w.name = "Wolf"
+	case 3:
+		w.name = "Elf"
+	case 4:
+		w.name = "Räuber"
+	case 5:
+		w.name = "E-Gigant"
 	default:
 		w.name = "Ork"
 	}
