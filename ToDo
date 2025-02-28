@@ -1,9 +1,9 @@
 # Bugfix
 
 # Story
-+ [ ] Refining Story (35)
++ [x] Refining Story
   + [x] Choosing World Regions
-  + [ ] Choosing New Enemy Types
+  + [x] Choosing New Enemy Types
 
 # Gameplay
 + [ ] Adding Surface Playability (60)
@@ -17,16 +17,16 @@
   + [ ] Creating Map Overview
 
 # Game
-+ [ ] Adding Gear to gear.go (23) (Timothy / Aleks)
++ [ ] Adding Gear to gear.go (23) (Aleks)
++ [ ] Creating Fight function in game.go -> using it everywhere needed (31) (whoever wants)
 
 # GameMechanics
 + [ ] World
   + [x] From Int To String
   + [x] ChoosePlace 
-  + [ ] ExecuteEvent / Adding Content (20) (Timothy / Aleks)
-+ [x] ItemDrop()
-  + [x] Balancing ItemDrop
-  + [x] Possibly Shifting Probability based on World_Barrier
+  + [ ] ExecuteEvent / Adding Content (20) (Timothy)
++ [ ] Enemy
+  + [ ] Enemy Creation capable of BOTH random Creation AND intended Creation (28) (Martin)
 
 # CodeRevision
 + [ ] Player.go (Continuous)
