@@ -24,9 +24,9 @@
   + [x] From Int To String
   + [x] ChoosePlace 
   + [ ] ExecuteEvent / Adding Content (20) (Timothy / Aleks)
-+ [ ] ItemDrop() (50) (Ferit)
++ [x] ItemDrop()
   + [x] Balancing ItemDrop
-  + [ ] Possibly Shifting Probability based on World_Barrier
+  + [x] Possibly Shifting Probability based on World_Barrier
 
 # CodeRevision
 + [ ] Player.go (Continuous)
@@ -44,6 +44,6 @@
 
 
 # UI
-+ [ ] Menu (45)
++ [ ] Menu (45) (Ferit)
 + [ ] OverallBeauty (97)
 
