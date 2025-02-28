@@ -51,6 +51,8 @@ func ChoosePlace(placeArray [3]string, world string) [3]string {
 		fmt.Println(placeArray)
 		fmt.Scanln(&place)
 
+		place = strings.ToLower(place)
+
 		switch {
 		case place == "slums" && world == "cyberpunk":
 			eventArray = [3]string{"event1", "event2", "event3"}
