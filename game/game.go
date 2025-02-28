@@ -199,5 +199,6 @@ func SetWorldEnemy(world string, world_barrier int) ([3]string, int) {
 			enemy_level = rand.Intn(6) + 45
 		}
 	}
+
 	return placeArray, enemy_level
 }
