@@ -1,0 +1,93 @@
+Willkommen auf deiner Heldenreise. Welche Welt möchtest du zuerst betreten?
+1. Cyberpunk-Welt
+	Wohin willst du gehen?
+	1. Slums
+		Events:
+		-Du erreichst einen Schwarzmarkt
+		-Du wirst von einem Räuber angegriffen (1v1)
+		-Du triffst einen Bettler. Willst du ihm etwas geben? (Ja - ++Karma / Nein - Er greift dich an.)
+		-Vor dir ist eine Mülltonne, willst du sie durchsuchen? (irgendein Item)
+	2. Businessviertel
+		Events:
+		-Premium Shop
+		-Du wirst von der High Class Secutity kontrolliert (Sie ziehen dir eine Waffe ab)
+		-Du sprichst einen Businessman an ()
+	3. Außenstadt
+		Events:
+		-Grenzkontrolle
+		-Motel (schlafen - HP boost)
+		-Du verläufst dich im Industriegebiet und brauchst zu lange, um wieder herauszufinden. (--hp)
+2. Mittelalter-Welt
+	Wohin willst du gehen?
+	1. Wald
+		Events:
+		-Angriff von einem Bären
+		-An einem Lagerfeuer ausruhen (++hp)
+		-Du findest einen Pilz. Wisst du ihn essen? (ist gesund - ++hp)
+	2. Burg
+		Events:
+		-Schmiede
+		-Du kommst auf den Trainingsplatz des Burgritters. Er fordert dich zu einem Duell auf. (gewonnen - Du bekommst sein Schwert)
+		-Du wirst aufgrund eines Verdachts in den Kerker geworfen. (Warten..++Stats; Ausbrechen...--Stats)
+	3. Dorf
+		Events:
+		-Du wirst von einem betrunkenen Dorfbewohner angegriffen
+		-Du wirst von kindern mit Steinen beworfen. Willst du zurückwerfen? (ja - --Karma / Nein - nix passiert)
+		-Ein Platz im Wirtshaus ist frei. Möchtest du dort essen und rasten? (++hp)
+3. Post-apokaliptische Welt
+	Wohin willst du gehen?
+	1. Ground Zero:
+		Events:
+		-Angriff von einer menschengroßen Mutantenratte
+		-Angriff von einer dreiköpfigen Schlange
+		-Angriff von einer laufenden Makrowelle
+	2. Siedlung:
+		Events:
+		-Du kommst bei einem Handelsmarkt an
+		-Der Stammarzt möchte ein neues Medikament ausprobieren. Willst du es testen? (++HP)
+		-Du triffst auf einen schwer verletzten Bewohner...(++--Karma wenn du ihm hilfst)
+	3. Geisterstadt:
+		Events:
+		-Du triffst auf einen Plünderer--Kampf
+		-Verlassenes Geschäft plündern
+		-Du hörst Hilfeschreie. Möchtest du helfen? Wenn ja: ++Karma, aber es ist ein Monster, das dich angreift / Wenn nein: --Karma
+4. Prähistorisches Zeitalter
+	Wohin willst du gehen?
+	1. Höhle
+		Events:
+		-Du findest in der Höhle Höhlenmenschen:
+			-Sie haben Schwierigkeiten beim Jagen (Waffe abgeben, ++Karma)
+			-Du bist am Verhungern. Klaust du etwas von ihren Vorräten
+			-Möchtest du ihnen beibringen, wie man werkzeuge herstellt?
+	2. Dschungel
+		Events:
+		-Du wirst von einem Triceratops angrgriffen
+		-Du findest einen Teich. Willst du daraus trinken? (Ja= +HP;Krokodil kommt raus->Kampf/Nein= nix passiert)
+		-Du siehst eine verdächtig aussehende Frucht. Willst du sie essen? (ist gut)
+	3. Berg
+		Events: (feste Reihenfolge)
+		-Du findest einen schnelleren, aber gefährlicheren Weg, den Berg zu erklimmen. Möchtest du ihn gehen? (festgelegt als erstes Event)
+		-Ein Pterodaktylus greift dich an
+		-Du findest das Nest eines Pterodaktylus. Willst du es durchsuchen? (Leiche mit Item liegt drin)
+		-Du erreichst die Spitze des Berges und nichts ist dort. (festgelegt als letztes Event)
+		
+5. Der Wilde Westen
+	Wohin willst du gehen?
+	1. Bar
+		Events:
+		-Dir will ein dir unbekannter Einwohner Whiskey ausgeben. Nimmst du an? (Ist unschädlich, ihr redet und freundet euch an - ++Karma)
+		-Barschlägerei - raushalten oder einmischen? (1v1)
+		-Die Bar wird überfallen. Willst du flüchten oder die Bar verteidigen? (flüchten - nix pasiert / verteidigen - egal ob sieg oder nieder Lage ++Karma)
+	2. Büro des Sherrifs
+		Events:
+		-Der Insasse des Gefängnisses bittet dich heimlich, ihn freizulassen. (Ja - ++Karma & Kampf gegen den Sherrif / Nein - nix passiert)
+		-Der Sherrif fragt dich, ob du kurz auf einen gefangenen aufpassen kannst. Wenn er wiederkommt, bekommst du dafür einen Colt. (break mit Wartezeit)
+		-Der Sherrif steckt sich eine Zigarre an und geht raus. Willst du die Schubladen seines Schreibtisches durchsuchen? (Ja - Medipack & --Karma / Nein - Braver Junge)
+	3. Goldmine
+		Events: (feste Reihenfolge)
+		-Du findest die angebliche Goldmine nahe der Stadt und beschließt sie zu betreten.
+			-Du siehst in der Höhle einen Koyoten an der Leiche eines Minenarbeiters nagen. Möchtest du ihn angreifen und hoffen, dass die Leiche etwas nützliches bei sich trägt?
+			 (als erstes Event festgelegt - Leiche hat Pickaxe - --Karma weil du eine Leiche bestohlen hast)
+			-In der Wand steckt ein Klumpen Gold. Hast du eine Pickaxe? (G€ld)
+			-Hinter einem Balken in der Wand steckt eine stark aussehende Waffe. Willst du ihn beiseite räumen?
+			 (Ja - Ein tregender Balken...Die Mine stürzt ein, du entkommst, wirst aber von einem Stein auf den Kopf getroffen. / Nein - Du verlässt die Mine unbeschadet.)
