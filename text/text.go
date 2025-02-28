@@ -15,8 +15,10 @@ func Print(text string) {
 
 	var splitText = strings.Split(text, "")
 
-	for i := 0; i < len(splitText); i++ {
-		fmt.Print(splitText[i])
+	// Because splitText is a slice, we can use range for index/iterations,
+	// discard i and use v for current content of slice splitText
+	for _, v := range splitText {
+		fmt.Print(v)
 		TextWait()
 	}
 	fmt.Println()
