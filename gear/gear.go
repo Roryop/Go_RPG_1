@@ -35,11 +35,19 @@ func (g *Gear) SetAttributesGear() {
 
 	////////////// Common ///////////////
 	case "Dagger(Common)":
-		g.damage = 1
+		g.damage = 3
 		g.durability = 10
 
 	case "Spear(Common)":
-		g.damage = 2
+		g.damage = 4
+		g.durability = 10
+
+	case "Spitzer Stein(Common)":
+		g.damage = 1
+		g.durability = 10
+
+	case "(Common)":
+		g.damage = 1
 		g.durability = 10
 
 	////////////// Greater ///////////////
