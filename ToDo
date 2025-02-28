@@ -18,7 +18,7 @@
 
 # Game
 + [ ] Adding Gear to gear.go (23) (Aleks)
-+ [ ] Creating Fight function in game.go -> using it everywhere needed (31) (whoever wants)
++ [ ] [NEEDS CREATIVE SOLUTION] Creating Fight function in game.go -> using it everywhere needed (31) (whoever wants)
 
 # GameMechanics
 + [ ] World
