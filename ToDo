@@ -6,7 +6,7 @@
   + [ ] Choosing New Enemy Types
 
 # Gameplay
-+ [ ] Adding Surface Playability (90)
++ [ ] Adding Surface Playability (60)
   + [ ] Conceptualizing Gameplay (To Get A Feeling)
   + [ ] Discussing Gameplay
   + [ ] Implementing Gameplay
@@ -39,11 +39,11 @@
 + [ ] Main.go (Continuous)
 
 # Animation
-+ [ ] Text (60)
++ [ ] Text (70)
 + [ ] Fight (90)
 
 
 # UI
-+ [ ] Menu (45) (Ferit)
++ [x] Menu
 + [ ] OverallBeauty (97)
 
