@@ -163,20 +163,20 @@ func NewGear(itemTyp string, itemName string) *Gear {
 // Gets Nothing
 // Creates Item based on rand.Intn() + ItemArrays
 // Returns Item
-func ItemDrop() *Gear {
+func ItemDrop(world_barrier int) *Gear {
 	var rarity string
 
 	var dropNumber int = rand.Intn(10000) + 1
 	switch {
-	case dropNumber <= 9250 && dropNumber > 5050: //42%
+	case dropNumber <= 9250-(world_barrier*286) && dropNumber > 5050-(world_barrier*886): //42% , +6%
 		rarity = "Common"
-	case dropNumber <= 9800 && dropNumber > 9250: //5,5%
+	case dropNumber <= 9800-(world_barrier*86) && dropNumber > 9250-(world_barrier*286): //5,5% , +2%
 		rarity = "Greater"
-	case dropNumber <= 9950 && dropNumber > 9800: //1,5%
+	case dropNumber <= 9950-(world_barrier*36) && dropNumber > 9800-(world_barrier*86): //1,5% , +0,5%
 		rarity = "Unique"
-	case dropNumber <= 9990 && dropNumber > 9950: //0,4%
+	case dropNumber <= 9990-(world_barrier*6) && dropNumber > 9950-(world_barrier*36): //0,4% , +0,3%
 		rarity = "Mythical"
-	case dropNumber <= 9999 && dropNumber > 9990: //0,09%
+	case dropNumber <= 9999 && dropNumber > 9990-(world_barrier*6): //0,09% , +0,06%
 		rarity = "Transcendent"
 	case dropNumber == 10000: //0,01%
 		rarity = "Godly"

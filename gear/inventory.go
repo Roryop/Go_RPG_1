@@ -32,8 +32,8 @@ func CreateStatsItems(inventory [10]*InventorySlot) (int, int, int) {
 
 ///////////////////// Adding Item To Inventory /////////////////////
 
-func AddDropToInventory(inventory [10]*InventorySlot) [10]*InventorySlot {
-	var a = ItemDrop()
+func AddDropToInventory(inventory [10]*InventorySlot, world_barrier int) [10]*InventorySlot {
+	var a = ItemDrop(world_barrier)
 
 	if a.gearTyp != "Empty" {
 		fmt.Println("The Enemy dropped a ", a.name, "!")

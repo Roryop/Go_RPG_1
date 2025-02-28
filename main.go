@@ -110,17 +110,18 @@ func main() {
 			///////////////////////// Case Enemy Died ///////////////////////////
 			if enemyStats[1] <= 0 {
 
+				////////////// Setting World Barrier Upgrade Requirement ////////////
+				if i >= 9 {
+					world_barrier += 1
+				}
+
 				//////////////// Enemy Item Drop /////////////
-				inventory = gear.AddDropToInventory(inventory)
+				inventory = gear.AddDropToInventory(inventory, world_barrier)
 
 				///////////////// Player Management ////////////////
 				player1.Exp_Function(enemyStats)                                           // Giving Exp to Player
 				hp, att, def, rec = player1.Level_Management(inventory, hp, att, def, rec) // Player will be healed with levelUp + Updating Stats + Updating current Stats
 
-				////////////// Setting World Barrier Upgrade Requirement ////////////
-				if i >= 9 {
-					world_barrier += 1
-				}
 			}
 
 			//////////////// Clearing Inventory on Player Death ////////////////
