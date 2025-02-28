@@ -4,12 +4,11 @@ import "math/rand"
 
 ///////////////////////////////  Struct Gear Types  //////////////////////////////////
 type Gear struct {
-	damage     int
-	defense    int
-	recovery   int
-	durability int
-	gearTyp    string
-	name       string
+	damage   int
+	defense  int
+	recovery int
+	gearTyp  string
+	name     string
 }
 
 ///////////////////////////////  Set Attributes  //////////////////////////////////
@@ -23,8 +22,6 @@ func (g *Gear) SetAttributesGear() {
 		g.defense = 0
 	case "Armor":
 		g.damage = 0
-	case "Accessoire":
-		g.durability = -1 //Equipment is destroyed at 0 durability, so Accessoires have -1
 	default:
 		break
 	}
@@ -34,69 +31,63 @@ func (g *Gear) SetAttributesGear() {
 	/////////////////////// Weapons ////////////////////////
 
 	////////////// Common ///////////////
-	case "Dagger(Common)":
-		g.damage = 3
-		g.durability = 10
-
-	case "Spear(Common)":
+	case "Dolch":
 		g.damage = 4
-		g.durability = 10
 
-	case "Spitzer Stein(Common)":
-		g.damage = 1
-		g.durability = 10
+	case "Rostige Nagel":
+		g.damage = 3
 
-	case "(Common)":
+	case "Spitzer Stein":
 		g.damage = 1
-		g.durability = 10
+
+	case "Sock Mace":
+		g.damage = 2
 
 	////////////// Greater ///////////////
-	case "Dagger(Greater)":
-		g.damage = 9
-		g.durability = 10
+	case "Rapier":
+		g.damage = 11
 
-	case "Spear(Greater)":
-		g.damage = 13
-		g.durability = 10
+	case "Flamberge":
+		g.damage = 14
+
+	case "Claymore":
+		g.damage = 16
 
 	////////////// Unique ///////////////
-	case "Rheimzadetz´ Dagger":
-		g.damage = 101
-		g.durability = 10
+	case "Bastard Sword":
+		g.damage = 135
 
-	case "Radu´s Greatsword":
+	//Nicht in WeaponArray (DropPool)
+	case "Ankylosaurus Schwanz":
 		g.damage = 140
 		g.defense = 10
-		g.durability = 10
 
-	case "Grogerz´ Spear":
+	case "Mantis Klingen":
 		g.damage = 135
-		g.durability = 10
+		g.defense = 15
+
+	case "smith & wesson 500 bone crusher":
+		g.damage = 150
 
 	/////////////////////// Armor //////////////////////////
 
 	////////////// Common ///////////////
 	case "Leather Breastplate(Common)":
 		g.defense = 2
-		g.durability = 10
 
 	////////////// Greater ///////////////
 	case "Iron Breastplate(Greater)":
 		g.defense = 13
-		g.durability = 10
 
 	////////////// Unique ///////////////
 	case "Rheimzadetz´ Breastplate":
 		g.defense = 102
-		g.durability = 10
 
 	case "Radu´s Breastplate":
 		g.defense = 165
-		g.durability = 10
 
 	case "Grogerz´ Breastplate":
 		g.defense = 133
-		g.durability = 10
 
 	/////////////////////// Accessoires ///////////////////
 
@@ -203,9 +194,11 @@ func ItemDrop(world_barrier int) *Gear {
 	var itemTyp string = itemTypArray[itemTypNumber]
 
 	//////////////////////// Item Arrays Rarity Common //////////////////////
-	var weaponArrayCommon [2]string = [2]string{
-		"Dagger(Common)",
-		"Spear(Common)"}
+	var weaponArrayCommon [4]string = [4]string{
+		"Dolch",
+		"Rostige Nagel",
+		"Spitzer Stein",
+		"Sock Mace"}
 
 	var armorArrayCommon [1]string = [1]string{
 		"Leather Breastplate(Common)"}
@@ -216,9 +209,10 @@ func ItemDrop(world_barrier int) *Gear {
 		"Ring of Recovery(Common)"}
 
 	//////////////////////// Item Arrays Rarity Greater //////////////////////
-	var weaponArrayGreater [2]string = [2]string{
-		"Dagger(Greater)",
-		"Spear(Greater)"}
+	var weaponArrayGreater [3]string = [3]string{
+		"Flamberge",
+		"Claymore",
+		"Rapier"}
 
 	var armorArrayGreater [1]string = [1]string{
 		"Iron Breastplate(Greater)"}
@@ -230,9 +224,7 @@ func ItemDrop(world_barrier int) *Gear {
 
 	//////////////////////// Item Arrays Rarity Unique //////////////////////
 	var weaponArrayUnique [3]string = [3]string{
-		"Rheimzadetz´ Dagger",
-		"Radu´s Greatsword",
-		"Grogerz´ Spear"}
+		"Bastard Sword"}
 
 	var armorArrayUnique [3]string = [3]string{
 		"Rheimzadetz´ Breastplate",
