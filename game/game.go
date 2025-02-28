@@ -52,53 +52,53 @@ func ChoosePlace(placeArray [3]string, world string) [3]string {
 		fmt.Scanln(&place)
 
 		switch {
-		case place == "Place1" && world == "cyberpunk":
+		case place == "slums" && world == "cyberpunk":
+			eventArray = [3]string{"event1", "event2", "event3"}
+			isInLoop = false
+		case place == "busimess" && world == "cyberpunk":
 			eventArray = [3]string{}
 			isInLoop = false
-		case place == "Place1" && world == "cyberpunk":
-			eventArray = [3]string{}
-			isInLoop = false
-		case place == "Place1" && world == "cyberpunk":
-			eventArray = [3]string{}
-			isInLoop = false
-
-		case place == "Place2" && world == "middleage":
-			eventArray = [3]string{}
-			isInLoop = false
-		case place == "Place2" && world == "middleage":
-			eventArray = [3]string{}
-			isInLoop = false
-		case place == "Place2" && world == "middleage":
+		case place == "outer city" && world == "cyberpunk":
 			eventArray = [3]string{}
 			isInLoop = false
 
-		case place == "Place3" && world == "armageddon":
+		case place == "forest" && world == "middleage":
 			eventArray = [3]string{}
 			isInLoop = false
-		case place == "Place3" && world == "armageddon":
+		case place == "castle" && world == "middleage":
 			eventArray = [3]string{}
 			isInLoop = false
-		case place == "Place3" && world == "armageddon":
-			eventArray = [3]string{}
-			isInLoop = false
-
-		case place == "Place3" && world == "prehistory":
-			eventArray = [3]string{}
-			isInLoop = false
-		case place == "Place3" && world == "prehistory":
-			eventArray = [3]string{}
-			isInLoop = false
-		case place == "Place3" && world == "prehistory":
+		case place == "village" && world == "middleage":
 			eventArray = [3]string{}
 			isInLoop = false
 
-		case place == "Place3" && world == "wildwest":
+		case place == "ground zero" && world == "armageddon":
 			eventArray = [3]string{}
 			isInLoop = false
-		case place == "Place3" && world == "wildwest":
+		case place == "settlement" && world == "armageddon":
 			eventArray = [3]string{}
 			isInLoop = false
-		case place == "Place3" && world == "wildwest":
+		case place == "ghost town" && world == "armageddon":
+			eventArray = [3]string{}
+			isInLoop = false
+
+		case place == "cave" && world == "prehistory":
+			eventArray = [3]string{}
+			isInLoop = false
+		case place == "jungle" && world == "prehistory":
+			eventArray = [3]string{}
+			isInLoop = false
+		case place == "mountain" && world == "prehistory":
+			eventArray = [3]string{}
+			isInLoop = false
+
+		case place == "pub" && world == "wildwest":
+			eventArray = [3]string{}
+			isInLoop = false
+		case place == "sheriff" && world == "wildwest":
+			eventArray = [3]string{}
+			isInLoop = false
+		case place == "goldmine" && world == "wildwest":
 			eventArray = [3]string{}
 			isInLoop = false
 		}
@@ -129,19 +129,19 @@ func SetWorldEnemy(world string, world_barrier int) ([3]string, int) {
 	switch world {
 	case "cyberpunk":
 
-		placeArray = [3]string{"Slums", "Busimess", "Outer City"}
+		placeArray = [3]string{"slums", "busimess", "outer city"}
 	case "middleage":
 
-		placeArray = [3]string{"Forest", "Castle", "Village"}
+		placeArray = [3]string{"forest", "castle", "village"}
 	case "armageddon":
 
-		placeArray = [3]string{"Ground Zero", "Settlement", "Ghost Town"}
+		placeArray = [3]string{"ground zero", "settlement", "ghost town"}
 	case "prehistory":
 
-		placeArray = [3]string{"Cave", "Jungle", "Mountain"}
+		placeArray = [3]string{"cave", "jungle", "mountain"}
 	case "wildwest":
 
-		placeArray = [3]string{"Pub", "Sherrif", "Goldmine"}
+		placeArray = [3]string{"pub", "sherrif", "goldmine"}
 	default:
 		/*
 
