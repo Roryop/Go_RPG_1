@@ -10,14 +10,14 @@ import (
 func Menu() int {
 	var menuChoice int
 
-	fmt.Println("-----------------------------------------")
-	fmt.Println("| 1 - Explore a World                   |")
-	fmt.Println("| 2 - Know your current difficulty      |")
-	fmt.Println("| 3 - See your Stats                    |")
-	fmt.Println("| 4 - See your Inventory                |")
-	fmt.Println("| 5 - See the Map                       |")
-	fmt.Println("| 6 - End the Game                      |")
-	fmt.Println("-----------------------------------------")
+	fmt.Println("---------------------------------------------")
+	fmt.Println("| 1 - Eine Welt erkunden                    |")
+	fmt.Println("| 2 - Aktuellen Schwierigkeitsgrad sehen    |")
+	fmt.Println("| 3 - Stats sehen                           |")
+	fmt.Println("| 4 - Inventar sehen                        |")
+	fmt.Println("| 5 - Map sehen                             |")
+	fmt.Println("| 6 - Spiel beenden                         |")
+	fmt.Println("---------------------------------------------")
 
 	fmt.Scanln(&menuChoice)
 

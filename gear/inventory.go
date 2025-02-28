@@ -36,10 +36,10 @@ func AddDropToInventory(inventory [10]*InventorySlot, world_barrier int) [10]*In
 	var a = ItemDrop(world_barrier)
 
 	if a.gearTyp != "Empty" {
-		fmt.Println("The Enemy dropped a ", a.name, "!")
+		fmt.Println("Der Gegner hat einen ", a.name, " gedroppt!")
 		inventory = AddToInventory(inventory, a)
 	} else {
-		text.Print("The Enemy sadly did not drop any Items :c")
+		text.Print("Der Gegner hat leider keine Items gedroppt :c")
 	}
 
 	return inventory
@@ -51,15 +51,15 @@ func AddDropToInventory(inventory [10]*InventorySlot, world_barrier int) [10]*In
 func AddToInventory(inventory [10]*InventorySlot, item *Gear) [10]*InventorySlot {
 	var wishToStore string
 
-	text.Print("Do you want to store this Item in your Inventory? /yes /no")
+	text.Print("Möchtest du dieses Item in deinem Inventar verstauen? /ja /nein")
 	fmt.Scanln(&wishToStore)
 	wishToStore = strings.ToLower(wishToStore)
 
-	if wishToStore == "yes" {
+	if wishToStore == "ja" {
 		var slot int
 
 		for slot < 1 || slot > 10 {
-			text.Print("In which Slot do you want to store the Item?")
+			text.Print("In welchem Slot möchtest du es verstauen?")
 			text.ShortWait()
 
 			GiveInventoryInformation(inventory)
@@ -75,15 +75,15 @@ func AddToInventory(inventory [10]*InventorySlot, item *Gear) [10]*InventorySlot
 			inventory[slot-1].count += 1
 		}
 
-		text.Print("Item has been stored.")
+		text.Print("Das Item wurde verstaut.")
 		text.ShortWait()
-		text.Print("Checking Inventory:")
+		text.Print("Überprüfe Inventar:")
 		text.ShortWait()
 
 		GiveInventoryInformation(inventory)
 	} else {
-		text.Print("You have chosen not to store the Item.")
-		text.Print("You discard it.")
+		text.Print("Du hast dich dazu entschieden, dieses Item nicht zu verstauen.")
+		text.Print("Du wirfst es weg.")
 	}
 	return inventory
 }
@@ -94,7 +94,7 @@ func AddToInventory(inventory [10]*InventorySlot, item *Gear) [10]*InventorySlot
 // Gives out Content of all Inventory Slots
 // Returns Nothing
 func GiveInventoryInformation(inventory [10]*InventorySlot) {
-	fmt.Println("Inventory:")
+	fmt.Println("Inventar:")
 	for i := 0; i < 10; i++ {
 		fmt.Print("\n Slot ", i+1, ":		", inventory[i].count, " ", inventory[i].item.name)
 	}

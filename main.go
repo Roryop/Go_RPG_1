@@ -82,7 +82,7 @@ func main() {
 
 			case 2:
 
-				text.Print("Your current Difficulty Level is " + fmt.Sprint(world_barrier))
+				text.Print("Dein aktueller Schwierigkeitsgrad ist " + fmt.Sprint(world_barrier) + "!")
 
 				menuChoice = menu.Menu() //In case Game is not ended or started, refresh menuChoice
 			case 3:
@@ -97,7 +97,7 @@ func main() {
 				menuChoice = menu.Menu()
 			case 5:
 
-				text.Print("Not yet implemented")
+				text.Print("Not yet implemented.")
 
 				menuChoice = menu.Menu()
 			case 6:

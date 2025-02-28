@@ -81,8 +81,8 @@ func (w *Player) UpdateSpStats() {
 	var allocation int
 
 	for w.bonusPoints >= 1 {
-		fmt.Println("Du hast gerade", w.bonusPoints, "Bonuspunkt.")
-		fmt.Println("Bitte lege deine Bonus-Punkte fest:")
+		fmt.Println("Du hast gerade", w.bonusPoints, "Bonuspunkt/e.")
+		fmt.Println("Bitte lege deinen Bonuspunkt fest:")
 		fmt.Println("1: HP")
 		fmt.Println("2: Att")
 		fmt.Println("3: Def")
