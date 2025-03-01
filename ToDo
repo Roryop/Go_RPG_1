@@ -24,6 +24,7 @@
 + [ ] World
   + [x] From Int To String
   + [x] ChoosePlace 
+  + [ ] Putting Corresponding events into Corresponding eventArray (15)
   + [ ] ExecuteEvent / Adding Content (20) (Timothy)
 + [ ] Enemy
   + [ ] Enemy Creation capable of BOTH random Creation AND intended Creation (28) (Martin)
