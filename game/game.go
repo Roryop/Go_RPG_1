@@ -41,7 +41,7 @@ func Chooseworld(world_barrier int) string {
 }
 
 // Gets placeArray
-func ChoosePlace(placeArray [3]string, world string) [3]string {
+func ChoosePlace(placeArray [3]string, world string) (string, [3]string) {
 
 	var place string
 	var eventArray [3]string
@@ -106,7 +106,7 @@ func ChoosePlace(placeArray [3]string, world string) [3]string {
 		}
 	}
 	fmt.Println("Du hast", strings.ToUpper(place), "ausgewählt")
-	return eventArray
+	return place, eventArray
 }
 
 // Gets EventArray
