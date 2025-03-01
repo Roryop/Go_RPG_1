@@ -122,11 +122,10 @@ func EventGenerator(eventArray [3]string) string {
 }
 
 // Gets world and world_barrier
-// Decides Events and Enemy_level based on world + rand.Intn()
-// Returns eventArray and Enemy_level
-func SetWorldEnemy(world string, world_barrier int) ([3]string, int) {
+// Decides placeArray based on world
+// Returns placeArray
+func SetPlaceArray(world string) [3]string {
 	var placeArray [3]string
-	var enemy_level = 0
 
 	switch world {
 	case "cyberpunk":
@@ -155,6 +154,14 @@ func SetWorldEnemy(world string, world_barrier int) ([3]string, int) {
 		placeArray = [3]string{"Place1", "Place2", "Place3"}
 
 	}
+	return placeArray
+}
+
+// Gets world and world_barrier
+// Decides enemy_level based on world + world_barrier + rand.Intn()
+// Returns enemy_level
+func SetEnemyLevel(world string, world_barrier int) int {
+	var enemy_level = 0
 
 	// Only changes enemy_level based on world_barrier if correct world was chosen, tutorial will stay level 0
 	if world == "cyberpunk" || world == "middleage" || world == "armageddon" || world == "prehistory" || world == "wildwest" {
@@ -202,5 +209,5 @@ func SetWorldEnemy(world string, world_barrier int) ([3]string, int) {
 		}
 	}
 
-	return placeArray, enemy_level
+	return enemy_level
 }
