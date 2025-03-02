@@ -9,7 +9,7 @@ import (
 )
 
 func Robbery(player1 *player.Player, inventory [10]*gear.InventorySlot, hp, att, def, rec int, world string, world_barrier int) ([4]int, int, int, int, int) {
-	text.Print("Du wirst von einem Räuber angeriffen")
+	text.Print("Du wirst von einem hinterhältigen Räuber angeriffen")
 
 	var enemyName, enemyStats = enemy.CreateEnemy(world, world_barrier)
 
