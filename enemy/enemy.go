@@ -19,58 +19,22 @@ type Wesen struct {
 // Gets Game_level
 // Creates Enemy depending on Game_level
 // Returns Enemy Name and Enemy Stats
-func CreateEnemy(world string, world_barrier int) (string, [4]int) {
+func CreateEnemy(world string, world_barrier int, typ int) (string, [4]int) {
 	var enemy_level = game.SetEnemyLevel(world, world_barrier)
 
 	// Decides on Enemy Typ + creates empty Variables for it
-	var typ int
 	var enemyStats [4]int
 	var enemyName string
+
+	if typ == 0 {
+		typ = rand.Intn(17) + 1
+	}
 
 	// Creates Stats and Name of Enemy depending on Enemy Typ + Enemy level
 	var gegner = NewEnemy()
 	gegner.SetEnemyTyp(typ)
 	enemyStats = gegner.GetStatsEnemy(enemy_level)
 	enemyName = gegner.name
-
-	switch enemyName {
-	case "Ork":
-		typ = 1
-	case "Wolf":
-		typ = 2
-	case "Baer":
-		typ = 3
-	case "Raeuber":
-		typ = 4
-	case "Burgritter":
-		typ = 5
-	case "betrunkener Dorfbewohner":
-		typ = 6
-	case "Mutantenratte":
-		typ = 7
-	case "dreikoepfige Schlange":
-		typ = 8
-	case "laufende Makrowelle":
-		typ = 9
-	case "Pluenderer":
-		typ = 10
-	case "Triceratops":
-		typ = 11
-	case "Pterodactylus":
-		typ = 12
-	case "prehistorische Bergsteigerziege":
-		typ = 13
-	case "Johannes Bleileber":
-		typ = 14
-	case "Juan Pared Caballero":
-		typ = 15
-	case "Sheriff Joe Swanson":
-		typ = 16
-	case "Koyot":
-		typ = 17
-	default:
-		typ = rand.Intn(17) + 1
-	}
 
 	return enemyName, enemyStats
 }

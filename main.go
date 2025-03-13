@@ -120,7 +120,7 @@ func main() {
 			fmt.Println(event)
 
 			////////////////////// Setting Up Enemy ////////////////////////
-			var enemyName, enemyStats = enemy.CreateEnemy(world, world_barrier)
+			var enemyName, enemyStats = enemy.CreateEnemy(world, world_barrier, 0)
 
 			fmt.Println("Du fightest einen", enemyName+"!!!")
 			fmt.Println("Er ist Level", enemyStats[0], "!!!")
