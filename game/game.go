@@ -3,6 +3,9 @@ package game
 import (
 	"fmt"
 	"math/rand"
+	"start/enemy"
+	"start/gear"
+	"start/player"
 	"strings"
 )
 
@@ -157,57 +160,84 @@ func SetPlaceArray(world string) [3]string {
 	return placeArray
 }
 
-// Gets world and world_barrier
-// Decides enemy_level based on world + world_barrier + rand.Intn()
-// Returns enemy_level
-func SetEnemyLevel(world string, world_barrier int) int {
-	var enemy_level = 0
+// Gets Player, Inventory, current stats, world, world_barrier, typ of enemy
+// Creates Enemy, Fights against enemy; Updates player Stats
+// Returns enemyStats, new current Stats
 
-	// Only changes enemy_level based on world_barrier if correct world was chosen, tutorial will stay level 0
-	if world == "cyberpunk" || world == "middleage" || world == "armageddon" || world == "prehistory" || world == "wildwest" {
-		switch world_barrier {
+func Fight(player1 *player.Player, inventory [10]*gear.InventorySlot, hp, att, def, rec int, world string, world_barrier int, typ int) (*player.Player, [10]*gear.InventorySlot, int, int, int, int, int) {
+
+	///////// REQUIREMENT FOR UPGRADING WORLD BARRIER ///////////////////
+
+	var barrierRequirement = 0
+
+	////////////////////////////////////////////////////////////////////
+
+	var enemyName, enemyStats = enemy.CreateEnemy(world, world_barrier, typ)
+
+	fmt.Println("Du fightest einen", enemyName+"!!!")
+	fmt.Println("Er ist Level", enemyStats[0], "!!!")
+	fmt.Println("Er hat", enemyStats[1], "HP!")
+	fmt.Println("Du hast", hp, "HP!")
+
+	for enemyStats[1] > 0 && hp > 0 {
+		var choice = 1
+
+		//Anfrage wegen Angriff
+		fmt.Println("Möchtest du angreifen?")
+		fmt.Println("1: Ja")
+		fmt.Println("2: Nein")
+		fmt.Println("3: Eigene Stats sehen")
+		fmt.Println("4: Inventory sehen")
+		fmt.Println("5: End Game")
+		fmt.Scanln(&choice)
+
+		//Angreifen
+		switch choice {
 		case 1:
+			//Player attacks Enemy
+			enemyStats[1] = enemyStats[1] - ((att * 100) / (100 + enemyStats[3]))
+			fmt.Println("Der", enemyName, "hat noch", enemyStats[1], "HP")
+			//Enemy attacks Player
+			if enemyStats[1] > 0 {
+				hp = hp - ((enemyStats[2] * 100) / (100 + def))
+			}
+			fmt.Println("Du hast noch", hp, "HP")
 
-			//enemy_level between 1 and 3
-			enemy_level = rand.Intn(3) + 1
 		case 2:
+			fmt.Println("Du hast nicht angegriffen")
+			//Enemy attacks Player
+			hp = hp - ((enemyStats[2] * 100) / (100 + def))
+			fmt.Println("Du hast noch", hp, "HP")
 
-			//enemy_level between 3 and 5
-			enemy_level = rand.Intn(3) + 3
 		case 3:
-
-			//enemy_level between 6 and 10
-			enemy_level = rand.Intn(5) + 6
+			player1.SeePlayerStats(inventory, hp, att, def, rec)
 		case 4:
-
-			//Gegnerlevel between 11 und 20
-			enemy_level = rand.Intn(10) + 11
+			gear.GiveInventoryInformation(inventory)
 		case 5:
-
-			//Gegnerlevel between 15 und 25
-			enemy_level = rand.Intn(11) + 15
-		case 6:
-
-			//Gegnerlevel between 30 und 35
-			enemy_level = rand.Intn(6) + 30
-		case 7:
-
-			//Gegnerlevel between 34 und 36
-			enemy_level = rand.Intn(3) + 34
-		case 8:
-
-			//Gegnerlevel between 36 und 40
-			enemy_level = rand.Intn(5) + 36
-		case 9:
-
-			//Gegnerlevel between 40 und 45
-			enemy_level = rand.Intn(6) + 40
-		case 10:
-
-			//Gegnerlevel between 45 und 50
-			enemy_level = rand.Intn(6) + 45
+			goto end
 		}
 	}
+	///////////////////////// Case Enemy Died ///////////////////////////
+	if enemyStats[1] <= 0 {
 
-	return enemy_level
+		////////////// Setting World Barrier Upgrade Requirement ////////////
+		if barrierRequirement >= 9 {
+			world_barrier += 1
+		}
+
+		//////////////// Enemy Item Drop /////////////
+		inventory = gear.AddDropToInventory(inventory, world_barrier)
+
+		///////////////// Player Management ////////////////
+		player1.Exp_Function(enemyStats)                                           // Giving Exp to Player
+		hp, att, def, rec = player1.Level_Management(inventory, hp, att, def, rec) // Player will be healed with levelUp + Updating Stats + Updating current Stats
+
+	}
+
+	//////////////// Clearing Inventory on Player Death ////////////////
+	if hp <= 0 {
+		inventory = gear.FillEmptyInventory(inventory)
+	}
+end:
+	return player1, inventory, hp, att, def, rec, world_barrier
 }
