@@ -66,66 +66,78 @@ func (g *Gear) SetAttributesGear() {
 		g.damage = 135
 		g.defense = 15
 
-	case "smith & wesson 500 bone crusher":
+	case "Smith & Wesson 500 Bone Crusher":
 		g.damage = 150
 
 	/////////////////////// Armor //////////////////////////
 
 	////////////// Common ///////////////
-	case "Leather Breastplate(Common)":
+	case "Enge Leder Hose":
 		g.defense = 2
 
+	case "Weihnachtssocken":
+		g.defense = 3
+
+	case "Ungewaschener Unterhemd":
+		g.defense = 5
+
 	////////////// Greater ///////////////
-	case "Iron Breastplate(Greater)":
+	case "Eisen Rüstung":
 		g.defense = 13
 
+	case "Kettenhemd":
+		g.defense = 11
+
+	case "Gold Rüstung":
+		g.defense = 15
+
 	////////////// Unique ///////////////
-	case "Rheimzadetz´ Breastplate":
-		g.defense = 102
+	case "Kevlar Rüstung":
+		g.defense = 37
 
-	case "Radu´s Breastplate":
-		g.defense = 165
+	case "Pyrex Glass Rüstung":
+		g.defense = 40
 
-	case "Grogerz´ Breastplate":
-		g.defense = 133
+	case "Obsidian Rüstung":
+		g.defense = 38
 
 	/////////////////////// Accessoires ///////////////////
 
 	////////////// Common ///////////////
-	case "Ring of Strength(Common)":
-
-		g.damage = 1
-
-	case "Ring of Resilience(Common)":
-
-		g.defense = 1
-
-	case "Ring of Recovery(Common)":
-
-		g.recovery = 1
-
-	////////////// Greater ///////////////
-	case "Ring of Strength(Greater)":
+	case "Spinat":
 
 		g.damage = 10
 
-	case "Ring of Resilience(Greater)":
+	case "Actimel":
 
 		g.defense = 10
 
-	case "Ring of Recovery(Greater)":
+	case "Hello Kitty Verband":
 
 		g.recovery = 10
 
+	////////////// Greater ///////////////
+	case "Mehr Spinat":
+
+		g.damage = 25
+
+	case "Yakult":
+
+		g.defense = 25
+
+	case "Lecker Bierchen":
+
+		g.recovery = 25
+
 	////////////// Unique ///////////////
-	case "Rheimzadetz´ Ring of Strength":
-		g.damage = 104
+	case "Popeyes Eigener Spinat":
+		g.damage = 50
 
-	case "Radu´s Ring of Recovery":
-		g.recovery = 137
+	case "Starker Glaube":
+		g.recovery = 50
 
-	case "Grogerz´ Ring of Resilience":
-		g.defense = 170
+	case "Flintstone Vitamine":
+		g.defense = 50
 	}
 
 }
@@ -200,13 +212,15 @@ func ItemDrop(world_barrier int) *Gear {
 		"Spitzer Stein",
 		"Sock Mace"}
 
-	var armorArrayCommon [1]string = [1]string{
-		"Leather Breastplate(Common)"}
+	var armorArrayCommon [3]string = [3]string{
+		"Enge Leder Hose",
+		"Weihnachtssocken",
+		"Ungewaschener Unterhemd"}
 
 	var accessoireArrayCommon [3]string = [3]string{
-		"Ring of Strength(Common)",
-		"Ring of Resilience(Common)",
-		"Ring of Recovery(Common)"}
+		"Spinat",
+		"Actimel",
+		"Hello Kitty Verband"}
 
 	//////////////////////// Item Arrays Rarity Greater //////////////////////
 	var weaponArrayGreater [3]string = [3]string{
@@ -214,13 +228,15 @@ func ItemDrop(world_barrier int) *Gear {
 		"Claymore",
 		"Rapier"}
 
-	var armorArrayGreater [1]string = [1]string{
-		"Iron Breastplate(Greater)"}
+	var armorArrayGreater [3]string = [3]string{
+		"Eisen Rüstung",
+		"Kettenhemd",
+		"Gold Rüstung"}
 
 	var accessoireArrayGreater [3]string = [3]string{
-		"Ring of Strength(Greater)",
-		"Ring of Resilience(Greater)",
-		"Ring of Recovery(Greater)"}
+		"Mehr Spinat",
+		"Yakult",
+		"Lecker Bierchen"}
 
 	//////////////////////// Item Arrays Rarity Unique //////////////////////
 	var weaponArrayUnique [3]string = [3]string{
