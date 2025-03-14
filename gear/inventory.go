@@ -91,6 +91,46 @@ func AddToInventory(inventory [10]*InventorySlot, item *Gear) [10]*InventorySlot
 	return inventory
 }
 
+// Gets Inventory
+// Subtracts one Item from Inventory
+// Returns Inventory
+func SubtractFromInventory(inventory [10]*InventorySlot) [10]*InventorySlot {
+	var slot int
+	var choice int
+
+	for choice != 1 {
+		for slot < 1 || slot > 10 {
+			text.Print("Aus welchem Slot möchtest du ein Item aus deinem Inventory entfernen?")
+			GiveInventoryInformation(inventory)
+			fmt.Scanln(&slot)
+
+			if inventory[slot-1].count < 0 {
+				text.Print("In diesem Slot befindet sich kein Item!")
+			}
+		}
+
+		text.Print("Bist du dir sicher, dass du " + inventory[slot-1].item.name + " entfernen möchtest?")
+		fmt.Println("1: Ja")
+		fmt.Println("2: Nein")
+		fmt.Scanln(&choice)
+	}
+
+	if inventory[slot-1].count > 0 {
+		inventory[slot-1].count = inventory[slot-1].count - 1 // Count of Item reduced by 1
+	}
+	if inventory[slot-1].count <= 0 {
+		var emptyItemSlot = NewInventorySlot()
+		var emptyItem = NewGear("", "")
+		emptyItemSlot.InputInventorySlot(emptyItem, 0)
+
+		inventory[slot-1] = emptyItemSlot
+	}
+	text.Print("Das Item wurde entfernt.")
+	text.Print("Checking Inventory...")
+	GiveInventoryInformation(inventory)
+	return inventory
+}
+
 ///////////////////// Giving out Inventory Information to user ///////////////
 
 // Gets Inventory
