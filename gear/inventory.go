@@ -3,7 +3,6 @@ package gear
 import (
 	"fmt"
 	"start/text"
-	"strings"
 )
 
 type InventorySlot struct {
@@ -52,13 +51,14 @@ func AddDropToInventory(inventory [10]*InventorySlot, world_barrier int) [10]*In
 // Puts Item into allocated InventorySlot
 // Returns Inventory
 func AddToInventory(inventory [10]*InventorySlot, item *Gear) [10]*InventorySlot {
-	var wishToStore string
+	var wishToStore int
 
-	text.Print("Möchtest du dieses Item in deinem Inventar verstauen? /ja /nein")
+	text.Print("Möchtest du dieses Item in deinem Inventar verstauen?")
+	fmt.Println("1: Ja")
+	fmt.Println("2: Nein")
 	fmt.Scanln(&wishToStore)
-	wishToStore = strings.ToLower(wishToStore)
 
-	if wishToStore == "ja" {
+	if wishToStore == 1 {
 		var slot int
 
 		for slot < 1 || slot > 10 {
