@@ -35,17 +35,17 @@ func Bonfire(player1 *player.Player, inventory [10]*gear.InventorySlot, hp, att,
 	return hp
 }
 
-// Spieler darf auswählen ob er einen Pilz isst
+// Spieler wählt aus ob er einen Pilz isst
 // Gets PlayerHP, PlayerMaxHp
 // Returns PlayerHp nach essen oder nicht essen vom Pilz
 func GesunderPilz(player1 *player.Player, inventory [10]*gear.InventorySlot, hp, att, def, rec int, world string, world_barrier int) int {
 	var maxHp, _, _, _ = player1.CreateStats(inventory)
 	var choice int
 
-	text.Print("Du findest einen Pilz?")
+	text.Print("Du findest einen Pilz")
 
 	// Auswahl Pilz essen oder nicht
-	fmt.Println("Möchtest du ihn essen?")
+	text.Print("Möchtest du ihn essen?")
 	fmt.Println("1: Ja")
 	fmt.Println("2: Nein")
 	fmt.Scanln(&choice)
@@ -61,5 +61,30 @@ func GesunderPilz(player1 *player.Player, inventory [10]*gear.InventorySlot, hp,
 }
 
 ////////////////Funktionen für Burg///////////////////////////
+
+// Spieler wählt aus ob er an Hexenverbrennung teil nimmt
+// Gets
+func Hexenjagd(player1 *player.Player, inventory [10]*gear.InventorySlot, hp, att, def, rec int, world string, world_barrier int) {
+	var choice int
+
+	text.Print("Es findet eine Hexenverbrennung statt.")
+
+	// Auswahl Pilz essen oder nicht
+	text.Print("Möchtest du beim Holz nachlegen helfen?")
+	fmt.Println("1: Ja")
+	fmt.Println("2: Nein")
+	fmt.Scanln(&choice)
+
+	if choice == 1 {
+		text.Print("Du spührst wie deine Sündhafte tat deine Wirbelsaüle friert")
+	} else {
+		text.Print("Du fühlst ")
+	}
+	///////////////////////////////////////////////
+	///////////////////////////////////////////////
+	/////////            KARMA           //////////
+	///////////////////////////////////////////////
+	///////////////////////////////////////////////
+}
 
 ////////////////Funktionen für Dorf///////////////////////////
