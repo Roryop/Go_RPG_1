@@ -100,4 +100,28 @@ func Burgritter(player1 *player.Player, inventory [10]*gear.InventorySlot, hp, a
 	return player1, inventory, hp, att, def, rec, world_barrier
 }
 
+// Spieler wird in den Kerker geworfen
+func Kerker(player1 *player.Player, inventory [10]*gear.InventorySlot, hp, att, def, rec int, world string, world_barrier int) (*player.Player, [10]*gear.InventorySlot, int, int, int, int, int) {
+	var choice int
+	var maxHp, maxAtt, _, _ = player1.CreateStats(inventory)
+
+	text.Print("Du würdest aufgrund eines Verdachts in den Kerker geworfen.")
+
+	// Auswahl Pilz essen oder nicht
+	text.Print("Möchtest du versuchen auszubrechen?")
+	fmt.Println("1: Ja")
+	fmt.Println("2: Nein")
+	fmt.Scanln(&choice)
+
+	if choice == 1 {
+		text.Print("Du brichst dir 3 Zehe und 2 Finger.")
+		hp = hp - (maxHp / 7)
+
+	} else {
+		att = att + (maxAtt / 5)
+		text.Print("Durch intensives Training und Meditation baust du Masse auf.")
+	}
+	return player1, inventory, hp, att, def, rec, world_barrier
+}
+
 ////////////////Funktionen für Dorf///////////////////////////
