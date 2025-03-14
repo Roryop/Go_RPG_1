@@ -180,7 +180,7 @@ func Fight(player1 *player.Player, inventory [10]*gear.InventorySlot, hp, att, d
 	fmt.Println("Du hast", hp, "HP!")
 
 	for enemyStats[1] > 0 && hp > 0 {
-		var choice = 1
+		var choice int
 
 		//Anfrage wegen Angriff
 		fmt.Println("Möchtest du angreifen?")
