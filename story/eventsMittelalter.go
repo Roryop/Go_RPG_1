@@ -11,11 +11,11 @@ import (
 ////////////////Funktionen für Wald///////////////////////////
 
 // Spieler wird vom Bär angegriffen
-// Gets playerstats, Kampfalgoritmus
-// Returns playerstats nach Kampf
+// Gets Playerstats, Kampfalgoritmus
+// Returns Playerstats nach Kampf
 func Baerangriff(player1 *player.Player, inventory [10]*gear.InventorySlot, hp, att, def, rec int, world string, world_barrier int) (*player.Player, [10]*gear.InventorySlot, int, int, int, int, int) {
 
-	text.Print("Du wirst von einem Räuber überfallen!!!")
+	text.Print("Du wirst von einem Bär angegriffen")
 
 	player1, inventory, hp, att, def, rec, world_barrier = game.Fight(player1, inventory, hp, att, def, rec, world, world_barrier, 3)
 
@@ -63,7 +63,8 @@ func GesunderPilz(player1 *player.Player, inventory [10]*gear.InventorySlot, hp,
 ////////////////Funktionen für Burg///////////////////////////
 
 // Spieler wählt aus ob er an Hexenverbrennung teil nimmt
-// Gets
+// Gets PlayerStats
+// returns nothing
 func Hexenjagd(player1 *player.Player, inventory [10]*gear.InventorySlot, hp, att, def, rec int, world string, world_barrier int) {
 	var choice int
 
@@ -76,15 +77,27 @@ func Hexenjagd(player1 *player.Player, inventory [10]*gear.InventorySlot, hp, at
 	fmt.Scanln(&choice)
 
 	if choice == 1 {
-		text.Print("Du spührst wie deine Sündhafte tat deine Wirbelsaüle friert")
+		text.Print("Du spührst wie deine Sündhafte tat deine Wirbelsaüle friert.")
 	} else {
-		text.Print("Du fühlst ")
+		text.Print("Du entscheidest dich nicht in den natürlichen Prozess einzumischen.")
 	}
 	///////////////////////////////////////////////
 	///////////////////////////////////////////////
 	/////////            KARMA           //////////
 	///////////////////////////////////////////////
 	///////////////////////////////////////////////
+}
+
+// Spieler kämpft gegen Burgritter
+// Gets PlayerStats, Kampfalgoritmus
+// Returns Playerstats nach Kampf
+func Burgritter(player1 *player.Player, inventory [10]*gear.InventorySlot, hp, att, def, rec int, world string, world_barrier int) (*player.Player, [10]*gear.InventorySlot, int, int, int, int, int) {
+
+	text.Print("Ein Burgritter fordert dich zu einer Duell heraus.")
+
+	player1, inventory, hp, att, def, rec, world_barrier = game.Fight(player1, inventory, hp, att, def, rec, world, world_barrier, 3)
+
+	return player1, inventory, hp, att, def, rec, world_barrier
 }
 
 ////////////////Funktionen für Dorf///////////////////////////
