@@ -58,7 +58,7 @@ func ChoosePlace(placeArray [3]string, world string) (string, [3]string) {
 
 		switch {
 		case place == "slums" && world == "cyberpunk":
-			eventArray = [3]string{"event1", "event2", "event3"}
+			eventArray = [3]string{"Robbery", "Bettler", "Muelltonne"}
 			isInLoop = false
 		case place == "busimess" && world == "cyberpunk":
 			eventArray = [3]string{}
