@@ -24,7 +24,7 @@ func Mutantenratte(player1 *player.Player, inventory [10]*gear.InventorySlot, hp
 // Spieler wird von einer dreikoepfigen Schlange angegriffen
 // Gets Playerstats, Kampfalgoritmus
 // Returns Playerstats nach Kampf
-func Dreikoepfigeschlange(player1 *player.Player, inventory [10]*gear.InventorySlot, hp, att, def, rec int, world string, world_barrier int) (*player.Player, [10]*gear.InventorySlot, int, int, int, int, int) {
+func DreikoepfigeSchlange(player1 *player.Player, inventory [10]*gear.InventorySlot, hp, att, def, rec int, world string, world_barrier int) (*player.Player, [10]*gear.InventorySlot, int, int, int, int, int) {
 
 	text.Print("Du wirst von eine dreikoepfigen Schlange angegriffen!")
 
@@ -36,7 +36,7 @@ func Dreikoepfigeschlange(player1 *player.Player, inventory [10]*gear.InventoryS
 // Spieler wird von einer laufenden Makrowelle angegriffen
 // Gets Playerstats, Kampfalgoritmus
 // Returns Playerstats nach Kampf
-func Laufendemakrowelle(player1 *player.Player, inventory [10]*gear.InventorySlot, hp, att, def, rec int, world string, world_barrier int) (*player.Player, [10]*gear.InventorySlot, int, int, int, int, int) {
+func LaufendeMakrowelle(player1 *player.Player, inventory [10]*gear.InventorySlot, hp, att, def, rec int, world string, world_barrier int) (*player.Player, [10]*gear.InventorySlot, int, int, int, int, int) {
 
 	text.Print("Du wirst von einer laufenden Makrowelle angegriffen!")
 
@@ -50,7 +50,7 @@ func Laufendemakrowelle(player1 *player.Player, inventory [10]*gear.InventorySlo
 // Spieler wird von einer laufenden Makrowelle angegriffen
 // Gets Playerstats, Kampfalgoritmus
 // Returns Playerstats nach Kampf
-func Pluenderer(player1 *player.Player, inventory [10]*gear.InventorySlot, hp, att, def, rec int, world string, world_barrier int) (*player.Player, [10]*gear.InventorySlot, int, int, int, int, int) {
+func PluendererGroup(player1 *player.Player, inventory [10]*gear.InventorySlot, hp, att, def, rec int, world string, world_barrier int) (*player.Player, [10]*gear.InventorySlot, int, int, int, int, int) {
 	var choice int
 
 	text.Print("Die Siedlung wird von Plünderern überrannt.")
@@ -67,7 +67,7 @@ func Pluenderer(player1 *player.Player, inventory [10]*gear.InventorySlot, hp, a
 		player1, inventory, hp, att, def, rec, world_barrier = Fight(player1, inventory, hp, att, def, rec, world, world_barrier, 10)
 
 	} else {
-		text.Print("Du bist wie ein Feige weggerannt")
+		text.Print("Du bist wie ein Feigling weggerannt")
 	}
 
 	return player1, inventory, hp, att, def, rec, world_barrier
@@ -101,7 +101,7 @@ func Stammarzt(player1 *player.Player, inventory [10]*gear.InventorySlot, hp, at
 // Spieler wählt aus ob er steine an den Rotzbuben zurückwirft
 // Gets PlayerStats
 // returns nothing
-func Verletzterbewohner(player1 *player.Player, inventory [10]*gear.InventorySlot, hp, att, def, rec int, world string, world_barrier int) {
+func VerletzterBewohner(player1 *player.Player, inventory [10]*gear.InventorySlot, hp, att, def, rec int, world string, world_barrier int) {
 	var choice int
 
 	text.Print("Du triffst einen verletzten Bewohner.")
@@ -133,7 +133,7 @@ func Verletzterbewohner(player1 *player.Player, inventory [10]*gear.InventorySlo
 // Spieler wird vom Pluenderer angegriffen
 // Gets Playerstats, Kampfalgoritmus
 // Returns Playerstats nach Kampf
-func Plündererangreifen(player1 *player.Player, inventory [10]*gear.InventorySlot, hp, att, def, rec int, world string, world_barrier int) (*player.Player, [10]*gear.InventorySlot, int, int, int, int, int) {
+func PluendererSingle(player1 *player.Player, inventory [10]*gear.InventorySlot, hp, att, def, rec int, world string, world_barrier int) (*player.Player, [10]*gear.InventorySlot, int, int, int, int, int) {
 
 	text.Print("Auf dich trifft ein Plünderer, er möchte dich berauben!")
 
