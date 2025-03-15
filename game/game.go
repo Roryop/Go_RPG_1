@@ -167,7 +167,7 @@ func EventGenerator(eventArray [3]string) string {
 // Returns Everything needed in the game
 func EventExecution(event string, player1 *player.Player, inventory [10]*gear.InventorySlot, hp, att, def, rec int, world string, world_barrier int) {
 	switch event {
-	//////////////////////////// Cyberpunk ///////////////////////////////
+	////////////////////////////// Cyberpunk /////////////////////////////////
 	case "Robbery":
 		story.Robbery(player1, inventory, hp, att, def, rec, world, world_barrier)
 	case "Bettler":

@@ -7,12 +7,13 @@ import (
 	"start/text"
 )
 
+///////////////////Cyberpunk Welt////////////////////////
+
+//////////////////Funktionen für Slums///////////////////
+
 // Gets player, inventory, current stats, world, world_barrier
 // Executes Event Robbery
 // Returns player, inventory, current  stats, world_barrier
-///////////////////Cyberpunk Welt////////////////////////
-//////////////////Funktionen für Slums///////////////////
-
 func Robbery(player1 *player.Player, inventory [10]*gear.InventorySlot, hp, att, def, rec int, world string, world_barrier int) (*player.Player, [10]*gear.InventorySlot, int, int, int, int, int) {
 
 	text.Print("Du wirst von einem Räuber überfallen!!!")
