@@ -95,7 +95,7 @@ func Burgritter(player1 *player.Player, inventory [10]*gear.InventorySlot, hp, a
 
 	text.Print("Ein Burgritter fordert dich zu einer Duell heraus.")
 
-	player1, inventory, hp, att, def, rec, world_barrier = game.Fight(player1, inventory, hp, att, def, rec, world, world_barrier, 3)
+	player1, inventory, hp, att, def, rec, world_barrier = game.Fight(player1, inventory, hp, att, def, rec, world, world_barrier, 5)
 
 	return player1, inventory, hp, att, def, rec, world_barrier
 }
@@ -125,3 +125,15 @@ func Kerker(player1 *player.Player, inventory [10]*gear.InventorySlot, hp, att, 
 }
 
 ////////////////Funktionen für Dorf///////////////////////////
+
+// Spieler kämpft gegen Dorfbewohner
+// Gets Playerstats, Kampfalgoritmus
+// Returns Playerstats nach Kanpf
+func betrunkenerDorfbewohner(player1 *player.Player, inventory [10]*gear.InventorySlot, hp, att, def, rec int, world string, world_barrier int) (*player.Player, [10]*gear.InventorySlot, int, int, int, int, int) {
+
+	text.Print("Du wirst von einem betrunkenen Dorfbewohner angegriffen!")
+
+	player1, inventory, hp, att, def, rec, world_barrier = game.Fight(player1, inventory, hp, att, def, rec, world, world_barrier, 6)
+
+	return player1, inventory, hp, att, def, rec, world_barrier
+}
