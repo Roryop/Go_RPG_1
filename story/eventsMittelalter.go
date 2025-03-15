@@ -129,11 +129,38 @@ func Kerker(player1 *player.Player, inventory [10]*gear.InventorySlot, hp, att, 
 // Spieler kämpft gegen Dorfbewohner
 // Gets Playerstats, Kampfalgoritmus
 // Returns Playerstats nach Kanpf
-func betrunkenerDorfbewohner(player1 *player.Player, inventory [10]*gear.InventorySlot, hp, att, def, rec int, world string, world_barrier int) (*player.Player, [10]*gear.InventorySlot, int, int, int, int, int) {
+func BetrunkenerDorfbewohner(player1 *player.Player, inventory [10]*gear.InventorySlot, hp, att, def, rec int, world string, world_barrier int) (*player.Player, [10]*gear.InventorySlot, int, int, int, int, int) {
 
 	text.Print("Du wirst von einem betrunkenen Dorfbewohner angegriffen!")
 
 	player1, inventory, hp, att, def, rec, world_barrier = game.Fight(player1, inventory, hp, att, def, rec, world, world_barrier, 6)
 
 	return player1, inventory, hp, att, def, rec, world_barrier
+}
+
+// Spieler wählt aus ob er steine an den Rotzbuben zurückwirft
+// Gets PlayerStats
+// returns nothing
+func Rotzbuben(player1 *player.Player, inventory [10]*gear.InventorySlot, hp, att, def, rec int, world string, world_barrier int) {
+	var choice int
+
+	text.Print("Du wirst von kleinen Rotzbuben mit Steinen beworfen.")
+
+	// Auswahl Pilz essen oder nicht
+	text.Print("Willst du zurückwerfen?")
+	fmt.Println("1: Ja")
+	fmt.Println("2: Nein")
+	fmt.Scanln(&choice)
+
+	if choice == 1 {
+		text.Print("Du hast einem Kind den Schädel durchgeschlagen.")
+		text.Print("Fühlst du dich jetzt besser?")
+	} else {
+		text.Print("Du nimmst den Weg des firedens und die Rotzbuben werden von deren Müttern nachhause gezogen.")
+	}
+	///////////////////////////////////////////////
+	///////////////////////////////////////////////
+	/////////            KARMA           //////////
+	///////////////////////////////////////////////
+	///////////////////////////////////////////////
 }
