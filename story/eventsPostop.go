@@ -51,7 +51,7 @@ func Laufendemakrowelle(player1 *player.Player, inventory [10]*gear.InventorySlo
 // Spieler wird von einer laufenden Makrowelle angegriffen
 // Gets Playerstats, Kampfalgoritmus
 // Returns Playerstats nach Kampf
-func Plünderer(player1 *player.Player, inventory [10]*gear.InventorySlot, hp, att, def, rec int, world string, world_barrier int) (*player.Player, [10]*gear.InventorySlot, int, int, int, int, int) {
+func Pluenderer(player1 *player.Player, inventory [10]*gear.InventorySlot, hp, att, def, rec int, world string, world_barrier int) (*player.Player, [10]*gear.InventorySlot, int, int, int, int, int) {
 	var choice int
 
 	text.Print("Die Siedlung wird von Plünderern überrannt.")
@@ -99,8 +99,6 @@ func Stammarzt(player1 *player.Player, inventory [10]*gear.InventorySlot, hp, at
 	return hp
 }
 
-////////////////////Funktionen für Geisterstdt///////////////////////////
-
 // Spieler wählt aus ob er steine an den Rotzbuben zurückwirft
 // Gets PlayerStats
 // returns nothing
@@ -129,4 +127,18 @@ func Verletzterbewohner(player1 *player.Player, inventory [10]*gear.InventorySlo
 	/////////            KARMA           //////////
 	///////////////////////////////////////////////
 	///////////////////////////////////////////////
+}
+
+////////////////////Funktionen für Geisterstdt///////////////////////////
+
+// Spieler wird vom Pluenderer angegriffen
+// Gets Playerstats, Kampfalgoritmus
+// Returns Playerstats nach Kampf
+func Plündererangreifen(player1 *player.Player, inventory [10]*gear.InventorySlot, hp, att, def, rec int, world string, world_barrier int) (*player.Player, [10]*gear.InventorySlot, int, int, int, int, int) {
+
+	text.Print("Auf dich trifft ein Plünderer, er möchte dich berauben!")
+
+	player1, inventory, hp, att, def, rec, world_barrier = game.Fight(player1, inventory, hp, att, def, rec, world, world_barrier, 10)
+
+	return player1, inventory, hp, att, def, rec, world_barrier
 }
