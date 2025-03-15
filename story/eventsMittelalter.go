@@ -94,6 +94,7 @@ func Burgritter(player1 *player.Player, inventory [10]*gear.InventorySlot, hp, a
 
 	text.Print("Ein Burgritter fordert dich zu einer Duell heraus.")
 
+
 	player1, inventory, hp, att, def, rec, world_barrier = Fight(player1, inventory, hp, att, def, rec, world, world_barrier, 3)
 
 	return player1, inventory, hp, att, def, rec, world_barrier
@@ -124,3 +125,67 @@ func Kerker(player1 *player.Player, inventory [10]*gear.InventorySlot, hp, att, 
 }
 
 ////////////////Funktionen für Dorf///////////////////////////
+
+// Spieler kämpft gegen Dorfbewohner
+// Gets Playerstats, Kampfalgoritmus
+// Returns Playerstats nach Kanpf
+func BetrunkenerDorfbewohner(player1 *player.Player, inventory [10]*gear.InventorySlot, hp, att, def, rec int, world string, world_barrier int) (*player.Player, [10]*gear.InventorySlot, int, int, int, int, int) {
+
+	text.Print("Du wirst von einem betrunkenen Dorfbewohner angegriffen!")
+
+	player1, inventory, hp, att, def, rec, world_barrier = game.Fight(player1, inventory, hp, att, def, rec, world, world_barrier, 6)
+
+	return player1, inventory, hp, att, def, rec, world_barrier
+}
+
+// Spieler wählt aus ob er steine an den Rotzbuben zurückwirft
+// Gets PlayerStats
+// returns nothing
+func Rotzbuben(player1 *player.Player, inventory [10]*gear.InventorySlot, hp, att, def, rec int, world string, world_barrier int) {
+	var choice int
+
+	text.Print("Du wirst von kleinen Rotzbuben mit Steinen beworfen.")
+
+	// Auswahl Pilz essen oder nicht
+	text.Print("Willst du zurückwerfen?")
+	fmt.Println("1: Ja")
+	fmt.Println("2: Nein")
+	fmt.Scanln(&choice)
+
+	if choice == 1 {
+		text.Print("Du hast einem Kind den Schädel durchgeschlagen.")
+		text.Print("Fühlst du dich jetzt besser?")
+	} else {
+		text.Print("Du nimmst den Weg des firedens und die Rotzbuben werden von deren Müttern nachhause gezogen.")
+	}
+	///////////////////////////////////////////////
+	///////////////////////////////////////////////
+	/////////            KARMA           //////////
+	///////////////////////////////////////////////
+	///////////////////////////////////////////////
+}
+
+// Spieler wählt aus ob im Wirtshaus rastet
+// Gets PlayerHP, PlayerMaxHp
+// Returns PlayerHp nach rasten oder nicht rasten
+func Wirtshaus(player1 *player.Player, inventory [10]*gear.InventorySlot, hp, att, def, rec int, world string, world_barrier int) int {
+	var maxHp, _, _, _ = player1.CreateStats(inventory)
+	var choice int
+
+	text.Print("Ein Platz im Wirtshaus ist frei.")
+
+	// Auswahl Pilz essen oder nicht
+	text.Print("Möchtest du dort essen und rasten?")
+	fmt.Println("1: Ja")
+	fmt.Println("2: Nein")
+	fmt.Scanln(&choice)
+
+	if choice == 1 {
+		hp = hp + (maxHp / 6)
+
+		text.Print("Du hast dich geizig voll gefressen.")
+	} else {
+		text.Print("Du hast auf eine Mahlzeit voller Bio-Produkte verzichtet.")
+	}
+	return hp
+}
