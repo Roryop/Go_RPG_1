@@ -94,7 +94,6 @@ func Burgritter(player1 *player.Player, inventory [10]*gear.InventorySlot, hp, a
 
 	text.Print("Ein Burgritter fordert dich zu einer Duell heraus.")
 
-
 	player1, inventory, hp, att, def, rec, world_barrier = Fight(player1, inventory, hp, att, def, rec, world, world_barrier, 3)
 
 	return player1, inventory, hp, att, def, rec, world_barrier
@@ -133,7 +132,7 @@ func BetrunkenerDorfbewohner(player1 *player.Player, inventory [10]*gear.Invento
 
 	text.Print("Du wirst von einem betrunkenen Dorfbewohner angegriffen!")
 
-	player1, inventory, hp, att, def, rec, world_barrier = game.Fight(player1, inventory, hp, att, def, rec, world, world_barrier, 6)
+	player1, inventory, hp, att, def, rec, world_barrier = Fight(player1, inventory, hp, att, def, rec, world, world_barrier, 6)
 
 	return player1, inventory, hp, att, def, rec, world_barrier
 }

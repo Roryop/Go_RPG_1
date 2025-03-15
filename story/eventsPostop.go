@@ -2,7 +2,6 @@ package story
 
 import (
 	"fmt"
-	"start/game"
 	"start/gear"
 	"start/player"
 	"start/text"
@@ -17,7 +16,7 @@ func Mutantenratte(player1 *player.Player, inventory [10]*gear.InventorySlot, hp
 
 	text.Print("Du wirst von einer Menschengroßen Mutantenratte angegriffen!")
 
-	player1, inventory, hp, att, def, rec, world_barrier = game.Fight(player1, inventory, hp, att, def, rec, world, world_barrier, 7)
+	player1, inventory, hp, att, def, rec, world_barrier = Fight(player1, inventory, hp, att, def, rec, world, world_barrier, 7)
 
 	return player1, inventory, hp, att, def, rec, world_barrier
 }
@@ -29,7 +28,7 @@ func Dreikoepfigeschlange(player1 *player.Player, inventory [10]*gear.InventoryS
 
 	text.Print("Du wirst von eine dreikoepfigen Schlange angegriffen!")
 
-	player1, inventory, hp, att, def, rec, world_barrier = game.Fight(player1, inventory, hp, att, def, rec, world, world_barrier, 8)
+	player1, inventory, hp, att, def, rec, world_barrier = Fight(player1, inventory, hp, att, def, rec, world, world_barrier, 8)
 
 	return player1, inventory, hp, att, def, rec, world_barrier
 }
@@ -41,7 +40,7 @@ func Laufendemakrowelle(player1 *player.Player, inventory [10]*gear.InventorySlo
 
 	text.Print("Du wirst von einer laufenden Makrowelle angegriffen!")
 
-	player1, inventory, hp, att, def, rec, world_barrier = game.Fight(player1, inventory, hp, att, def, rec, world, world_barrier, 9)
+	player1, inventory, hp, att, def, rec, world_barrier = Fight(player1, inventory, hp, att, def, rec, world, world_barrier, 9)
 
 	return player1, inventory, hp, att, def, rec, world_barrier
 }
@@ -65,7 +64,7 @@ func Pluenderer(player1 *player.Player, inventory [10]*gear.InventorySlot, hp, a
 	if choice == 1 {
 
 		text.Print("Du wirst von einem Plünderer angegriffen!")
-		player1, inventory, hp, att, def, rec, world_barrier = game.Fight(player1, inventory, hp, att, def, rec, world, world_barrier, 10)
+		player1, inventory, hp, att, def, rec, world_barrier = Fight(player1, inventory, hp, att, def, rec, world, world_barrier, 10)
 
 	} else {
 		text.Print("Du bist wie ein Feige weggerannt")
@@ -138,7 +137,7 @@ func Plündererangreifen(player1 *player.Player, inventory [10]*gear.InventorySl
 
 	text.Print("Auf dich trifft ein Plünderer, er möchte dich berauben!")
 
-	player1, inventory, hp, att, def, rec, world_barrier = game.Fight(player1, inventory, hp, att, def, rec, world, world_barrier, 10)
+	player1, inventory, hp, att, def, rec, world_barrier = Fight(player1, inventory, hp, att, def, rec, world, world_barrier, 10)
 
 	return player1, inventory, hp, att, def, rec, world_barrier
 }
