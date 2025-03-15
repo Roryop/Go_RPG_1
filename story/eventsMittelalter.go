@@ -2,7 +2,6 @@ package story
 
 import (
 	"fmt"
-	"start/game"
 	"start/gear"
 	"start/player"
 	"start/text"
@@ -17,7 +16,7 @@ func Baerangriff(player1 *player.Player, inventory [10]*gear.InventorySlot, hp, 
 
 	text.Print("Du wirst von einem Bär angegriffen")
 
-	player1, inventory, hp, att, def, rec, world_barrier = game.Fight(player1, inventory, hp, att, def, rec, world, world_barrier, 3)
+	player1, inventory, hp, att, def, rec, world_barrier = Fight(player1, inventory, hp, att, def, rec, world, world_barrier, 3)
 
 	return player1, inventory, hp, att, def, rec, world_barrier
 }
@@ -25,7 +24,7 @@ func Baerangriff(player1 *player.Player, inventory [10]*gear.InventorySlot, hp, 
 // Speiler heilt am Lagerfeuer
 // Gets PlayerHp, PlayerMaxHp
 // Returns PlayerHp mit addiertem ein fünftel vom PlayerMaxHp
-func Bonfire(player1 *player.Player, inventory [10]*gear.InventorySlot, hp, att, def, rec int, world string, world_barrier int) int {
+func Bonfire(player1 *player.Player, inventory [10]*gear.InventorySlot, hp int) int {
 	var maxHp, _, _, _ = player1.CreateStats(inventory)
 
 	text.Print("Du findest einen Lagerfeuer und ruhst dich aus")
@@ -95,7 +94,8 @@ func Burgritter(player1 *player.Player, inventory [10]*gear.InventorySlot, hp, a
 
 	text.Print("Ein Burgritter fordert dich zu einer Duell heraus.")
 
-	player1, inventory, hp, att, def, rec, world_barrier = game.Fight(player1, inventory, hp, att, def, rec, world, world_barrier, 5)
+
+	player1, inventory, hp, att, def, rec, world_barrier = Fight(player1, inventory, hp, att, def, rec, world, world_barrier, 3)
 
 	return player1, inventory, hp, att, def, rec, world_barrier
 }

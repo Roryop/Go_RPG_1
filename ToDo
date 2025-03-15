@@ -18,6 +18,7 @@
 
 # Game
 + [ ] Adding Gear to gear.go (23) (Timothy / Aleks)
++ [ ] Expanding EventExecution() in game.go (10)
 
 # GameMechanics
 + [ ] World
