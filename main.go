@@ -115,7 +115,7 @@ func main() {
 
 			///////////////////// Choosing Place and Making Event ////////////////
 			var placeArray = game.SetPlaceArray(world)
-			var _, eventArray = game.ChoosePlace(placeArray, world)
+			var eventArray = game.ChoosePlace(placeArray, world)
 			var event = game.EventGenerator(eventArray)
 			fmt.Println(event)
 

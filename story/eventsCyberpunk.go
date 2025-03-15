@@ -2,7 +2,6 @@ package story
 
 import (
 	"fmt"
-	"start/game"
 	"start/gear"
 	"start/player"
 	"start/text"
@@ -18,7 +17,7 @@ func Robbery(player1 *player.Player, inventory [10]*gear.InventorySlot, hp, att,
 
 	text.Print("Du wirst von einem Räuber überfallen!!!")
 
-	player1, inventory, hp, att, def, rec, world_barrier = game.Fight(player1, inventory, hp, att, def, rec, world, world_barrier, 4)
+	player1, inventory, hp, att, def, rec, world_barrier = Fight(player1, inventory, hp, att, def, rec, world, world_barrier, 4)
 
 	return player1, inventory, hp, att, def, rec, world_barrier
 }
@@ -37,7 +36,7 @@ func Bettler(player1 *player.Player, inventory [10]*gear.InventorySlot, hp, att,
 		/////////////Karma++
 	case giveaway == 2:
 		text.Print("Der Obdachlose wird sauer und greift dich an!")
-		player1, inventory, hp, att, def, rec, world_barrier = game.Fight(player1, inventory, hp, att, def, rec, world, world_barrier, 18)
+		player1, inventory, hp, att, def, rec, world_barrier = Fight(player1, inventory, hp, att, def, rec, world, world_barrier, 18)
 	}
 
 	return player1, inventory, hp, att, def, rec, world_barrier

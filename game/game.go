@@ -3,9 +3,9 @@ package game
 import (
 	"fmt"
 	"math/rand"
-	"start/enemy"
 	"start/gear"
 	"start/player"
+	"start/story"
 	"strings"
 )
 
@@ -44,7 +44,9 @@ func Chooseworld(world_barrier int) string {
 }
 
 // Gets placeArray
-func ChoosePlace(placeArray [3]string, world string) (string, [3]string) {
+// Makes player choose place
+// Returns EventArray
+func ChoosePlace(placeArray [3]string, world string) [3]string {
 
 	var place string
 	var eventArray [3]string
@@ -109,19 +111,7 @@ func ChoosePlace(placeArray [3]string, world string) (string, [3]string) {
 		}
 	}
 	fmt.Println("Du hast", strings.ToUpper(place), "ausgewählt")
-	return place, eventArray
-}
-
-// Gets EventArray
-// Chooses random Event from eventArray based on length of eventArray
-// Returns Event
-func EventGenerator(eventArray [3]string) string {
-	var event string
-	var eventNumber int = rand.Intn(len(eventArray))
-
-	event = eventArray[eventNumber]
-
-	return event
+	return eventArray
 }
 
 // Gets world and world_barrier
@@ -160,84 +150,29 @@ func SetPlaceArray(world string) [3]string {
 	return placeArray
 }
 
-// Gets Player, Inventory, current stats, world, world_barrier, typ of enemy
-// Creates Enemy, Fights against enemy; Updates player Stats
-// Returns enemyStats, new current Stats
+// Gets EventArray
+// Chooses random Event from eventArray based on length of eventArray
+// Returns Event
+func EventGenerator(eventArray [3]string) string {
+	var event string
+	var eventNumber int = rand.Intn(len(eventArray))
 
-func Fight(player1 *player.Player, inventory [10]*gear.InventorySlot, hp, att, def, rec int, world string, world_barrier int, typ int) (*player.Player, [10]*gear.InventorySlot, int, int, int, int, int) {
+	event = eventArray[eventNumber]
 
-	///////// REQUIREMENT FOR UPGRADING WORLD BARRIER ///////////////////
+	return event
+}
 
-	var barrierRequirement = 0
-
-	////////////////////////////////////////////////////////////////////
-
-	var enemyName, enemyStats = enemy.CreateEnemy(world, world_barrier, typ)
-
-	fmt.Println("Du fightest einen", enemyName+"!!!")
-	fmt.Println("Er ist Level", enemyStats[0], "!!!")
-	fmt.Println("Er hat", enemyStats[1], "HP!")
-	fmt.Println("Du hast", hp, "HP!")
-
-	for enemyStats[1] > 0 && hp > 0 {
-		var choice int
-
-		//Anfrage wegen Angriff
-		fmt.Println("Möchtest du angreifen?")
-		fmt.Println("1: Ja")
-		fmt.Println("2: Nein")
-		fmt.Println("3: Eigene Stats sehen")
-		fmt.Println("4: Inventory sehen")
-		fmt.Println("5: End Game")
-		fmt.Scanln(&choice)
-
-		//Angreifen
-		switch choice {
-		case 1:
-			//Player attacks Enemy
-			enemyStats[1] = enemyStats[1] - ((att * 100) / (100 + enemyStats[3]))
-			fmt.Println("Der", enemyName, "hat noch", enemyStats[1], "HP")
-			//Enemy attacks Player
-			if enemyStats[1] > 0 {
-				hp = hp - ((enemyStats[2] * 100) / (100 + def))
-			}
-			fmt.Println("Du hast noch", hp, "HP")
-
-		case 2:
-			fmt.Println("Du hast nicht angegriffen")
-			//Enemy attacks Player
-			hp = hp - ((enemyStats[2] * 100) / (100 + def))
-			fmt.Println("Du hast noch", hp, "HP")
-
-		case 3:
-			player1.SeePlayerStats(inventory, hp, att, def, rec)
-		case 4:
-			gear.GiveInventoryInformation(inventory)
-		case 5:
-			goto end
-		}
+// Gets Event, Gets Everything needed in the game
+// Executes Function of equivalent event
+// Returns Everything needed in the game
+func EventExecution(event string, player1 *player.Player, inventory [10]*gear.InventorySlot, hp, att, def, rec int, world string, world_barrier int) {
+	switch event {
+	//////////////////////////// Cyberpunk ///////////////////////////////
+	case "Robbery":
+		story.Robbery(player1, inventory, hp, att, def, rec, world, world_barrier)
+	case "Bettler":
+		story.Bettler(player1, inventory, hp, att, def, rec, world, world_barrier)
+	case "Muelltonne":
+		story.Muelltonne(player1, inventory, hp, att, def, rec, world, world_barrier)
 	}
-	///////////////////////// Case Enemy Died ///////////////////////////
-	if enemyStats[1] <= 0 {
-
-		////////////// Setting World Barrier Upgrade Requirement ////////////
-		if barrierRequirement >= 9 {
-			world_barrier += 1
-		}
-
-		//////////////// Enemy Item Drop /////////////
-		inventory = gear.AddDropToInventory(inventory, world_barrier)
-
-		///////////////// Player Management ////////////////
-		player1.Exp_Function(enemyStats)                                           // Giving Exp to Player
-		hp, att, def, rec = player1.Level_Management(inventory, hp, att, def, rec) // Player will be healed with levelUp + Updating Stats + Updating current Stats
-
-	}
-
-	//////////////// Clearing Inventory on Player Death ////////////////
-	if hp <= 0 {
-		inventory = gear.FillEmptyInventory(inventory)
-	}
-end:
-	return player1, inventory, hp, att, def, rec, world_barrier
 }
