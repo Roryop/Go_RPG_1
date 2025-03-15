@@ -74,4 +74,29 @@ func Plünderer(player1 *player.Player, inventory [10]*gear.InventorySlot, hp, a
 	return player1, inventory, hp, att, def, rec, world_barrier
 }
 
+// Spieler wählt aus ob er einen Pilz isst
+// Gets PlayerHP, PlayerMaxHp
+// Returns PlayerHp nach essen oder nicht essen vom Pilz
+func Stammarzt(player1 *player.Player, inventory [10]*gear.InventorySlot, hp, att, def, rec int, world string, world_barrier int) int {
+	var maxHp, _, _, _ = player1.CreateStats(inventory)
+	var choice int
+
+	text.Print("Der Stammarzt möchte ein neues Medikament ausprobieren.")
+
+	// Auswahl Pilz essen oder nicht
+	text.Print("Willst du es testen?")
+	fmt.Println("1: Ja")
+	fmt.Println("2: Nein")
+	fmt.Scanln(&choice)
+
+	if choice == 1 {
+		hp = hp + (maxHp / 2)
+
+		text.Print("Du spührst wie Kreatinphosphat deine Muskeln mit Wasser füllt!!!")
+	} else {
+		text.Print("Du wolltest lieber ein angebissener Lauch bleiben")
+	}
+	return hp
+}
+
 ////////////////////Funktionen für Geisterstdt///////////////////////////
