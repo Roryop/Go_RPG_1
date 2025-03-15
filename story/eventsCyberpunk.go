@@ -43,7 +43,7 @@ func Bettler(player1 *player.Player, inventory [10]*gear.InventorySlot, hp, att,
 	return player1, inventory, hp, att, def, rec, world_barrier
 }
 
-func Muelltonne(player1 *player.Player, inventory [10]*gear.InventorySlot, hp, att, def, rec int, world string, world_barrier int) (*player.Player, [10]*gear.InventorySlot, int, int, int, int, int) {
+func Muelltonne(inventory [10]*gear.InventorySlot, world_barrier int) ([10]*gear.InventorySlot, int) {
 	var choice int
 	text.Print("Du läufst an einer Mülltonne vorbei, willst du sie durchsuchen? /ja /nein?")
 	fmt.Println("1: Ja")
@@ -60,7 +60,7 @@ func Muelltonne(player1 *player.Player, inventory [10]*gear.InventorySlot, hp, a
 		text.Print("OK dann eben nicht")
 
 	}
-	return player1, inventory, hp, att, def, rec, world_barrier
+	return inventory, world_barrier
 }
 
 //////////////////Funktionen für Businessviertel///////////////////

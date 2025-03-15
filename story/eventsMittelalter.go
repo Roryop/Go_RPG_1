@@ -24,7 +24,7 @@ func Baerangriff(player1 *player.Player, inventory [10]*gear.InventorySlot, hp, 
 // Speiler heilt am Lagerfeuer
 // Gets PlayerHp, PlayerMaxHp
 // Returns PlayerHp mit addiertem ein fünftel vom PlayerMaxHp
-func Bonfire(player1 *player.Player, inventory [10]*gear.InventorySlot, hp, att, def, rec int, world string, world_barrier int) int {
+func Bonfire(player1 *player.Player, inventory [10]*gear.InventorySlot, hp int) int {
 	var maxHp, _, _, _ = player1.CreateStats(inventory)
 
 	text.Print("Du findest einen Lagerfeuer und ruhst dich aus")

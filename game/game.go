@@ -165,14 +165,25 @@ func EventGenerator(eventArray [3]string) string {
 // Gets Event, Gets Everything needed in the game
 // Executes Function of equivalent event
 // Returns Everything needed in the game
-func EventExecution(event string, player1 *player.Player, inventory [10]*gear.InventorySlot, hp, att, def, rec int, world string, world_barrier int) {
+func EventExecution(event string, player1 *player.Player, inventory [10]*gear.InventorySlot, hp, att, def, rec int, world string, world_barrier int) (*player.Player, [10]*gear.InventorySlot, int, int, int, int, string, int) {
 	switch event {
 	////////////////////////////// Cyberpunk /////////////////////////////////
+
+	//////////////////// Funktionen für Slums ////////////////////////
 	case "Robbery":
-		story.Robbery(player1, inventory, hp, att, def, rec, world, world_barrier)
+		player1, inventory, hp, att, def, rec, world_barrier = story.Robbery(player1, inventory, hp, att, def, rec, world, world_barrier)
 	case "Bettler":
-		story.Bettler(player1, inventory, hp, att, def, rec, world, world_barrier)
+		player1, inventory, hp, att, def, rec, world_barrier = story.Bettler(player1, inventory, hp, att, def, rec, world, world_barrier)
 	case "Muelltonne":
-		story.Muelltonne(player1, inventory, hp, att, def, rec, world, world_barrier)
+		inventory, world_barrier = story.Muelltonne(inventory, world_barrier)
+
+	////////////////////////////// Mittelalter /////////////////////////////////
+
+	////////////////////// Funktionen für Wald ////////////////////////////
+	case "Baerangriff":
+		player1, inventory, hp, att, def, rec, world_barrier = story.Baerangriff(player1, inventory, hp, att, def, rec, world, world_barrier)
+	case "Bonfire":
+		hp = story.Bonfire(player1, inventory, hp)
 	}
+	return player1, inventory, hp, att, def, rec, world, world_barrier
 }
