@@ -184,6 +184,26 @@ func EventExecution(event string, player1 *player.Player, inventory [10]*gear.In
 		player1, inventory, hp, att, def, rec, world_barrier = story.Baerangriff(player1, inventory, hp, att, def, rec, world, world_barrier)
 	case "Bonfire":
 		hp = story.Bonfire(player1, inventory, hp)
+	case "GesunderPilz":
+		hp = story.GesunderPilz(player1, inventory, hp)
+
+	////////////////////// Funktionen für Burg ////////////////////////////
+	case "Hexenjagd":
+		story.Hexenjagd(player1)
+	case "Burgritter":
+		player1, inventory, hp, att, def, rec, world_barrier = story.Burgritter(player1, inventory, hp, att, def, rec, world, world_barrier)
+	case "Kerker":
+		player1, inventory, hp, att = story.Kerker(player1, inventory, hp, att)
+
+		////////////////////// Funktionen für Dorf ////////////////////////////
+	case "BetrunkenerDorfbewohner":
+		player1, inventory, hp, att, def, rec, world_barrier = story.BetrunkenerDorfbewohner(player1, inventory, hp, att, def, rec, world, world_barrier)
+	case "Rotzbuben":
+		story.Rotzbuben(player1)
+	case "Wirtshaus":
+		hp = story.Wirtshaus(player1, inventory, hp)
 	}
+
+	// Final Return Statement
 	return player1, inventory, hp, att, def, rec, world, world_barrier
 }
