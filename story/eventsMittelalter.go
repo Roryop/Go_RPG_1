@@ -37,7 +37,7 @@ func Bonfire(player1 *player.Player, inventory [10]*gear.InventorySlot, hp int) 
 // Spieler wählt aus ob er einen Pilz isst
 // Gets PlayerHP, PlayerMaxHp
 // Returns PlayerHp nach essen oder nicht essen vom Pilz
-func GesunderPilz(player1 *player.Player, inventory [10]*gear.InventorySlot, hp, att, def, rec int, world string, world_barrier int) int {
+func GesunderPilz(player1 *player.Player, inventory [10]*gear.InventorySlot, hp int) int {
 	var maxHp, _, _, _ = player1.CreateStats(inventory)
 	var choice int
 
@@ -64,7 +64,7 @@ func GesunderPilz(player1 *player.Player, inventory [10]*gear.InventorySlot, hp,
 // Spieler wählt aus ob er an Hexenverbrennung teil nimmt
 // Gets PlayerStats
 // returns nothing
-func Hexenjagd(player1 *player.Player, inventory [10]*gear.InventorySlot, hp, att, def, rec int, world string, world_barrier int) {
+func Hexenjagd(player1 *player.Player) {
 	var choice int
 
 	text.Print("Es findet eine Hexenverbrennung statt.")
@@ -100,13 +100,13 @@ func Burgritter(player1 *player.Player, inventory [10]*gear.InventorySlot, hp, a
 }
 
 // Spieler wird in den Kerker geworfen
-func Kerker(player1 *player.Player, inventory [10]*gear.InventorySlot, hp, att, def, rec int, world string, world_barrier int) (*player.Player, [10]*gear.InventorySlot, int, int, int, int, int) {
+func Kerker(player1 *player.Player, inventory [10]*gear.InventorySlot, hp, att int) (*player.Player, [10]*gear.InventorySlot, int, int) {
 	var choice int
 	var maxHp, maxAtt, _, _ = player1.CreateStats(inventory)
 
 	text.Print("Du würdest aufgrund eines Verdachts in den Kerker geworfen.")
 
-	// Auswahl Pilz essen oder nicht
+	// Auswahl Kerker ausbrechen oder nicht
 	text.Print("Möchtest du versuchen auszubrechen?")
 	fmt.Println("1: Ja")
 	fmt.Println("2: Nein")
@@ -120,7 +120,7 @@ func Kerker(player1 *player.Player, inventory [10]*gear.InventorySlot, hp, att, 
 		att = att + (maxAtt / 5)
 		text.Print("Durch intensives Training und Meditation baust du Masse auf.")
 	}
-	return player1, inventory, hp, att, def, rec, world_barrier
+	return player1, inventory, hp, att
 }
 
 ////////////////Funktionen für Dorf///////////////////////////
@@ -140,7 +140,7 @@ func BetrunkenerDorfbewohner(player1 *player.Player, inventory [10]*gear.Invento
 // Spieler wählt aus ob er steine an den Rotzbuben zurückwirft
 // Gets PlayerStats
 // returns nothing
-func Rotzbuben(player1 *player.Player, inventory [10]*gear.InventorySlot, hp, att, def, rec int, world string, world_barrier int) {
+func Rotzbuben(player1 *player.Player) {
 	var choice int
 
 	text.Print("Du wirst von kleinen Rotzbuben mit Steinen beworfen.")
@@ -155,7 +155,7 @@ func Rotzbuben(player1 *player.Player, inventory [10]*gear.InventorySlot, hp, at
 		text.Print("Du hast einem Kind den Schädel durchgeschlagen.")
 		text.Print("Fühlst du dich jetzt besser?")
 	} else {
-		text.Print("Du nimmst den Weg des firedens und die Rotzbuben werden von deren Müttern nachhause gezogen.")
+		text.Print("Du nimmst den Weg des Friedens und die Rotzbuben werden von deren Müttern nach Hause gezogen.")
 	}
 	///////////////////////////////////////////////
 	///////////////////////////////////////////////
@@ -167,7 +167,7 @@ func Rotzbuben(player1 *player.Player, inventory [10]*gear.InventorySlot, hp, at
 // Spieler wählt aus ob im Wirtshaus rastet
 // Gets PlayerHP, PlayerMaxHp
 // Returns PlayerHp nach rasten oder nicht rasten
-func Wirtshaus(player1 *player.Player, inventory [10]*gear.InventorySlot, hp, att, def, rec int, world string, world_barrier int) int {
+func Wirtshaus(player1 *player.Player, inventory [10]*gear.InventorySlot, hp int) int {
 	var maxHp, _, _, _ = player1.CreateStats(inventory)
 	var choice int
 
