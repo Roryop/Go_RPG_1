@@ -12,13 +12,13 @@ import (
 // Spieler wird vom Bär angegriffen
 // Gets Playerstats, Kampfalgoritmus
 // Returns Playerstats nach Kampf
-func Baerangriff(player1 *player.Player, inventory [10]*gear.InventorySlot, hp, att, def, rec int, world string, world_barrier int) (*player.Player, [10]*gear.InventorySlot, int, int, int, int, int) {
+func Baerangriff(player1 *player.Player, inventory [10]*gear.InventorySlot, hp, att, def, rec int, world string, player_level int) (*player.Player, [10]*gear.InventorySlot, int, int, int, int, int) {
 
 	text.Print("Du wirst von einem Bär angegriffen")
 
-	player1, inventory, hp, att, def, rec, world_barrier = Fight(player1, inventory, hp, att, def, rec, world, world_barrier, 3)
+	player1, inventory, hp, att, def, rec, player_level = Fight(player1, inventory, hp, att, def, rec, world, player_level, 3)
 
-	return player1, inventory, hp, att, def, rec, world_barrier
+	return player1, inventory, hp, att, def, rec, player_level
 }
 
 // Speiler heilt am Lagerfeuer
@@ -90,13 +90,13 @@ func Hexenjagd(player1 *player.Player) {
 // Spieler kämpft gegen Burgritter
 // Gets PlayerStats, Kampfalgoritmus
 // Returns Playerstats nach Kampf
-func Burgritter(player1 *player.Player, inventory [10]*gear.InventorySlot, hp, att, def, rec int, world string, world_barrier int) (*player.Player, [10]*gear.InventorySlot, int, int, int, int, int) {
+func Burgritter(player1 *player.Player, inventory [10]*gear.InventorySlot, hp, att, def, rec int, world string, player_level int) (*player.Player, [10]*gear.InventorySlot, int, int, int, int, int) {
 
 	text.Print("Ein Burgritter fordert dich zu einer Duell heraus.")
 
-	player1, inventory, hp, att, def, rec, world_barrier = Fight(player1, inventory, hp, att, def, rec, world, world_barrier, 3)
+	player1, inventory, hp, att, def, rec, player_level = Fight(player1, inventory, hp, att, def, rec, world, player_level, 3)
 
-	return player1, inventory, hp, att, def, rec, world_barrier
+	return player1, inventory, hp, att, def, rec, player_level
 }
 
 // Spieler wird in den Kerker geworfen
@@ -128,13 +128,13 @@ func Kerker(player1 *player.Player, inventory [10]*gear.InventorySlot, hp, att i
 // Spieler kämpft gegen Dorfbewohner
 // Gets Playerstats, Kampfalgoritmus
 // Returns Playerstats nach Kanpf
-func BetrunkenerDorfbewohner(player1 *player.Player, inventory [10]*gear.InventorySlot, hp, att, def, rec int, world string, world_barrier int) (*player.Player, [10]*gear.InventorySlot, int, int, int, int, int) {
+func BetrunkenerDorfbewohner(player1 *player.Player, inventory [10]*gear.InventorySlot, hp, att, def, rec int, world string, player_level int) (*player.Player, [10]*gear.InventorySlot, int, int, int, int, int) {
 
 	text.Print("Du wirst von einem betrunkenen Dorfbewohner angegriffen!")
 
-	player1, inventory, hp, att, def, rec, world_barrier = Fight(player1, inventory, hp, att, def, rec, world, world_barrier, 6)
+	player1, inventory, hp, att, def, rec, player_level = Fight(player1, inventory, hp, att, def, rec, world, player_level, 6)
 
-	return player1, inventory, hp, att, def, rec, world_barrier
+	return player1, inventory, hp, att, def, rec, player_level
 }
 
 // Spieler wählt aus ob er steine an den Rotzbuben zurückwirft

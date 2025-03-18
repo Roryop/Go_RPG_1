@@ -28,7 +28,6 @@ func main() {
 
 	/////////////////////////// Setup World //////////////////////////////////
 
-	var world_barrier int = 1
 	var world string
 
 	/////////////////////// Creating Inventory ///////////////////////////////
@@ -38,6 +37,8 @@ func main() {
 	//////////////////////////// Creating Player ////////////////////////////////
 
 	var player1 = player.InitPlayer() // Creating Player
+
+	var player_level = player1.GetLevel()
 
 	var hp, att, def, rec = player1.CreateStats(inventory) // Creating current Player Stats
 
@@ -75,13 +76,13 @@ func main() {
 
 				////////////////////// Choosing World /////////////////////////
 
-				world = game.Chooseworld(world_barrier) // NEEDS PROPER WORLD_BARRIER
+				world = game.Chooseworld(player_level) // NEEDS PROPER WORLD_BARRIER
 
 				goto start
 
 			case 2:
 
-				text.Print("Dein aktueller Schwierigkeitsgrad ist " + fmt.Sprint(world_barrier) + "!")
+				text.Print("Dein aktueller Schwierigkeitsgrad ist " + "NORMAL" + "!")
 
 				menuChoice = menu.Menu() //In case Game is not ended or started, refresh menuChoice
 			case 3:
@@ -117,7 +118,7 @@ func main() {
 			var eventArray = game.ChoosePlace(placeArray, world)
 			var event = game.EventGenerator(eventArray)
 			fmt.Println(event)
-			player1, inventory, hp, att, def, rec, world, world_barrier = game.EventExecution(event, player1, inventory, hp, att, def, rec, world, world_barrier)
+			player1, inventory, hp, att, def, rec, world, player_level = game.EventExecution(event, player1, inventory, hp, att, def, rec, world, player_level)
 
 			/*
 				////////////////////// Setting Up Enemy ////////////////////////

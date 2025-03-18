@@ -34,8 +34,8 @@ func CreateStatsItems(inventory [10]*InventorySlot) (int, int, int) {
 // Gets inventory, world_barrier
 // Drops Item and Makes player choose whether to store it (and stores)
 // Returns Inventory
-func AddDropToInventory(inventory [10]*InventorySlot, world_barrier int) [10]*InventorySlot {
-	var item = ItemDrop(world_barrier)
+func AddDropToInventory(inventory [10]*InventorySlot, player_level int) [10]*InventorySlot {
+	var item = ItemDrop(player_level)
 
 	if item.gearTyp != "Empty" {
 		text.Print("Der Gegner hat einen " + item.name + " gedroppt!")

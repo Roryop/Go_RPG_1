@@ -16,25 +16,15 @@ func Chooseworld(world_barrier int) string {
 
 	var world string
 	var isInLoop bool = true
-	for isInLoop {
+
+	for isInLoop { // Choosing World until valid World has been chosen
 		fmt.Println("In welche Welt willst du?")                                        // This example is for User deciding world
 		fmt.Println("Tutorial; Cyberpunk; Middleage; Armageddon; Prehistory; Wildwest") ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////Gerade hier
 		fmt.Scanln(&world)
 
 		world = strings.ToLower(world) // Enabling any sort of Upper/Lowercase by setting world LowerCase
 
-		switch {
-		case world == "cyberpunk" && world_barrier >= 1:
-			isInLoop = false
-		case world == "middleage" && world_barrier >= 2:
-			isInLoop = false
-		case world == "armageddon" && world_barrier >= 3:
-			isInLoop = false
-		case world == "prehistory" && world_barrier >= 4:
-			isInLoop = false
-		case world == "wildwest" && world_barrier >= 5:
-			isInLoop = false
-		case world == "tutorial":
+		if world == "cyberpunk" || world == "middleage" || world == "armageddon" || world == "prehistory" || world == "wildwest" || world == "tutorial" {
 			isInLoop = false
 		}
 

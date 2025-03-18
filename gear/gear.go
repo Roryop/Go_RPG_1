@@ -174,9 +174,9 @@ func NewGear(itemTyp string, itemName string) *Gear {
 // Gets Nothing
 // Creates Item based on rand.Intn() + ItemArrays
 // Returns Item
-func ItemDrop(world_barrier int) *Gear {
+func ItemDrop(player_level int) *Gear {
 	var rarity string
-	var dropLimit = world_barrier - 1
+	var dropLimit = (player_level - 1) / 2 // DropChance Increase for every 2 player levels, starting from 3
 
 	var dropNumber int = rand.Intn(10000) + 1
 	switch {

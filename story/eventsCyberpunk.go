@@ -14,16 +14,16 @@ import (
 // Gets player, inventory, current stats, world, world_barrier
 // Executes Event Robbery
 // Returns player, inventory, current  stats, world_barrier
-func Robbery(player1 *player.Player, inventory [10]*gear.InventorySlot, hp, att, def, rec int, world string, world_barrier int) (*player.Player, [10]*gear.InventorySlot, int, int, int, int, int) {
+func Robbery(player1 *player.Player, inventory [10]*gear.InventorySlot, hp, att, def, rec int, world string, player_level int) (*player.Player, [10]*gear.InventorySlot, int, int, int, int, int) {
 
 	text.Print("Du wirst von einem Räuber überfallen!!!")
 
-	player1, inventory, hp, att, def, rec, world_barrier = Fight(player1, inventory, hp, att, def, rec, world, world_barrier, 4)
+	player1, inventory, hp, att, def, rec, player_level = Fight(player1, inventory, hp, att, def, rec, world, player_level, 4)
 
-	return player1, inventory, hp, att, def, rec, world_barrier
+	return player1, inventory, hp, att, def, rec, player_level
 }
 
-func Bettler(player1 *player.Player, inventory [10]*gear.InventorySlot, hp, att, def, rec int, world string, world_barrier int) (*player.Player, [10]*gear.InventorySlot, int, int, int, int, int) {
+func Bettler(player1 *player.Player, inventory [10]*gear.InventorySlot, hp, att, def, rec int, world string, player_level int) (*player.Player, [10]*gear.InventorySlot, int, int, int, int, int) {
 	var giveaway int
 	text.Print("Du triffst auf einen Bettler. Willst du ihm etwas geben? /ja /nein?")
 	fmt.Println("1: Ja")
@@ -37,13 +37,13 @@ func Bettler(player1 *player.Player, inventory [10]*gear.InventorySlot, hp, att,
 		/////////////Karma++
 	case giveaway == 2:
 		text.Print("Der Obdachlose wird sauer und greift dich an!")
-		player1, inventory, hp, att, def, rec, world_barrier = Fight(player1, inventory, hp, att, def, rec, world, world_barrier, 18)
+		player1, inventory, hp, att, def, rec, player_level = Fight(player1, inventory, hp, att, def, rec, world, player_level, 18)
 	}
 
-	return player1, inventory, hp, att, def, rec, world_barrier
+	return player1, inventory, hp, att, def, rec, player_level
 }
 
-func Muelltonne(inventory [10]*gear.InventorySlot, world_barrier int) ([10]*gear.InventorySlot, int) {
+func Muelltonne(inventory [10]*gear.InventorySlot, player_level int) ([10]*gear.InventorySlot, int) {
 	var choice int
 	text.Print("Du läufst an einer Mülltonne vorbei, willst du sie durchsuchen? /ja /nein?")
 	fmt.Println("1: Ja")
@@ -53,14 +53,14 @@ func Muelltonne(inventory [10]*gear.InventorySlot, world_barrier int) ([10]*gear
 	switch {
 	case choice == 1: ///////////////In der Tonne liegt ein Item
 		text.Print("Du wühlst in einer Mülltonne herum. Denk mal drüber nach!")
-		var item = gear.ItemDrop(world_barrier)
+		var item = gear.ItemDrop(player_level)
 		gear.AddToInventory(inventory, item)
 
 	case choice == 2: ////////////////Nix passiert
 		text.Print("OK dann eben nicht")
 
 	}
-	return inventory, world_barrier
+	return inventory, player_level
 }
 
 //////////////////Funktionen für Businessviertel///////////////////

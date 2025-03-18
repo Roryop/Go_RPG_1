@@ -18,8 +18,8 @@ type Wesen struct {
 // Gets Game_level
 // Creates Enemy depending on Game_level
 // Returns Enemy Name and Enemy Stats
-func CreateEnemy(world string, world_barrier int, typ int) (string, [4]int) {
-	var enemy_level = SetEnemyLevel(world, world_barrier)
+func CreateEnemy(world string, player_level int, typ int) (string, [4]int) {
+	var enemy_level = SetEnemyLevel(world, player_level)
 
 	// Decides on Enemy Typ + creates empty Variables for it
 	var enemyStats [4]int
@@ -133,53 +133,17 @@ func (w *Wesen) GetStatsEnemy(enemy_level int) [4]int {
 // Gets world and world_barrier
 // Decides enemy_level based on world + world_barrier + rand.Intn()
 // Returns enemy_level
-func SetEnemyLevel(world string, world_barrier int) int {
+func SetEnemyLevel(world string, player_level int) int {
 	var enemy_level = 0
 
 	// Only changes enemy_level based on world_barrier if correct world was chosen, tutorial will stay level 0
 	if world == "cyberpunk" || world == "middleage" || world == "armageddon" || world == "prehistory" || world == "wildwest" {
-		switch world_barrier {
-		case 1:
 
-			//enemy_level between 1 and 3
-			enemy_level = rand.Intn(3) + 1
-		case 2:
-
-			//enemy_level between 3 and 5
-			enemy_level = rand.Intn(3) + 3
-		case 3:
-
-			//enemy_level between 6 and 10
-			enemy_level = rand.Intn(5) + 6
-		case 4:
-
-			//Gegnerlevel between 11 und 20
-			enemy_level = rand.Intn(10) + 11
-		case 5:
-
-			//Gegnerlevel between 15 und 25
-			enemy_level = rand.Intn(11) + 15
-		case 6:
-
-			//Gegnerlevel between 30 und 35
-			enemy_level = rand.Intn(6) + 30
-		case 7:
-
-			//Gegnerlevel between 34 und 36
-			enemy_level = rand.Intn(3) + 34
-		case 8:
-
-			//Gegnerlevel between 36 und 40
-			enemy_level = rand.Intn(5) + 36
-		case 9:
-
-			//Gegnerlevel between 40 und 45
-			enemy_level = rand.Intn(6) + 40
-		case 10:
-
-			//Gegnerlevel between 45 und 50
-			enemy_level = rand.Intn(6) + 45
+		enemy_level = rand.Intn(5) + player_level - 1
+		if enemy_level == 0 { // Making sure enemy_level is not 0 outside of Tutorial
+			enemy_level = 1
 		}
+
 	}
 
 	return enemy_level
