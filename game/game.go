@@ -195,13 +195,32 @@ func EventExecution(event string, player1 *player.Player, inventory [10]*gear.In
 	case "Kerker":
 		player1, inventory, hp, att = story.Kerker(player1, inventory, hp, att)
 
-		////////////////////// Funktionen für Dorf ////////////////////////////
+	////////////////////// Funktionen für Dorf ////////////////////////////
 	case "BetrunkenerDorfbewohner":
 		player1, inventory, hp, att, def, rec, world_barrier = story.BetrunkenerDorfbewohner(player1, inventory, hp, att, def, rec, world, world_barrier)
 	case "Rotzbuben":
 		story.Rotzbuben(player1)
 	case "Wirtshaus":
 		hp = story.Wirtshaus(player1, inventory, hp)
+
+	////////////////////////////// Armageddon /////////////////////////////////
+
+	////////////////////// Funktionen für Ground Zero ////////////////////////////
+	case "Mutantenratte":
+		player1, inventory, hp, att, def, rec, world_barrier = story.Mutantenratte(player1, inventory, hp, att, def, rec, world, world_barrier)
+	case "DreikoepfigeSchlange":
+		player1, inventory, hp, att, def, rec, world_barrier = story.DreikoepfigeSchlange(player1, inventory, hp, att, def, rec, world, world_barrier)
+	case "LaufendeMakrowelle":
+		player1, inventory, hp, att, def, rec, world_barrier = story.LaufendeMakrowelle(player1, inventory, hp, att, def, rec, world, world_barrier)
+
+	////////////////////// Funktionen für Settlement ////////////////////////////
+	case "PluendererGroup":
+		player1, inventory, hp, att, def, rec, world_barrier = story.PluendererGroup(player1, inventory, hp, att, def, rec, world, world_barrier)
+	case "Stammarzt":
+		hp = story.Stammarzt(player1, inventory, hp)
+	case "VerletzterBewohner":
+		story.VerletzterBewohner()
+
 	}
 
 	// Final Return Statement
