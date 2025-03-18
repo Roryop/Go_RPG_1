@@ -76,7 +76,7 @@ func PluendererGroup(player1 *player.Player, inventory [10]*gear.InventorySlot, 
 // Spieler wählt aus ob er einen Pilz isst
 // Gets PlayerHP, PlayerMaxHp
 // Returns PlayerHp nach essen oder nicht essen vom Pilz
-func Stammarzt(player1 *player.Player, inventory [10]*gear.InventorySlot, hp, att, def, rec int, world string, world_barrier int) int {
+func Stammarzt(player1 *player.Player, inventory [10]*gear.InventorySlot, hp int) int {
 	var maxHp, _, _, _ = player1.CreateStats(inventory)
 	var choice int
 
@@ -101,7 +101,7 @@ func Stammarzt(player1 *player.Player, inventory [10]*gear.InventorySlot, hp, at
 // Spieler wählt aus ob er steine an den Rotzbuben zurückwirft
 // Gets PlayerStats
 // returns nothing
-func VerletzterBewohner(player1 *player.Player, inventory [10]*gear.InventorySlot, hp, att, def, rec int, world string, world_barrier int) {
+func VerletzterBewohner() {
 	var choice int
 
 	text.Print("Du triffst einen verletzten Bewohner.")
