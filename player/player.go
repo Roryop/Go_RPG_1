@@ -188,6 +188,10 @@ func (w *Player) GetStat(i int) int {
 	return w.stats[i]
 }
 
+func (w *Player) GetLevel() int {
+	return w.level
+}
+
 // Gets inventory
 // adjusts current Stats to include inventoryBonus
 // Returns Nothing
