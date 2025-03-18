@@ -30,15 +30,9 @@ func Prologue() {
 // Gets Player, Inventory, current stats, world, world_barrier, typ of enemy
 // Creates Enemy, Fights against enemy; Updates player Stats
 // Returns enemyStats, new current Stats
-func Fight(player1 *player.Player, inventory [10]*gear.InventorySlot, hp, att, def, rec int, world string, world_barrier int, typ int) (*player.Player, [10]*gear.InventorySlot, int, int, int, int, int) {
+func Fight(player1 *player.Player, inventory [10]*gear.InventorySlot, hp, att, def, rec int, world string, player_level int, typ int) (*player.Player, [10]*gear.InventorySlot, int, int, int, int, int) {
 
-	///////// REQUIREMENT FOR UPGRADING WORLD BARRIER ///////////////////
-
-	var barrierRequirement = 0
-
-	////////////////////////////////////////////////////////////////////
-
-	var enemyName, enemyStats = enemy.CreateEnemy(world, world_barrier, typ)
+	var enemyName, enemyStats = enemy.CreateEnemy(world, player_level, typ)
 
 	fmt.Println("Du fightest einen", enemyName+"!!!")
 	fmt.Println("Er ist Level", enemyStats[0], "!!!")
@@ -86,18 +80,13 @@ func Fight(player1 *player.Player, inventory [10]*gear.InventorySlot, hp, att, d
 	///////////////////////// Case Enemy Died ///////////////////////////
 	if enemyStats[1] <= 0 {
 
-		////////////// Setting World Barrier Upgrade Requirement ////////////
-		if barrierRequirement >= 9 {
-			world_barrier += 1
-		}
-
 		//////////////// Enemy Item Drop /////////////
-		inventory = gear.AddDropToInventory(inventory, world_barrier)
+		inventory = gear.AddDropToInventory(inventory, player_level)
 
 		///////////////// Player Management ////////////////
 		player1.Exp_Function(enemyStats)                                           // Giving Exp to Player
 		hp, att, def, rec = player1.Level_Management(inventory, hp, att, def, rec) // Player will be healed with levelUp + Updating Stats + Updating current Stats
-
+		player_level = player1.GetLevel()                                          // Updating player_level needed for other functions
 	}
 
 	//////////////// Clearing Inventory on Player Death ////////////////
@@ -105,5 +94,5 @@ func Fight(player1 *player.Player, inventory [10]*gear.InventorySlot, hp, att, d
 		inventory = gear.FillEmptyInventory(inventory)
 	}
 end:
-	return player1, inventory, hp, att, def, rec, world_barrier
+	return player1, inventory, hp, att, def, rec, player_level
 }
