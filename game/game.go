@@ -209,7 +209,7 @@ func EventExecution(event string, player1 *player.Player, inventory [10]*gear.In
 	case "Stammarzt":
 		hp = story.Stammarzt(player1, inventory, hp, att, def, rec)
 	case "VerletzterBewohner":
-		story.VerletzterBewohner()
+		story.VerletzterBewohner(player1)
 
 	}
 

@@ -55,7 +55,7 @@ func PluendererGroup(player1 *player.Player, inventory [10]*gear.InventorySlot, 
 
 	text.Print("Die Siedlung wird von Plünderern überrannt.")
 
-	// Auswahl Pilz essen oder nicht
+	// Auswahl Verteidigung helfen oder nicht
 	text.Print("Willst du bei der Verteidigung helfen?")
 	fmt.Println("1: Ja")
 	fmt.Println("2: Nein")
@@ -66,8 +66,13 @@ func PluendererGroup(player1 *player.Player, inventory [10]*gear.InventorySlot, 
 		text.Print("Du wirst von einem Plünderer angegriffen!")
 		player1, inventory, hp, att, def, rec, player_level = Fight(player1, inventory, hp, att, def, rec, world, player_level, 10)
 
+		text.Print("Du wirst von einem zweiten Plünderer angegriffen!")
+		player1, inventory, hp, att, def, rec, player_level = Fight(player1, inventory, hp, att, def, rec, world, player_level, 10)
+
 	} else {
 		text.Print("Du bist wie ein Feigling weggerannt")
+
+		player1.UpdateKarma(-4)
 	}
 
 	return player1, inventory, hp, att, def, rec, player_level
@@ -81,7 +86,7 @@ func Stammarzt(player1 *player.Player, inventory [10]*gear.InventorySlot, hp, at
 
 	text.Print("Der Stammarzt möchte ein neues Medikament ausprobieren.")
 
-	// Auswahl Pilz essen oder nicht
+	// Auswahl Medizin testen oder nicht
 	text.Print("Willst du es testen?")
 	fmt.Println("1: Ja")
 	fmt.Println("2: Nein")
@@ -100,12 +105,12 @@ func Stammarzt(player1 *player.Player, inventory [10]*gear.InventorySlot, hp, at
 // Spieler wählt aus ob er steine an den Rotzbuben zurückwirft
 // Gets PlayerStats
 // returns nothing
-func VerletzterBewohner() {
+func VerletzterBewohner(player1 *player.Player) {
 	var choice int
 
 	text.Print("Du triffst einen verletzten Bewohner.")
 
-	// Auswahl Pilz essen oder nicht
+	// Auswahl Bewohner helfen oder nicht
 	text.Print("Willst du ihm helfen?")
 	fmt.Println("1: Ja")
 	fmt.Println("2: Nein")
@@ -116,15 +121,13 @@ func VerletzterBewohner() {
 		text.Print("Kurz danach siehst du aus einer Ferne wie diese Bude von jemandem in die Luft gesprengt wird.")
 		text.Print("...")
 		text.Print("Naja... Letzendlich hast du ihm geholfen.")
-		// + Karma
+
+		player1.UpdateKarma(6)
 	} else {
 		text.Print("Du entscheidest dich ihn schmerzhaft sterben zu lassen.")
+
+		player1.UpdateKarma(-5)
 	}
-	///////////////////////////////////////////////
-	///////////////////////////////////////////////
-	/////////            KARMA -         //////////
-	///////////////////////////////////////////////
-	///////////////////////////////////////////////
 }
 
 ////////////////////Funktionen für Geisterstdt///////////////////////////

@@ -27,7 +27,7 @@ func Baerangriff(player1 *player.Player, inventory [10]*gear.InventorySlot, hp, 
 func Bonfire(player1 *player.Player, inventory [10]*gear.InventorySlot, hp int) int {
 	var maxHp, _, _, _ = player1.CreateStats(inventory)
 
-	text.Print("Du findest einen Lagerfeuer und ruhst dich aus")
+	text.Print("Du findest ein Lagerfeuer und ruhst dich aus")
 
 	hp = hp + (maxHp / 5)
 	if hp > maxHp {
@@ -82,15 +82,15 @@ func Hexenjagd(player1 *player.Player) {
 	fmt.Scanln(&choice)
 
 	if choice == 1 {
-		text.Print("Du spührst wie deine Sündhafte tat deine Wirbelsaüle friert.")
+		text.Print("Du spürst wie deine Sündhafte Tat deine Wirbelsaüle frieren lässt.")
+
+		player1.UpdateKarma(-9)
 	} else {
 		text.Print("Du entscheidest dich nicht in den natürlichen Prozess einzumischen.")
+
+		player1.UpdateKarma(-1)
 	}
-	///////////////////////////////////////////////
-	///////////////////////////////////////////////
-	/////////            KARMA           //////////
-	///////////////////////////////////////////////
-	///////////////////////////////////////////////
+
 }
 
 // Spieler kämpft gegen Burgritter
@@ -151,7 +151,7 @@ func Rotzbuben(player1 *player.Player) {
 
 	text.Print("Du wirst von kleinen Rotzbuben mit Steinen beworfen.")
 
-	// Auswahl Pilz essen oder nicht
+	// Auswahl zurückwerfen oder nicht
 	text.Print("Willst du zurückwerfen?")
 	fmt.Println("1: Ja")
 	fmt.Println("2: Nein")
@@ -160,14 +160,13 @@ func Rotzbuben(player1 *player.Player) {
 	if choice == 1 {
 		text.Print("Du hast einem Kind den Schädel durchgeschlagen.")
 		text.Print("Fühlst du dich jetzt besser?")
+
+		player1.UpdateKarma(-8)
 	} else {
 		text.Print("Du nimmst den Weg des Friedens und die Rotzbuben werden von deren Müttern nach Hause gezogen.")
+
+		player1.UpdateKarma(3)
 	}
-	///////////////////////////////////////////////
-	///////////////////////////////////////////////
-	/////////            KARMA           //////////
-	///////////////////////////////////////////////
-	///////////////////////////////////////////////
 }
 
 // Spieler wählt aus ob im Wirtshaus rastet
@@ -179,7 +178,7 @@ func Wirtshaus(player1 *player.Player, inventory [10]*gear.InventorySlot, hp int
 
 	text.Print("Ein Platz im Wirtshaus ist frei.")
 
-	// Auswahl Pilz essen oder nicht
+	// Auswahl Mahlzeit essen oder nicht
 	text.Print("Möchtest du dort essen und rasten?")
 	fmt.Println("1: Ja")
 	fmt.Println("2: Nein")

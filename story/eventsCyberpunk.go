@@ -34,7 +34,8 @@ func Bettler(player1 *player.Player, inventory [10]*gear.InventorySlot, hp, att,
 	case giveaway == 1: //////Er gibt etwas ab -> Der Penner dankt ihm und der Spieler erlangt Karma
 		text.Print("Du gibst dem Penner eins deiner Items und er dankt dir.")
 		gear.SubtractFromInventory(inventory)
-		/////////////Karma++
+
+		player1.UpdateKarma(7)
 	case giveaway == 2:
 		text.Print("Der Obdachlose wird sauer und greift dich an!")
 		player1, inventory, hp, att, def, rec, player_level = Fight(player1, inventory, hp, att, def, rec, world, player_level, 18)
