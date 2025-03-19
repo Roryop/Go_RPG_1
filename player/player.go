@@ -23,6 +23,23 @@ type Player struct {
 	bonusPoints int
 
 	stats [7]int
+
+	//creating karma system
+	karma int
+}
+
+// Gets value of karma to be added / subtracted
+// Adds value to karma
+// Returns Nothing
+func (w *Player) UpdateKarma(value int) {
+	w.karma += value
+}
+
+// Gets Nothing
+// Does Nothing
+// Returns karma
+func (w *Player) GetKarma() int {
+	return w.karma
 }
 
 // Gets Nothing
