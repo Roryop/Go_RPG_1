@@ -151,6 +151,31 @@ func (w *Player) CreateStats(inventory [10]*gear.InventorySlot) (int, int, int, 
 	return hp, att, def, rec
 }
 
+// Gets inventory, current stats, chosen Stat to upgrade
+// Permanently Upgrades Stats by 1/10 of their current maximum -> better scaling
+// Returns current stats
+func (w *Player) UpgradeStat(inventory [10]*gear.InventorySlot, hp, att, def, rec int, chosenStat int) (int, int, int, int) {
+	var maxHp, maxAtt, maxDef, maxRec = w.CreateStats(inventory)
+	switch chosenStat {
+	case 1:
+		hp += maxHp / 10
+		if hp > maxHp {
+			hp = maxHp
+		}
+		w.hpPoints += maxHp / 10
+	case 2:
+		att += maxAtt / 10
+		w.attPoints += maxAtt / 10
+	case 3:
+		def += maxDef / 10
+		w.defPoints += maxDef / 10
+	case 4:
+		rec += maxRec / 10
+		w.rec += maxRec / 10
+	}
+	return hp, att, def, rec
+}
+
 // Gets Nothing
 // Gives out current Stats of Player (hp, att, def, rec)
 // Returns Nothing
