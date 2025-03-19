@@ -183,7 +183,7 @@ func EventExecution(event string, player1 *player.Player, inventory [10]*gear.In
 	case "Burgritter":
 		player1, inventory, hp, att, def, rec, world_barrier = story.Burgritter(player1, inventory, hp, att, def, rec, world, world_barrier)
 	case "Kerker":
-		player1, inventory, hp, att = story.Kerker(player1, inventory, hp, att)
+		player1, inventory, hp, att = story.Kerker(player1, inventory, hp, att, def, rec)
 
 	////////////////////// Funktionen für Dorf ////////////////////////////
 	case "BetrunkenerDorfbewohner":
@@ -207,7 +207,7 @@ func EventExecution(event string, player1 *player.Player, inventory [10]*gear.In
 	case "PluendererGroup":
 		player1, inventory, hp, att, def, rec, world_barrier = story.PluendererGroup(player1, inventory, hp, att, def, rec, world, world_barrier)
 	case "Stammarzt":
-		hp = story.Stammarzt(player1, inventory, hp)
+		hp = story.Stammarzt(player1, inventory, hp, att, def, rec)
 	case "VerletzterBewohner":
 		story.VerletzterBewohner()
 

@@ -73,11 +73,10 @@ func PluendererGroup(player1 *player.Player, inventory [10]*gear.InventorySlot, 
 	return player1, inventory, hp, att, def, rec, player_level
 }
 
-// Spieler wählt aus ob er einen Pilz isst
-// Gets PlayerHP, PlayerMaxHp
-// Returns PlayerHp nach essen oder nicht essen vom Pilz
-func Stammarzt(player1 *player.Player, inventory [10]*gear.InventorySlot, hp int) int {
-	var maxHp, _, _, _ = player1.CreateStats(inventory)
+// Spieler wählt aus ob er den Stammarzt experimentieren lassen will
+// Gets Player, inventory, curent stats
+// Returns PlayerHp nach essen oder nicht essen vom Medikament
+func Stammarzt(player1 *player.Player, inventory [10]*gear.InventorySlot, hp, att, def, rec int) int {
 	var choice int
 
 	text.Print("Der Stammarzt möchte ein neues Medikament ausprobieren.")
@@ -89,7 +88,7 @@ func Stammarzt(player1 *player.Player, inventory [10]*gear.InventorySlot, hp int
 	fmt.Scanln(&choice)
 
 	if choice == 1 {
-		hp = hp + (maxHp / 2)
+		hp, _, _, _ = player1.UpgradeStat(inventory, hp, att, def, rec, 1)
 
 		text.Print("Du spührst wie Kreatinphosphat deine Muskeln mit Wasser füllt!!!")
 	} else {

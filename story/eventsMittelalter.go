@@ -30,6 +30,9 @@ func Bonfire(player1 *player.Player, inventory [10]*gear.InventorySlot, hp int) 
 	text.Print("Du findest einen Lagerfeuer und ruhst dich aus")
 
 	hp = hp + (maxHp / 5)
+	if hp > maxHp {
+		hp = maxHp
+	}
 
 	return hp
 }
@@ -51,6 +54,9 @@ func GesunderPilz(player1 *player.Player, inventory [10]*gear.InventorySlot, hp 
 
 	if choice == 1 {
 		hp = hp + (maxHp / 7)
+		if hp > maxHp {
+			hp = maxHp
+		}
 
 		text.Print("Du hast den Pilz gegessen und etwas regeneriert")
 	} else {
@@ -100,9 +106,9 @@ func Burgritter(player1 *player.Player, inventory [10]*gear.InventorySlot, hp, a
 }
 
 // Spieler wird in den Kerker geworfen
-func Kerker(player1 *player.Player, inventory [10]*gear.InventorySlot, hp, att int) (*player.Player, [10]*gear.InventorySlot, int, int) {
+func Kerker(player1 *player.Player, inventory [10]*gear.InventorySlot, hp, att, def, rec int) (*player.Player, [10]*gear.InventorySlot, int, int) {
 	var choice int
-	var maxHp, maxAtt, _, _ = player1.CreateStats(inventory)
+	var maxHp, _, _, _ = player1.CreateStats(inventory)
 
 	text.Print("Du würdest aufgrund eines Verdachts in den Kerker geworfen.")
 
@@ -117,7 +123,7 @@ func Kerker(player1 *player.Player, inventory [10]*gear.InventorySlot, hp, att i
 		hp = hp - (maxHp / 7)
 
 	} else {
-		att = att + (maxAtt / 5)
+		_, att, _, _ = player1.UpgradeStat(inventory, hp, att, def, rec, 2)
 		text.Print("Durch intensives Training und Meditation baust du Masse auf.")
 	}
 	return player1, inventory, hp, att
@@ -181,6 +187,9 @@ func Wirtshaus(player1 *player.Player, inventory [10]*gear.InventorySlot, hp int
 
 	if choice == 1 {
 		hp = hp + (maxHp / 6)
+		if hp > maxHp {
+			hp = maxHp
+		}
 
 		text.Print("Du hast dich geizig voll gefressen.")
 	} else {

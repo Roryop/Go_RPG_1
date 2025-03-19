@@ -89,7 +89,7 @@ func HoelenmenschenHunger(hp int) int {
 		text.Print("Du hast die Hölenmenschen nicht bestohlen.")
 		text.Print("Du hungerst...")
 
-		hp = hp - (hp / 10)
+		hp = hp - (hp / 6) // Subtracting 1/6th from current hp
 	}
 	return hp
 }
