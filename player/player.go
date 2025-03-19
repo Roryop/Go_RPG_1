@@ -151,25 +151,6 @@ func (w *Player) CreateStats(inventory [10]*gear.InventorySlot) (int, int, int, 
 	return hp, att, def, rec
 }
 
-// Gets current Stats
-// Sets current Player Stats equal to current Stats
-// Returns Nothing
-func (w *Player) UpdateCurrentPlayerStats(hp, att, def, rec int) {
-	w.stats[2] = hp
-	w.stats[3] = att
-	w.stats[4] = def
-	w.stats[5] = rec
-}
-
-// Gets current Stats
-// Sets current Stats equal to current Player  Stats
-// Returns Nothing
-func (w *Player) UpdateCurrentStats() (int, int, int, int) {
-	var hp, att, def, rec = w.stats[2], w.stats[3], w.stats[4], w.stats[5]
-
-	return hp, att, def, rec
-}
-
 // Gets Nothing
 // Gives out current Stats of Player (hp, att, def, rec)
 // Returns Nothing
