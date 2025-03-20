@@ -263,7 +263,7 @@ func Pterodactylus(player1 *player.Player, inventory [10]*gear.InventorySlot, hp
 }
 
 // Gets player, inventory, current stats, world, player_level
-// Fights a Triceratops
+// Fights Bergsteigerziegen
 // Returns player, inventory, current stats, player_level
 func Bergsteigerziegen(player1 *player.Player, inventory [10]*gear.InventorySlot, hp, att, def, rec int, world string, player_level int) (*player.Player, [10]*gear.InventorySlot, int, int, int, int, int) {
 
