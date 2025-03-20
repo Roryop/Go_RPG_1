@@ -26,7 +26,7 @@ func CreateEnemy(world string, player_level int, typ int) (string, [4]int) {
 	var enemyName string
 
 	if typ == 0 {
-		typ = rand.Intn(19) + 1
+		typ = rand.Intn(21) + 1
 	}
 
 	// Creates Stats and Name of Enemy depending on Enemy Typ + Enemy level
@@ -194,7 +194,7 @@ func (w *Wesen) SetEnemyTyp(typ int) {
 		w.name = "Koyot"
 	case 18:
 		w.name = "Penner"
-	case 19:
+	case 21:
 		w.name = "Weißer Monster"
 	default:
 		w.name = "Ork"

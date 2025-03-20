@@ -125,11 +125,11 @@ func Jailbreak(player1 *player.Player, inventory [10]*gear.InventorySlot, hp, at
 // returns inventory
 func Sheriffquest(player1 *player.Player, inventory [10]*gear.InventorySlot, player_level int) [10]*gear.InventorySlot {
 	var choice int
-	var item = gear.ItemDrop(player_level)
+	var item = gear.NewGear("Weapon", "Smith & Wesson 500 Bone Crusher")
 
 	text.Print("Der Sherrif fragt dich, ob du kurz auf einen gefangenen aufpassen kannst.")
 
-	// Auswahl plündern oder nicht
+	// Auswahl Zeit nehmen oder nicht
 	text.Print("Willst du dir die Zeit nehmen?")
 	fmt.Println("1: Ja")
 	fmt.Println("2: Nein")
@@ -149,12 +149,12 @@ func Sheriffquest(player1 *player.Player, inventory [10]*gear.InventorySlot, pla
 // returns inventory
 func Sheriffberauben(player1 *player.Player, inventory [10]*gear.InventorySlot, player_level int) [10]*gear.InventorySlot {
 	var choice int
-	var item = gear.ItemDrop(player_level)
+	var item = gear.NewGear("Accessoire", "Hello Kitty Verband")
 
 	text.Print("Der Sherrif steckt sich eine Zigarre an und geht raus")
 
-	// Auswahl plündern oder nicht
-	text.Print(" Willst du die Schubladen seines Schreibtisches durchsuchen?")
+	// Auswahl durchschauen oder nicht
+	text.Print("Willst du die Schubladen seines Schreibtisches durchsuchen?")
 	fmt.Println("1: Ja")
 	fmt.Println("2: Nein")
 	fmt.Scanln(&choice)
@@ -170,3 +170,30 @@ func Sheriffberauben(player1 *player.Player, inventory [10]*gear.InventorySlot, 
 }
 
 ////////////////Funktionen für Goldmine///////////////////////////
+
+// Spieler wählt aus ob er einen Insassen Freilässt
+// Gets Playerstats, Kampfalgoritmus
+// Returns Playerstats nach Kampf
+func Koyothoehle(player1 *player.Player, inventory [10]*gear.InventorySlot, hp, att, def, rec int, world string, player_level int) (*player.Player, [10]*gear.InventorySlot, int, int, int, int, int) {
+	var choice int
+	var item = gear.NewGear("Accessoire", "Actimel")
+
+	text.Print("Du siehst in der Höhle einen Koyoten an der Leiche eines Minenarbeiters nagen.")
+
+	// Auswahl angreifen oder nicht
+	text.Print("Möchtest du ihn angreifen und hoffen, dass die Leiche etwas nützliches bei sich trägt?")
+	fmt.Println("1: Ja")
+	fmt.Println("2: Nein")
+	fmt.Scanln(&choice)
+
+	if choice == 1 {
+		text.Print("Du entscheidest dich den Koyoten anzugreifen.")
+		player1, inventory, hp, att, def, rec, player_level = Fight(player1, inventory, hp, att, def, rec, world, player_level, 17)
+		inventory = gear.AddToInventory(inventory, item)
+		player1.UpdateKarma(-4)
+	} else {
+		text.Print("Du entscheidest dich nicht einzumischen.")
+	}
+
+	return player1, inventory, hp, att, def, rec, player_level
+}
