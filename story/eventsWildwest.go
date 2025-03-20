@@ -171,7 +171,7 @@ func Sheriffberauben(player1 *player.Player, inventory [10]*gear.InventorySlot, 
 
 ////////////////Funktionen für Goldmine///////////////////////////
 
-// Spieler wählt aus ob er einen Insassen Freilässt
+// Spieler wählt aus ob er Koyoten angreift
 // Gets Playerstats, Kampfalgoritmus
 // Returns Playerstats nach Kampf
 func Koyothoehle(player1 *player.Player, inventory [10]*gear.InventorySlot, hp, att, def, rec int, world string, player_level int) (*player.Player, [10]*gear.InventorySlot, int, int, int, int, int) {
@@ -196,4 +196,34 @@ func Koyothoehle(player1 *player.Player, inventory [10]*gear.InventorySlot, hp, 
 	}
 
 	return player1, inventory, hp, att, def, rec, player_level
+}
+
+// Spieler kriegt aufs Gesicht wenn er einen Balken bei seite räumt
+// Gets PlayerHp, PlayerMaxHp
+// Returns PlayerHp mit addiertem ein fünftel vom PlayerMaxHp
+func Aufdiefressekriegen(player1 *player.Player, inventory [10]*gear.InventorySlot, hp int) int {
+	var maxHp, _, _, _ = player1.CreateStats(inventory)
+	var choice int
+
+	text.Print("Hinter einem Balken in der Wand steckt eine stark aussehende Waffe.")
+
+	// Auswahl räumen oder nicht
+	text.Print("Willst du ihn beiseite räumen?")
+	fmt.Println("1: Ja")
+	fmt.Println("2: Nein")
+	fmt.Scanln(&choice)
+
+	if choice == 1 {
+		text.Print("Ein tragender Balken...")
+		text.Print("Ein Teil der Mine stürzt ein, du wirst von einem Stein auf den Kopf getroffen.")
+		hp = hp - (maxHp / 7)
+		if hp > maxHp {
+			hp = maxHp
+		}
+
+	} else {
+		text.Print("Du erinnerst dich an weisheiten deines Onkels...")
+		text.Print("Du bleibst zufrieden mit deiner hetzigen Waffe und gehst gelassen weg...")
+	}
+	return hp
 }
