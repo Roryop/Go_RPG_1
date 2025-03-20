@@ -144,4 +144,29 @@ func Sheriffquest(player1 *player.Player, inventory [10]*gear.InventorySlot, pla
 	return inventory
 }
 
+// Spieler wählt aus ob er Sheriffs schubladen durchsuchen will
+// Gets inventory (fügt einen Medipack hinzu falls der Spieler den Sheriff beraubt)
+// returns inventory
+func Sheriffberauben(player1 *player.Player, inventory [10]*gear.InventorySlot, player_level int) [10]*gear.InventorySlot {
+	var choice int
+	var item = gear.ItemDrop(player_level)
+
+	text.Print("Der Sherrif steckt sich eine Zigarre an und geht raus")
+
+	// Auswahl plündern oder nicht
+	text.Print(" Willst du die Schubladen seines Schreibtisches durchsuchen?")
+	fmt.Println("1: Ja")
+	fmt.Println("2: Nein")
+	fmt.Scanln(&choice)
+
+	if choice == 1 {
+		text.Print("Du bist ehrenlos...")
+		inventory = gear.AddToInventory(inventory, item)
+		player1.UpdateKarma(-4)
+	} else {
+		text.Print("Guter Junge...")
+	}
+	return inventory
+}
+
 ////////////////Funktionen für Goldmine///////////////////////////
