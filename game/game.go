@@ -49,6 +49,10 @@ func ChoosePlace(placeArray [3]string, world string) [3]string {
 		place = strings.ToLower(place)
 
 		switch {
+		case world == "tutorial":
+			eventArray = [3]string{"Ork", "Demokarma", "Demoauswahl"}
+			isInLoop = false
+
 		case place == "slums" && world == "cyberpunk":
 			eventArray = [3]string{"Robbery", "Bettler", "Muelltonne"}
 			isInLoop = false
@@ -78,6 +82,7 @@ func ChoosePlace(placeArray [3]string, world string) [3]string {
 		case place == "ghost town" && world == "armageddon":
 			eventArray = [3]string{"PluendererSingle"}
 			isInLoop = false
+
 		case place == "cave" && world == "prehistory":
 			eventArray = [3]string{}
 			isInLoop = false
@@ -87,6 +92,7 @@ func ChoosePlace(placeArray [3]string, world string) [3]string {
 		case place == "mountain" && world == "prehistory":
 			eventArray = [3]string{}
 			isInLoop = false
+
 		case place == "pub" && world == "wildwest":
 			eventArray = [3]string{"Whiskey", "Schlaegerei", "Barueberfall"}
 			isInLoop = false

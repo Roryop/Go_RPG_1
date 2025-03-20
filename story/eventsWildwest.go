@@ -61,7 +61,7 @@ func Schlaegerei(player1 *player.Player, inventory [10]*gear.InventorySlot, hp, 
 // Spieler wählt aus ob er sich in eine Schlaegerei einmischen will
 // Gets Playerstats, Kampfalgoritmus
 // Returns Playerstats nach Kampf
-func Barüberfall(player1 *player.Player, inventory [10]*gear.InventorySlot, hp, att, def, rec int, world string, player_level int) (*player.Player, [10]*gear.InventorySlot, int, int, int, int, int) {
+func Barueberfall(player1 *player.Player, inventory [10]*gear.InventorySlot, hp, att, def, rec int, world string, player_level int) (*player.Player, [10]*gear.InventorySlot, int, int, int, int, int) {
 	var choice int
 
 	text.Print("Die Bar wird überfallen.")
@@ -136,6 +136,10 @@ func Sheriffquest(player1 *player.Player, inventory [10]*gear.InventorySlot, pla
 	fmt.Scanln(&choice)
 
 	if choice == 1 {
+		text.Print("...")
+		text.LongWait()
+		text.Print("...")
+		text.LongWait()
 		text.Print("Der Sheriff schenkt dir eine Waffe aus seinem Arsenal.")
 		inventory = gear.AddToInventory(inventory, item)
 	} else {
