@@ -101,9 +101,23 @@ func Motel(player1 *player.Player, inventory [10]*gear.InventorySlot, hp, att, d
 		}
 
 	default:
-		fmt.Println("Ein tapferer Held schläft nicht!!!")
+		fmt.Println("Hoffentlich wird es dir nicht zum Verhängnis. Schlaf ist wichtig!")
 
 	}
 	return player1, inventory, hp, att, def, rec, player_level
 
+}
+
+func Verlaufen(player1 *player.Player, inventory [10]*gear.InventorySlot, hp, att, def, rec int, world string, player_level int) (*player.Player, [10]*gear.InventorySlot, int, int, int, int, int) {
+
+	var maxHp, _, _, _ = player1.CreateStats(inventory)
+
+	text.Print("Du verläufst dich om einem ehemaligen Industriegebiet und brauchst zu lange, um wieder heraus zu finden. --HP")
+
+	hp = hp - (maxHp / 5) ////////////////////////Spieler bekommt HP abgezogen
+	if hp > maxHp {
+		hp = maxHp
+	}
+
+	return player1, inventory, hp, att, def, rec, player_level
 }
