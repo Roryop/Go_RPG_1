@@ -76,6 +76,12 @@ func (g *Gear) SetAttributesGear() {
 	case "Celestial Metal":
 		g.damage = 154
 
+	////////////// Transcendent ///////////////
+	case "Star Weapon":
+		g.damage = 400
+		g.defense = 100
+		g.recovery = 50
+
 	/////////////////////// Armor //////////////////////////
 
 	////////////// Common ///////////////
@@ -114,6 +120,12 @@ func (g *Gear) SetAttributesGear() {
 
 	case "Celestial Bucket":
 		g.defense = 169
+
+	////////////// Transcendent ///////////////
+	case "Star Armor":
+		g.damage = 50
+		g.defense = 500
+		g.recovery = 100
 
 	/////////////////////// Accessoires ///////////////////
 
@@ -162,6 +174,12 @@ func (g *Gear) SetAttributesGear() {
 
 	case "Star Dust":
 		g.recovery = 150
+
+	////////////// Transcendent ///////////////
+	case "Star":
+		g.damage = 300
+		g.defense = 300
+		g.recovery = 300
 	}
 }
 
@@ -291,6 +309,14 @@ func ItemDrop(player_level int) *Gear {
 		"Star Core",
 		"Star Dust"}
 
+	//////////////////////// Item Arrays Rarity Mythical //////////////////////
+	var weaponArrayTranscendent [1]string = [1]string{
+		"Star Weapon"}
+	var armorArrayTranscendent [1]string = [1]string{
+		"Star Armor"}
+	var accessoireArrayTranscendent [1]string = [1]string{
+		"Star"}
+
 	// Creating Variables to store Item Name of corresponding Item
 	var itemName string
 	var itemArrayNumber int
@@ -349,7 +375,17 @@ func ItemDrop(player_level int) *Gear {
 			itemName = accessoireArrayMythical[itemArrayNumber]
 		}
 	case "Transcendent":
-
+		switch itemTyp {
+		case "Weapon":
+			itemArrayNumber = rand.Intn(len(weaponArrayTranscendent))
+			itemName = weaponArrayTranscendent[itemArrayNumber]
+		case "Armor":
+			itemArrayNumber = rand.Intn(len(armorArrayTranscendent))
+			itemName = armorArrayTranscendent[itemArrayNumber]
+		case "Accessoire":
+			itemArrayNumber = rand.Intn(len(accessoireArrayTranscendent))
+			itemName = accessoireArrayTranscendent[itemArrayNumber]
+		}
 	case "Godly":
 
 	}
