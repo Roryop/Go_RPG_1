@@ -15,7 +15,7 @@ Willkommen auf deiner Heldenreise. Welche Welt möchtest du zuerst betreten?
 		Events:
 		-Grenzkontrolle
 		-Motel (schlafen - HP boost)
-		-Du verläufst dich im Industriegebiet und brauchst zu lange, um wieder herauszufinden. (--hp)
+		-Du verläufst dich im Industriegebiet und brauchst zu lange, um wieder herauszufinden. (--hp) 
 2. Mittelalter-Welt
 	Wohin willst du gehen?
 	1. Wald
@@ -64,7 +64,7 @@ Willkommen auf deiner Heldenreise. Welche Welt möchtest du zuerst betreten?
 		-Du findest einen Teich. Willst du daraus trinken? (Ja= +HP;Krokodil kommt raus->Kampf/Nein= nix passiert)
 		-Du siehst eine verdächtig aussehende Frucht. Willst du sie essen? (ist gut)
 	3. Berg
-		Events: (feste Reihenfolge)
+		Events:
 		-Du findest einen schnelleren, aber gefährlicheren Weg, den Berg zu erklimmen. Möchtest du ihn gehen? (festgelegt als erstes Event)
 		-Du findest das Nest eines Pterodaktylus. Willst du es durchsuchen? (Leiche mit Item liegt drin)
 		-Du wirst von einer prähistorischen Bergziege angegriffen. (Kampf mit der scheiß Ziege)
