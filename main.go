@@ -111,7 +111,7 @@ func main() {
 
 		////////////////////////// Menu End ///////////////////////////////
 
-		for i := 0; i < 10 && hp > 0; i++ { // Entering Fights until Player 1. killed 10 monster; 2. is dead
+		for i := 0; i < 3 && hp > 0; i++ { // Entering Fights until Player 1. killed 10 monster; 2. is dead
 
 			///////////////////// Choosing Place and Making Event ////////////////
 			var placeArray = game.SetPlaceArray(world)

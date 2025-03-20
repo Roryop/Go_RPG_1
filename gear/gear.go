@@ -55,11 +55,11 @@ func (g *Gear) SetAttributesGear() {
 
 	////////////// Unique ///////////////
 	case "Bastard Sword":
-		g.damage = 135
+		g.damage = 61
 
 	//Nicht in WeaponArray (DropPool)
 	case "Ankylosaurus Schwanz":
-		g.damage = 140
+		g.damage = 123
 		g.defense = 10
 
 	case "Mantis Klingen":
@@ -68,6 +68,13 @@ func (g *Gear) SetAttributesGear() {
 
 	case "Smith & Wesson 500 Bone Crusher":
 		g.damage = 150
+
+	////////////// Mythical ///////////////
+	case "Star Button":
+		g.damage = 162
+
+	case "Celestial Metal":
+		g.damage = 154
 
 	/////////////////////// Armor //////////////////////////
 
@@ -93,53 +100,69 @@ func (g *Gear) SetAttributesGear() {
 
 	////////////// Unique ///////////////
 	case "Kevlar Rüstung":
-		g.defense = 37
+		g.defense = 82
 
 	case "Pyrex Glass Rüstung":
-		g.defense = 40
+		g.defense = 93
 
 	case "Obsidian Rüstung":
-		g.defense = 38
+		g.defense = 79
+
+	////////////// Mythical ///////////////
+	case "Star Container":
+		g.defense = 170
+
+	case "Celestial Bucket":
+		g.defense = 169
 
 	/////////////////////// Accessoires ///////////////////
 
 	////////////// Common ///////////////
 	case "Spinat":
 
-		g.damage = 10
+		g.damage = 1
 
-	case "Actimel":
+	case "Yakult":
 
-		g.defense = 10
+		g.defense = 2
 
 	case "Hello Kitty Verband":
 
-		g.recovery = 10
+		g.recovery = 2
 
 	////////////// Greater ///////////////
 	case "Mehr Spinat":
 
-		g.damage = 25
+		g.damage = 11
 
-	case "Yakult":
+	case "Actimel":
 
-		g.defense = 25
+		g.defense = 14
 
 	case "Lecker Bierchen":
 
-		g.recovery = 25
+		g.recovery = 13
 
 	////////////// Unique ///////////////
 	case "Popeyes Eigener Spinat":
 		g.damage = 50
 
+	case "Flintstone Vitamine":
+		g.defense = 50
+
 	case "Starker Glaube":
 		g.recovery = 50
 
-	case "Flintstone Vitamine":
-		g.defense = 50
-	}
+	////////////// Mythical ///////////////
+	case "Star Shard":
+		g.damage = 150
 
+	case "Star Core":
+		g.defense = 150
+
+	case "Star Dust":
+		g.recovery = 150
+	}
 }
 
 ///////////////////////////////  Create New Gear  //////////////////////////////////
@@ -223,7 +246,7 @@ func ItemDrop(player_level int) *Gear {
 
 	var accessoireArrayCommon [3]string = [3]string{
 		"Spinat",
-		"Actimel",
+		"Yakult",
 		"Hello Kitty Verband"}
 
 	//////////////////////// Item Arrays Rarity Greater //////////////////////
@@ -239,11 +262,11 @@ func ItemDrop(player_level int) *Gear {
 
 	var accessoireArrayGreater [3]string = [3]string{
 		"Mehr Spinat",
-		"Yakult",
+		"Actimel",
 		"Lecker Bierchen"}
 
 	//////////////////////// Item Arrays Rarity Unique //////////////////////
-	var weaponArrayUnique [3]string = [3]string{
+	var weaponArrayUnique [1]string = [1]string{
 		"Bastard Sword"}
 
 	var armorArrayUnique [3]string = [3]string{
@@ -255,6 +278,18 @@ func ItemDrop(player_level int) *Gear {
 		"Rheimzadetz´ Ring of Strength",
 		"Radu´s Ring of Recovery",
 		"Grogerz´ Ring of Resilience"}
+
+	//////////////////////// Item Arrays Rarity Mythical //////////////////////
+	var weaponArrayMythical [2]string = [2]string{
+		"Star Button",
+		"Celestial Metal"}
+	var armorArrayMythical [2]string = [2]string{
+		"Star Container",
+		"Celestial Bucket"}
+	var accessoireArrayMythical [3]string = [3]string{
+		"Star Shard",
+		"Star Core",
+		"Star Dust"}
 
 	// Creating Variables to store Item Name of corresponding Item
 	var itemName string
@@ -302,7 +337,17 @@ func ItemDrop(player_level int) *Gear {
 			itemName = accessoireArrayUnique[itemArrayNumber]
 		}
 	case "Mythical":
-
+		switch itemTyp {
+		case "Weapon":
+			itemArrayNumber = rand.Intn(len(weaponArrayMythical))
+			itemName = weaponArrayMythical[itemArrayNumber]
+		case "Armor":
+			itemArrayNumber = rand.Intn(len(armorArrayMythical))
+			itemName = armorArrayMythical[itemArrayNumber]
+		case "Accessoire":
+			itemArrayNumber = rand.Intn(len(accessoireArrayMythical))
+			itemName = accessoireArrayMythical[itemArrayNumber]
+		}
 	case "Transcendent":
 
 	case "Godly":
