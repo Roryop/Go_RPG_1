@@ -2,6 +2,7 @@ package story
 
 import (
 	"fmt"
+	"math/rand"
 	"start/gear"
 	"start/player"
 	"start/text"
@@ -168,6 +169,43 @@ func Teich(player1 *player.Player, inventory [10]*gear.InventorySlot, hp, att, d
 	}
 
 	return player1, inventory, hp, att, def, rec, player_level
+}
+
+// Gets player, inventory, current stats
+// player chooses whether to eat woman, if yes -> random permanent stat increase
+// Returns current stats
+func EatWoman(player1 *player.Player, inventory [10]*gear.InventorySlot, hp, att, def, rec int) (int, int, int, int) {
+	var choice int
+
+	text.Print("Du triffst auf eine sehr dubiose Frau.")
+	text.Space(2)
+	text.ShortWait()
+	text.Print("Dir grummelt der Magen...")
+
+	text.Print("Möchtest du die Frau essen?")
+	fmt.Println("1: Ja")
+	fmt.Println("2: Nein")
+	fmt.Scanln(&choice)
+
+	text.Space(5)
+	text.LongWait()
+
+	if choice == 1 {
+		var randStat int = rand.Intn(4) + 1 //chooses random stat
+
+		text.Print("Die Frau schmeckt sehr lecker.")
+		text.ShortWait()
+		text.Print("Ein zufälliger Stat hat sich erhöht.")
+
+		hp, att, def, rec = player1.UpgradeStat(inventory, hp, att, def, rec, randStat)
+
+		player1.UpdateKarma(-4) //stat increase at cost of karma
+	} else {
+		text.Print("Du hast die Frau nicht gegessen...")
+
+		player1.UpdateKarma(1)
+	}
+	return hp, att, def, rec
 }
 
 ////////////////Funktionen für Berg///////////////////////////
