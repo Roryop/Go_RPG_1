@@ -245,13 +245,33 @@ func MountainPath(player1 *player.Player, inventory [10]*gear.InventorySlot, hp,
 }
 
 // Gets player, inventory, current stats, world, player_level
-// Fights a Triceratops
+// Fights a Pterodactylus
 // Returns player, inventory, current stats, player_level
 func Pterodactylus(player1 *player.Player, inventory [10]*gear.InventorySlot, hp, att, def, rec int, world string, player_level int) (*player.Player, [10]*gear.InventorySlot, int, int, int, int, int) {
 
 	text.Print("Du wirst von einem Pterodactylus angegriffen")
 
 	player1, inventory, hp, att, def, rec, player_level = Fight(player1, inventory, hp, att, def, rec, world, player_level, 12)
+
+	return player1, inventory, hp, att, def, rec, player_level
+}
+
+// Gets player, inventory, current stats, world, player_level
+// Fights a Triceratops
+// Returns player, inventory, current stats, player_level
+func Bergsteigerziegen(player1 *player.Player, inventory [10]*gear.InventorySlot, hp, att, def, rec int, world string, player_level int) (*player.Player, [10]*gear.InventorySlot, int, int, int, int, int) {
+
+	for i := 0; i < 3; i++ { //Fight gegen 3 Bergsteigerziegen
+		text.Print("Du wirst von einer Bergsteigerziege angegriffen")
+
+		player1, inventory, hp, att, def, rec, player_level = Fight(player1, inventory, hp, att, def, rec, world, player_level, 13)
+	}
+
+	text.ShortWait()
+	text.Space(5)
+	text.Print("Die Ziegen haben eine Schatztruhe beschützt.")
+	text.Print("Du öffnest die Schatztruhe.")
+	inventory = gear.AddDropToInventory(inventory, player_level)
 
 	return player1, inventory, hp, att, def, rec, player_level
 }
