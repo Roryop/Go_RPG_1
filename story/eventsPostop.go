@@ -143,3 +143,35 @@ func PluendererSingle(player1 *player.Player, inventory [10]*gear.InventorySlot,
 
 	return player1, inventory, hp, att, def, rec, player_level
 }
+
+// Spieler wählt aus ob er steine an den Rotzbuben zurückwirft
+// Gets PlayerStats
+// returns nothing
+func Geschäftplündern(player1 *player.Player, inventory [10]*gear.InventorySlot, player_level int) [10]*gear.InventorySlot {
+	var choice int
+	var item = gear.ItemDrop(player_level)
+	var gearTyp = item.GetGearTyp()
+
+	text.Print("Du findest ein verlassenes Geschäft.")
+
+	// Auswahl Bewohner helfen oder nicht
+	text.Print("Willst du es Plündern?")
+	fmt.Println("1: Ja")
+	fmt.Println("2: Nein")
+	fmt.Scanln(&choice)
+
+	if choice == 1 {
+		if gearTyp == "Empty" {
+			text.Print("Du hast erfoldreich nichts gefunden.")
+
+		} else {
+			text.Print("Du findest legendäre Artefakten!")
+			inventory = gear.AddToInventory(inventory, item)
+		}
+	} else {
+		text.Print("Du entgehst der möglichkeit Konsequenzenlos Schatz zu gewinnen")
+		text.Print("...")
+		text.Print("Würd mir stinken...")
+	}
+	return inventory
+}

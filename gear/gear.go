@@ -171,6 +171,10 @@ func NewGear(itemTyp string, itemName string) *Gear {
 	return gear
 }
 
+func (w *Gear) GetGearTyp() string {
+	return w.gearTyp
+}
+
 // Gets Nothing
 // Creates Item based on rand.Intn() + ItemArrays
 // Returns Item

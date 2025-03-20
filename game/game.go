@@ -211,6 +211,10 @@ func EventExecution(event string, player1 *player.Player, inventory [10]*gear.In
 	case "VerletzterBewohner":
 		story.VerletzterBewohner(player1)
 
+	////////////////////// Funktionen für Geisterstadt ////////////////////////////
+	case "Geschäftplündern":
+		inventory = story.Geschäftplündern(player1, inventory, player_level)
+
 	}
 
 	// Final Return Statement
