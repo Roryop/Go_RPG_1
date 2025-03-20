@@ -75,7 +75,7 @@ func Barüberfall(player1 *player.Player, inventory [10]*gear.InventorySlot, hp,
 	if choice == 1 {
 		text.Print("Der Anführer der Bande taucht vor dir auf...")
 		player1, inventory, hp, att, def, rec, player_level = Fight(player1, inventory, hp, att, def, rec, world, player_level, 15)
-
+		player1.UpdateKarma(6)
 	} else {
 		text.Print("Du bist geflüchtet.")
 		text.Print("...")
@@ -85,6 +85,39 @@ func Barüberfall(player1 *player.Player, inventory [10]*gear.InventorySlot, hp,
 	return player1, inventory, hp, att, def, rec, player_level
 }
 
-////////////////Funktionen für Shertrif Büro///////////////////////////
+////////////////Funktionen für Sheriff Büro///////////////////////////
+
+// Spieler wählt aus ob er einen Insassen Freilässt
+// Gets Playerstats, Kampfalgoritmus
+// Returns Playerstats nach Kampf
+func Jailbreak(player1 *player.Player, inventory [10]*gear.InventorySlot, hp, att, def, rec int, world string, player_level int) (*player.Player, [10]*gear.InventorySlot, int, int, int, int, int) {
+	var choice int
+	var item = gear.ItemDrop(player_level)
+	var gearTyp = item.GetGearTyp()
+
+	text.Print("Der Insasse des Gefängnisses bittet dich heimlich, ihn freizulassen.")
+
+	// Auswahl Freilassen oder nicht
+	text.Print("Willst du auf ihn Hören?")
+	fmt.Println("1: Ja")
+	fmt.Println("2: Nein")
+	fmt.Scanln(&choice)
+
+	if choice == 1 {
+		text.Print("Der Insasse bedankt sich bei dir.")
+		if gearTyp == "Empty" {
+			text.Print("Jedoch aber nur wörtlich.")
+		} else {
+			inventory = gear.AddToInventory(inventory, item)
+		}
+		text.Print("Der Sheriff riecht aber dein Missbrauch von Freiheit von 3/4 Meile aus.")
+		player1, inventory, hp, att, def, rec, player_level = Fight(player1, inventory, hp, att, def, rec, world, player_level, 16)
+	} else {
+		text.Print("Du lässt ihn in der Zelle gammeln.")
+		player1.UpdateKarma(4)
+	}
+
+	return player1, inventory, hp, att, def, rec, player_level
+}
 
 ////////////////Funktionen für Goldmine///////////////////////////
