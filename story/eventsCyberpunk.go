@@ -67,3 +67,11 @@ func Muelltonne(inventory [10]*gear.InventorySlot, player_level int) ([10]*gear.
 //////////////////Funktionen für Businessviertel///////////////////
 
 //////////////////Funktionen für Außenstadt///////////////////
+
+func Grenzkontrolle(player1 *player.Player, inventory [10]*gear.InventorySlot, hp, att, def, rec int, world string, player_level int) (*player.Player, [10]*gear.InventorySlot, int, int, int, int, int) {
+	text.Print("Du gerätst in eine Grenzkontrolle. Der Polizist ist schlecht gelaunt und greift Dich an")
+
+	player1, inventory, hp, att, def, rec, player_level = Fight(player1, inventory, hp, att, def, rec, world, player_level, 20)
+
+	return player1, inventory, hp, att, def, rec, player_level
+}
