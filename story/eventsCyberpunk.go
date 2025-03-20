@@ -96,4 +96,23 @@ func Security(player1 *player.Player, inventory [10]*gear.InventorySlot, player_
 	return inventory, player_level
 }
 
+func Businessman(player1 *player.Player, inventory [10]*gear.InventorySlot, hp, att, def, rec int, world string, player_level int) (*player.Player, [10]*gear.InventorySlot, int, int, int, int, int) {
+	var choice int
+	text.Print("Du rämpelst versehentlich einen Businessman an und sein Handy fiel runter.")
+	text.Print("Er will Geld als Entschädigung, aber  du hast keins. /Kämpfen /Weglaufen?")
+
+	fmt.Println("1: Kämpfen")
+	fmt.Println("2: Weglaufen")
+	fmt.Scanln(&choice)
+
+	switch {
+	case choice == 1:
+		player1, inventory, hp, att, def, rec, player_level = Fight(player1, inventory, hp, att, def, rec, world, player_level, 19)
+
+	case choice == 2:
+		fmt.Println("Du kommst ohne Geld und ohne Würde davon.")
+	}
+	return player1, inventory, hp, att, def, rec, player_level
+}
+
 //////////////////Funktionen für Außenstadt///////////////////

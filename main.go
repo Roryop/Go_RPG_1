@@ -77,7 +77,7 @@ func main() {
 
 				////////////////////// Choosing World /////////////////////////
 
-				world = game.Chooseworld(player_level) // NEEDS PROPER WORLD_BARRIER
+				world = game.Chooseworld() // NEEDS PROPER WORLD_BARRIER
 
 				goto start
 
