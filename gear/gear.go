@@ -180,6 +180,12 @@ func (g *Gear) SetAttributesGear() {
 		g.damage = 300
 		g.defense = 300
 		g.recovery = 300
+
+	///////////////// Godly /////////////////
+	case "Universe":
+		g.damage = 1000
+		g.defense = 1000
+		g.recovery = 1000
 	}
 }
 
@@ -309,7 +315,7 @@ func ItemDrop(player_level int) *Gear {
 		"Star Core",
 		"Star Dust"}
 
-	//////////////////////// Item Arrays Rarity Mythical //////////////////////
+	//////////////////////// Item Arrays Rarity Transcendent //////////////////////
 	var weaponArrayTranscendent [1]string = [1]string{
 		"Star Weapon"}
 	var armorArrayTranscendent [1]string = [1]string{
@@ -387,7 +393,8 @@ func ItemDrop(player_level int) *Gear {
 			itemName = accessoireArrayTranscendent[itemArrayNumber]
 		}
 	case "Godly":
-
+		itemTyp = "Accessoire"
+		itemName = "Universe"
 	}
 
 	// Creating Item based on ItemTyp + ItemName
