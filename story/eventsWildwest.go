@@ -227,3 +227,27 @@ func Aufdiefressekriegen(player1 *player.Player, inventory [10]*gear.InventorySl
 	}
 	return hp
 }
+
+// Spieler wählt aus ob er Banditen überfällt oder nicht
+// Gets Playerstats, Kampfalgoritmus
+// Returns Playerstats nach Kampf
+func Banditenlager(player1 *player.Player, inventory [10]*gear.InventorySlot, hp, att, def, rec int, world string, player_level int) (*player.Player, [10]*gear.InventorySlot, int, int, int, int, int) {
+	var choice int
+
+	text.Print("Du findest einen Lager von Banditen")
+
+	// Auswahl Banditen überfallen oder nicht
+	text.Print("Willst du die überfallen?")
+	fmt.Println("1: Ja")
+	fmt.Println("2: Nein")
+	fmt.Scanln(&choice)
+
+	if choice == 1 {
+		text.Print("Der Anführer der Bande taucht vor dir auf...")
+		player1, inventory, hp, att, def, rec, player_level = Fight(player1, inventory, hp, att, def, rec, world, player_level, 15)
+	} else {
+		text.Print("Du hattest kein Bock auf eine Eskalation in einer firedlichen Höhle.")
+	}
+
+	return player1, inventory, hp, att, def, rec, player_level
+}
