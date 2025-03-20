@@ -120,6 +120,10 @@ func (w *Wesen) GetStatsEnemy(enemy_level int) [4]int {
 		w.hp = 5 + (7 * w.level)
 		w.att = 2 + (3 * w.level)
 		w.def = 0 + w.level
+	case "Bulle":
+		w.hp = 12 + (6 * w.level)
+		w.att = 5 + (4 * w.level)
+		w.def = 5 + w.level
 	case "Weißer Monster":
 		w.hp = 15 + (7 * w.level)
 		w.att = 5 + (5 * w.level)
@@ -194,6 +198,8 @@ func (w *Wesen) SetEnemyTyp(typ int) {
 		w.name = "Koyot"
 	case 18:
 		w.name = "Penner"
+	case 20:
+		w.name = "Bulle"
 	case 21:
 		w.name = "Weißer Monster"
 	default:
