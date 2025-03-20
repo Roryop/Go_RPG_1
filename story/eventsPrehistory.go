@@ -209,3 +209,75 @@ func EatWoman(player1 *player.Player, inventory [10]*gear.InventorySlot, hp, att
 }
 
 ////////////////Funktionen für Berg///////////////////////////
+
+// Gets player, inventory, current stats, world, player_level
+// player chooses path -> wait 15 sec or fight enemy
+// Returns player, inventory, current stats, player_level
+func MountainPath(player1 *player.Player, inventory [10]*gear.InventorySlot, hp, att, def, rec int, world string, player_level int) (*player.Player, [10]*gear.InventorySlot, int, int, int, int, int) {
+	var choice int
+
+	text.Print("Du stehst vor einer Weggabelung.")
+	text.Space(2)
+	text.ShortWait()
+
+	text.Print("Möchtest du den schnelleren, aber gefährlicheren Pfad gehen?")
+	fmt.Println("1: Ja")
+	fmt.Println("2: Nein")
+	fmt.Scanln(&choice)
+
+	text.Space(5)
+	text.LongWait()
+
+	if choice == 1 {
+		text.Print("Du wirst von einer prähistorischen Bergsteigerziege angegriffen")
+
+		player1, inventory, hp, att, def, rec, player_level = Fight(player1, inventory, hp, att, def, rec, world, player_level, 13)
+
+		text.ShortWait()
+		text.Space(5)
+		text.Print("Du findest das Nest des Vogels und lootest es.")
+		inventory = gear.AddDropToInventory(inventory, player_level)
+
+	} else {
+		text.Print("Du wanderst für viele Tage umher...")
+
+		for i := 0; i < 5; i++ {
+			text.LongWait()
+			text.Print(".")
+		}
+	}
+
+	return player1, inventory, hp, att, def, rec, player_level
+}
+
+// Gets player, inventory, current stats, world, player_level
+// Fights a Pterodactylus
+// Returns player, inventory, current stats, player_level
+func Pterodactylus(player1 *player.Player, inventory [10]*gear.InventorySlot, hp, att, def, rec int, world string, player_level int) (*player.Player, [10]*gear.InventorySlot, int, int, int, int, int) {
+
+	text.Print("Du wirst von einem Pterodactylus angegriffen")
+
+	player1, inventory, hp, att, def, rec, player_level = Fight(player1, inventory, hp, att, def, rec, world, player_level, 12)
+
+	return player1, inventory, hp, att, def, rec, player_level
+}
+
+// Gets player, inventory, current stats, world, player_level
+// Fights Bergsteigerziegen
+// Returns player, inventory, current stats, player_level
+func Bergsteigerziegen(player1 *player.Player, inventory [10]*gear.InventorySlot, hp, att, def, rec int, world string, player_level int) (*player.Player, [10]*gear.InventorySlot, int, int, int, int, int) {
+
+	for i := 0; i < 3; i++ { //Fight gegen 3 Bergsteigerziegen
+		text.Print("Du wirst von einer Bergsteigerziege angegriffen")
+
+		player1, inventory, hp, att, def, rec, player_level = Fight(player1, inventory, hp, att, def, rec, world, player_level, 13)
+	}
+
+	text.ShortWait()
+	text.Space(5)
+	text.Print("Die Ziegen haben eine Schatztruhe beschützt.")
+	text.Print("Du öffnest die Schatztruhe.")
+	inventory = gear.AddDropToInventory(inventory, player_level)
+
+	return player1, inventory, hp, att, def, rec, player_level
+}
