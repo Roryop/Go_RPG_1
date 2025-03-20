@@ -155,23 +155,23 @@ func EventGenerator(eventArray [3]string) string {
 // Gets Event, Gets Everything needed in the game
 // Executes Function of equivalent event
 // Returns Everything needed in the game
-func EventExecution(event string, player1 *player.Player, inventory [10]*gear.InventorySlot, hp, att, def, rec int, world string, world_barrier int) (*player.Player, [10]*gear.InventorySlot, int, int, int, int, string, int) {
+func EventExecution(event string, player1 *player.Player, inventory [10]*gear.InventorySlot, hp, att, def, rec int, world string, player_level int) (*player.Player, [10]*gear.InventorySlot, int, int, int, int, string, int) {
 	switch event {
 	////////////////////////////// Cyberpunk /////////////////////////////////
 
 	//////////////////// Funktionen für Slums ////////////////////////
 	case "Robbery":
-		player1, inventory, hp, att, def, rec, world_barrier = story.Robbery(player1, inventory, hp, att, def, rec, world, world_barrier)
+		player1, inventory, hp, att, def, rec, player_level = story.Robbery(player1, inventory, hp, att, def, rec, world, player_level)
 	case "Bettler":
-		player1, inventory, hp, att, def, rec, world_barrier = story.Bettler(player1, inventory, hp, att, def, rec, world, world_barrier)
+		player1, inventory, hp, att, def, rec, player_level = story.Bettler(player1, inventory, hp, att, def, rec, world, player_level)
 	case "Muelltonne":
-		inventory, world_barrier = story.Muelltonne(inventory, world_barrier)
+		inventory, player_level = story.Muelltonne(inventory, player_level)
 
 	////////////////////////////// Mittelalter /////////////////////////////////
 
 	////////////////////// Funktionen für Wald ////////////////////////////
 	case "Baerangriff":
-		player1, inventory, hp, att, def, rec, world_barrier = story.Baerangriff(player1, inventory, hp, att, def, rec, world, world_barrier)
+		player1, inventory, hp, att, def, rec, player_level = story.Baerangriff(player1, inventory, hp, att, def, rec, world, player_level)
 	case "Bonfire":
 		hp = story.Bonfire(player1, inventory, hp)
 	case "GesunderPilz":
@@ -181,13 +181,13 @@ func EventExecution(event string, player1 *player.Player, inventory [10]*gear.In
 	case "Hexenjagd":
 		story.Hexenjagd(player1)
 	case "Burgritter":
-		player1, inventory, hp, att, def, rec, world_barrier = story.Burgritter(player1, inventory, hp, att, def, rec, world, world_barrier)
+		player1, inventory, hp, att, def, rec, player_level = story.Burgritter(player1, inventory, hp, att, def, rec, world, player_level)
 	case "Kerker":
 		player1, inventory, hp, att = story.Kerker(player1, inventory, hp, att, def, rec)
 
 	////////////////////// Funktionen für Dorf ////////////////////////////
 	case "BetrunkenerDorfbewohner":
-		player1, inventory, hp, att, def, rec, world_barrier = story.BetrunkenerDorfbewohner(player1, inventory, hp, att, def, rec, world, world_barrier)
+		player1, inventory, hp, att, def, rec, player_level = story.BetrunkenerDorfbewohner(player1, inventory, hp, att, def, rec, world, player_level)
 	case "Rotzbuben":
 		story.Rotzbuben(player1)
 	case "Wirtshaus":
@@ -197,22 +197,26 @@ func EventExecution(event string, player1 *player.Player, inventory [10]*gear.In
 
 	////////////////////// Funktionen für Ground Zero ////////////////////////////
 	case "Mutantenratte":
-		player1, inventory, hp, att, def, rec, world_barrier = story.Mutantenratte(player1, inventory, hp, att, def, rec, world, world_barrier)
+		player1, inventory, hp, att, def, rec, player_level = story.Mutantenratte(player1, inventory, hp, att, def, rec, world, player_level)
 	case "DreikoepfigeSchlange":
-		player1, inventory, hp, att, def, rec, world_barrier = story.DreikoepfigeSchlange(player1, inventory, hp, att, def, rec, world, world_barrier)
+		player1, inventory, hp, att, def, rec, player_level = story.DreikoepfigeSchlange(player1, inventory, hp, att, def, rec, world, player_level)
 	case "LaufendeMakrowelle":
-		player1, inventory, hp, att, def, rec, world_barrier = story.LaufendeMakrowelle(player1, inventory, hp, att, def, rec, world, world_barrier)
+		player1, inventory, hp, att, def, rec, player_level = story.LaufendeMakrowelle(player1, inventory, hp, att, def, rec, world, player_level)
 
 	////////////////////// Funktionen für Settlement ////////////////////////////
 	case "PluendererGroup":
-		player1, inventory, hp, att, def, rec, world_barrier = story.PluendererGroup(player1, inventory, hp, att, def, rec, world, world_barrier)
+		player1, inventory, hp, att, def, rec, player_level = story.PluendererGroup(player1, inventory, hp, att, def, rec, world, player_level)
 	case "Stammarzt":
 		hp = story.Stammarzt(player1, inventory, hp, att, def, rec)
 	case "VerletzterBewohner":
 		story.VerletzterBewohner(player1)
 
+	////////////////////// Funktionen für Geisterstadt ////////////////////////////
+	case "Geschäftplündern":
+		inventory = story.Geschäftplündern(player1, inventory, player_level)
+
 	}
 
 	// Final Return Statement
-	return player1, inventory, hp, att, def, rec, world, world_barrier
+	return player1, inventory, hp, att, def, rec, world, player_level
 }
