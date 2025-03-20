@@ -84,13 +84,13 @@ func ChoosePlace(placeArray [3]string, world string) [3]string {
 			isInLoop = false
 
 		case place == "cave" && world == "prehistory":
-			eventArray = [3]string{}
+			eventArray = [3]string{"HoehlenmenschenWaffe", "HoehlenmenschenHunger", "HoehlenmenschenWerkzeug"}
 			isInLoop = false
 		case place == "jungle" && world == "prehistory":
-			eventArray = [3]string{}
+			eventArray = [3]string{"Triceratops", "Teich", "EatWoman"}
 			isInLoop = false
 		case place == "mountain" && world == "prehistory":
-			eventArray = [3]string{}
+			eventArray = [3]string{"MountainPath", "Pterodactylus", "Bergsteigerziegen"}
 			isInLoop = false
 
 		case place == "pub" && world == "wildwest":
