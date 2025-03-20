@@ -44,3 +44,27 @@ func Demokarma(player1 *player.Player) {
 		player1.UpdateKarma(-3)
 	}
 }
+
+// Spieler lernt inventar
+// Gets inventory (fügt einen Medipack hinzu falls der Spieler den Sheriff beraubt)
+// returns inventory
+func Demoauswahhl(player1 *player.Player, inventory [10]*gear.InventorySlot, player_level int) [10]*gear.InventorySlot {
+	var choice int
+	var item = gear.NewGear("Armor", "Enge Leder Hose")
+
+	text.Print("Du findest eine komische zweidimensionale Box")
+
+	// Auswahl durchschauen oder nicht
+	text.Print("Möchtest du gucken was da drinne ist?")
+	fmt.Println("1: Ja")
+	fmt.Println("2: Nein")
+	fmt.Scanln(&choice)
+
+	if choice == 1 {
+		text.Print("Du findest ein legendäres Kleidungsstück")
+		inventory = gear.AddToInventory(inventory, item)
+	} else {
+		text.Print("Du hast auf eine schicke enge Lederhose verzichtet")
+	}
+	return inventory
+}
