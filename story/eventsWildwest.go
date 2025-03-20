@@ -120,4 +120,28 @@ func Jailbreak(player1 *player.Player, inventory [10]*gear.InventorySlot, hp, at
 	return player1, inventory, hp, att, def, rec, player_level
 }
 
+// Spieler wählt aus ob er auf einen Insassen aufpassen will
+// Gets inventory (fügt einen Item hinzu falls der Spieler dem Sheriff hilft)
+// returns inventory
+func Sheriffquest(player1 *player.Player, inventory [10]*gear.InventorySlot, player_level int) [10]*gear.InventorySlot {
+	var choice int
+	var item = gear.ItemDrop(player_level)
+
+	text.Print("Der Sherrif fragt dich, ob du kurz auf einen gefangenen aufpassen kannst.")
+
+	// Auswahl plündern oder nicht
+	text.Print("Willst du dir die Zeit nehmen?")
+	fmt.Println("1: Ja")
+	fmt.Println("2: Nein")
+	fmt.Scanln(&choice)
+
+	if choice == 1 {
+		text.Print("Der Sheriff schenkt dir eine Waffe aus seinem Arsenal.")
+		inventory = gear.AddToInventory(inventory, item)
+	} else {
+		text.Print("Würd mir stinken...")
+	}
+	return inventory
+}
+
 ////////////////Funktionen für Goldmine///////////////////////////
