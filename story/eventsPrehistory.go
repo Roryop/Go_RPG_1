@@ -243,3 +243,15 @@ func MountainPath(player1 *player.Player, inventory [10]*gear.InventorySlot, hp,
 
 	return player1, inventory, hp, att, def, rec, player_level
 }
+
+// Gets player, inventory, current stats, world, player_level
+// Fights a Triceratops
+// Returns player, inventory, current stats, player_level
+func Pterodactylus(player1 *player.Player, inventory [10]*gear.InventorySlot, hp, att, def, rec int, world string, player_level int) (*player.Player, [10]*gear.InventorySlot, int, int, int, int, int) {
+
+	text.Print("Du wirst von einem Pterodactylus angegriffen")
+
+	player1, inventory, hp, att, def, rec, player_level = Fight(player1, inventory, hp, att, def, rec, world, player_level, 12)
+
+	return player1, inventory, hp, att, def, rec, player_level
+}
