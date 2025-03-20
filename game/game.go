@@ -12,7 +12,7 @@ import (
 // Gets world_barrier
 // Player Chooses World
 // Returns world
-func Chooseworld(world_barrier int) string {
+func Chooseworld() string {
 
 	var world string
 	var isInLoop bool = true
