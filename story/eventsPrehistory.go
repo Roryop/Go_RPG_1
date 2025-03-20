@@ -232,6 +232,12 @@ func MountainPath(player1 *player.Player, inventory [10]*gear.InventorySlot, hp,
 		text.Print("Du wirst von einer prähistorischen Bergsteigerziege angegriffen")
 
 		player1, inventory, hp, att, def, rec, player_level = Fight(player1, inventory, hp, att, def, rec, world, player_level, 13)
+
+		text.ShortWait()
+		text.Space(5)
+		text.Print("Du findest das Nest des Vogels und lootest es.")
+		inventory = gear.AddDropToInventory(inventory, player_level)
+
 	} else {
 		text.Print("Du wanderst für viele Tage umher...")
 
