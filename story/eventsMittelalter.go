@@ -100,7 +100,7 @@ func Burgritter(player1 *player.Player, inventory [10]*gear.InventorySlot, hp, a
 
 	text.Print("Ein Burgritter fordert dich zu einer Duell heraus.")
 
-	player1, inventory, hp, att, def, rec, player_level = Fight(player1, inventory, hp, att, def, rec, world, player_level, 3)
+	player1, inventory, hp, att, def, rec, player_level = Fight(player1, inventory, hp, att, def, rec, world, player_level, 5)
 
 	return player1, inventory, hp, att, def, rec, player_level
 }
