@@ -259,6 +259,11 @@ func Pterodactylus(player1 *player.Player, inventory [10]*gear.InventorySlot, hp
 
 	player1, inventory, hp, att, def, rec, player_level = Fight(player1, inventory, hp, att, def, rec, world, player_level, 12)
 
+	text.ShortWait()
+	text.Space(5)
+	text.Print("Du lootest sein Nest")
+	inventory = gear.AddDropToInventory(inventory, player_level)
+
 	return player1, inventory, hp, att, def, rec, player_level
 }
 
