@@ -241,7 +241,7 @@ func EventExecution(event string, player1 *player.Player, inventory [10]*gear.In
 
 	////////////////////// Funktionen für Geisterstadt ////////////////////////////
 	case "PluendererSingle":
-		player1, inventory, hp, att, def, rec, player_level = story.LaufendeMakrowelle(player1, inventory, hp, att, def, rec, world, player_level)
+		player1, inventory, hp, att, def, rec, player_level = story.PluendererSingle(player1, inventory, hp, att, def, rec, world, player_level)
 	case "GeschäftPlündern":
 		inventory = story.GeschäftPlündern(player1, inventory, player_level)
 	case "Hilfeschreie":
