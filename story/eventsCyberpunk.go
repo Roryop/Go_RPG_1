@@ -97,13 +97,13 @@ func Wallet(player1 *player.Player, inventory [10]*gear.InventorySlot, player_le
 
 // Gets Playerstats, Kampfalgoritmus
 // Returns Playerstats nach switch case
-func Security(player1 *player.Player, inventory [10]*gear.InventorySlot, player_level int) ([10]*gear.InventorySlot, int) {
+func Security(inventory [10]*gear.InventorySlot) [10]*gear.InventorySlot {
 	text.Print("Du gerätst in eine Kontrolle der High Class Security.")
 	text.Print("Sie beschlagnamen ein Teil deiner Ausrüstung. Wähle welche.")
 
 	inventory = gear.SubtractFromInventory(inventory) //////////////////Entfernt in stück gear aus dem Inventar
 
-	return inventory, player_level
+	return inventory
 }
 
 // Gets Playerstats, Kampfalgoritmus
