@@ -187,6 +187,14 @@ func EventExecution(event string, player1 *player.Player, inventory [10]*gear.In
 	case "Verlaufen":
 		hp = story.Verlaufen(player1, inventory, hp)
 
+	//////////////////// Funktionen für Businessviertel ////////////////////////
+	case "Wallet":
+		inventory, player_level = story.Wallet(player1, inventory, player_level)
+	case "Security":
+		inventory = story.Security(inventory)
+	case "Businessman":
+		player1, inventory, hp, att, def, rec, player_level = story.Businessman(player1, inventory, hp, att, def, rec, world, player_level)
+
 	////////////////////////////// Mittelalter /////////////////////////////////
 
 	////////////////////// Funktionen für Wald ////////////////////////////
