@@ -54,7 +54,7 @@ func (g *Gear) SetAttributesGear() {
 		g.damage = 16
 
 	////////////// Unique ///////////////
-	case "Bastard Sword":
+	case "Bastard Schwert":
 		g.damage = 61
 
 	case "Ankylosaurus Schwanz":
@@ -70,14 +70,14 @@ func (g *Gear) SetAttributesGear() {
 		g.damage = 150
 
 	////////////// Mythical ///////////////
-	case "Star Button":
-		g.damage = 162
+	case "Sternenstoff":
+		g.damage = 161
 
-	case "Celestial Metal":
-		g.damage = 154
+	case "Himmlisches Eisen":
+		g.damage = 164
 
 	////////////// Transcendent ///////////////
-	case "Star Weapon":
+	case "Sternenwaffe":
 		g.damage = 400
 		g.defense = 100
 		g.recovery = 50
@@ -115,10 +115,10 @@ func (g *Gear) SetAttributesGear() {
 		g.defense = 79
 
 	////////////// Mythical ///////////////
-	case "Star Container":
+	case "Sternengewand":
 		g.defense = 170
 
-	case "Celestial Bucket":
+	case "Himmlischer Eimer":
 		g.defense = 169
 
 	////////////// Transcendent ///////////////
@@ -166,17 +166,17 @@ func (g *Gear) SetAttributesGear() {
 		g.recovery = 50
 
 	////////////// Mythical ///////////////
-	case "Star Shard":
+	case "Stern Fragment":
 		g.damage = 150
 
-	case "Star Core":
+	case "Stern Kern":
 		g.defense = 150
 
-	case "Star Dust":
+	case "Sternstaub":
 		g.recovery = 150
 
 	////////////// Transcendent ///////////////
-	case "Stern":
+	case "Stern im Gurkenglas":
 		g.damage = 300
 		g.defense = 300
 		g.recovery = 300
@@ -291,7 +291,7 @@ func ItemDrop(player_level int) *Gear {
 
 	//////////////////////// Item Arrays Rarity Unique //////////////////////
 	var weaponArrayUnique [1]string = [1]string{
-		"Bastard Sword"}
+		"Bastard Schwert"}
 
 	var armorArrayUnique [3]string = [3]string{
 		"Kevlar Rüstung",
@@ -299,29 +299,29 @@ func ItemDrop(player_level int) *Gear {
 		"Obsidian Rüstung"}
 
 	var accessoireArrayUnique [3]string = [3]string{
-		"Rheimzadetz´ Ring of Strength",
-		"Radu´s Ring of Recovery",
-		"Grogerz´ Ring of Resilience"}
+		"Popeyes Eigener Spinat",
+		"Flintstone Vitamine",
+		"Starker Glaube"}
 
 	//////////////////////// Item Arrays Rarity Mythical //////////////////////
 	var weaponArrayMythical [2]string = [2]string{
-		"Star Button",
-		"Celestial Metal"}
+		"Sternenstoff",
+		"Himmlisches Eisen"}
 	var armorArrayMythical [2]string = [2]string{
-		"Star Container",
-		"Celestial Bucket"}
+		"Sternengewand",
+		"Himmlischer Eimer"}
 	var accessoireArrayMythical [3]string = [3]string{
-		"Star Shard",
-		"Star Core",
-		"Star Dust"}
+		"Stern Fragment",
+		"Stern Kern",
+		"Sternstaub"}
 
 	//////////////////////// Item Arrays Rarity Transcendent //////////////////////
 	var weaponArrayTranscendent [1]string = [1]string{
-		"Star Weapon"}
+		"Sternenwaffe"}
 	var armorArrayTranscendent [1]string = [1]string{
 		"Stern Rüstung"}
 	var accessoireArrayTranscendent [1]string = [1]string{
-		"Stern"}
+		"Stern im Gurkenglas"}
 
 	// Creating Variables to store Item Name of corresponding Item
 	var itemName string
