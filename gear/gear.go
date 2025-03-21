@@ -330,7 +330,7 @@ func ItemDrop(player_level int) *Gear {
 	// Assigning ItemName according to rarity + rand.Intn()
 	switch rarity {
 	case "Nothing":
-		itemTyp, itemName = "", ""
+		itemTyp, itemName = "Empty", "Not Filled"
 	case "Common":
 		switch itemTyp {
 		case "Weapon":
@@ -343,7 +343,6 @@ func ItemDrop(player_level int) *Gear {
 			itemArrayNumber = rand.Intn(len(accessoireArrayCommon))
 			itemName = accessoireArrayCommon[itemArrayNumber]
 		}
-
 	case "Greater":
 		switch itemTyp {
 		case "Weapon":
