@@ -138,7 +138,7 @@ func SetPlaceArray(world string) [3]string {
 				enemy_level = 3001
 			default:
 		*/
-		placeArray = [3]string{"Place1", "Place2", "Place3"}
+		placeArray = [3]string{"Raum 1", "Raum 2", "Raum 3"}
 
 	}
 	return placeArray
