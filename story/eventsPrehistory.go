@@ -13,7 +13,7 @@ import (
 // Gets inventory
 // Executes Event HoelenmenschenItem, adjusting Karma or inventory
 // Returns inventory
-func HoelenmenschenWaffe(player1 *player.Player, inventory [10]*gear.InventorySlot) [10]*gear.InventorySlot {
+func HoehlenmenschenWaffe(player1 *player.Player, inventory [10]*gear.InventorySlot) [10]*gear.InventorySlot {
 	var choice int
 
 	text.Print("Du triffst auf eine Gruppe Hölenmenschen.")
@@ -53,7 +53,7 @@ func HoelenmenschenWaffe(player1 *player.Player, inventory [10]*gear.InventorySl
 // Gets hp
 // Executes Event HoelenmenschenHunger, adjusting Karma or hp
 // Returns hp
-func HoelenmenschenHunger(player1 *player.Player, hp int) int {
+func HoehlenmenschenHunger(player1 *player.Player, hp int) int {
 	var choice int
 
 	text.Print("Du triffst auf eine Gruppe Hölenmenschen.")
@@ -87,7 +87,7 @@ func HoelenmenschenHunger(player1 *player.Player, hp int) int {
 // Gets Nothing
 // Executes Event HoelenmenschenWerkzeug, adjusting Karma
 // Returns Nothing
-func HoelenmenschenWerkzeug(player1 *player.Player) {
+func HoehlenmenschenWerkzeug(player1 *player.Player) {
 	var choice int
 
 	text.Print("Du triffst auf eine Gruppe Hölenmenschen.")

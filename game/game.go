@@ -126,7 +126,7 @@ func SetPlaceArray(world string) [3]string {
 		placeArray = [3]string{"zero", "siedlung", "geisterstadt"}
 	case "prähistorie":
 
-		placeArray = [3]string{"hoele", "jungel", "berg"}
+		placeArray = [3]string{"hoehle", "jungel", "berg"}
 	case "wildwesten":
 
 		placeArray = [3]string{"bar", "sheriff", "goldmine"}
@@ -276,12 +276,12 @@ func EventExecution(event string, player1 *player.Player, inventory [10]*gear.In
 	////////////////////////////// Prehistory /////////////////////////////////
 
 	////////////////////// Funktionen für Höhle ////////////////////////////
-	case "HoelenmenschenWaffe":
-		inventory = story.HoelenmenschenWaffe(player1, inventory)
+	case "HoehlenmenschenWaffe":
+		inventory = story.HoehlenmenschenWaffe(player1, inventory)
 	case "HoelenmenschenHunger":
-		hp = story.HoelenmenschenHunger(player1, hp)
+		hp = story.HoehlenmenschenHunger(player1, hp)
 	case "HoelenmenschenWerkzeug":
-		story.HoelenmenschenWerkzeug(player1)
+		story.HoehlenmenschenWerkzeug(player1)
 
 	////////////////////// Funktionen für Dschungel ////////////////////////////
 	case "Triceratops":
