@@ -50,7 +50,7 @@ func (g *Gear) SetAttributesGear() {
 	case "Flamberge":
 		g.damage = 14
 
-	case "Claymore":
+	case "Großschwert":
 		g.damage = 16
 
 	////////////// Unique ///////////////
@@ -276,7 +276,7 @@ func ItemDrop(player_level int) *Gear {
 	//////////////////////// Item Arrays Rarity Greater //////////////////////
 	var weaponArrayGreater [3]string = [3]string{
 		"Flamberge",
-		"Claymore",
+		"Großschwert",
 		"Rapier"}
 
 	var armorArrayGreater [3]string = [3]string{
