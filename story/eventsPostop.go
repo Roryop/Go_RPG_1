@@ -147,7 +147,7 @@ func PluendererSingle(player1 *player.Player, inventory [10]*gear.InventorySlot,
 // Spieler wählt aus ob er ein Geschäft plündern will
 // Gets inventory (fügt einen Item hinzu falls der Spieler einen findet)
 // returns inventory
-func Geschäftplündern(player1 *player.Player, inventory [10]*gear.InventorySlot, player_level int) [10]*gear.InventorySlot {
+func GeschäftPlündern(player1 *player.Player, inventory [10]*gear.InventorySlot, player_level int) [10]*gear.InventorySlot {
 	var choice int
 	var item = gear.ItemDrop(player_level)
 	var gearTyp = item.GetGearTyp()

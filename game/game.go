@@ -57,10 +57,10 @@ func ChoosePlace(placeArray [3]string, world string) [3]string {
 			eventArray = [3]string{"Robbery", "Bettler", "Muelltonne"}
 			isInLoop = false
 		case place == "busimess" && world == "cyberpunk":
-			eventArray = [3]string{}
+			eventArray = [3]string{"Wallet", "Security", "Businessman"}
 			isInLoop = false
 		case place == "außenstadt" && world == "cyberpunk":
-			eventArray = [3]string{}
+			eventArray = [3]string{"Grenzkontrolle", "Motel", "Verlaufen"}
 			isInLoop = false
 
 		case place == "wald" && world == "mittelalter":
@@ -97,10 +97,10 @@ func ChoosePlace(placeArray [3]string, world string) [3]string {
 			eventArray = [3]string{"Whiskey", "Schlaegerei", "Barueberfall"}
 			isInLoop = false
 		case place == "sheriff" && world == "wildwesten":
-			eventArray = [3]string{"Jailbreak", "Sheriffquest", "Sheriffberauben"}
+			eventArray = [3]string{"Jailbreak", "SheriffQuest", "SheriffBerauben"}
 			isInLoop = false
 		case place == "goldmine" && world == "wildwesten":
-			eventArray = [3]string{"Koyothoehle", "Aufdiefresse", "Banditenlager"}
+			eventArray = [3]string{"Koyothoehle", "AufDieFresseKriegen", "Banditenlager"}
 			isInLoop = false
 		}
 	}
@@ -242,8 +242,8 @@ func EventExecution(event string, player1 *player.Player, inventory [10]*gear.In
 	////////////////////// Funktionen für Geisterstadt ////////////////////////////
 	case "PluendererSingle":
 		player1, inventory, hp, att, def, rec, player_level = story.LaufendeMakrowelle(player1, inventory, hp, att, def, rec, world, player_level)
-	case "Geschäftplündern":
-		inventory = story.Geschäftplündern(player1, inventory, player_level)
+	case "GeschäftPlündern":
+		inventory = story.GeschäftPlündern(player1, inventory, player_level)
 	case "Hilfeschreie":
 		player1, inventory, hp, att, def, rec, player_level = story.Hilfeschreie(player1, inventory, hp, att, def, rec, world, player_level)
 
@@ -260,15 +260,15 @@ func EventExecution(event string, player1 *player.Player, inventory [10]*gear.In
 	////////////////// Funktionen für Sheriff Büro ///////////////////////
 	case "Jailbreak":
 		player1, inventory, hp, att, def, rec, player_level = story.Jailbreak(player1, inventory, hp, att, def, rec, world, player_level)
-	case "Sheriffquest":
+	case "SheriffQuest":
 		inventory = story.SheriffQuest(player1, inventory, player_level)
-	case "Sheriffberauben":
+	case "SheriffBerauben":
 		inventory = story.SheriffBerauben(player1, inventory, player_level)
 
 	////////////////// Funktionen für Goldmine ///////////////////////////////
 	case "Koyothoehle":
 		player1, inventory, hp, att, def, rec, player_level = story.Koyothoehle(player1, inventory, hp, att, def, rec, world, player_level)
-	case "Aufdiefressekriegen":
+	case "AufDieFresseKriegen":
 		hp = story.AufDieFresseKriegen(player1, inventory, hp)
 	case "Banditenlager":
 		player1, inventory, hp, att, def, rec, player_level = story.Banditenlager(player1, inventory, hp, att, def, rec, world, player_level)
