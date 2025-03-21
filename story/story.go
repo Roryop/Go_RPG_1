@@ -147,6 +147,6 @@ func Ende(player1 *player.Player) {
 	text.ShortWait()
 	text.Space(100)
 	text.Print("Vielen Dank fürs Spielen")
-	text.Print("Credits to Benjamin(45%), Martigga(25%), Charlee(15%), Aleksis(15%)")
+	text.Print("Credits to Benjamin(40%), Martigga(25%), Charlee(20%), Aleksis(15%)")
 	text.LongWait()
 }
