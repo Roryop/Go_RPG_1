@@ -57,15 +57,15 @@ func (g *Gear) SetAttributesGear() {
 	case "Bastard Sword":
 		g.damage = 61
 
-	//Nicht in WeaponArray (DropPool)
 	case "Ankylosaurus Schwanz":
-		g.damage = 123
+		g.damage = 37
 		g.defense = 10
 
 	case "Mantis Klingen":
-		g.damage = 135
+		g.damage = 48
 		g.defense = 15
 
+	//Nicht in WeaponArray (DropPool)
 	case "Smith & Wesson 500 Bone Crusher":
 		g.damage = 150
 
@@ -294,9 +294,9 @@ func ItemDrop(player_level int) *Gear {
 		"Bastard Sword"}
 
 	var armorArrayUnique [3]string = [3]string{
-		"Rheimzadetz´ Breastplate",
-		"Radu´s Breastplate",
-		"Grogerz´ Breastplate"}
+		"Kevlar Rüstung",
+		"Pyrex Glass Rüstung",
+		"Obsidian Rüstung"}
 
 	var accessoireArrayUnique [3]string = [3]string{
 		"Rheimzadetz´ Ring of Strength",
