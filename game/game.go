@@ -177,7 +177,15 @@ func EventExecution(event string, player1 *player.Player, inventory [10]*gear.In
 	case "Bettler":
 		player1, inventory, hp, att, def, rec, player_level = story.Bettler(player1, inventory, hp, att, def, rec, world, player_level)
 	case "Muelltonne":
-		inventory, player_level = story.Muelltonne(inventory, player_level)
+		inventory = story.Muelltonne(inventory, player_level)
+
+		//////////////////// Funktionen für Außenstadt ////////////////////////
+	case "Grenzkontrolle":
+		player1, inventory, hp, att, def, rec, player_level = story.Grenzkontrolle(player1, inventory, hp, att, def, rec, world, player_level)
+	case "Motel":
+		hp = story.Motel(player1, inventory, hp)
+	case "Verlaufen":
+		hp = story.Verlaufen(player1, inventory, hp)
 
 	////////////////////////////// Mittelalter /////////////////////////////////
 
