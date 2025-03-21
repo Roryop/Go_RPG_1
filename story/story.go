@@ -119,6 +119,7 @@ func Ende(player1 *player.Player) {
 	text.ShortWait()
 	text.Print("Doch waren deine Taten moralisch vertretbar?")
 	text.LongWait()
+	text.Space(50)
 
 	switch {
 	case karma == 0: // morally neutral ending
@@ -147,4 +148,5 @@ func Ende(player1 *player.Player) {
 	text.Space(100)
 	text.Print("Vielen Dank fürs Spielen")
 	text.Print("Credits to Benjamin(45%), Martigga(25%), Charlee(15%), Aleksis(15%)")
+	text.LongWait()
 }
