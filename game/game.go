@@ -280,10 +280,10 @@ func EventExecution(event string, player1 *player.Player, inventory [10]*gear.In
 	case "HoehlenmenschenWaffe":
 		text.Print("Checkpoint 1.1 erreicht")
 		inventory = story.HoehlenmenschenWaffe(player1, inventory)
-	case "HoelenmenschenHunger":
+	case "HoehlenmenschenHunger":
 		text.Print("Checkpoint 1.2 erreicht")
 		hp = story.HoehlenmenschenHunger(player1, hp)
-	case "HoelenmenschenWerkzeug":
+	case "HoehlenmenschenWerkzeug":
 		text.Print("Checkpoint 1.3 erreicht")
 		story.HoehlenmenschenWerkzeug(player1)
 
