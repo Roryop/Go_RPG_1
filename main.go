@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	"start/enemy"
 	"start/game"
 	"start/gear"
 	"start/menu"
@@ -120,73 +119,75 @@ func main() {
 			var event = game.EventGenerator(eventArray)
 			fmt.Println(event)
 
-			////////////////////// Setting Up Enemy ////////////////////////
-			var enemyName, enemyStats = enemy.CreateEnemy(world, player_level, 0)
+			/*
+				////////////////////// Setting Up Enemy ////////////////////////
+				var enemyName, enemyStats = enemy.CreateEnemy(world, player_level, 0)
 
-			fmt.Println("Du fightest einen", enemyName+"!!!")
-			fmt.Println("Er ist Level", enemyStats[0], "!!!")
-			fmt.Println("Er hat", enemyStats[1], "HP!")
-			fmt.Println("Du hast", hp, "HP!")
+				fmt.Println("Du fightest einen", enemyName+"!!!")
+				fmt.Println("Er ist Level", enemyStats[0], "!!!")
+				fmt.Println("Er hat", enemyStats[1], "HP!")
+				fmt.Println("Du hast", hp, "HP!")
 
-			////////////////////////// Fighting ////////////////////////////
-			for enemyStats[1] > 0 && hp > 0 {
+				////////////////////////// Fighting ////////////////////////////
+				for enemyStats[1] > 0 && hp > 0 {
 
-				//Anfrage wegen Angriff
-				fmt.Println("Möchtest du angreifen?")
-				fmt.Println("1: Ja")
-				fmt.Println("2: Nein")
-				fmt.Println("3: Eigene Stats sehen")
-				fmt.Println("4: Inventory sehen")
-				fmt.Println("5: End Game")
-				fmt.Scanln(&choice)
+					//Anfrage wegen Angriff
+					fmt.Println("Möchtest du angreifen?")
+					fmt.Println("1: Ja")
+					fmt.Println("2: Nein")
+					fmt.Println("3: Eigene Stats sehen")
+					fmt.Println("4: Inventory sehen")
+					fmt.Println("5: End Game")
+					fmt.Scanln(&choice)
 
-				//Angreifen
-				switch choice {
-				case 1:
-					//Player attacks Enemy
-					enemyStats[1] = enemyStats[1] - ((att * 100) / (100 + enemyStats[3]))
-					fmt.Println("Der", enemyName, "hat noch", enemyStats[1], "HP")
-					//Enemy attacks Player
-					if enemyStats[1] > 0 {
+					//Angreifen
+					switch choice {
+					case 1:
+						//Player attacks Enemy
+						enemyStats[1] = enemyStats[1] - ((att * 100) / (100 + enemyStats[3]))
+						fmt.Println("Der", enemyName, "hat noch", enemyStats[1], "HP")
+						//Enemy attacks Player
+						if enemyStats[1] > 0 {
+							hp = hp - ((enemyStats[2] * 100) / (100 + def))
+						}
+						fmt.Println("Du hast noch", hp, "HP")
+
+					case 2:
+						fmt.Println("Du hast nicht angegriffen")
+						//Enemy attacks Player
 						hp = hp - ((enemyStats[2] * 100) / (100 + def))
+						fmt.Println("Du hast noch", hp, "HP")
+
+					case 3:
+						player1.SeePlayerStats(inventory, hp, att, def, rec)
+					case 4:
+						gear.GiveInventoryInformation(inventory)
+					case 5:
+						goto end
 					}
-					fmt.Println("Du hast noch", hp, "HP")
-
-				case 2:
-					fmt.Println("Du hast nicht angegriffen")
-					//Enemy attacks Player
-					hp = hp - ((enemyStats[2] * 100) / (100 + def))
-					fmt.Println("Du hast noch", hp, "HP")
-
-				case 3:
-					player1.SeePlayerStats(inventory, hp, att, def, rec)
-				case 4:
-					gear.GiveInventoryInformation(inventory)
-				case 5:
-					goto end
 				}
-			}
-			///////////////////////// Case Enemy Died ///////////////////////////
-			if enemyStats[1] <= 0 {
+				///////////////////////// Case Enemy Died ///////////////////////////
+				if enemyStats[1] <= 0 {
 
-				////////////// Setting World Barrier Upgrade Requirement ////////////
-				if i >= 9 {
-					player_level += 1
+					////////////// Setting World Barrier Upgrade Requirement ////////////
+					if i >= 9 {
+						player_level += 1
+					}
+
+					//////////////// Enemy Item Drop /////////////
+					inventory = gear.AddDropToInventory(inventory, player_level)
+
+					///////////////// Player Management ////////////////
+					player1.Exp_Function(enemyStats)                                           // Giving Exp to Player
+					hp, att, def, rec = player1.Level_Management(inventory, hp, att, def, rec) // Player will be healed with levelUp + Updating Stats + Updating current Stats
+
 				}
 
-				//////////////// Enemy Item Drop /////////////
-				inventory = gear.AddDropToInventory(inventory, player_level)
-
-				///////////////// Player Management ////////////////
-				player1.Exp_Function(enemyStats)                                           // Giving Exp to Player
-				hp, att, def, rec = player1.Level_Management(inventory, hp, att, def, rec) // Player will be healed with levelUp + Updating Stats + Updating current Stats
-
-			}
-
-			//////////////// Clearing Inventory on Player Death ////////////////
-			if hp <= 0 {
-				inventory = gear.FillEmptyInventory(inventory)
-			}
+				//////////////// Clearing Inventory on Player Death ////////////////
+				if hp <= 0 {
+					inventory = gear.FillEmptyInventory(inventory)
+				}
+			*/
 		}
 	end: // End Game
 		if choice == 5 {
