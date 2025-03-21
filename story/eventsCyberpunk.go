@@ -67,22 +67,24 @@ func Muelltonne(inventory [10]*gear.InventorySlot, player_level int) ([10]*gear.
 }
 
 // ////////////////Funktionen für Businessviertel///////////////////
-func Wallet(player1 *player.Player, inventory [10]*gear.InventorySlot, player_level int) ([10]*gear.InventorySlot, int) {
+
+func Wallet(player1 *player.Player, inventory [10]*gear.InventorySlot, player_level int) ([10]*gear.InventorySlot, int) { ///////Der Funktion übergebene Werte
 	var choice int
 
 	text.Print("Du findest ein Portemonnaie. Darin ist ein Ausweis. Willst du de Besitzer suchen? /ja /nein?")
 	fmt.Println("1: Ja")
 	fmt.Println("2: Nein")
-	fmt.Scanln(&choice)
+	fmt.Scanln(&choice) ///////////// 1 oder 2 als Variablenwert für den Switch Case in der Funktion für mehrere Aktionspfade innerhalb des events
 
-	switch {
+	switch { ////////////////////////////////////if Abfrage würde auch gehen, aber switch cases find ich schöner + man kann sie einfacher ausbauen
+
 	case choice == 1:
 		fmt.Println("Du findest den Besitzer und er dankt dir. Das war gut für dein Karma")
-		player1.UpdateKarma(5)
+		player1.UpdateKarma(5) ///////////////////////////////////////Entscheidung wirkt sich gut auf den Karma-Wert des Spielers aus
 
 	case choice == 2:
 		fmt.Println("Jokes on you, du bist ein schlechter Mensch und die Geldbörse ist leer.")
-		player1.UpdateKarma(-5)
+		player1.UpdateKarma(-5) //////////////////////////////////////Entscheidung wirkt sich gut auf den Karma-Wert des Spielers aus
 	}
 	return inventory, player_level
 }
