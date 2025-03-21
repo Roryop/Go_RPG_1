@@ -92,8 +92,6 @@ func Fight(player1 *player.Player, inventory [10]*gear.InventorySlot, hp, att, d
 	}
 	///////////////////////// Case Enemy Died ///////////////////////////
 	if enemyStats[1] <= 0 {
-
-		text.Print("Du bist gestorben!")
 		//////////////// Enemy Item Drop /////////////
 		inventory = gear.AddDropToInventory(inventory, player_level)
 
@@ -105,6 +103,7 @@ func Fight(player1 *player.Player, inventory [10]*gear.InventorySlot, hp, att, d
 
 	//////////////// Clearing Inventory on Player Death ////////////////
 	if hp <= 0 {
+		text.Print("Du bist gestorben!") // Death message
 		inventory = gear.FillEmptyInventory(inventory)
 	}
 end:
