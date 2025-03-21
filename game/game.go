@@ -18,13 +18,13 @@ func Chooseworld() string {
 	var isInLoop bool = true
 
 	for isInLoop { // Choosing World until valid World has been chosen
-		fmt.Println("In welche Welt willst du?")                                        // This example is for User deciding world
-		fmt.Println("Tutorial; Cyberpunk; Middleage; Armageddon; Prehistory; Wildwest") ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////Gerade hier
+		fmt.Println("In welche Welt willst du?")                                             // This example is for User deciding world
+		fmt.Println("Tutorial; Cyberpunk; Mittelalter; Armageddon; Prähistorie; Wildwesten") ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////Gerade hier
 		fmt.Scanln(&world)
 
 		world = strings.ToLower(world) // Enabling any sort of Upper/Lowercase by setting world LowerCase
 
-		if world == "cyberpunk" || world == "middleage" || world == "armageddon" || world == "prehistory" || world == "wildwest" || world == "tutorial" {
+		if world == "cyberpunk" || world == "mittelalter" || world == "armageddon" || world == "prähistorie" || world == "wildwesten" || world == "tutorial" {
 			isInLoop = false
 		}
 
@@ -50,56 +50,56 @@ func ChoosePlace(placeArray [3]string, world string) [3]string {
 
 		switch {
 		case world == "tutorial":
-			eventArray = [3]string{"Ork", "Demokarma", "Demoauswahl"}
+			eventArray = [3]string{"Ork", "DemoKarma", "DemoAuswahl"}
 			isInLoop = false
 
-		case place == "slums" && world == "cyberpunk":
+		case place == "elendsviertel" && world == "cyberpunk":
 			eventArray = [3]string{"Robbery", "Bettler", "Muelltonne"}
 			isInLoop = false
 		case place == "busimess" && world == "cyberpunk":
 			eventArray = [3]string{}
 			isInLoop = false
-		case place == "outer city" && world == "cyberpunk":
+		case place == "außenstadt" && world == "cyberpunk":
 			eventArray = [3]string{}
 			isInLoop = false
 
-		case place == "forest" && world == "middleage":
+		case place == "wald" && world == "mittelalter":
 			eventArray = [3]string{"Baerangriff", "Bonfire", "GesunderPilz"}
 			isInLoop = false
-		case place == "castle" && world == "middleage":
+		case place == "burg" && world == "mittelalter":
 			eventArray = [3]string{"Hexenjagd", "Burgritter", "Kerker"}
 			isInLoop = false
-		case place == "village" && world == "middleage":
+		case place == "dorf" && world == "mittelalter":
 			eventArray = [3]string{"BetrunkenerDorfbewohner", "Rotzbuben", "Wirtshaus"}
 			isInLoop = false
 
 		case place == "ground zero" && world == "armageddon":
 			eventArray = [3]string{"Mutantenratte", "DreikoepfigeSchlange", "LaufendeMakrowelle"}
 			isInLoop = false
-		case place == "settlement" && world == "armageddon":
+		case place == "siedlung" && world == "armageddon":
 			eventArray = [3]string{"PluendererGroup", "Stammarzt", "VerletzterBewohner"}
 			isInLoop = false
-		case place == "ghost town" && world == "armageddon":
+		case place == "geisterstadt" && world == "armageddon":
 			eventArray = [3]string{"PluendererSingle"}
 			isInLoop = false
 
-		case place == "cave" && world == "prehistory":
+		case place == "höhle" && world == "prähistorie":
 			eventArray = [3]string{"HoehlenmenschenWaffe", "HoehlenmenschenHunger", "HoehlenmenschenWerkzeug"}
 			isInLoop = false
-		case place == "jungle" && world == "prehistory":
+		case place == "jungel" && world == "päehistorie":
 			eventArray = [3]string{"Triceratops", "Teich", "EatWoman"}
 			isInLoop = false
-		case place == "mountain" && world == "prehistory":
+		case place == "berg" && world == "prähistorie":
 			eventArray = [3]string{"MountainPath", "Pterodactylus", "Bergsteigerziegen"}
 			isInLoop = false
 
-		case place == "pub" && world == "wildwest":
+		case place == "bar" && world == "wildwesten":
 			eventArray = [3]string{"Whiskey", "Schlaegerei", "Barueberfall"}
 			isInLoop = false
-		case place == "sheriff" && world == "wildwest":
+		case place == "sheriff" && world == "wildwesten":
 			eventArray = [3]string{"Jailbreak", "Sheriffquest", "Sheriffberauben"}
 			isInLoop = false
-		case place == "goldmine" && world == "wildwest":
+		case place == "goldmine" && world == "wildwesten":
 			eventArray = [3]string{"Koyothoehle", "Aufdiefresse", "Banditenlager"}
 			isInLoop = false
 		}
@@ -117,19 +117,19 @@ func SetPlaceArray(world string) [3]string {
 	switch world {
 	case "cyberpunk":
 
-		placeArray = [3]string{"slums", "busimess", "outer city"}
+		placeArray = [3]string{"elendsviertel", "busimess", "außenstadt"}
 	case "middleage":
 
-		placeArray = [3]string{"forest", "castle", "village"}
+		placeArray = [3]string{"wald", "burg", "dorf"}
 	case "armageddon":
 
-		placeArray = [3]string{"ground zero", "settlement", "ghost town"}
+		placeArray = [3]string{"ground zero", "siedlung", "geisterstadt"}
 	case "prehistory":
 
-		placeArray = [3]string{"cave", "jungle", "mountain"}
+		placeArray = [3]string{"höhle", "jungel", "berg"}
 	case "wildwest":
 
-		placeArray = [3]string{"pub", "sherrif", "goldmine"}
+		placeArray = [3]string{"bar", "sherrif", "goldmine"}
 	default:
 		/*
 
@@ -138,7 +138,7 @@ func SetPlaceArray(world string) [3]string {
 				enemy_level = 3001
 			default:
 		*/
-		placeArray = [3]string{"Raum 1", "Raum 2", "Raum 3"}
+		placeArray = [3]string{"Raum I", "Raum II", "Raum III"}
 
 	}
 	return placeArray
@@ -164,9 +164,9 @@ func EventExecution(event string, player1 *player.Player, inventory [10]*gear.In
 	////////////////////////////// Tutorial //////////////////////////////////
 	case "Ork":
 		player1, inventory, hp, att, def, rec, player_level = story.Ork(player1, inventory, hp, att, def, rec, world, player_level)
-	case "Demokarma:":
+	case "DemoKarma:":
 		story.DemoKarma(player1)
-	case "Demoauswahl":
+	case "DemoAuswahl":
 		inventory = story.DemoAuswahl(player1, inventory, player_level)
 
 	////////////////////////////// Cyberpunk /////////////////////////////////
