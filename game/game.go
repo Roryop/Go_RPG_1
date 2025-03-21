@@ -83,10 +83,10 @@ func ChoosePlace(placeArray [3]string, world string) [3]string {
 			eventArray = [3]string{"PluendererSingle"}
 			isInLoop = false
 
-		case place == "höhle" && world == "prähistorie":
+		case place == "hoehle" && world == "prähistorie":
 			eventArray = [3]string{"HoehlenmenschenWaffe", "HoehlenmenschenHunger", "HoehlenmenschenWerkzeug"}
 			isInLoop = false
-		case place == "jungel" && world == "päehistorie":
+		case place == "jungel" && world == "prähistorie":
 			eventArray = [3]string{"Triceratops", "Teich", "EatWoman"}
 			isInLoop = false
 		case place == "berg" && world == "prähistorie":
@@ -126,7 +126,7 @@ func SetPlaceArray(world string) [3]string {
 		placeArray = [3]string{"zero", "siedlung", "geisterstadt"}
 	case "prähistorie":
 
-		placeArray = [3]string{"höhle", "jungel", "berg"}
+		placeArray = [3]string{"hoele", "jungel", "berg"}
 	case "wildwesten":
 
 		placeArray = [3]string{"bar", "sheriff", "goldmine"}
