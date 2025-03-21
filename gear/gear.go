@@ -200,7 +200,11 @@ func NewGear(itemTyp string, itemName string) *Gear {
 	// gearClass of "Weapon", "Armor", and Accessoire is accepted, anything else results in "Empty" "Not Filled"
 	switch itemTyp {
 	case "Weapon":
+		gear.gearTyp = itemTyp
+		gear.name = itemName
 	case "Armor":
+		gear.gearTyp = itemTyp
+		gear.name = itemName
 	case "Accessoire":
 		gear.gearTyp = itemTyp
 		gear.name = itemName
