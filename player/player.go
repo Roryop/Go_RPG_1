@@ -48,7 +48,7 @@ func (w *Player) GetKarma() int {
 func (w *Player) levelUp() int {
 	w.level = w.level + 1
 	w.experience = 0
-	w.exp_limit = (w.exp_limit * 3) / 2
+	w.exp_limit = (w.exp_limit * 6) / 5
 
 	fmt.Println("Dein Level ist jetzt", w.level, "!")
 

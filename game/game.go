@@ -49,6 +49,10 @@ func ChoosePlace(placeArray [3]string, world string) [3]string {
 		place = strings.ToLower(place)
 
 		switch {
+		case world == "tutorial":
+			eventArray = [3]string{"Ork", "Demokarma", "Demoauswahl"}
+			isInLoop = false
+
 		case place == "slums" && world == "cyberpunk":
 			eventArray = [3]string{"Robbery", "Bettler", "Muelltonne"}
 			isInLoop = false
@@ -80,23 +84,23 @@ func ChoosePlace(placeArray [3]string, world string) [3]string {
 			isInLoop = false
 
 		case place == "cave" && world == "prehistory":
-			eventArray = [3]string{}
+			eventArray = [3]string{"HoehlenmenschenWaffe", "HoehlenmenschenHunger", "HoehlenmenschenWerkzeug"}
 			isInLoop = false
 		case place == "jungle" && world == "prehistory":
-			eventArray = [3]string{}
+			eventArray = [3]string{"Triceratops", "Teich", "EatWoman"}
 			isInLoop = false
 		case place == "mountain" && world == "prehistory":
-			eventArray = [3]string{}
+			eventArray = [3]string{"MountainPath", "Pterodactylus", "Bergsteigerziegen"}
 			isInLoop = false
 
 		case place == "pub" && world == "wildwest":
-			eventArray = [3]string{}
+			eventArray = [3]string{"Whiskey", "Schlaegerei", "Barueberfall"}
 			isInLoop = false
 		case place == "sheriff" && world == "wildwest":
-			eventArray = [3]string{}
+			eventArray = [3]string{"Jailbreak", "Sheriffquest", "Sheriffberauben"}
 			isInLoop = false
 		case place == "goldmine" && world == "wildwest":
-			eventArray = [3]string{}
+			eventArray = [3]string{"Koyothoehle", "Aufdiefresse", "Banditenlager"}
 			isInLoop = false
 		}
 	}
@@ -210,6 +214,10 @@ func EventExecution(event string, player1 *player.Player, inventory [10]*gear.In
 		hp = story.Stammarzt(player1, inventory, hp, att, def, rec)
 	case "VerletzterBewohner":
 		story.VerletzterBewohner(player1)
+
+	////////////////////// Funktionen für Geisterstadt ////////////////////////////
+	case "Geschäftplündern":
+		inventory = story.Geschäftplündern(player1, inventory, player_level)
 
 	}
 

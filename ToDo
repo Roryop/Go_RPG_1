@@ -6,22 +6,19 @@
   + [x] Choosing New Enemy Types
 
 # Gameplay
-+ [ ] Adding Surface Playability (60)
-  + [ ] Conceptualizing Gameplay (To Get A Feeling)
-  + [ ] Discussing Gameplay
-  + [ ] Implementing Gameplay
-+ [ ] Discussing Durability of Items (100)
++ [x] Adding Surface Playability (60)
+  + [x] Conceptualizing Gameplay (To Get A Feeling)
+  + [x] Discussing Gameplay
+  + [x] Implementing Gameplay
 
 # Map
 + [ ] Creating World Map (75)
   + [ ] Creating Map Overview
 
 # Game
-+ [ ] Adding Events to EventWorld files (3) EVERYONE
-+ [ ] Expanding EventExecution() in game.go (8) Ferit
-+ [ ] Adding Gear to gear.go (15) (Aleks)
-
-
++ [x] Adding Events to EventWorld files
++ [x] Expanding EventExecution() in game.go
++ [x] Adding Gear to gear.go 
 
 # GameMechanics
 + [x] World

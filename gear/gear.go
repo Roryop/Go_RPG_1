@@ -2,7 +2,7 @@ package gear
 
 import "math/rand"
 
-///////////////////////////////  Struct Gear Types  //////////////////////////////////
+// /////////////////////////////  Struct Gear Types  //////////////////////////////////
 type Gear struct {
 	damage   int
 	defense  int
@@ -55,11 +55,11 @@ func (g *Gear) SetAttributesGear() {
 
 	////////////// Unique ///////////////
 	case "Bastard Sword":
-		g.damage = 135
+		g.damage = 61
 
 	//Nicht in WeaponArray (DropPool)
 	case "Ankylosaurus Schwanz":
-		g.damage = 140
+		g.damage = 123
 		g.defense = 10
 
 	case "Mantis Klingen":
@@ -68,6 +68,19 @@ func (g *Gear) SetAttributesGear() {
 
 	case "Smith & Wesson 500 Bone Crusher":
 		g.damage = 150
+
+	////////////// Mythical ///////////////
+	case "Star Button":
+		g.damage = 162
+
+	case "Celestial Metal":
+		g.damage = 154
+
+	////////////// Transcendent ///////////////
+	case "Star Weapon":
+		g.damage = 400
+		g.defense = 100
+		g.recovery = 50
 
 	/////////////////////// Armor //////////////////////////
 
@@ -93,53 +106,87 @@ func (g *Gear) SetAttributesGear() {
 
 	////////////// Unique ///////////////
 	case "Kevlar Rüstung":
-		g.defense = 37
+		g.defense = 82
 
 	case "Pyrex Glass Rüstung":
-		g.defense = 40
+		g.defense = 93
 
 	case "Obsidian Rüstung":
-		g.defense = 38
+		g.defense = 79
+
+	////////////// Mythical ///////////////
+	case "Star Container":
+		g.defense = 170
+
+	case "Celestial Bucket":
+		g.defense = 169
+
+	////////////// Transcendent ///////////////
+	case "Star Armor":
+		g.damage = 50
+		g.defense = 500
+		g.recovery = 100
 
 	/////////////////////// Accessoires ///////////////////
 
 	////////////// Common ///////////////
 	case "Spinat":
 
-		g.damage = 10
+		g.damage = 1
 
-	case "Actimel":
+	case "Yakult":
 
-		g.defense = 10
+		g.defense = 2
 
 	case "Hello Kitty Verband":
 
-		g.recovery = 10
+		g.recovery = 2
 
 	////////////// Greater ///////////////
 	case "Mehr Spinat":
 
-		g.damage = 25
+		g.damage = 11
 
-	case "Yakult":
+	case "Actimel":
 
-		g.defense = 25
+		g.defense = 14
 
 	case "Lecker Bierchen":
 
-		g.recovery = 25
+		g.recovery = 13
 
 	////////////// Unique ///////////////
 	case "Popeyes Eigener Spinat":
 		g.damage = 50
 
+	case "Flintstone Vitamine":
+		g.defense = 50
+
 	case "Starker Glaube":
 		g.recovery = 50
 
-	case "Flintstone Vitamine":
-		g.defense = 50
-	}
+	////////////// Mythical ///////////////
+	case "Star Shard":
+		g.damage = 150
 
+	case "Star Core":
+		g.defense = 150
+
+	case "Star Dust":
+		g.recovery = 150
+
+	////////////// Transcendent ///////////////
+	case "Star":
+		g.damage = 300
+		g.defense = 300
+		g.recovery = 300
+
+	///////////////// Godly /////////////////
+	case "Universe":
+		g.damage = 1000
+		g.defense = 1000
+		g.recovery = 1000
+	}
 }
 
 ///////////////////////////////  Create New Gear  //////////////////////////////////
@@ -169,6 +216,10 @@ func NewGear(itemTyp string, itemName string) *Gear {
 	//////////////////////// Return Item /////////////////////
 
 	return gear
+}
+
+func (w *Gear) GetGearTyp() string {
+	return w.gearTyp
 }
 
 // Gets Nothing
@@ -219,7 +270,7 @@ func ItemDrop(player_level int) *Gear {
 
 	var accessoireArrayCommon [3]string = [3]string{
 		"Spinat",
-		"Actimel",
+		"Yakult",
 		"Hello Kitty Verband"}
 
 	//////////////////////// Item Arrays Rarity Greater //////////////////////
@@ -235,11 +286,11 @@ func ItemDrop(player_level int) *Gear {
 
 	var accessoireArrayGreater [3]string = [3]string{
 		"Mehr Spinat",
-		"Yakult",
+		"Actimel",
 		"Lecker Bierchen"}
 
 	//////////////////////// Item Arrays Rarity Unique //////////////////////
-	var weaponArrayUnique [3]string = [3]string{
+	var weaponArrayUnique [1]string = [1]string{
 		"Bastard Sword"}
 
 	var armorArrayUnique [3]string = [3]string{
@@ -251,6 +302,26 @@ func ItemDrop(player_level int) *Gear {
 		"Rheimzadetz´ Ring of Strength",
 		"Radu´s Ring of Recovery",
 		"Grogerz´ Ring of Resilience"}
+
+	//////////////////////// Item Arrays Rarity Mythical //////////////////////
+	var weaponArrayMythical [2]string = [2]string{
+		"Star Button",
+		"Celestial Metal"}
+	var armorArrayMythical [2]string = [2]string{
+		"Star Container",
+		"Celestial Bucket"}
+	var accessoireArrayMythical [3]string = [3]string{
+		"Star Shard",
+		"Star Core",
+		"Star Dust"}
+
+	//////////////////////// Item Arrays Rarity Transcendent //////////////////////
+	var weaponArrayTranscendent [1]string = [1]string{
+		"Star Weapon"}
+	var armorArrayTranscendent [1]string = [1]string{
+		"Star Armor"}
+	var accessoireArrayTranscendent [1]string = [1]string{
+		"Star"}
 
 	// Creating Variables to store Item Name of corresponding Item
 	var itemName string
@@ -298,11 +369,32 @@ func ItemDrop(player_level int) *Gear {
 			itemName = accessoireArrayUnique[itemArrayNumber]
 		}
 	case "Mythical":
-
+		switch itemTyp {
+		case "Weapon":
+			itemArrayNumber = rand.Intn(len(weaponArrayMythical))
+			itemName = weaponArrayMythical[itemArrayNumber]
+		case "Armor":
+			itemArrayNumber = rand.Intn(len(armorArrayMythical))
+			itemName = armorArrayMythical[itemArrayNumber]
+		case "Accessoire":
+			itemArrayNumber = rand.Intn(len(accessoireArrayMythical))
+			itemName = accessoireArrayMythical[itemArrayNumber]
+		}
 	case "Transcendent":
-
+		switch itemTyp {
+		case "Weapon":
+			itemArrayNumber = rand.Intn(len(weaponArrayTranscendent))
+			itemName = weaponArrayTranscendent[itemArrayNumber]
+		case "Armor":
+			itemArrayNumber = rand.Intn(len(armorArrayTranscendent))
+			itemName = armorArrayTranscendent[itemArrayNumber]
+		case "Accessoire":
+			itemArrayNumber = rand.Intn(len(accessoireArrayTranscendent))
+			itemName = accessoireArrayTranscendent[itemArrayNumber]
+		}
 	case "Godly":
-
+		itemTyp = "Accessoire"
+		itemName = "Universe"
 	}
 
 	// Creating Item based on ItemTyp + ItemName

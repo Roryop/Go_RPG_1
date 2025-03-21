@@ -143,3 +143,61 @@ func PluendererSingle(player1 *player.Player, inventory [10]*gear.InventorySlot,
 
 	return player1, inventory, hp, att, def, rec, player_level
 }
+
+// Spieler wählt aus ob er ein Geschäft plündern will
+// Gets inventory (fügt einen Item hinzu falls der Spieler einen findet)
+// returns inventory
+func Geschäftplündern(player1 *player.Player, inventory [10]*gear.InventorySlot, player_level int) [10]*gear.InventorySlot {
+	var choice int
+	var item = gear.ItemDrop(player_level)
+	var gearTyp = item.GetGearTyp()
+
+	text.Print("Du findest ein verlassenes Geschäft.")
+
+	// Auswahl plündern oder nicht
+	text.Print("Willst du es plündern?")
+	fmt.Println("1: Ja")
+	fmt.Println("2: Nein")
+	fmt.Scanln(&choice)
+
+	if choice == 1 {
+		if gearTyp == "Empty" {
+			text.Print("Du hast erfolgreich nichts gefunden.")
+
+		} else {
+			text.Print("Du findest legendäre Artefakten!")
+			inventory = gear.AddToInventory(inventory, item)
+		}
+	} else {
+		text.Print("Du entgehst der möglichkeit Konsequenzenlos Schatz zu gewinnen")
+		text.Print("...")
+		text.Print("Würd mir stinken...")
+	}
+	return inventory
+}
+
+// Spieler wählt aus ob er den Hilfeschreien folgt
+// Gets PlayerStats, Kampfalgoritmus
+// returns karma, playerstats nach dem Kampf
+func Hilfeschreie(player1 *player.Player, inventory [10]*gear.InventorySlot, hp, att, def, rec int, world string, player_level int) (*player.Player, [10]*gear.InventorySlot, int, int, int, int, int) {
+	var choice int
+
+	text.Print("Du hörst Hilfeschreie")
+
+	// Auswahl folgen oder nicht
+	text.Print("Willst du diesen folgen?")
+	fmt.Println("1: Ja")
+	fmt.Println("2: Nein")
+	fmt.Scanln(&choice)
+
+	if choice == 1 {
+		text.Print("Du entscheidest dich ausnahmsweise nett zu sein und der schreienden Person zu helfen.")
+		player1.UpdateKarma(6)
+		text.Print("Die schreihe waren aber eine Imitation von einem Monster!")
+		player1, inventory, hp, att, def, rec, player_level = Fight(player1, inventory, hp, att, def, rec, world, player_level, 19)
+	} else {
+		text.Print("Der Gedanke jemanden in Schmerzen sterben zu lassen gefällt dir mehr als ud erwartet hast...")
+		player1.UpdateKarma(-5)
+	}
+	return player1, inventory, hp, att, def, rec, player_level
+}
