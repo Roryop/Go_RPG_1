@@ -181,7 +181,7 @@ func (w *Wesen) SetEnemyTyp(typ int) {
 	case 7:
 		w.name = "Mutantenratte"
 	case 8:
-		w.name = "dreiköpfige Schlange"
+		w.name = "dreikoepfige Schlange"
 	case 9:
 		w.name = "laufende Makrowelle"
 	case 10:
