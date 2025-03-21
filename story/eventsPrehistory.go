@@ -272,7 +272,7 @@ func Pterodactylus(player1 *player.Player, inventory [10]*gear.InventorySlot, hp
 // Returns player, inventory, current stats, player_level
 func Bergsteigerziegen(player1 *player.Player, inventory [10]*gear.InventorySlot, hp, att, def, rec int, world string, player_level int) (*player.Player, [10]*gear.InventorySlot, int, int, int, int, int) {
 
-	for i := 0; i < 3; i++ { //Fight gegen 3 Bergsteigerziegen
+	for i := 0; i < 3 && hp > 0; i++ { //Fight gegen 3 Bergsteigerziegen
 		text.Print("Du wirst von einer Bergsteigerziege angegriffen")
 
 		player1, inventory, hp, att, def, rec, player_level = Fight(player1, inventory, hp, att, def, rec, world, player_level, 13)
