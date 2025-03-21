@@ -12,8 +12,7 @@
   + [x] Implementing Gameplay
 
 # Map
-+ [ ] Creating World Map (75)
-  + [ ] Creating Map Overview
++ [x] Creating World Map (75)
 
 # Game
 + [x] Adding Events to EventWorld files
@@ -39,11 +38,8 @@
 + [ ] Main.go (Continuous)
 
 # Animation
-+ [ ] Text (70)
-+ [ ] Fight (90)
-
++ [x] Text
 
 # UI
 + [x] Menu
-+ [ ] OverallBeauty (97)
 
