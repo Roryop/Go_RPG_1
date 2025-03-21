@@ -7,7 +7,7 @@ import (
 	"start/text"
 )
 
-///////////////////Cyberpunk Welt////////////////////////
+///////////////////7//////////////////////////////////////////////////////Cyberpunk Welt////////////////////////////////////////////////////////////////////////////
 
 //////////////////Funktionen für Slums///////////////////
 
@@ -18,11 +18,13 @@ func Robbery(player1 *player.Player, inventory [10]*gear.InventorySlot, hp, att,
 
 	text.Print("Du wirst von einem Räuber überfallen!!!")
 
-	player1, inventory, hp, att, def, rec, player_level = Fight(player1, inventory, hp, att, def, rec, world, player_level, 4)
+	player1, inventory, hp, att, def, rec, player_level = Fight(player1, inventory, hp, att, def, rec, world, player_level, 4) ////////////einfacher Kampf (Zahl am Ende gibt den enemy aus enemy.go an)
 
 	return player1, inventory, hp, att, def, rec, player_level
 }
 
+// Gets Playerstats, Kampfalgoritmus
+// Returns Playerstats nach switch case
 func Bettler(player1 *player.Player, inventory [10]*gear.InventorySlot, hp, att, def, rec int, world string, player_level int) (*player.Player, [10]*gear.InventorySlot, int, int, int, int, int) {
 	var giveaway int
 	text.Print("Du triffst auf einen Bettler. Willst du ihm etwas geben? /ja /nein?")
@@ -30,34 +32,36 @@ func Bettler(player1 *player.Player, inventory [10]*gear.InventorySlot, hp, att,
 	fmt.Println("2: Nein")
 	fmt.Scanln(&giveaway) //////////Entscheidung des Spielers ob er eas abgibt oder nicht
 
-	switch giveaway {
+	switch giveaway { ////////////////////////////////////if Abfrage würde auch gehen, aber switch cases find ich schöner + man kann sie einfacher ausbauen
 	case 1: //////Er gibt etwas ab -> Der Penner dankt ihm und der Spieler erlangt Karma
 		text.Print("Du gibst dem Penner eins deiner Items und er dankt dir.")
 		gear.SubtractFromInventory(inventory)
 
 		player1.UpdateKarma(7)
 	default:
-		text.Print("Der Obdachlose wird sauer und greift dich an!")
+		text.Print("Der Obdachlose wird sauer und greift dich an!") //////////////Kampfalgorithmus im Falle Nein
 		player1, inventory, hp, att, def, rec, player_level = Fight(player1, inventory, hp, att, def, rec, world, player_level, 18)
 	}
 
 	return player1, inventory, hp, att, def, rec, player_level
 }
 
+// Gets Playerstats
+// Returns Playerstats nach switch case
 func Muelltonne(inventory [10]*gear.InventorySlot, player_level int) ([10]*gear.InventorySlot, int) {
 	var choice int
 	text.Print("Du läufst an einer Mülltonne vorbei, willst du sie durchsuchen? /ja /nein?")
 	fmt.Println("1: Ja")
 	fmt.Println("2: Nein")
-	fmt.Scanln(&choice)
+	fmt.Scanln(&choice) /////////////Wahlvariable
 
 	switch choice {
 	case 1: ///////////////In der Tonne liegt ein Item
 		text.Print("Du wühlst in einer Mülltonne herum. Denk mal drüber nach!")
-		var item = gear.ItemDrop(player_level)
+		var item = gear.ItemDrop(player_level) ////////////Funktion aus gear, die random items droppt
 		text.Print("Du hast ein Item gefunden! Es ist ein ")
 		fmt.Print(item)
-		gear.AddToInventory(inventory, item)
+		gear.AddToInventory(inventory, item) ////////////Funktion aus gear, die das gedroppte Item im Inventar aufnimmt
 
 	default: ////////////////Nix passiert
 		text.Print("OK dann eben nicht")
@@ -68,6 +72,8 @@ func Muelltonne(inventory [10]*gear.InventorySlot, player_level int) ([10]*gear.
 
 // ////////////////Funktionen für Businessviertel///////////////////
 
+// Gets Playerstats
+// Returns Playerstats nach veränderung des karmas im switch case
 func Wallet(player1 *player.Player, inventory [10]*gear.InventorySlot, player_level int) ([10]*gear.InventorySlot, int) { ///////Der Funktion übergebene Werte
 	var choice int
 
@@ -76,28 +82,32 @@ func Wallet(player1 *player.Player, inventory [10]*gear.InventorySlot, player_le
 	fmt.Println("2: Nein")
 	fmt.Scanln(&choice) ///////////// 1 oder 2 als Variablenwert für den Switch Case in der Funktion für mehrere Aktionspfade innerhalb des events
 
-	switch { ////////////////////////////////////if Abfrage würde auch gehen, aber switch cases find ich schöner + man kann sie einfacher ausbauen
+	switch choice {
 
-	case choice == 1:
+	case 1:
 		fmt.Println("Du findest den Besitzer und er dankt dir. Das war gut für dein Karma")
 		player1.UpdateKarma(5) ///////////////////////////////////////Entscheidung wirkt sich gut auf den Karma-Wert des Spielers aus
 
-	case choice == 2:
+	default:
 		fmt.Println("Jokes on you, du bist ein schlechter Mensch und die Geldbörse ist leer.")
 		player1.UpdateKarma(-5) //////////////////////////////////////Entscheidung wirkt sich gut auf den Karma-Wert des Spielers aus
 	}
 	return inventory, player_level
 }
 
+// Gets Playerstats, Kampfalgoritmus
+// Returns Playerstats nach switch case
 func Security(player1 *player.Player, inventory [10]*gear.InventorySlot, player_level int) ([10]*gear.InventorySlot, int) {
 	text.Print("Du gerätst in eine Kontrolle der High Class Security.")
-	text.Print("Sie beschlagnamen eine deiner Waffen. Wähle welche.")
+	text.Print("Sie beschlagnamen ein Teil deiner Ausrüstung. Wähle welche.")
 
-	inventory = gear.SubtractFromInventory(inventory)
+	inventory = gear.SubtractFromInventory(inventory) //////////////////Entfernt in stück gear aus dem Inventar
 
 	return inventory, player_level
 }
 
+// Gets Playerstats, Kampfalgoritmus
+// Returns Playerstats nach switch case
 func Businessman(player1 *player.Player, inventory [10]*gear.InventorySlot, hp, att, def, rec int, world string, player_level int) (*player.Player, [10]*gear.InventorySlot, int, int, int, int, int) {
 	var choice int
 	text.Print("Du rämpelst versehentlich einen Businessman an und sein Handy fiel runter.")
@@ -105,20 +115,22 @@ func Businessman(player1 *player.Player, inventory [10]*gear.InventorySlot, hp, 
 
 	fmt.Println("1: Kämpfen")
 	fmt.Println("2: Weglaufen")
-	fmt.Scanln(&choice)
+	fmt.Scanln(&choice) ////////////////////Entscheidungsvariable ob kämpfen oder
 
-	switch {
-	case choice == 1:
-		player1, inventory, hp, att, def, rec, player_level = Fight(player1, inventory, hp, att, def, rec, world, player_level, 19)
+	switch choice {
+	case 1:
+		player1, inventory, hp, att, def, rec, player_level = Fight(player1, inventory, hp, att, def, rec, world, player_level, 19) //////Kampfalgorithmus gegen Businessman
 
-	case choice == 2:
-		fmt.Println("Du kommst ohne Geld und ohne Würde davon.")
+	default:
+		fmt.Println("Du kommst ohne Geld und ohne Würde davon.") /////////////Nix passiert
 	}
 	return player1, inventory, hp, att, def, rec, player_level
 }
 
 //////////////////Funktionen für Außenstadt///////////////////
 
+// Gets Playerstats, Kampfalgoritmus
+// Returns Playerstats nach Kampf
 func Grenzkontrolle(player1 *player.Player, inventory [10]*gear.InventorySlot, hp, att, def, rec int, world string, player_level int) (*player.Player, [10]*gear.InventorySlot, int, int, int, int, int) {
 
 	text.Print("Du gerätst in eine Grenzkontrolle. Der Polizist ist schlecht gelaunt und greift Dich an")
@@ -128,6 +140,8 @@ func Grenzkontrolle(player1 *player.Player, inventory [10]*gear.InventorySlot, h
 	return player1, inventory, hp, att, def, rec, player_level
 }
 
+// Gets Playerstats, Kampfalgoritmus
+// Returns Playerstats nach switch case
 func Motel(player1 *player.Player, inventory [10]*gear.InventorySlot, hp, att, def, rec int, world string, player_level int) (*player.Player, [10]*gear.InventorySlot, int, int, int, int, int) {
 
 	var choice int
@@ -146,7 +160,7 @@ func Motel(player1 *player.Player, inventory [10]*gear.InventorySlot, hp, att, d
 			text.LongWait() ///////////////Spieler muss 9 sek warten
 		}
 
-		hp = hp + (maxHp / 5) ////////////////////////Spieler erhält mehr hp un muss warten
+		hp = hp + (maxHp / 5) ////////////////////////Spieler erhält mehr hp und muss warten
 		if hp > maxHp {
 			hp = maxHp
 		}
@@ -159,6 +173,8 @@ func Motel(player1 *player.Player, inventory [10]*gear.InventorySlot, hp, att, d
 
 }
 
+// Gets Playerstats, Kampfalgoritmus
+// Returns Playerstats nach maipulation der hp
 func Verlaufen(player1 *player.Player, inventory [10]*gear.InventorySlot, hp, att, def, rec int, world string, player_level int) (*player.Player, [10]*gear.InventorySlot, int, int, int, int, int) {
 
 	var maxHp, _, _, _ = player1.CreateStats(inventory)
