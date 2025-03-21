@@ -119,7 +119,7 @@ func main() {
 			var event = game.EventGenerator(eventArray)
 			fmt.Println(event)
 
-			player1, inventory, hp, att, def, rec, world, player_level = game.EventExecution(event)
+			player1, inventory, hp, att, def, rec, world, player_level = game.EventExecution(event, player1, inventory, hp, att, def, rec, world, player_level)
 
 			/*
 				////////////////////// Setting Up Enemy ////////////////////////
