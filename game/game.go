@@ -161,6 +161,14 @@ func EventGenerator(eventArray [3]string) string {
 // Returns Everything needed in the game
 func EventExecution(event string, player1 *player.Player, inventory [10]*gear.InventorySlot, hp, att, def, rec int, world string, player_level int) (*player.Player, [10]*gear.InventorySlot, int, int, int, int, string, int) {
 	switch event {
+	////////////////////////////// Tutorial //////////////////////////////////
+	case "Ork":
+		player1, inventory, hp, att, def, rec, player_level = story.Ork(player1, inventory, hp, att, def, rec, world, player_level)
+	case "Demokarma:":
+		story.DemoKarma(player1)
+	case "Demoauswahl":
+		inventory = story.DemoAuswahl(player1, inventory, player_level)
+
 	////////////////////////////// Cyberpunk /////////////////////////////////
 
 	//////////////////// Funktionen für Slums ////////////////////////

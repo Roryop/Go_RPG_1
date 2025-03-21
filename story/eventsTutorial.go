@@ -22,7 +22,7 @@ func Ork(player1 *player.Player, inventory [10]*gear.InventorySlot, hp, att, def
 // Spieler lernt karma kennen
 // Gets Playerstats, Kampfalgoritmus
 // Returns Playerstats nach Kampf
-func Demokarma(player1 *player.Player) {
+func DemoKarma(player1 *player.Player) {
 	var choice int
 
 	text.Print("Ein Alter Mann nähert sich...")
@@ -48,7 +48,7 @@ func Demokarma(player1 *player.Player) {
 // Spieler lernt inventar
 // Gets inventory (fügt einen Medipack hinzu falls der Spieler den Sheriff beraubt)
 // returns inventory
-func Demoauswahhl(player1 *player.Player, inventory [10]*gear.InventorySlot, player_level int) [10]*gear.InventorySlot {
+func DemoAuswahl(player1 *player.Player, inventory [10]*gear.InventorySlot, player_level int) [10]*gear.InventorySlot {
 	var choice int
 	var item = gear.NewGear("Armor", "Enge Leder Hose")
 
