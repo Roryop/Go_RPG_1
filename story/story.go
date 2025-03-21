@@ -34,16 +34,16 @@ func Fight(player1 *player.Player, inventory [10]*gear.InventorySlot, hp, att, d
 
 	var enemyName, enemyStats = enemy.CreateEnemy(world, player_level, typ)
 
-	fmt.Println("Du fightest einen", enemyName+"!!!")
-	fmt.Println("Er ist Level", enemyStats[0], "!!!")
-	fmt.Println("Er hat", enemyStats[1], "HP!")
-	fmt.Println("Du hast", hp, "HP!")
+	text.Print("Du fightest einen" + enemyName + "!!!")
+	text.Print("Er ist Level " + fmt.Sprint(enemyStats[0]) + "!!!")
+	text.Print("Er hat " + fmt.Sprint(enemyStats[1]) + "HP!")
+	text.Print("Du hast " + fmt.Sprint(hp) + "HP!")
 
 	for enemyStats[1] > 0 && hp > 0 {
 		var choice int
 
 		//Anfrage wegen Angriff
-		fmt.Println("Möchtest du angreifen?")
+		text.Print("Möchtest du angreifen?")
 		fmt.Println("1: Ja")
 		fmt.Println("2: Nein")
 		fmt.Println("3: Eigene Stats sehen")
@@ -56,19 +56,27 @@ func Fight(player1 *player.Player, inventory [10]*gear.InventorySlot, hp, att, d
 		case 1:
 			//Player attacks Enemy
 			enemyStats[1] = enemyStats[1] - ((att * 100) / (100 + enemyStats[3]))
-			fmt.Println("Der", enemyName, "hat noch", enemyStats[1], "HP")
+			if enemyStats[1] > 0 {
+				text.Print(fmt.Sprint(enemyName) + " hat noch " + fmt.Sprint(enemyStats[1]) + "HP")
+			} else {
+				text.Print(fmt.Sprint(enemyName) + " wurde besiegt")
+			}
 			//Enemy attacks Player
 			if enemyStats[1] > 0 {
 				hp = hp - ((enemyStats[2] * 100) / (100 + def))
 			}
-			fmt.Println("Du hast noch", hp, "HP")
+
+			if hp > 0 {
+				text.Print("Du hast noch " + fmt.Sprint(hp) + "HP")
+			}
 
 		case 2:
-			fmt.Println("Du hast nicht angegriffen")
+			text.Print("Du hast nicht angegriffen")
 			//Enemy attacks Player
 			hp = hp - ((enemyStats[2] * 100) / (100 + def))
-			fmt.Println("Du hast noch", hp, "HP")
-
+			if hp > 0 {
+				text.Print("Du hast noch " + fmt.Sprint(hp) + "HP")
+			}
 		case 3:
 			player1.SeePlayerStats(inventory, hp, att, def, rec)
 		case 4:
@@ -80,6 +88,7 @@ func Fight(player1 *player.Player, inventory [10]*gear.InventorySlot, hp, att, d
 	///////////////////////// Case Enemy Died ///////////////////////////
 	if enemyStats[1] <= 0 {
 
+		text.Print("Du bist gestorben!")
 		//////////////// Enemy Item Drop /////////////
 		inventory = gear.AddDropToInventory(inventory, player_level)
 
