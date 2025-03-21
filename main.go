@@ -97,7 +97,10 @@ func main() {
 				menuChoice = menu.Menu()
 			case 5:
 
-				text.Print("Not yet implemented.")
+				text.Print("Du hast keine Karte und kriegst auch keine")
+				text.ShortWait()
+				fmt.Println("HAHA")
+				text.LongWait()
 
 				menuChoice = menu.Menu()
 			case 6:

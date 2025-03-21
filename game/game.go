@@ -245,13 +245,13 @@ func EventExecution(event string, player1 *player.Player, inventory [10]*gear.In
 	case "Whiskey":
 		story.Whiskey(player1)
 	case "Schlaegerei":
-		player1, inventory, hp, att, def, rec, player_level = story.Hilfeschreie(player1, inventory, hp, att, def, rec, world, player_level)
+		player1, inventory, hp, att, def, rec, player_level = story.Schlaegerei(player1, inventory, hp, att, def, rec, world, player_level)
 	case "Barueberfall":
-		player1, inventory, hp, att, def, rec, player_level = story.Hilfeschreie(player1, inventory, hp, att, def, rec, world, player_level)
+		player1, inventory, hp, att, def, rec, player_level = story.Barueberfall(player1, inventory, hp, att, def, rec, world, player_level)
 
 	////////////////// Funktionen für Sheriff Büro ///////////////////////
 	case "Jailbreak":
-		player1, inventory, hp, att, def, rec, player_level = story.Hilfeschreie(player1, inventory, hp, att, def, rec, world, player_level)
+		player1, inventory, hp, att, def, rec, player_level = story.Jailbreak(player1, inventory, hp, att, def, rec, world, player_level)
 	case "Sheriffquest":
 		inventory = story.Sheriffquest(player1, inventory, player_level)
 	case "Sheriffberauben":
@@ -259,11 +259,11 @@ func EventExecution(event string, player1 *player.Player, inventory [10]*gear.In
 
 	////////////////// Funktionen für Goldmine ///////////////////////////////
 	case "Koyothoehle":
-		player1, inventory, hp, att, def, rec, player_level = story.Hilfeschreie(player1, inventory, hp, att, def, rec, world, player_level)
+		player1, inventory, hp, att, def, rec, player_level = story.Koyothoehle(player1, inventory, hp, att, def, rec, world, player_level)
 	case "Aufdiefressekriegen":
 		hp = story.Aufdiefressekriegen(player1, inventory, hp)
 	case "Banditenlager":
-		player1, inventory, hp, att, def, rec, player_level = story.Hilfeschreie(player1, inventory, hp, att, def, rec, world, player_level)
+		player1, inventory, hp, att, def, rec, player_level = story.Banditenlager(player1, inventory, hp, att, def, rec, world, player_level)
 
 	////////////////////////////// Prehistory /////////////////////////////////
 
