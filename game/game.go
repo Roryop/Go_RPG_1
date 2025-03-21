@@ -118,13 +118,13 @@ func SetPlaceArray(world string) [3]string {
 	case "cyberpunk":
 
 		placeArray = [3]string{"elendsviertel", "busimess", "außenstadt"}
-	case "middleage":
+	case "mittelalter":
 
 		placeArray = [3]string{"wald", "burg", "dorf"}
 	case "armageddon":
 
 		placeArray = [3]string{"ground zero", "siedlung", "geisterstadt"}
-	case "prehistory":
+	case "prähistorie":
 
 		placeArray = [3]string{"höhle", "jungel", "berg"}
 	case "wildwest":
