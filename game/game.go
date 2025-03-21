@@ -138,7 +138,7 @@ func SetPlaceArray(world string) [3]string {
 				enemy_level = 3001
 			default:
 		*/
-		placeArray = [3]string{"Raum I", "Raum II", "Raum III"}
+		placeArray = [3]string{"Raum", "Raum", "Raum"}
 
 	}
 	return placeArray
@@ -164,7 +164,7 @@ func EventExecution(event string, player1 *player.Player, inventory [10]*gear.In
 	////////////////////////////// Tutorial //////////////////////////////////
 	case "Ork":
 		player1, inventory, hp, att, def, rec, player_level = story.Ork(player1, inventory, hp, att, def, rec, world, player_level)
-	case "DemoKarma:":
+	case "DemoKarma":
 		story.DemoKarma(player1)
 	case "DemoAuswahl":
 		inventory = story.DemoAuswahl(player1, inventory, player_level)
