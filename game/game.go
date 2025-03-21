@@ -129,7 +129,7 @@ func SetPlaceArray(world string) [3]string {
 		placeArray = [3]string{"höhle", "jungel", "berg"}
 	case "wildwesten":
 
-		placeArray = [3]string{"bar", "sherrif", "goldmine"}
+		placeArray = [3]string{"bar", "sheriff", "goldmine"}
 	default:
 		/*
 
