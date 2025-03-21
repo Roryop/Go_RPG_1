@@ -6,6 +6,7 @@ import (
 	"start/gear"
 	"start/player"
 	"start/story"
+	"start/text"
 	"strings"
 )
 
@@ -18,7 +19,7 @@ func Chooseworld() string {
 	var isInLoop bool = true
 
 	for isInLoop { // Choosing World until valid World has been chosen
-		fmt.Println("In welche Welt willst du?")                                             // This example is for User deciding world
+		text.Print("In welche Welt willst du?")                                              // This example is for User deciding world
 		fmt.Println("Tutorial; Cyberpunk; Mittelalter; Armageddon; Prähistorie; Wildwesten") ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////Gerade hier
 		fmt.Scanln(&world)
 
@@ -277,10 +278,13 @@ func EventExecution(event string, player1 *player.Player, inventory [10]*gear.In
 
 	////////////////////// Funktionen für Höhle ////////////////////////////
 	case "HoehlenmenschenWaffe":
+		text.Print("Checkpoint 1.1 erreicht")
 		inventory = story.HoehlenmenschenWaffe(player1, inventory)
 	case "HoelenmenschenHunger":
+		text.Print("Checkpoint 1.2 erreicht")
 		hp = story.HoehlenmenschenHunger(player1, hp)
 	case "HoelenmenschenWerkzeug":
+		text.Print("Checkpoint 1.3 erreicht")
 		story.HoehlenmenschenWerkzeug(player1)
 
 	////////////////////// Funktionen für Dschungel ////////////////////////////
