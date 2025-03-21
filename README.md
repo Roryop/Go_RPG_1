@@ -3,7 +3,7 @@ a little and easy RPG done for a school project
 
 # Spirit of Adventure - Where´s the Cake?
 
-(Benjamin, Schalom, Charlee, Aleksis)
+(Benjamin, Martigga, Charlee, Aleksis)
 
 
 Description

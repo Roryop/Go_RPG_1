@@ -109,3 +109,42 @@ func Fight(player1 *player.Player, inventory [10]*gear.InventorySlot, hp, att, d
 end:
 	return player1, inventory, hp, att, def, rec, player_level
 }
+
+func Ende(player1 *player.Player) {
+	var karma = player1.GetKarma()
+
+	text.Space(50)
+	text.ShortWait()
+	text.Print("Deine Reise trifft ein Ende.")
+	text.ShortWait()
+	text.Print("Doch waren deine Taten moralisch vertretbar?")
+	text.LongWait()
+
+	switch {
+	case karma == 0: // morally neutral ending
+		text.Print("Du hast deine Reise auf der Schneide zwischen Gut und Schlecht beendet.")
+		text.ShortWait()
+		text.Print("Perfectly balanced, as all should be...")
+	case karma > 0 && karma <= 30: // morally good ending
+		text.Print("Du hast deine Reise auf der besseren Seite beendet.")
+		text.ShortWait()
+		text.Print("Du fühlst dich zufrieden...")
+	case karma > 30: // morally best ending
+		text.Print("Du hast deine Reise auf der besten Seite beendet.")
+		text.ShortWait()
+		text.Print("Du fühlst dich gelassen...")
+	case karma < 0 && karma >= -30: // morally bad ending
+		text.Print("Du hast deine Reise auf der schlechteren Seite beendet.")
+		text.ShortWait()
+		text.Print("Du bereust einiges...")
+	case karma > 30: // morally worst ending
+		text.Print("Du hast deine Reise auf der bösesten Seite beendet.")
+		text.ShortWait()
+		text.Print("Du fühlst dich gut im Angesicht deiner Gräueltaten...")
+	}
+
+	text.ShortWait()
+	text.Space(100)
+	text.Print("Vielen Dank fürs Spielen")
+	text.Print("Credits to Benjamin(45%), Martigga(25%), Charlee(15%), Aleksis(15%)")
+}

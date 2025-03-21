@@ -130,4 +130,7 @@ func main() {
 			break
 		}
 	}
+
+	story.Ende(player1)
+
 }
