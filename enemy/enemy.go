@@ -151,7 +151,7 @@ func SetEnemyLevel(world string, player_level int) int {
 	// Only changes enemy_level based on world_barrier if correct world was chosen, tutorial will stay level 0
 	if world == "cyberpunk" || world == "mittelalter" || world == "armageddon" || world == "prähistorie" || world == "wildwesten" {
 
-		enemy_level = rand.Intn(5) + player_level - 1
+		enemy_level = rand.Intn(4) + player_level - 1
 		if enemy_level == 0 { // Making sure enemy_level is not 0 outside of Tutorial
 			enemy_level = 1
 		}
