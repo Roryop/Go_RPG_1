@@ -261,15 +261,15 @@ func EventExecution(event string, player1 *player.Player, inventory [10]*gear.In
 	case "Jailbreak":
 		player1, inventory, hp, att, def, rec, player_level = story.Jailbreak(player1, inventory, hp, att, def, rec, world, player_level)
 	case "Sheriffquest":
-		inventory = story.Sheriffquest(player1, inventory, player_level)
+		inventory = story.SheriffQuest(player1, inventory, player_level)
 	case "Sheriffberauben":
-		inventory = story.Sheriffberauben(player1, inventory, player_level)
+		inventory = story.SheriffBerauben(player1, inventory, player_level)
 
 	////////////////// Funktionen für Goldmine ///////////////////////////////
 	case "Koyothoehle":
 		player1, inventory, hp, att, def, rec, player_level = story.Koyothoehle(player1, inventory, hp, att, def, rec, world, player_level)
 	case "Aufdiefressekriegen":
-		hp = story.Aufdiefressekriegen(player1, inventory, hp)
+		hp = story.AufDieFresseKriegen(player1, inventory, hp)
 	case "Banditenlager":
 		player1, inventory, hp, att, def, rec, player_level = story.Banditenlager(player1, inventory, hp, att, def, rec, world, player_level)
 

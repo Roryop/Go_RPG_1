@@ -123,7 +123,7 @@ func Jailbreak(player1 *player.Player, inventory [10]*gear.InventorySlot, hp, at
 // Spieler wählt aus ob er auf einen Insassen aufpassen will
 // Gets inventory (fügt einen Item hinzu falls der Spieler dem Sheriff hilft)
 // returns inventory
-func Sheriffquest(player1 *player.Player, inventory [10]*gear.InventorySlot, player_level int) [10]*gear.InventorySlot {
+func SheriffQuest(player1 *player.Player, inventory [10]*gear.InventorySlot, player_level int) [10]*gear.InventorySlot {
 	var choice int
 	var item = gear.NewGear("Weapon", "Smith & Wesson 500 Bone Crusher")
 
@@ -151,7 +151,7 @@ func Sheriffquest(player1 *player.Player, inventory [10]*gear.InventorySlot, pla
 // Spieler wählt aus ob er Sheriffs schubladen durchsuchen will
 // Gets inventory (fügt einen Medipack hinzu falls der Spieler den Sheriff beraubt)
 // returns inventory
-func Sheriffberauben(player1 *player.Player, inventory [10]*gear.InventorySlot, player_level int) [10]*gear.InventorySlot {
+func SheriffBerauben(player1 *player.Player, inventory [10]*gear.InventorySlot, player_level int) [10]*gear.InventorySlot {
 	var choice int
 	var item = gear.NewGear("Accessoire", "Hello Kitty Verband")
 
@@ -205,7 +205,7 @@ func Koyothoehle(player1 *player.Player, inventory [10]*gear.InventorySlot, hp, 
 // Spieler kriegt aufs Gesicht wenn er einen Balken bei seite räumt
 // Gets PlayerHp, PlayerMaxHp
 // Returns PlayerHp mit addiertem ein fünftel vom PlayerMaxHp
-func Aufdiefressekriegen(player1 *player.Player, inventory [10]*gear.InventorySlot, hp int) int {
+func AufDieFresseKriegen(player1 *player.Player, inventory [10]*gear.InventorySlot, hp int) int {
 	var maxHp, _, _, _ = player1.CreateStats(inventory)
 	var choice int
 
