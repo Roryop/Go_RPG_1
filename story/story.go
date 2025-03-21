@@ -53,7 +53,7 @@ func Fight(player1 *player.Player, inventory [10]*gear.InventorySlot, hp, att, d
 		fmt.Println("2: Nein")
 		fmt.Println("3: Eigene Stats sehen")
 		fmt.Println("4: Inventory sehen")
-		fmt.Println("5: End Game")
+		fmt.Println("5: Wie ein Feigling wegrennen!")
 		fmt.Scanln(&choice)
 
 		//Angreifen
