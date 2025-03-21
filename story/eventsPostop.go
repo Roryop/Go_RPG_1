@@ -63,11 +63,10 @@ func PluendererGroup(player1 *player.Player, inventory [10]*gear.InventorySlot, 
 
 	if choice == 1 {
 
-		text.Print("Du wirst von einem Plünderer angegriffen!")
-		player1, inventory, hp, att, def, rec, player_level = Fight(player1, inventory, hp, att, def, rec, world, player_level, 10)
-
-		text.Print("Du wirst von einem zweiten Plünderer angegriffen!")
-		player1, inventory, hp, att, def, rec, player_level = Fight(player1, inventory, hp, att, def, rec, world, player_level, 10)
+		for i := 0; i < 3; i++ {
+			text.Print("Du wirst von einem Plünderer angegriffen!")
+			player1, inventory, hp, att, def, rec, player_level = Fight(player1, inventory, hp, att, def, rec, world, player_level, 10)
+		}
 
 	} else {
 		text.Print("Du bist wie ein Feigling weggerannt")
