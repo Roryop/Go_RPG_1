@@ -82,7 +82,7 @@ func main() {
 
 			case 2:
 
-				text.Print("Dein aktueller Schwierigkeitsgrad ist " + "NORMAL" + "!")
+				text.Print("Dein aktueller Schwierigkeitsgrad ist " + fmt.Sprint(player_level) + "!")
 
 				menuChoice = menu.Menu() //In case Game is not ended or started, refresh menuChoice
 			case 3:
@@ -118,11 +118,10 @@ func main() {
 			var eventArray = game.ChoosePlace(placeArray, world)
 			var event = game.EventGenerator(eventArray)
 			fmt.Println(event)
-			player1, inventory, hp, att, def, rec, world, player_level = game.EventExecution(event, player1, inventory, hp, att, def, rec, world, player_level)
 
 			/*
 				////////////////////// Setting Up Enemy ////////////////////////
-				var enemyName, enemyStats = enemy.CreateEnemy(world, world_barrier, 0)
+				var enemyName, enemyStats = enemy.CreateEnemy(world, player_level, 0)
 
 				fmt.Println("Du fightest einen", enemyName+"!!!")
 				fmt.Println("Er ist Level", enemyStats[0], "!!!")
@@ -172,11 +171,11 @@ func main() {
 
 					////////////// Setting World Barrier Upgrade Requirement ////////////
 					if i >= 9 {
-						world_barrier += 1
+						player_level += 1
 					}
 
 					//////////////// Enemy Item Drop /////////////
-					inventory = gear.AddDropToInventory(inventory, world_barrier)
+					inventory = gear.AddDropToInventory(inventory, player_level)
 
 					///////////////// Player Management ////////////////
 					player1.Exp_Function(enemyStats)                                           // Giving Exp to Player
