@@ -10,7 +10,11 @@ import (
 
 func Prologue() {
 	text.EmptyLine()
-	text.Print("Du wachs im Raum auf.")
+	text.Print("Du wachst im Raum auf.")
+	text.Print("Du spührst weder Kälte noch Wärme...")
+	text.Print("Siehst weder Licht noch Schatten...")
+	text.Print("Hast keinen Boden unter den Füßen und dennoch...")
+	text.Print("Spührst keine Bewegung.")
 	text.EmptyLine()
 	text.ShortWait()
 	text.Print("Du weißt nicht wer du bist...")
@@ -18,7 +22,7 @@ func Prologue() {
 	text.Print("Und du weißt nicht was du in deiner Verganheit hintergelassen hast...")
 	text.Pause()
 	text.Print("Finde dich wieder auf dem Weg nach Macht und Stärke.")
-	text.Print("Denn das das einzige ist was du noch im Kopf übig hast.")
+	text.Print("Denn das das einzige ist was du noch im Kopf übrig hast.")
 	text.ShortWait()
 	text.Space(20)
 	text.ShortWait()
