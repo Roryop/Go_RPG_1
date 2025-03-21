@@ -39,7 +39,7 @@ func Fight(player1 *player.Player, inventory [10]*gear.InventorySlot, hp, att, d
 
 	var enemyName, enemyStats = enemy.CreateEnemy(world, player_level, typ)
 
-	text.Print("Du fightest einen" + enemyName + "!!!")
+	text.Print("Du fightest einen " + enemyName + "!!!")
 	text.Print("Er ist Level " + fmt.Sprint(enemyStats[0]) + "!!!")
 	text.Print("Er hat " + fmt.Sprint(enemyStats[1]) + "HP!")
 	text.Print("Du hast " + fmt.Sprint(hp) + "HP!")
