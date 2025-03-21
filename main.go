@@ -120,7 +120,6 @@ func main() {
 			var placeArray = game.SetPlaceArray(world)
 			var eventArray = game.ChoosePlace(placeArray, world)
 			var event = game.EventGenerator(eventArray)
-			fmt.Println(event)
 
 			player1, inventory, hp, att, def, rec, world, player_level = game.EventExecution(event, player1, inventory, hp, att, def, rec, world, player_level)
 
