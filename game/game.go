@@ -219,6 +219,31 @@ func EventExecution(event string, player1 *player.Player, inventory [10]*gear.In
 	case "Geschäftplündern":
 		inventory = story.Geschäftplündern(player1, inventory, player_level)
 
+	////////////////////////////// Prehistory /////////////////////////////////
+
+	////////////////////// Funktionen für Höhle ////////////////////////////
+	case "HoelenmenschenWaffe":
+		inventory = story.HoelenmenschenWaffe(player1, inventory)
+	case "HoelenmenschenHunger":
+		hp = story.HoelenmenschenHunger(player1, hp)
+	case "HoelenmenschenWerkzeug":
+		story.HoelenmenschenWerkzeug(player1)
+
+	////////////////////// Funktionen für Dschungel ////////////////////////////
+	case "Triceratops":
+		player1, inventory, hp, att, def, rec, player_level = story.Triceratops(player1, inventory, hp, att, def, rec, world, player_level)
+	case "Teich":
+		player1, inventory, hp, att, def, rec, player_level = story.Teich(player1, inventory, hp, att, def, rec, world, player_level)
+	case "EatWoman":
+		hp, att, def, rec = story.EatWoman(player1, inventory, hp, att, def, rec)
+
+	////////////////////// Funktionen für Berg ////////////////////////////
+	case "MountainPath":
+		player1, inventory, hp, att, def, rec, player_level = story.MountainPath(player1, inventory, hp, att, def, rec, world, player_level)
+	case "Pterodactylus":
+		player1, inventory, hp, att, def, rec, player_level = story.Pterodactylus(player1, inventory, hp, att, def, rec, world, player_level)
+	case "Bergsteigerziegen":
+		player1, inventory, hp, att, def, rec, player_level = story.Bergsteigerziegen(player1, inventory, hp, att, def, rec, world, player_level)
 	}
 
 	// Final Return Statement
